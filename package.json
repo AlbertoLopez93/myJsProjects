@@ -1,0 +1,14 @@
+{
+  "name": "bts-interns-2016",
+  "version": "1.0.0",
+  "description": "Interns 2016 exercises.",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "jasmine-node . --verbose --color --growl"
+  },
+  "author": "Lorenzo Peña",
+  "license": "ISC"
+}
