@@ -9,7 +9,7 @@ function suma (numOne, numTwo) {
 	}
 
 	if (typeof parseFloat (numOne) === 'number' && typeof parseFloat (numTwo) === 'number' || numOne instanceof Number === true && numTwo instanceof Number === true) {
-		var num =  (numOne+numTwo).toPrecision(5);
+		var num = (numOne + numTwo).toPrecision (5);
 		return parseFloat (num);
 	}
 	return NaN;
@@ -21,7 +21,7 @@ function resta (numOne, numTwo) {
 	}
 
 	if (typeof parseFloat (numOne) === 'number' && typeof parseFloat (numTwo) === 'number' || numOne instanceof Number === true && numTwo instanceof Number === true) {
-		var num =  (numOne-numTwo).toPrecision(5);
+		var num = (numOne - numTwo).toPrecision (5);
 		return parseFloat (num);
 	}
 
@@ -34,7 +34,7 @@ function multiplicacion (numOne, numTwo) {
 	}
 
 	if (typeof parseFloat (numOne) === 'number' && typeof parseFloat (numTwo) === 'number' || numOne instanceof Number === true && numTwo instanceof Number === true) {
-		var num =  (numOne*numTwo).toPrecision(5)
+		var num = (numOne * numTwo).toPrecision (5)
 		return parseFloat (num);
 	}
 
@@ -46,8 +46,8 @@ function division (numOne, numTwo) {
 		return NaN;
 	}
 
-	if (typeof parseInt (numOne) === 'number' && typeof parseInt (numTwo) === 'number' && parseInt (numTwo) !== 0 || numOne instanceof Number === true && numTwo instanceof Number === true) {
-		var num =  (numOne/numTwo).toPrecision(5)
+	if (typeof parseInt (numOne) === 'number' && typeof parseInt (numTwo) === 'number' || numOne instanceof Number === true && numTwo instanceof Number === true) {
+		var num = (numOne / numTwo).toPrecision (5)
 		return parseFloat (num);
 	}
 
@@ -81,7 +81,6 @@ describe ('testing suma', function () {
 		var res = suma (Number (2), Number (3));
 		expect (res).toBe (5);
 	});
-
 	it ("Expect 'hola'+'mundo' = NaN", function () {
 		var res = suma ('hola', 'mundo');
 		expect (res).toBeNaN (res);
@@ -191,7 +190,7 @@ describe ('testing suma', function () {
 	});
 	it ("Expect 4/0 = 8", function () {
 		var res = division (4, 0);
-		expect (res).toBeNaN (res);
+		expect (res).toBe (Infinity);
 	});
 	it ("Expect 0/2 = 0", function () {
 		var res = division (0, 2);
@@ -201,7 +200,7 @@ describe ('testing suma', function () {
 		var res = division (0, Infinity);
 		expect (res).toBe (0);
 	});
-	it ("Expect Infinity/Infinity = 0", function () {
+	it ("Expect Infinity/Infinity = NaN", function () {
 		var res = division (Infinity, Infinity);
 		expect (res).toBeNaN (res);
 	});
@@ -209,8 +208,8 @@ describe ('testing suma', function () {
 		var res = division ('Infinity', 'Infinity');
 		expect (res).toBeNaN (res);
 	});
-	it ("Expect 'Infinity'/0 = NaN", function () {
-		var res = division ('Infinity', 0);
-		expect (res).toBeNaN (res);
+	it ("Expect Infinity/0 = NaN", function () {
+		var res = division (Infinity, 0);
+		expect (res).toBe (Infinity);
 	});
 });
