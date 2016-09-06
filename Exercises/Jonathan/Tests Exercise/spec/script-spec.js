@@ -53,6 +53,7 @@ describe("esto es una función", function(){
     var res = suma(5,5);
     expect(res).not.toBe(5);
   });
+
   it("espero que 2 + NULL sea NULL", function(){
     var res = suma(2,null);
     expect(res).toBe(NaN);
