@@ -15,3 +15,8 @@ function mul(num1,num2){
 }
 
 module.exports = mul;
+
+function div(num1,num2){
+
+}
+module.exports = div;
