@@ -17,8 +17,9 @@ git clone url//  => clone repository
 git config --list   => see all my stuff
 git checkout -b eddy_test_exercise => create branch
 git add script.js => add to
-git checkout --<file name>
-
+git checkout --<file name>   => rest last commit in that file
+git branch    => branches avaliables
+git branch <name>  => switch
 
 jasmine:
 
