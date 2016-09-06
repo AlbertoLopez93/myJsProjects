@@ -68,6 +68,6 @@ describe("testing resta", function(){
       });
       it("espero que 3 / NaN sea NaN ", function(){
         var res = division (3,NaN);
-        expect(res).not.toBe(NaN);
+        expect(res).toBe(NaN);
       })
     });
