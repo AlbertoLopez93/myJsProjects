@@ -22,7 +22,7 @@ if(numero1 == 4 && numero2 == 2){
 }
 
 }
-function mul(numero1, numero2) {
+function multiplicacion(numero1, numero2) {
 if(numero1 == 2){
   return 4
 }
@@ -62,11 +62,11 @@ describe("Testing resta",function () {
 //************MULTIPLICACION*****
 describe("Testing multiplicacion",function () {
     it("Espero que 2 * 2 sea 4", function () {
-        var res = mul(2,2);
+        var res = multiplicacion(2,2);
         expect(res).toBe(4);
     });
     it("Espero que 4 * 2 sea 2", function () {
-        var res = mul(4,2);
+        var res = multiplicacion(4,2);
         expect(res).toBe(8);
     });
 
