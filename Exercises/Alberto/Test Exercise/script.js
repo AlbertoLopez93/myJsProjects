@@ -1,1 +1,1 @@
-function suma(numero1,)
+function suma(numero1,nuero2)
