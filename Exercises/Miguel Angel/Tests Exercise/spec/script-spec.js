@@ -7,29 +7,6 @@ function suma(numero1, numero2){
 	}
 }
 
-function resta(numero1, numero2){
-	if(typeof Number.parseInt(numero1) === 'number' && typeof Number.parseInt(numero2) === 'number'){
-		return numero1 - numero2;
-	} else {
-		return false;
-	}
-}
-
-function multiplicacion(numero1, numero2){
-	if(typeof Number.parseInt(numero1) === 'number' && typeof Number.parseInt(numero2) === 'number'){
-		return numero1 * numero2;
-	} else {
-		return false;
-	}
-}
-
-function division(numero1, numero2){
-	if(typeof Number.parseInt(numero1) === 'number' && typeof Number.parseInt(numero2) === 'number'){
-		return numero1 / numero2;
-	} else {
-		return false;
-	}
-}
 
 describe ("Testing Suma", function(){
 	it ("Espero que 2 + 2 sea 4", function(){
