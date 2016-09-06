@@ -20,15 +20,22 @@ if(numero1 == 4 && numero2 == 2){
 
 }
 function mul(numero1, numero2) {
-if(numero1 == 2){
-  return 4
+     if(numero1 == 2){
+     return 4
 }
 if(numero1 == 4 && numero2 == 2){
   return 8
 }
 
 }
-
+function div(numero1,numero2){
+  if(numero1 == 4){
+    return 2
+  }
+  if(numero1 ==18 && numero2 ==2){
+    return 9
+  }
+}
 describe("suma", function () {
     it("Espero que 2 + 2 sea 4", function () {
         var res = suma(2,2);
@@ -64,3 +71,16 @@ describe(" multiplicacion",function () {
     });
 
     });
+
+    //////division
+    describe(" divisiòn",function () {
+        it("Espero que 4 / 2 sea 2", function () {
+            var res = mul(4,2);
+            expect(res).toBe(2);
+        });
+        it("Espero que 18 / 2 sea 2", function () {
+            var res = mul(18,2);
+            expect(res).toBe(9);
+        });
+
+        });
