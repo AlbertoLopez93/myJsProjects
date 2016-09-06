@@ -1,0 +1,24 @@
+## Eddy Velazquez
+
+useful commands for :
+
+winCMD:
+cd..
+dir
+mkdir
+
+npm:
+npm -v    => version
+npm install -g npm   =>  undate npm
+npm install -g jasmine-node => test module
+
+git:
+git clone url//  => clone repository
+git config --list   => see all my stuff
+git checkout -b eddy_test_exercise => create branch
+git add script.js => add to
+
+
+jasmine:
+
+jasmine-node spec --verbose   =>
