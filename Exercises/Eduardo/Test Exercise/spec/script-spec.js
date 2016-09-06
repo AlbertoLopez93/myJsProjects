@@ -35,8 +35,17 @@ function multiplicacion(numero1,numero2) {
   return res=numero1*numero2;}
   if(typeof numero1==="string"||typeof numero2==="string"){return res=undefined}
 }
-function division() {
-
+function division(numero1,numero2) {
+  if(numero1===Infinity&&numero2===Infinity){
+    return res=numero1*numero2
+  }
+  if(numero2===0){
+    return res=Infinity
+  }
+  if(typeof numero1===NaN||typeof numero2===NaN){return NaN;}
+  if(typeof numero1==="number"&&typeof numero2==="number"){
+  return res=numero1*numero2;}
+  if(typeof numero1==="string"||typeof numero2==="string"){return res=undefined}
 }
 describe("Testing suma",function(){
   it("Espero que 2+2 sea 4",function(){
@@ -78,5 +87,9 @@ describe("Testing suma",function(){
   it("Espero que numero*0 sea NaN",function(){
     var res=multiplicacion(0,9)
       expect(res).toBe(0)
+  });
+  it("Espero que numero*0 sea NaN",function(){
+    var res=division(9,0)
+      expect(res).toBe(Infinity)
   });
 });
