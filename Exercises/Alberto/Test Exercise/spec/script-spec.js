@@ -119,6 +119,10 @@ describe("Testing multiplicacion", function() {
     var res= multiplicacion(Infinity,Infinity);
     expect(res).toBe(Infinity);
   });
+  it("I wait 0*Infinity equal NaN", function(){
+    var res= multiplicacion(0,Infinity);
+    expect(res).toBeNaN;
+  });
 });
 
 describe("Testing division", function() {
