@@ -5283,7 +5283,7 @@
                 older = st;
             }
         });
-        return older;
+        return older.name.first + " " + older.name.last;
     }
 
     /*
@@ -5296,7 +5296,8 @@
                 younger = st;
             }
         });
-        return younger;
+        
+        return younger.name.first + " " + younger.name.last;
     }
 
     /*
@@ -5417,11 +5418,11 @@
 
     //Get the full name of the oldest student.
     var oldest = getOldestStudent(schools);
-    console.log('oldestStudent:\n', oldest.name.first + ' ' + oldest.name.last, '\n');
+    console.log('oldestStudent:\n', oldest, '\n');
 
     //Get the full name of the youngest student.
     var youngest = getYoungestStudent(schools);
-    console.log('youngestStudent:\n', youngest.name.first + ' ' + youngest.name.last, '\n');
+    console.log('youngestStudent:\n', youngest, '\n');
 
     //Average of grades of all students all courses
     console.log('getAverageAllCourses:\n', getAverageAllCourses(schools), '\n');
@@ -5452,7 +5453,7 @@
 
     module.exports = {
         foreverAlone: function (schools) { return getForeverAlone(schools).map(firstName); },
-        namesOfSuperPopular: function (schools) {return getSuperPopular(schools).map(firstName) },
+        namesOfSuperPopular: function (schools) {return getSuperPopular(schools).map(firstName); },
         studentsInHTMLCourse: function (schools) { return getStudentsByCourses(schools, ['HTML']).map(firstName); },
         studentsInCSSCourse: function (schools) { return getStudentsByCourses(schools, ['CSS']).map(firstName); },
         studentsInJavascriptCourse: function (schools) { return getStudentsByCourses(schools, ['Javascript']).map(firstName); },
@@ -5484,5 +5485,5 @@
         averageGradeOfStudensInJavaCourse: function (schools) { return getAverageGradeByCourse(schools, 'Java'); },
         fullNameOfStudentsWhoFailedACourse: function (schools) { return getFailedStudents(schools).map(firstName); },
         agesOfStudentsWhoFailedACourse: function (schools) { return getFailedStudents(schools).map(studentAge); }
-    }
+    };
 }());
