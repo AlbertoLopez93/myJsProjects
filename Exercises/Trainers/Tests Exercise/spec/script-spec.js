@@ -8,6 +8,8 @@ function suma(numero1, numero2) {
 
 function resta() {}
 
+function multiplication() {}
+
 describe("Testing suma", function () {
     it("Espero que dos cadenas sea NaN", function () {
         var res = suma("hola","mundo");
