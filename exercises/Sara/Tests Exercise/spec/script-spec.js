@@ -1,5 +1,5 @@
 function suma(a,b){
-if(Number.isNaN(a)===true || Number.isNan(b)===true){
+if(isNaN(a)===true || isNan(b)===true){
   return 'NaN';
 }
 else{
