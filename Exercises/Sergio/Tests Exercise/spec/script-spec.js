@@ -1,75 +1,95 @@
 function suma(numero1,numero2){
-  var res = numero1 + numero2;
+
+    if(typeof(numero1)==="number"&&typeof(numero2)==="number"){
+              var res = numero1+numero2;
+    }
+    if(isNaN(res)){
+        res=numero1+numero2;
+    }
+    if(numero1===Infinity||numero2===Infinity){
+      res =numero1+numero2;
+    }
+    if(numero1===null&&numero2===null){
+      res = numero1+numero2;
+    }
+    if(numero1===NaN||numero2===NaN){
+      res = numero1+numero2;
+    }
+
   return res;
 }
 describe("testing suma", function(){
   it("espero que 2 + 2 sea 4", function (){
     var res = suma(2,2);
-      expect(res).toBe(res);
+      expect(res).toBe(4);
   });
 
   it("espero que 3 + 3 sea 6 ", function(){
-    var res = suma (3,3);
-    expect(res).toBe(6);
+    var res = suma (false,2);
+    expect(res).toBe(2);
   })
 
   it("espero que NaN + null sea NaN ", function(){
+    var res = suma (null,null);
+    expect(res).toBe(0);
+  })
+  it("espero que NaN + null sea NaN ", function(){
     var res = suma (NaN,null);
-    expect(res).toBe(NaN);
+    expect(res).toBeNaN();
   })
-  it("espero que NaN + 2 sea NaN ", function(){
-    var res = suma (NaN,2);
-    expect(res).toBe(NaN);
+  it("espero que Infinity + 2 sea NaN ", function(){
+    var res = suma (Infinity,2);
+    expect(res).toBe(Infinity);
   })
-});
-
-function resta(numero1,numero2){
-  var res = numero1 - numero2;
-  return res;
-}
-describe("testing resta", function(){
+  it("espero que Infinity + Infinity sea Infinity ", function(){
+    var res = suma (Infinity,Infinity);
+    expect(res).toBe(Infinity);
+  })
+  it("espero que Infinity - Infinity sea Infinity ", function(){
+    var res = resta (Infinity,Infinity);
+    expect(res).toBeNaN();
+  })
   it("espero que 2 - 2 sea 0", function (){
     var res = resta(2,2);
       expect(res).toBe(0);
   });
-    it("espero que 2 - NaN sea NaN", function (){
-      var res = resta(2,NaN);
-        expect(res).toBe(NaN);
-    });
 
-    });
+  it("espero que false -3 sea -3 ", function(){
+    var res = resta (false,-3);
+    expect(res).toBe(3);
+  })
 
-    function multiplicacion(numero1,numero2){
-      var res = numero1 * numero2;
-      return res;
+  it("espero que NaN - null sea NaN ", function(){
+    var res = resta (null,null);
+    expect(res).toBe(0);
+  })
+  it("espero que NaN + null sea NaN ", function(){
+    var res = suma (NaN,null);
+    expect(res).toBeNaN();
+  })
+  it("espero que Infinity + 2 sea NaN ", function(){
+    var res = suma (Infinity,2);
+    expect(res).toBe(Infinity);
+  })
+});
+
+function resta(numero1,numero2){
+
+    if(typeof(numero1)==="number"&&typeof(numero2)==="number"){
+              var res = numero1-numero2;
     }
-    describe("testing multiplicacion", function(){
-      it("espero que 2 * 2 sea 4", function (){
-        var res = multiplicacion(2,2);
-          expect(res).toBe(4);
-      });
-      it("espero que 3 * NaN sea NaN ", function(){
-        var res = multiplicacion (3,NaN);
-        expect(res).toBe(NaN);
-      })
-      it("espero que null * null sea 0 ", function(){
-        var res = multiplicacion (null,null);
-        expect(res).toBe(0);
-      })
-    });
-
-    function division(numero1,numero2){
-      var res = numero1 / numero2;
-      return res;
+    if(isNaN(res)){
+        res=numero1-numero2;
+    }
+    if(numero1===Infinity||numero2===Infinity){
+      res =numero1-numero2;
+    }
+    if(numero1===null&&numero2===null){
+      res = numero1-numero2;
+    }
+    if(numero1===NaN||numero2===NaN){
+      res = numero1-numero2;
     }
 
-    describe("testing division", function(){
-      it("espero que 10 / 2 sea 5", function (){
-        var res = division(10,2);
-          expect(res).toBe(5);
-      });
-      it("espero que 3 / NaN sea NaN ", function(){
-        var res = division (3,NaN);
-        expect(res).toBe(NaN);
-      })
-    });
+  return res;
+}
