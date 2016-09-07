@@ -1,99 +1,99 @@
 "use strict"
 
 function change(str) {
-  let result=[];
-  for (var i = 0; i < str.length; i++) {
-      switch (str[i]) {
+  let r=[];
+  for (let k = 0; k < str.length; k++) {
+      switch (str[k]) {
         case "A":
-                  result[result.length]="a";
+                  r[r.length]="a";
                   break;
         case "B":
-                  result[result.length]="b";
+                  r[r.length]="b";
                   break;
         case "C":
-                  result[result.length]="c";
+                  r[r.length]="c";
                   break;
         case "D":
-                  result[result.length]="d";
+                  r[r.length]="d";
                   break;
         case "E":
-                  result[result.length]="e";
+                  r[r.length]="e";
                   break;
         case "F":
-                  result[result.length]="f";
+                  r[r.length]="f";
                   break;
         case "G":
-                  result[result.length]="g";
+                  r[r.length]="g";
                   break;
         case "H":
-                  result[result.length]="h";
+                  r[r.length]="h";
                   break;
         case "I":
-                  result[result.length]="i";
+                  r[r.length]="i";
                   break;
         case "J":
-                  result[result.length]="j";
+                  r[r.length]="j";
                   break;
         case "K":
-                  result[result.length]="k";
+                  r[r.length]="k";
                   break;
         case "L":
-                  result[result.length]="l";
+                  r[r.length]="l";
                   break;
         case "M":
-                  result[result.length]="m";
+                  r[r.length]="m";
                   break;
         case "N":
-                  result[result.length]="n";
+                  r[r.length]="n";
                   break;
         case "N":
-                  result[result.length]="n";
+                  r[r.length]="n";
                   break;
         case "O":
-                  result[result.length]="o";
+                  r[r.length]="o";
                   break;
         case "P":
-                  result[result.length]="p";
+                  r[r.length]="p";
                   break;
         case "Q":
-                  result[result.length]="q";
+                  r[r.length]="q";
                   break;
         case "R":
-                  result[result.length]="r";
+                  r[r.length]="r";
                   break;
         case "S":
-                  result[result.length]="s";
+                  r[r.length]="s";
                   break;
         case "T":
-                  result[result.length]="t";
+                  r[r.length]="t";
                   break;
         case "U":
-                  result[result.length]="u";
+                  r[r.length]="u";
                   break;
         case "V":
-                  result[result.length]="v";
+                  r[r.length]="v";
                   break;
         case "W":
-                  result[result.length]="w";
+                  r[r.length]="w";
                   break;
         case "X":
-                  result[result.length]="x";
+                  r[r.length]="x";
                   break;
         case "Y":
-                  result[result.length]="y";
+                  r[r.length]="y";
                   break;
         case "Z":
-                  result[result.length]="z";
+                  r[r.length]="z";
                   break;
-        default:  result[result.length]=str[i];
+        default:  r[r.length]=str[k];
       }
   }
-  return result;
+  return r;
 }
 
 
 function isAnagram(str1,str2) {
-  let cad1,cad2,result=false;
+  let cad1,cad2,r=false;
   if ((typeof(str1)==="string")&& (typeof(str2)==="string")) {
     cad1= change(str1.split(""));
     cad2= change(str2.split(""));
@@ -107,16 +107,16 @@ function isAnagram(str1,str2) {
          }
          }
        if (cont=== str1.length) {
-         result=true;
+         r=true;
        }
        }
     }
-  return result;
+  return r;
   }
 
 
   describe("Testing For Anagrams",function(){//Conjunto de funciones de prueba
-    it("Espero que Roma y aMor sea = true", function() {//Cada una de las pruebas
+    it("Espero que Roma y amOr sea = true", function() {//Cada una de las pruebas
       var res=isAnagram("Roma","aMor");
       expect(res).toBe(true);
     });
@@ -138,6 +138,18 @@ function isAnagram(str1,str2) {
 
     it("Espero que Infinity y null sea = false", function() {//Cada una de las pruebas
       var res=isAnagram(Infinity,null);
+      expect(res).toBe(false);
+    });
+    it("Espero que '' y '' sea = false", function() {//Cada una de las pruebas
+      var res=isAnagram('','');
+      expect(res).toBe(true);
+    });
+    it("Espero que null y '' sea = false", function() {//Cada una de las pruebas
+      var res=isAnagram(null,'');
+      expect(res).toBe(false);
+    });
+    it("Espero que 'Infiltrado' y 'Infiltrada' sea = false", function() {//Cada una de las pruebas
+      var res=isAnagram("Infiltrado","Infiltrada");
       expect(res).toBe(false);
     });
 
