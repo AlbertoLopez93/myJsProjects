@@ -1,22 +1,19 @@
-function suma(num1,num2){
-
+function suma(numero1,numero2){
+  var resul;
 }
-
 module.exports = suma;
 
-function resta(num1,num2){
-
+function resta(numero1,numero2){
+  var resul;
 }
-
 module.exports = resta;
 
-function mul(num1,num2){
-
+function multiplicacion(numero1,numero2){
+  var resul;
 }
+module.exports = multiplicacion;
 
-module.exports = mul;
-
-function div(num1,num2){
-
+function division(numero1,numero2){
+  var resul;
 }
-module.exports = div;
+module.exports = division;

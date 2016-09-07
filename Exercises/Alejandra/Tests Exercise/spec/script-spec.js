@@ -1,86 +1,94 @@
 function suma(numero1, numero2) {
-if(numero1 == 2){
-  return 4
-}
-if(numero1 == 3){
-  return 6
-}
-if(numero1 == 3){
-  return 0
-}
-}
-
-function resta(numero1, numero2) {
-if(numero1 == 2){
-  return 0
-}
-if(numero1 == 4 && numero2 == 2){
-  return 2
-}
-
-}
-function mul(numero1, numero2) {
-     if(numero1 == 2){
-     return 4
-}
-if(numero1 == 4 && numero2 == 2){
-  return 8
-}
-
-}
-function div(numero1,numero2){
-  if(numero1 == 4){
-    return 2
+  resul=numero1+numero2;
+  return resul;
+  if(numero1===null && numero2===null){
+    return 0;
   }
-  if(numero1 ==18 && numero2 ==2){
-    return 9
+
+  if(numero1==="" && numero2===""){
+    return resul;
+  }
+  if(is_Array(numero1) || is_Array(numero2) ){
+    return Array;
+  }
+  if(numero1===infinity && numero2===infinity){
+    return result
   }
 }
+function resta(numero1, numero2){
+  resul=numero1-numero2;
+  return resul;
+  if(numero1===null && numero2===null){
+    return 0;
+  }
+  if(numero1==="" && numero2===""){
+    return NaN;
+  }
+  if(is_Array(numero1) || is_Array(numero2) ){
+    return Array;
+  }
+  if(numero1===1 && numero2===infinity){
+    return -infinity;
+  }
+  if(numero1===infinity && numero2===infinity){
+    return NaN;
+  }
+  if(numero1===infinity && numero2===1){
+    return NaN;
+  }
+}
+
+function multiplicacion(numero1, numero2){
+  resul=numero1*numero2;
+  return resul;
+
+  if(numero1===null && numero2===null){
+  return 0;
+  }
+  if(numero1===undefined && numero2===null){
+  return NaN;
+  }
+  if(numero1==="" && numero2===""){
+  return NaN;
+  }
+  if(is_Array(numero1) || is_Array(numero2) ){
+  return Array;
+  }
+}
+
+function division(numero1,numero2){
+  resul=numero1/numero2;
+  return resul;
+}
+
 describe("suma", function () {
-    it("Espero que 2 + 2 sea 4", function () {
-        var res = suma(2,2);
-        expect(res).toBe(4);
+    it("Espero el siguiente resultado:", function () {
+        var res = suma("","");
+        expect(res).toBe(resul);
+
+     });
+});
+
+
+describe("resta",function () {
+    it("Espero resultado", function () {
+        var res = resta(2,2);
+        expect(res).toBe(resul);
     });
-      it("Espero que 3 + 3 sea 6", function () {
-          var res = suma(3,3);
-          expect(res).toBe(6);
+
+  });
+describe(" multiplicacion",function () {
+    it("Espero resultado", function () {
+        var res = multiplicacion(2,2);
+        expect(res).toBe(resul);
+     });
+});
+
+
+describe(" divisiòn",function () {
+    it("Espero resultado", function () {
+        var res = division(-4,2);
+        expect(res).toBe(resul);
     });
 
 });
-//***********RESTA*******
-describe("resta",function () {
-    it("Espero que 2 - 2 sea 0", function () {
-        var res = resta(2,2);
-        expect(res).toBe(0);
-    });
-    it("Espero que 4 - 2 sea 2", function () {
-        var res = resta(4,2);
-        expect(res).toBe(2);
-    });
-
-    });
-//************MULTIPLICACION*****
-describe(" multiplicacion",function () {
-    it("Espero que 2 * 2 sea 4", function () {
-        var res = mul(2,2);
-        expect(res).toBe(4);
-    });
-    it("Espero que 4 * 2 sea 2", function () {
-        var res = mul(4,2);
-        expect(res).toBe(8);
-    });
-
-    });
-
-    //////division
-    describe(" divisiòn",function () {
-        it("Espero que 4 / 2 sea 2", function () {
-            var res = mul(4,2);
-            expect(res).toBe(2);
-        });
-        it("Espero que 18 / 2 sea 2", function () {
-            var res = mul(18,2);
-            expect(res).toBe(9);
-        });
-
-        });
