@@ -383,6 +383,10 @@ describe("Testing rotate", function() {
     var answer = rotate([[4,5],[8,9]]);
     expect(answer).toEqual([[8,4],[9,5]]);
   });
+  it("I wait [[4,5,6],[7,8,9],[0,7,2]] rotate to [[0,7,4],[7,8,5],[2,9,6]]", function(){
+    var answer = rotate([[4,5,6],[7,8,9],[0,7,2]]);
+    expect(answer).toEqual([[0,7,4],[7,8,5],[2,9,6]]);
+  });
   it("I wait [[4,5,6],[7,8,9]] rotate to [[7,4],[8,5],[9,6]]", function(){
     var answer = rotate([[4,5,6],[7,8,9]]);
     expect(answer).toEqual([[7,4],[8,5],[9,6]]);
