@@ -1,6 +1,6 @@
 function isAnagram (str1, str2){
     var res = true;
-    if(str1 === null || str2 === null || str1.length != str2.length || typeof str1 !== 'string' || typeof str2 !== 'string'){
+    if(str1 === null || str2 === null || str1.length != str2.length || typeof str1 !== 'string' || typeof str2 !== 'string' || str1 instanceof String || str2 instanceof String){
         res = false;
         return res;
     }
