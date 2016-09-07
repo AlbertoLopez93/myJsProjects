@@ -3,9 +3,15 @@
  * Created by EDDY on 06/09/2016.
  *
  */
-function suma (numOne, numTwo) {
+function validate (numOne, numTwo) {
 	if (isNaN (numOne) || isNaN (numOne) || numOne === null || numTwo === null || numOne === undefined || numTwo === undefined || numTwo instanceof Array === true || numOne instanceof Array === true || numTwo === true || numOne === true || numTwo === false || numOne === false) {
 		return NaN;
+	}return false;
+}
+
+function suma (numOne, numTwo) {
+	if (isNaN (validate (numOne, numTwo))) {
+		return NaN
 	}
 
 	if (typeof parseFloat (numOne) === 'number' && typeof parseFloat (numTwo) === 'number' || numOne instanceof Number === true && numTwo instanceof Number === true) {
@@ -16,7 +22,7 @@ function suma (numOne, numTwo) {
 
 }
 function resta (numOne, numTwo) {
-	if (isNaN (numOne) || isNaN (numOne) || numOne === null || numTwo === null || typeof numOne === 'boolean' || typeof numTwo === 'boolean' || numTwo instanceof Array === true || numOne instanceof Array === true || numTwo === true || numOne === true || numTwo === false || numOne === false) {
+	if (isNaN (validate (numOne, numTwo))) {
 		return NaN
 	}
 
@@ -29,8 +35,8 @@ function resta (numOne, numTwo) {
 
 }
 function multiplicacion (numOne, numTwo) {
-	if (isNaN (numOne) || isNaN (numOne) || numOne === null || numTwo === null || typeof numOne === 'boolean' || typeof numTwo === 'boolean' || numTwo instanceof Array === true || numOne instanceof Array === true || numTwo === true || numOne === true || numTwo === false || numOne === false) {
-		return NaN;
+	if (isNaN (validate (numOne, numTwo))) {
+		return NaN
 	}
 
 	if (typeof parseFloat (numOne) === 'number' && typeof parseFloat (numTwo) === 'number' || numOne instanceof Number === true && numTwo instanceof Number === true) {
@@ -42,8 +48,8 @@ function multiplicacion (numOne, numTwo) {
 
 }
 function division (numOne, numTwo) {
-	if (isNaN (numOne) || isNaN (numOne) || numOne === null || numTwo === null || typeof numOne === 'boolean' || typeof numTwo === 'boolean' || numTwo instanceof Array === true || numOne instanceof Array === true || numTwo === true || numOne === true || numTwo === false || numOne === false) {
-		return NaN;
+	if (isNaN (validate (numOne, numTwo))) {
+		return NaN
 	}
 
 	if (typeof parseInt (numOne) === 'number' && typeof parseInt (numTwo) === 'number' || numOne instanceof Number === true && numTwo instanceof Number === true) {
@@ -173,6 +179,10 @@ describe ('testing suma', function () {
 	});
 	it ("Expect NaN*2 = NaN", function () {
 		var res = multiplicacion (NaN, 2);
+		expect (res).toBeNaN (res);
+	});
+	it ("Expect []*{'obj':1} = NaN", function () {
+		var res = multiplicacion ([], {'obj': 1});
 		expect (res).toBeNaN (res);
 	});
 	// division
