@@ -90,48 +90,55 @@ function change(str) {
   }
   return result;
 }
+
+
 function isAnagram(str1,str2) {
- let cad1,cad2,aux,let2;
- cad1= change(str1.split(""));
- cad2= change(str2.split(""));
- if (cad1.length===cad2.length) {
-       let cont=0, j=cad1.length-1;
-       for (var i = 0; i < cad1.length; i++) {
-             if (cad1[i]===cad2[j]) {
-               cont++;
-             }
-             j--;
+  let cad1,cad2,result=false;
+  if ((typeof(str1)==="string")&& (typeof(str2)==="string")) {
+    cad1= change(str1.split(""));
+    cad2= change(str2.split(""));
+    if (cad1.length===cad2.length) {
+       let cont=0;
+       for (var i = 0; i < cad2.length; i++) {
+         find:for (var j = 0; j < cad1.length; j++) {
+           if (cad2[i]===cad1[j]) {
+              cad1[j]=""; cont++;break find;
+           }
+         }
+         }
+       if (cont=== str1.length) {
+         result=true;
        }
-       if (cont===cad1.length)
-         console.log("This works are  Anagrams");
-       else
-         console.log("This works are not  anagrams");
-      }
- else {
-   console.log("This works are not  anagrams");
- }
-}
+       }
+    }
+  return result;
+  }
 
-console.log("Be Or Not Be Anagram:\n");
-isAnagram("Roma","amOr");
-console.log("\n\n");
 
-describe("Testing basic functions", function () {
+  describe("Testing For Anagrams",function(){//Conjunto de funciones de prueba
+    it("Espero que Roma y aMor sea = true", function() {//Cada una de las pruebas
+      var res=isAnagram("Roma","aMor");
+      expect(res).toBe(true);
+    });
 
-    describe("Testing Anagram", function () {
-        it("should exists", function () {
-            expect(isAnagram).toBeDefined();
-        });
-        describe("Tests against values that are not numbers", function () {
-            it("Should not work with strings", function () {
-                expect(isNaN(suma("hola", "mundo"))).toBe(true);
-            });
-            it("Should not work with booleans", function () {
-                expect(isNaN(suma(false, false))).toBe(true);
-                expect(isNaN(suma(true, true))).toBe(true);
-                expect(isNaN(suma(false, true))).toBe(true);
-                expect(isNaN(suma(true, false))).toBe(true);
-                expect(isNaN(suma(true, 1))).toBe(true);
-                expect(isNaN(suma(false, 1))).toBe(true);
-            });
-});
+    it("Espero que 2 y 2 sea = false", function() {//Cada una de las pruebas
+      var res=isAnagram(2,2);
+      expect(res).toBe(false);
+    });
+
+    it("Espero que [] y [] sea = false", function() {//Cada una de las pruebas
+      var res=isAnagram([],[]);
+      expect(res).toBe(false);
+    });
+
+    it("Espero que {} y {} sea = false", function() {//Cada una de las pruebas
+      var res=isAnagram({},{});
+      expect(res).toBe(false);
+    });
+
+    it("Espero que Infinity y null sea = false", function() {//Cada una de las pruebas
+      var res=isAnagram(Infinity,null);
+      expect(res).toBe(false);
+    });
+
+  });
