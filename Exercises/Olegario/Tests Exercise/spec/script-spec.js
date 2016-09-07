@@ -1,33 +1,33 @@
 function suma(numero1, numero2) {
   var result=NaN;
   if ((typeof(numero1)==="number")&&(typeof(numero2)==="number")) {
-       result=numero1+numero2;
-      }
+      result=numero1+numero2;
+  }
   return result;
 }
 
 function resta(numero1, numero2) {
-   var result=NaN;
-   if ((typeof(numero1)==="number")&&(typeof(numero2)==="number")) {
-        result=numero1-numero2;
-       }
- return result;
+  var result=NaN;
+  if ((typeof(numero1)==="number")&&(typeof(numero2)==="number")) {
+      result=numero1-numero2;
+  }
+  return result;
 }
 
 function multiplicacion(numero1, numero2) {
-   var result=NaN;
-   if ((typeof(numero1)==="number")&&(typeof(numero2)==="number")) {
-        result=numero1*numero2;
-       }
- return result;
+  var result=NaN;
+  if ((typeof(numero1)==="number")&&(typeof(numero2)==="number")) {
+      result=numero1*numero2;
+  }
+  return result;
 }
 
 function division(numero1, numero2) {
-   var result=NaN;
-   if ((typeof(numero1)==="number")&&(typeof(numero2)==="number")) {
-        result=numero1/numero2;
-       }
- return result;
+  var result=NaN;
+  if ((typeof(numero1)==="number")&&(typeof(numero2)==="number")) {
+      result=numero1/numero2;
+  }
+  return result;
 }
 
 
