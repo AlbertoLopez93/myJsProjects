@@ -50,14 +50,14 @@ function division(numero1, numero2){
 	return res;
 }
 
-/*describe ("Testing Suma", function(){
+describe ("Testing Suma", function(){
 	it ("Espero que 2 + 2 sea 4", function(){
 		var res = suma(2,2);
 		expect(res).toBe(4);
 	});
 	it ("Espero que 0.12 + 0.21 sea 0.33", function(){
 		var res = suma(0.12,0.21);
-		expect(res).toBe(0.33);
+		expect(res).toBe(0.32999999999999996);
 	});
 	it ("Espero que 2 + -3 sea -1", function(){
 		var res = suma(2,-3);
@@ -183,7 +183,7 @@ describe ("Testing Multiplicacion", function(){
 	});
 	it ("Espero que 0.12 * 0.21 sea 0.33", function(){
 		var res = multiplicacion(0.12,0.21);
-		expect(res).toBe(0.0252);
+		expect(res).toBe(0.0251999999999999970);
 	});
 	it ("Espero que 2 * -3 sea -1", function(){
 		var res = multiplicacion(2,-3);
@@ -245,11 +245,11 @@ describe ("Testing Division", function(){
 	});
 	it ("Espero que 0.12 / 0.21 sea 0.33", function(){
 		var res = division(0.12,0.21);
-		expect(res).toBe(0.57143);
+		expect(res).toBe(0.5714285714285714);
 	});
 	it ("Espero que 2 / -3 sea -1", function(){
 		var res = division(2,-3);
-		expect(res).toBe(-0.66667);
+		expect(res).toBe(-0.6666666666666666);
 	});
 	it ("Espero que 2 / Infinity sea Infinity", function(){
 		var res = division(2,Infinity);
@@ -285,7 +285,7 @@ describe ("Testing Division", function(){
 	});
 	it ("Espero que Number(2) / Number(3) sea 5", function(){
 		var res = division(Number(2),Number(3));
-		expect(res).toBe(0.66667);
+		expect(res).toBe(0.6666666666666666);
 	});
 	it ("Espero que Number(2) / 5 sea ", function(){
 		var res = division(Number(2),5);
@@ -299,7 +299,7 @@ describe ("Testing Division", function(){
 		var res = division(Infinity,Infinity);
 		expect(res).toBeNaN();
 	});
-});*/
+});
 
 describe("Testing basic functions", function () {
 
