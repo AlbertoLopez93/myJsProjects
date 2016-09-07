@@ -1,80 +1,17 @@
 function suma(numero1, numero2) {
-    if (typeof numero1 === 'string' || typeof numero2 === 'string') {
-        return NaN;
-    }
-
-    if (typeof numero1 === 'boolean' || typeof numero2 === 'boolean') {
-        return NaN;
-    }
-
-    if (typeof numero1 === 'object' || typeof numero2 === 'object') {
-        return NaN;
-    }
-
-    if (typeof numero1 === 'function' || typeof numero2 === 'function') {
-        return NaN;
-    }
-
-    return numero1 + numero2;
+    return "Nope";
 }
 
 function resta(numero1, numero2) {
-    if (typeof numero1 === 'string' || typeof numero2 === 'string') {
-        return NaN;
-    }
-
-    if (typeof numero1 === 'boolean' || typeof numero2 === 'boolean') {
-        return NaN;
-    }
-
-    if (typeof numero1 === 'object' || typeof numero2 === 'object') {
-        return NaN;
-    }
-
-    if (typeof numero1 === 'function' || typeof numero2 === 'function') {
-        return NaN;
-    }
-
-    return numero1 - numero2;
+    return "Nope";
 }
 
 function multiplicacion(numero1, numero2) {
-    if (typeof numero1 === 'string' || typeof numero2 === 'string') {
-        return NaN;
-    }
-
-    if (typeof numero1 === 'boolean' || typeof numero2 === 'boolean') {
-        return NaN;
-    }
-
-    if (typeof numero1 === 'object' || typeof numero2 === 'object') {
-        return NaN;
-    }
-
-    if (typeof numero1 === 'function' || typeof numero2 === 'function') {
-        return NaN;
-    }
-    return numero1 * numero2;
+    return "Nope";
 }
 
 function division(numero1, numero2) {
-    if (typeof numero1 === 'string' || typeof numero2 === 'string') {
-        return NaN;
-    }
-
-    if (typeof numero1 === 'boolean' || typeof numero2 === 'boolean') {
-        return NaN;
-    }
-
-    if (typeof numero1 === 'object' || typeof numero2 === 'object') {
-        return NaN;
-    }
-
-    if (typeof numero1 === 'function' || typeof numero2 === 'function') {
-        return NaN;
-    }
-
-    return numero1 / numero2;
+    return "Nope";
 }
 
 describe("Testing basic functions", function () {
