@@ -79,7 +79,7 @@ function division(numero1, numero2) {
 
 describe("Testing basic functions", function () {
 
-    xdescribe("Testing suma function", function () {
+    describe("Testing suma function", function () {
         it("should exists", function () {
             expect(suma).toBeDefined();
         });
@@ -167,7 +167,7 @@ describe("Testing basic functions", function () {
         });
     });
 
-    xdescribe("Testing resta function", function () {
+    describe("Testing resta function", function () {
         it("should exists", function () {
             expect(resta).toBeDefined();
         });
@@ -259,7 +259,7 @@ describe("Testing basic functions", function () {
         });
     });
 
-    xdescribe("Testing multiplicacion function", function () {
+    describe("Testing multiplicacion function", function () {
         it("should exists", function () {
             expect(multiplicacion).toBeDefined();
         });
