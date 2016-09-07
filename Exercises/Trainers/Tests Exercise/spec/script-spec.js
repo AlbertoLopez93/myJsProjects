@@ -38,13 +38,48 @@ function resta(numero1, numero2) {
     return numero1 - numero2;
 }
 
-function multiplication() {}
+function multiplicacion(numero1, numero2) {
+    if (typeof numero1 === 'string' || typeof numero2 === 'string') {
+        return NaN;
+    }
 
-function division() {}
+    if (typeof numero1 === 'boolean' || typeof numero2 === 'boolean') {
+        return NaN;
+    }
+
+    if (typeof numero1 === 'object' || typeof numero2 === 'object') {
+        return NaN;
+    }
+
+    if (typeof numero1 === 'function' || typeof numero2 === 'function') {
+        return NaN;
+    }
+    return numero1 * numero2;
+}
+
+function division(numero1, numero2) {
+    if (typeof numero1 === 'string' || typeof numero2 === 'string') {
+        return NaN;
+    }
+
+    if (typeof numero1 === 'boolean' || typeof numero2 === 'boolean') {
+        return NaN;
+    }
+
+    if (typeof numero1 === 'object' || typeof numero2 === 'object') {
+        return NaN;
+    }
+
+    if (typeof numero1 === 'function' || typeof numero2 === 'function') {
+        return NaN;
+    }
+
+    return numero1 / numero2;
+}
 
 describe("Testing basic functions", function () {
 
-    describe("Testing suma function", function () {
+    xdescribe("Testing suma function", function () {
         it("should exists", function () {
             expect(suma).toBeDefined();
         });
@@ -132,7 +167,7 @@ describe("Testing basic functions", function () {
         });
     });
 
-    describe("Testing resta function", function () {
+    xdescribe("Testing resta function", function () {
         it("should exists", function () {
             expect(resta).toBeDefined();
         });
@@ -222,5 +257,204 @@ describe("Testing basic functions", function () {
             expect(resta(Infinity, -Infinity)).toBe(Infinity);
             expect(resta(-Infinity, Infinity)).toBe(-Infinity);
         });
+    });
+
+    xdescribe("Testing multiplicacion function", function () {
+        it("should exists", function () {
+            expect(multiplicacion).toBeDefined();
+        });
+        describe("Tests against values that are not numbers", function () {
+            it("Should not work with strings", function () {
+                expect(isNaN(multiplicacion("hola", "mundo"))).toBe(true);
+            });
+            it("Should not work with booleans", function () {
+                expect(isNaN(multiplicacion(false, false))).toBe(true);
+                expect(isNaN(multiplicacion(true, true))).toBe(true);
+                expect(isNaN(multiplicacion(false, true))).toBe(true);
+                expect(isNaN(multiplicacion(true, false))).toBe(true);
+                expect(isNaN(multiplicacion(true, 1))).toBe(true);
+                expect(isNaN(multiplicacion(false, 1))).toBe(true);
+            });
+            it("should not work with arrays", function () {
+                expect(isNaN(multiplicacion([1,2,3], [1,2,3]))).toBe(true);
+                expect(isNaN(multiplicacion([1,2,3], 1))).toBe(true);
+                expect(isNaN(multiplicacion(1, [1,2,3]))).toBe(true);
+                expect(multiplicacion([1,2,3], [1,2,3]) + "").toBe("NaN");
+            });
+            it("should not work with nulls", function () {
+                expect(isNaN(multiplicacion(null, null))).toBe(true);
+                expect(isNaN(multiplicacion(null, 0))).toBe(true);
+                expect(isNaN(multiplicacion(1, null))).toBe(true);
+            });
+            it("should not work with undefineds", function () {
+                expect(isNaN(multiplicacion(undefined, undefined))).toBe(true);
+                expect(isNaN(multiplicacion(undefined, 1))).toBe(true);
+                expect(isNaN(multiplicacion(0, undefined))).toBe(true);
+            });
+            it("should not work with objects", function () {
+                expect(isNaN(multiplicacion({}, {}))).toBe(true);
+                expect(isNaN(multiplicacion(0, {}))).toBe(true);
+                expect(isNaN(multiplicacion({}, 1))).toBe(true);
+                expect(multiplicacion({}, {}) + "").toBe("NaN");
+            });
+            it("should not work with functions", function () {
+                expect(isNaN(multiplicacion(function(){}, function(){}))).toBe(true);
+                expect(isNaN(multiplicacion(function(){}, 1))).toBe(true);
+                expect(isNaN(multiplicacion(0, function(){}))).toBe(true);
+                expect(multiplicacion(function(){}, function(){}) + "").toBe("NaN");
+            });
+        });
+        it("should work with 2 positive integers", function () {
+            expect(multiplicacion(1,1)).toBe(1);
+        });
+        it("should work with 2 negative integers", function () {
+            expect(multiplicacion(-1,-1)).toBe(1);
+        });
+        it("should work with a positive integer and a negative integer", function () {
+            expect(multiplicacion(-1,2)).toBe(-2);
+            expect(multiplicacion(-2,1)).toBe(-2);
+        });
+        it("should work with 0 zeros", function () {
+            expect(multiplicacion(0,0)).toBe(0);
+        });
+        it("should work with positive integers and zeros", function () {
+            expect(multiplicacion(0, 1)).toBe(0);
+            expect(multiplicacion(1,0)).toBe(0);
+        });
+        it("should work with negative integers and zeros", function () {
+            expect(multiplicacion(0, -1)).toBe(0);
+            expect(multiplicacion(-1, 0)).toBe(0);
+        });
+        it("should work with 2 floating positive numbers", function () {
+            expect(multiplicacion(1.1, 1.2)).toBe(1.32);
+            expect(multiplicacion(5.5, 4.4)).toBe(24.200000000000003);
+            expect(multiplicacion(10.0, 5.0)).toBe(50);
+            expect(multiplicacion(2.5, 2.5)).toBe(6.25);
+        });
+        it("should work with 2 floating negative numbers", function () {
+            expect(multiplicacion(-1.1, -1.2)).toBe(1.32);
+            expect(multiplicacion(-5.5, -4.4)).toBe(24.200000000000003);
+            expect(multiplicacion(-10.0, -5.0)).toBe(50);
+            expect(multiplicacion(-2.5, -2.5)).toBe(6.25);
+        });
+        it("should work with a positive floating and a negative floating", function () {
+            expect(multiplicacion(5.5, -1.2)).toBe(-6.6);
+            expect(multiplicacion(-5.5, 1.2)).toBe(-6.6);
+        });
+        it("shold work with Infinity", function () {
+            expect(multiplicacion(Infinity, Infinity)).toBe(Infinity);
+            expect(multiplicacion(Infinity, -Infinity)).toBe(-Infinity);
+            expect(multiplicacion(-Infinity, Infinity)).toBe(-Infinity);
+            expect(multiplicacion(-Infinity, -Infinity)).toBe(Infinity);
+            expect(multiplicacion(Infinity, 1)).toBe(Infinity);
+            expect(multiplicacion(Infinity, -1)).toBe(-Infinity);
+            expect(multiplicacion(-1, Infinity)).toBe(-Infinity);
+            expect(multiplicacion(-Infinity, -1)).toBe(Infinity);
+            expect(isNaN(multiplicacion(Infinity, 0))).toBe(true);
+            expect(multiplicacion(Infinity, 0) + "").toBe("NaN");
+            expect(isNaN(multiplicacion(0, Infinity))).toBe(true);
+            expect(multiplicacion(0, Infinity) + "").toBe("NaN");
+       });
+    });
+
+    describe("Testing division function", function () {
+        it("should exists", function () {
+            expect(division).toBeDefined();
+        });
+        describe("Tests against values that are not numbers", function () {
+            it("Should not work with strings", function () {
+                expect(isNaN(division("hola", "mundo"))).toBe(true);
+            });
+            it("Should not work with booleans", function () {
+                expect(isNaN(division(false, false))).toBe(true);
+                expect(isNaN(division(true, true))).toBe(true);
+                expect(isNaN(division(false, true))).toBe(true);
+                expect(isNaN(division(true, false))).toBe(true);
+                expect(isNaN(division(true, 1))).toBe(true);
+                expect(isNaN(division(false, 1))).toBe(true);
+            });
+            it("should not work with arrays", function () {
+                expect(isNaN(division([1,2,3], [1,2,3]))).toBe(true);
+                expect(isNaN(division([1,2,3], 1))).toBe(true);
+                expect(isNaN(division(1, [1,2,3]))).toBe(true);
+                expect(division([1,2,3], [1,2,3]) + "").toBe("NaN");
+            });
+            it("should not work with nulls", function () {
+                expect(isNaN(division(null, null))).toBe(true);
+                expect(isNaN(division(null, 0))).toBe(true);
+                expect(isNaN(division(1, null))).toBe(true);
+            });
+            it("should not work with undefineds", function () {
+                expect(isNaN(division(undefined, undefined))).toBe(true);
+                expect(isNaN(division(undefined, 1))).toBe(true);
+                expect(isNaN(division(0, undefined))).toBe(true);
+            });
+            it("should not work with objects", function () {
+                expect(isNaN(division({}, {}))).toBe(true);
+                expect(isNaN(division(0, {}))).toBe(true);
+                expect(isNaN(division({}, 1))).toBe(true);
+                expect(division({}, {}) + "").toBe("NaN");
+            });
+            it("should not work with functions", function () {
+                expect(isNaN(division(function(){}, function(){}))).toBe(true);
+                expect(isNaN(division(function(){}, 1))).toBe(true);
+                expect(isNaN(division(0, function(){}))).toBe(true);
+                expect(division(function(){}, function(){}) + "").toBe("NaN");
+            });
+        });
+        it("should work with 2 positive integers", function () {
+            expect(division(1,1)).toBe(1);
+        });
+        it("should work with 2 negative integers", function () {
+            expect(division(-1,-1)).toBe(1);
+        });
+        it("should work with a positive integer and a negative integer", function () {
+            expect(division(-1,2)).toBe(-0.5);
+            expect(division(-2,1)).toBe(-2);
+        });
+        it("should work with 0 zeros", function () {
+            expect(isNaN(division(0,0))).toBe(true);
+            expect(division(0,0) + "").toBe("NaN");
+        });
+        it("should work with positive integers and zeros", function () {
+            expect(division(0, 1)).toBe(0);
+            expect(division(1,0)).toBe(Infinity);
+        });
+        it("should work with negative integers and zeros", function () {
+            expect(division(0, -1)).toBe(0);
+            expect(division(-1, 0)).toBe(-Infinity);
+        });
+        it("should work with 2 floating positive numbers", function () {
+            expect(division(1.1, 1.2)).toBe(0.9166666666666667);
+            expect(division(5.5, 4.4)).toBe(1.25);
+            expect(division(10.0, 5.0)).toBe(2);
+            expect(division(2.5, 2.5)).toBe(1);
+        });
+        it("should work with 2 floating negative numbers", function () {
+            expect(division(-1.1, -1.2)).toBe(0.9166666666666667);
+            expect(division(-5.5, -4.4)).toBe(1.25);
+            expect(division(-10.0, -5.0)).toBe(2);
+            expect(division(-2.5, -2.5)).toBe(1);
+        });
+        it("should work with a positive floating and a negative floating", function () {
+            expect(division(5.5, -1.2)).toBe(-4.583333333333334);
+            expect(division(-5.5, 1.2)).toBe(-4.583333333333334);
+        });
+        it("shold work with Infinity", function () {
+            expect(isNaN(division(Infinity, Infinity))).toBe(true);
+            expect(division(Infinity, Infinity) + "").toBe("NaN");
+            expect(isNaN(division(Infinity, -Infinity))).toBe(true);
+            expect(division(Infinity, -Infinity) + "").toBe("NaN");
+            expect(isNaN(division(-Infinity, Infinity))).toBe(true);
+            expect(division(-Infinity, Infinity) + "").toBe("NaN");
+            expect(isNaN(division(-Infinity, -Infinity))).toBe(true);
+            expect(division(-Infinity, -Infinity) + "").toBe("NaN");
+            expect(division(Infinity, 1)).toBe(Infinity);
+            expect(division(Infinity, -1)).toBe(-Infinity);
+            expect(division(-1, Infinity)).toBe(-0);
+            expect(division(-Infinity, -1)).toBe(Infinity);
+            expect(division(Infinity, 0)).toBe(Infinity);
+            expect(division(0, Infinity)).toBe(0);
+       });
     });
 });
