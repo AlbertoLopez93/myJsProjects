@@ -1,3 +1,4 @@
+"use strict"
 function isAnagram (str1, str2){
     var res = true;
     if ((typeof str1 === 'string' || (str1 instanceof String)) && (typeof str2 === 'string' || (str2 instanceof String))){
@@ -627,5 +628,210 @@ describe ("Testing isRotation", function(){
     it("Expect that 'waterbottle' and null returns false", function(){
         var res = isRotation('waterbottle', null);
         expect(res).toBe(false); 
+    });
+});
+
+function convertMatrix(matrix){
+	if(Array.isArray(matrix)){
+		var indexA = [];
+		var indexB = [];
+		var matRes = matrix;
+		for(let i = 0; i < matrix.length; i++){
+			if(Array.isArray(matrix[i])){
+				for(let j = 0; j < matrix[i].length; j++){
+					if(matrix[i][j] === 0){
+						indexA[indexA.length] = i;
+						indexB[indexB.length] = j;
+					}
+				}
+			} else {
+				return false;
+			}
+		}
+		for(let i = 0; i < indexA.length; i++){
+			for(let j = 0; j < matRes[i].length; j++){
+					matRes[indexA[i]][j] = 0;
+				for(let k = 0; k < matRes.length; k++){
+					matRes[k][indexB[i]] = 0;
+				}
+			}
+		}
+	} else {
+		return false;
+	}
+	return matRes;
+}
+
+describe ("Testing convertMatrix", function(){
+	it("Expect that [[1,2,3],[4,0,6],[6,7,8]] returns [[1,0,3],[0,0,0],[6,0,8]]", function(){
+        var res = convertMatrix([[1,2,3],[4,0,6],[6,7,8]]);
+        expect(res).toEqual([[1,0,3],[0,0,0],[6,0,8]]); 
+    });
+    it("Expect that [[1,2,3,2,0],[4,0,6,4,5],[7,8,9,1,4],[1,2,3,1,4]] returns [[0,0,0,0,0],[0,0,0,0,0],[7,0,9,1,0],[1,0,3,1,0]]", function(){
+        var res = convertMatrix([[1,2,3,2,0],[4,0,6,4,5],[7,8,9,1,4],[1,2,3,1,4]]);
+        expect(res).toEqual([[0,0,0,0,0],[0,0,0,0,0],[7,0,9,1,0],[1,0,3,1,0]]); 
+    });
+    it("Expect that [[1,2,3],[4,0,6],[7,8,9],[1,2,3]] returns [[1,0,3],[0,0,0],[7,0,9],[1,0,3]]", function(){
+        var res = convertMatrix([[1,2,3],[4,0,6],[7,8,9],[1,2,3]]);
+        expect(res).toEqual([[1,0,3],[0,0,0],[7,0,9],[1,0,3]]); 
+    });
+    it("Expect that true returns false", function(){
+        var res = convertMatrix(true);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that 1233545346 returns false", function(){
+        var res = convertMatrix(1233545346);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that undefined returns false", function(){
+        var res = convertMatrix(undefined);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that false returns false", function(){
+        var res = convertMatrix(false);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that [] returns []", function(){
+        var res = convertMatrix([]);
+        expect(res).toEqual([]); 
+    });
+    it("Expect that [[]] returns [[]]", function(){
+        var res = convertMatrix([[]]);
+        expect(res).toEqual([[]]); 
+    });
+    it("Expect that null returns false", function(){
+        var res = convertMatrix(null);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that Infinity returns false", function(){
+        var res = convertMatrix(Infinity);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that {one: 1, two: 2, three: 3, four: 4, five: 5, six: 6} returns false", function(){
+        var res = convertMatrix({one: 1, two: 2, three: 3, four: 4, five: 5, six: 6});
+        expect(res).toEqual(false); 
+    });
+    it("Expect that [null,[4,0,6],[6,7,8]] returns [[1,0,3],[0,0,0],[6,0,8]]", function(){
+        var res = convertMatrix([null,[4,0,6],[6,7,8]]);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that [[1,2,3],false,[6,7,8]] returns [[1,0,3],[0,0,0],[6,0,8]]", function(){
+        var res = convertMatrix([[1,2,3],false,[6,7,8]]);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that [[1,2,3],[4,0,6],undefined] returns false", function(){
+        var res = convertMatrix([[1,2,3],[4,0,6],undefined]);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that [[1,2,0]] returns [[0,0,0]]", function(){
+        var res = convertMatrix([[1,2,0]]);
+        expect(res).toEqual([[0,0,0]]); 
+    });
+});
+
+function rotate (matrix){
+	if(Array.isArray(matrix)){
+		var str = [];
+		var matRes = [];
+		for(let i = 0; i < matrix.length; i++){
+			if(matrix[i] === undefined || matrix[i] === null){
+				return false;
+			}
+			if((matrix.length !== matrix[i].length)){
+				return false;
+			}
+		}
+		for(let i = 0; i < matrix.length; i++){
+			matRes[i] = [];
+			if(Array.isArray(matrix[i])){
+				var indexA = i * (matrix.length);
+				for(let j = matrix.length-1; j >= 0; j--){
+					str[indexA] = matrix[j][i];
+					indexA++;
+				}
+			} else {
+				return false;
+			}
+		}
+		for(let i = 0; i < matrix.length; i++){
+			matRes[i] = [];
+			for(let j = 0; j < matrix.length; j++){
+				matRes[i][j] = str[j+(i*matrix.length)]; 
+			}
+		}
+	} else {
+		return false;
+	}
+	return matRes;
+}
+
+describe ("Testing rotate", function(){
+	it("Expect that [[1,2,3],[4,0,6],[6,7,8]] returns [[7,4,1],[8,5,2],[9,6,3]]", function(){
+        var res = rotate([[1,2,3],[4,5,6],[7,8,9]]);
+        expect(res).toEqual([[7,4,1],[8,5,2],[9,6,3]]); 
+    });
+    it("Expect that [[1,2,3,2,0],[4,0,6,4,5],[7,8,9,1,4],[1,2,3,1,4]] returns false", function(){
+        var res = rotate([[1,2,3,2,0],[4,0,6,4,5],[7,8,9,1,4],[1,2,3,1,4]]);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that [[1,2,3],[4,0,6],[7,8,9],[1,2,3]] returns false", function(){
+        var res = rotate([[1,2,3],[4,0,6],[7,8,9],[1,2,3]]);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that true returns false", function(){
+        var res = rotate(true);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that 1233545346 returns false", function(){
+        var res = rotate(1233545346);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that undefined returns false", function(){
+        var res = rotate(undefined);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that false returns false", function(){
+        var res = rotate(false);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that [] returns []", function(){
+        var res = rotate([]);
+        expect(res).toEqual([]); 
+    });
+    it("Expect that [[]] returns [[]]", function(){
+        var res = rotate([[]]);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that null returns false", function(){
+        var res = rotate(null);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that Infinity returns false", function(){
+        var res = rotate(Infinity);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that {one: 1, two: 2, three: 3, four: 4, five: 5, six: 6} returns false", function(){
+        var res = rotate({one: 1, two: 2, three: 3, four: 4, five: 5, six: 6});
+        expect(res).toEqual(false); 
+    });
+    it("Expect that [null,[4,0,6],[6,7,8]] returns [[1,0,3],[0,0,0],[6,0,8]]", function(){
+        var res = rotate([null,[4,0,6],[6,7,8]]);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that [[1,2,3],false,[6,7,8]] returns [[1,0,3],[0,0,0],[6,0,8]]", function(){
+        var res = rotate([[1,2,3],false,[6,7,8]]);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that [[1,2,3],[4,0,6],undefined] returns false", function(){
+        var res = rotate([[1,2,3],[4,0,6],undefined]);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that [[1,2,0]] returns [[0,0,0]]", function(){
+        var res = rotate([[1,2,0]]);
+        expect(res).toEqual(false); 
+    });
+    it("Expect that [[1,2,3,4],[5,6,7,8],[9,0,9,8],[7,6,5,4]] returns [[7,9,5,1],[6,0,6,2],[5,9,7,3],[4,8,8,4]]", function(){
+        var res = rotate([[1,2,3,4],[5,6,7,8],[9,0,9,8],[7,6,5,4]]);
+        expect(res).toEqual([[7,9,5,1],[6,0,6,2],[5,9,7,3],[4,8,8,4]]); 
     });
 });
