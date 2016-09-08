@@ -185,6 +185,40 @@ let r = 0;
   return r;
 }
 
+//////EXERCISE FIVE //////
+function square(arr) {
+  let r=false;
+  if(typeof(arr)==="string"){
+    return false;
+  }
+  if(typeof(arr)==="boolean"){
+    return false;
+  }
+  if(arr>Number.MAX_VALUE){
+    return Infinity;
+  }
+  if(arr<-Number.MAX_VALUE){
+    return -Infinity;
+  }
+ if (Array.isArray(arr)) {
+   r=0;
+   for (var i = 0; i < arr.length; i++) {
+    if(typeof(arr[i])==="string"){
+       return false;
+    }else if(arr[i]<=0) {
+      return false
+    }
+    if(typeof(arr[i])==="boolean"){
+      return false;
+    }
+    r+=arr[i]*arr[i];
+   }
+ }
+ return r;
+}
+
+
+
 describe("Testing For Anagrams",function(){//Conjunto de funciones de prueba
   it("Espero que Roma y amOr sea = true", function() {//Cada una de las pruebas
     var res=isAnagram("Roma","aMor");
@@ -290,5 +324,33 @@ describe("Testing For Anagrams",function(){//Conjunto de funciones de prueba
   it("Espero que Infinity sea = -Infinity", function() {//Cada una de las pruebas
     var res=getTotal(-Infinity);
     expect(res).toBe(-Infinity);
+  });
+  it("Espero que [1,2,3,4,5] = 30", function() {//Cada una de las pruebas
+    var res=square([1,2,3,4,5]);
+    expect(res).toBe(55);
+  });
+  it("Espero que [1,2,'3',4,5] = 30", function() {//Cada una de las pruebas
+    var res=square([1,2,"3",4,5]);
+    expect(res).toBe(false);
+  });
+  it("Espero que '1,2,3,4,5' = false", function() {//Cada una de las pruebas
+    var res=square("1,2,3,4,5");
+    expect(res).toBe(false);
+  });
+  it("Espero que 'boolean' = false", function() {//Cada una de las pruebas
+    var res=square(true);
+    expect(res).toBe(false);
+  });
+  it("Espero que [objet] = false", function() {//Cada una de las pruebas
+    var res=square([true]);
+    expect(res).toBe(false);
+  });
+  it("Espero que [objet] = false", function() {//Cada una de las pruebas
+    var res=square({});
+    expect(res).toBe(false);
+  });
+  it("Espero que [objet] = false", function() {//Cada una de las pruebas
+    var res=square([1,2,3,4,5]);
+    expect(res).toBe(55);
   });
 });
