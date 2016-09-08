@@ -274,57 +274,36 @@ function isRotation (strOne, strTwo) {
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++#6 isRotation end
 //
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++#7 convertMatrix start
-function convertMatrix2 (param) {
-	if (param instanceof Array) {
-		var result = [];
-		var indexes = [];
-		for (var i = 0; i < param.length; i++) {
-			result[i] = [];
-			for (var j = 0; j < param[i].length; j++) {
-				result[i][j] = param[i][j];
-				if (result[i][j] === 0) {
-					indexes.push ({
-						x: j,
-						y: i
-					});
-				}
-			}
-		}
-		for (var k = 0, index; k < indexes.length; k++) {
-			index = indexes[k];
-			for (var x = 0; x < result[index.y].length; x++) {
-				result[index.y][x] = 0;
-			}
-			for (var y = 0; y < result.length; y++) {
-				result[y][index.x] = 0;
-			}
-		}
-		return result;
-	}
-	return false;
-}
-
-function convertMatrix (param) {
-	if (param instanceof Array) {
-		var result = [];
-		for (var i = 0; i < param.length; i++) {
-			result[i] = [];
-			for (var j = 0; j < param.length; j++) {
-				result[i][j] = param[i][j];
-				if (result[i][j] === 0) {
-					for (var k = 0; k < param.length; k++) {
-						result[k][j] = 0;
-						result[i][k] = 0;
+function convertMatrix(param){
+	if(param instanceof Array){
+		var indexA = [];
+		var indexB = [];
+		var result = param;
+		for(var i = 0; i < param.length; i++){
+			if(Array.isArray(param[i])){
+				for(var j = 0; j < param[i].length; j++){
+					if(param[i][j] === 0){
+						indexA[indexA.length] = i;
+						indexB[indexB.length] = j;
 					}
-					return result;
+				}
+			} else {
+				return false;
+			}
+		}
+		for(i = 0; i < indexA.length; i++){
+			for(j = 0; j < result[i].length; j++){
+				result[indexA[i]][j] = 0;
+				for(var k = 0; k < result.length; k++){
+					result[k][indexB[i]] = 0;
 				}
 			}
 		}
-		return result;
+	} else {
+		return false;
 	}
-	return false
+	return result;
 }
-
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++#7 convertMatrix end
 //
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++#8 rotate start
@@ -693,7 +672,10 @@ describe ("Testing isAnagram, convertSpace, rounded, getTotal, isRotation, isSub
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		describe ("Testing convertMatrix valid inputs", function () {
 			it ("should convert the matrix", function () {
-				expect (convertMatrix ([[7, 0, 8], [1, 10, 7], [7, 7, 0]])).toEqual ([[0, 0, 0], [1, 0, 0], [0, 0, 0]]);
+				expect (convertMatrix (mat)).toEqual (mat);
+			});
+			it ("should convert the matrix", function () {
+				expect (convertMatrix (mat3)).toEqual (mat4);
 			});
 		});
 	});
@@ -754,3 +736,5 @@ var mat = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 var matRotated = [[7, 4, 1], [8, 5, 2], [9, 6, 3]];
 var mat2 = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]];
 var mat2Rotated = [[13, 9, 5, 1], [14, 10, 6, 2], [15, 11, 7, 3], [16, 12, 8, 4]];
+var mat3 = [[1, 2, 3], [4, 0, 6], [7, 8, 9]];
+var mat4 = [[1, 0, 3], [0, 0, 0], [7, 0, 9]];
