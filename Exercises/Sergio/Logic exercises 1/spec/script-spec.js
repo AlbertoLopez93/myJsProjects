@@ -216,6 +216,56 @@ function square(arr) {
  }
  return r;
 }
+///////////EXERCISE SIX ////////
+
+
+
+function isRotation(str1,str2) {
+  let r= false;
+  if ((typeof(str1)==="string")&&(typeof(str2)==="string")) {
+    let coincide=0;
+    let pos, aux=0;
+    let tamstr1=str1.length, tamstr2=str2.length;
+    if (tamstr1===tamstr2) {
+      find: for (let i = 0; i < tamstr1; i++) {
+        if (i<tamstr1-1) {
+          if (str1[0]===str2[i]) {
+            if (str1[1]===str2[i+1]) {
+              pos=i; break find;
+            }
+          }
+        }
+        else {
+          if ((str1[0]===str2[i])&&(str1[1]===str2[0])) {
+            pos=i; break find;
+          }
+        }
+      }
+      while (aux<tamstr1) {
+        if (str1[aux]===str2[pos]) {
+          coincide++;
+          if (pos===tamstr1-1) {
+            pos=-1;
+          }
+        }
+        pos++;
+        aux++;
+      }
+      if (coincide==tamstr1) {
+        r=true;
+      }
+      else {
+        r=false;
+      }
+    }
+    else {
+      r=false;
+    }
+  }
+  return r;
+}
+
+
 
 
 
@@ -341,16 +391,44 @@ describe("Testing For Anagrams",function(){//Conjunto de funciones de prueba
     var res=square(true);
     expect(res).toBe(false);
   });
-  it("Espero que [objet] = false", function() {//Cada una de las pruebas
+  it("Espero que [true] = false", function() {//Cada una de las pruebas
     var res=square([true]);
     expect(res).toBe(false);
   });
-  it("Espero que [objet] = false", function() {//Cada una de las pruebas
+  it("Espero que {} = false", function() {//Cada una de las pruebas
     var res=square({});
     expect(res).toBe(false);
   });
-  it("Espero que [objet] = false", function() {//Cada una de las pruebas
+  it("Espero que [1,2,3,4,5] = 55", function() {//Cada una de las pruebas
     var res=square([1,2,3,4,5]);
     expect(res).toBe(55);
+  });
+  it("Espero que 'holamundo' = true", function() {//Cada una de las pruebas
+    var res=isRotation("holamundo","ndoholamu");
+    expect(res).toBe(true);
+  });
+  it("Espero que 'holamundo' = false", function() {//Cada una de las pruebas
+    var res=isRotation("holamundo","ndoholmu");
+    expect(res).toBe(false);
+  });
+  it("Espero que '4' = false", function() {//Cada una de las pruebas
+    var res=isRotation(4,"ndoholmu");
+    expect(res).toBe(false);
+  });
+  it("Espero que '[]' = false", function() {//Cada una de las pruebas
+    var res=isRotation([],"ndoholmu");
+    expect(res).toBe(false);
+  });
+  it("Espero que {} = false", function() {//Cada una de las pruebas
+    var res=isRotation({},"ndoholmu");
+    expect(res).toBe(false);
+  });
+  it("Espero que 'holamundo ' = true", function() {//Cada una de las pruebas
+    var res=isRotation("holamundo "," ndoholmu");
+    expect(res).toBe(false);
+  });
+  it("Espero que 'holamundo ' = true", function() {//Cada una de las pruebas
+    var res=isRotation("holamundo","ndoholamu");
+    expect(res).toBe(true);
   });
 });
