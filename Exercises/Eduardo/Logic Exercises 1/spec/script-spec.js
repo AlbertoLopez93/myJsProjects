@@ -199,17 +199,13 @@ function squareSum(ary) {
     if(ary.length<1){return temp=undefined}
     if(ary instanceof Array||typeof ary==="object"){
         var temp=0;
-        console.log(ary);
-        for (var k = 0; k < ary.length; k++) {
-            if(typeof ary[k]==="number"){
-                for (var i = 0; i <ary.length; i++) {
-
-                    temp=temp+(ary[i]*ary[i]);
-
-                }return temp;
+        for (var i = 0; i <ary.length; i++) {
+            temp=temp+(ary[i]*ary[i]);
+            if(typeof ary[i]!=="number")
+            {
+                return temp=false
             }
-            else{return temp=false}
-        }
+        }return temp;
     }
     else{
         return temp=false
@@ -218,31 +214,44 @@ function squareSum(ary) {
 
 function convertMatrix (mat) {
    //console.log(mat[0][0]);
+   var posA=[]
+   var posB=[]
+   if(Array.isArray(mat)){
    for (let i = 0; i < mat.length; i++) {
-       for (let j = 0; j < mat.length; j++) {
+       for (let j = 0; j < mat[i].length; j++) {
            if (mat[i][j] === 0) {
-               //console.log(i + " " + j);
-               for (let k = 0; k < mat.length; k++) {
-                   //mat[i][k]=0;
-                   mat[k][j] = "0";
-                   mat[i][k] = "0";
-               }
-               break;
-
+               posA[posA.length]=i
+               posB[posB.length]=j
            }
        }
 
-   }return mat;
-}
-
-function eight(m) {
-
-    for(let x = 0; x < m.length; x++){
-       for(let y = m[x].length - 1; y >=0; y--){
-           return m[y][x];
-       }
    }
+    for (var k = 0; k <posB.length; k++) {
+        for (var l = 0; l < mat[k].length; l++) {
+            mat[posA[k]][l]=0
+            for (var m = 0; m <mat.length; m++) {
+            mat[m][posB[k]]=0
+            }
+        }
+    }
+   return mat;}else{return mat=false}
 }
+
+function rotate(m) {
+    var arre=[[],[],[]]
+    if(Array.isArray(m)){
+    var cambio=m.length-1
+
+    for(var x = 0; x < m.length; x++){
+      for(var y = 0; y < m[x].length; y++){
+          arre[y][cambio]=m[x][y];
+      }cambio--
+  }if(x!==y){return false}
+    if(x!==3||y!==3){return false}
+  return arre}else{return false}
+
+}
+
 
 
 describe("Testing isAnagram",function(){
@@ -381,7 +390,7 @@ describe("Testing squareSum",function(){
     });
     it("Espero que todos los elementos del array  numeros sea verdadero",function(){
         var res=squareSum([9,"a",5,8])
-        expect(res).toBeNaN()
+        expect(res).toBe(false)
     });
     it("Espero que el tipo de dato sea array",function(){
         var res=squareSum(8,5)
@@ -410,16 +419,98 @@ describe("Testing squareSum",function(){
 });
 
 describe("Testing convertMatrix",function(){
-    // it("Espero que  [[1, 2, 3], [4, 0, 6], [7, 8, 9]]  sea ",function(){
-    //     var res=convertMatrix([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-    //     expect(res).toBe([[1,2,3],[4,5,6],[7,8,9]])
-    // });
-
-});
-describe("Testing ejercicio8",function(){
-    it("Espero que  [[1, 2, 3], [4, 5, 6], [7, 8, 9]]  lo rote",function(){
-        var res=eight([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-        expect(res).toBe(7)
+    it("Espero que  [[1, 2, 3], [4, 0, 6], [7, 8, 9]]  sea bien ",function(){
+        var res=convertMatrix([[1, 2, 3], [4, 0, 6], [7, 8, 9]])
+        expect(res).toEqual([[1,0,3],[0,0,0],[7,0,9]])
     });
-
+    it("Espero que  matriz rectangular  sea bien ",function(){
+        var res=convertMatrix([[0,2,3],[4,5,6],[7,8,9],[7,8,9]])
+        expect(res).toEqual( [ [ 0, 0, 0 ], [ 0, 5, 6 ], [ 0, 8, 9 ], [ 0, 8, 9 ] ])
+    });
+    it("Espero que string sea falso ",function(){
+        var res=convertMatrix("hola amigos")
+        expect(res).toBe(false)
+    });
+    it("Espero que number sea falso ",function(){
+        var res=convertMatrix(634985)
+        expect(res).toBe(false)
+    });
+    it("Espero que matriz unidimensional sea true ",function(){
+        var res=convertMatrix([[1,2,3]])
+        expect(res).toEqual([[1,2,3]])
+    });
+    it("Espero que arreglo de una fila sea true ",function(){
+        var res=convertMatrix([[1,2,0]])
+        expect(res).toEqual([[0,0,0]])
+    });
+    it("Espero que arreglo de una fila sea true ",function(){
+        var res=convertMatrix([1,2,0])
+        expect(res).toEqual([1,2,0])
+    });
+    it("Espero que matriz con strings sea true ",function(){
+        var res=convertMatrix([[1, 2, 3], ["hola", 0, 6], [7, 8, 9]])
+        expect(res).toEqual([[1, 0, 3], [0, 0, 0], [7, 0, 9]])
+    });
+    it("Espero que matriz con strings sea true ",function(){
+        var res=convertMatrix([[1, 2, 3], [4, 0, 6], [7, 8, "hola"]])
+        expect(res).toEqual([[1, 0, 3], [0, 0, 0], [7, 0, "hola"]])
+    });
+    it("Espero que matriz con null sea true ",function(){
+        var res=convertMatrix([[1, 2, 3], [4, 0, 6], [7, 8, null]])
+        expect(res).toEqual([[1, 0, 3], [0, 0, 0], [7, 0, null]])
+    });
+    it("Espero que matriz con undefined sea true ",function(){
+        var res=convertMatrix([[1, 2, 3], [4, 0, undefined], [7, 8, 9]])
+        expect(res).toEqual([[1, 0, 3], [0, 0, 0], [7, 0, 9]])
+    });
+    it("Espero que matriz con Infinity sea true ",function(){
+        var res=convertMatrix([[1, 2, 3], [4, 0, Infinity], [7, 8, 9]])
+        expect(res).toEqual([[1, 0, 3], [0, 0, 0], [7, 0, 9]])
+    });
+    it("Espero que matriz con objeto sea true ",function(){
+        var res=convertMatrix([[1, 2, 3], [4, 0, 6], [7, 8, {a:0,b:"o"}]])
+        expect(res).toEqual([[1, 0, 3], [0, 0, 0], [7, 0, {a:0,b:"o"}]])
+    });
+});
+describe("Testing rotate",function(){
+    it("Espero que  [[1, 2, 3], [4, 5, 6], [7, 8, 9]]  lo rote",function(){
+        var res=rotate([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+        expect(res).toEqual([[7,4,1],[8,5,2],[9,6,3]])
+    });
+    it("Espero que la matriz no cuadrada sea false",function(){
+        var res=rotate([[1,2,3],[4,5,6]])
+        expect(res).toBe(false)
+    });
+    it("Espero que la matriz con string sea rotada",function(){
+        var res=rotate([[1,"hola",3],[4,5,6],[7,8,9]])
+        expect(res).toEqual([ [ 7, 4, 1 ], [ 8, 5, 'hola' ], [ 9, 6, 3 ] ])
+    });
+    it("Espero que el tipo de dato recibido sea array",function(){
+        var res=rotate("hey amigos")
+        expect(res).toBe(false)
+    });
+    it("Espero que el tipo de dato recibido sea array",function(){
+        var res=rotate(1,2,3,4,45,7,6,78)
+        expect(res).toBe(false)
+    });
+    it("Espero que la matriz sea 3x3",function(){
+        var res=rotate([[1,2],[3,4]])
+        expect(res).toBe(false)
+    });
+    it("Espero que el tipo de dato recibido sea array",function(){
+        var res=rotate(null)
+        expect(res).toBe(false)
+    });
+    it("Espero que el tipo de dato recibido sea array",function(){
+        var res=rotate(NaN)
+        expect(res).toBe(false)
+    });
+    it("Espero que la matriz con boolean sea rotada",function(){
+        var res=rotate([[1,2,3],[4,true,6],[7,8,9]])
+        expect(res).toEqual([ [ 7, 4, 1 ], [ 8, true, 2 ], [ 9, 6, 3 ] ])
+    });
+    it("Espero que la matriz con objeto sea rotada",function(){
+        var res=rotate([[1,2,3],[4,{a:0,b:"0"},6],[7,8,9]])
+        expect(res).toEqual([ [ 7, 4, 1 ], [ 8, {a:0,b:"0"}, 2 ], [ 9, 6, 3 ] ])
+    });
 });
