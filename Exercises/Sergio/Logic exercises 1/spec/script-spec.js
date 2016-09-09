@@ -266,6 +266,50 @@ function isRotation(str1,str2) {
 }
 
 
+//////////EXERCISE SEVEN  //////
+var matrix=[[1,1,2,4],[1,2,3,4],[1,2,3,4],[1,3,0,4]];
+
+function convertMatrix(x){
+let lngt=0, y1=[], z1=[];
+if(typeof m !== 'object'){
+  return false;
+}else{
+	if(Array.isArray(x)===true){
+    console.log(x);
+    lngt=lngth(x);
+    for(let y=0; y<m.length; y++){
+        for(let z=0; z<lngt; z++ ){
+            if(x[y][z]===0){
+              y1[y1.length]=y;
+              z1[z1.length]=z;
+            }
+          }
+        }
+    for(let i=0; i<y1.length; i++){
+        for(let y=0; y<m.length; y++){
+            x[y][z1[i]]=0;
+        }
+        for(let z=0; z<lngt; z++){
+            m[y1[i]][z]=0;
+        }
+    }
+    return x;
+  }else{
+    return false;
+  }
+ }
+}
+
+function lngth(m1){
+let ii=0;
+while(m1[0][ii]>=0){
+  ii++;
+}
+return ii;
+
+}
+
+
 
 
 
