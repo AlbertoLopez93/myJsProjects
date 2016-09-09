@@ -4,7 +4,7 @@
 
 function tribonacci(ary, n){
   var x=0, y=0, zero=0, ary2=[], temp=0, cont=0, z=0, w=0, d=0;
-        console.log(ary)
+        //console.log(ary)
 
 if(Array.isArray(ary)!==true){
     return false;
@@ -12,6 +12,11 @@ if(Array.isArray(ary)!==true){
     while(ary[x]>=0){
         x++;
     };
+    for(let x=0; x<ary.length; x++){
+        if(typeof(ary[x])!=='number'){
+            return false;
+        }
+    }
     if(x===3){
         if(n>3){
             ary2=ary;
@@ -40,6 +45,7 @@ if(Array.isArray(ary)!==true){
     }
   }
 }
+console.log(tribonacci([1,1,1], 5));
 
 //valid IP Address
 
