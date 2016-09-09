@@ -343,7 +343,7 @@ function validEntrys(matrix1, x1, y1){
   //console.log(matrix1, y1, x1);
     for(var x=0; x<x1; x++){
       for(var y=0; y<y1; y++){
-          if((matrix1[x][y]!=='x')&&(matrix1[x][y]!=='o')&&(matrix1[x][y]!==' ')){
+          if((matrix1[x][y]!=='x')&&(matrix1[x][y]!=='o')&&(matrix1[x][y]!==' ')&&(matrix1[x][y]!=='')){
               cont++;
               //console.log(cont);
           }
@@ -459,3 +459,31 @@ if((dx||d0||dx1||d01)===3){
   return false;
 }
 }
+
+//largestSum
+function largestSum(ary){
+  var temp=0, temp1=0, temp2=0;
+
+  if(Array.isArray(ary) !== true ){
+      return false;
+  }else{
+    for(let x=0; x<ary.length; x++){
+        if(typeof(ary[x])!=='number'){
+            return false;
+        }
+    }
+      var ary2=[];
+      for(let x=0; x<ary.length; x++){
+        temp=0;
+          for(let y=x; y<ary.length; y++){
+              temp+=ary[y];
+              if(temp>temp2){
+                  temp2=temp;
+              }
+          }
+      }
+    return temp1
+  }
+}
+
+console.log(largestSum([4,-3,1,5,-75,8,-3,-9,7,-5,-15]));
