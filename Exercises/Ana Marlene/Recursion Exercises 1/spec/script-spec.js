@@ -7,11 +7,16 @@ function sumListSquares(ary){
   }
   else{
     for(var i=0;i<ary.length;i++){
+      if(typeof(ary[i])==="number"){
         if(Array.isArray(ary[i])){
-        res += (sumListSquares(ary[i]),2)
+          res += (sumListSquares(ary[i]),2)
+        }
+        else{
+          res += Math.pow(ary[i],2)
+        }
       }
       else{
-        res += Math.pow(ary[i],2)
+        return false
       }
     }
   }
