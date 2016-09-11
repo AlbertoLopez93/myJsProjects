@@ -157,4 +157,125 @@ describe("Testing Logic Exercises 1", function () {
             expect(rounded(-5.5549)).toBe(-5.55);
         });
     });
+
+    describe("getTotal function", function () {
+        var getTotal = functions.getTotal;
+
+        it("should be defined", function () {
+            expect(getTotal).toBeDefined();
+        });
+        it("should not work against arrays", function () {
+            expect(getTotal([])).toBe(false);
+        });
+        it("should not work against functions", function () {
+            expect(getTotal(function() {})).toBe(false);
+        });
+        it("should not work against strings", function () {
+            expect(getTotal("hola")).toBe(false);
+        });
+        it("should not work against objects", function () {
+            expect(getTotal({})).toBe(false);
+        });
+        it("should not work against regex", function () {
+            expect(getTotal(/abcd/)).toBe(false);
+        });
+        it("should not work against booleans", function () {
+            expect(getTotal(false)).toBe(false);
+        });
+        it("should not work against null or undefined", function () {
+            expect(getTotal(null)).toBe(false);
+            expect(getTotal(undefined)).toBe(false);
+        });
+        it("should not work against NaN", function () {
+            expect(getTotal(NaN)).toBe(false);
+        });
+        it("should not work against negative Infinity", function () {
+            expect(getTotal(-Infinity)).toBe(false);
+        })
+        it("should work against positive Infinity", function () {
+            expect(getTotal(Infinity)).toBe(Infinity);
+        });
+        it("should not workg against floating points with decimals > X.00", function () {
+            expect(getTotal(3.45)).toBe(false);
+        });
+        it("should not work against negative numbers", function () {
+            expect(getTotal(-5)).toBe(false);
+        });
+        it("should work against positive integer numbers", function () {
+            expect(getTotal(1)).toBe(40);
+            expect(getTotal(2)).toBe(80);
+            expect(getTotal(3)).toBe(100);
+            expect(getTotal(5)).toBe(180);
+            expect(getTotal(7)).toBe(230);
+        });
+        it("should work against positive float numbers numbers with decimals = X.00", function () {
+            expect(getTotal(1.00)).toBe(40);
+            expect(getTotal(2.00)).toBe(80);
+            expect(getTotal(3.00)).toBe(100);
+            expect(getTotal(5.00)).toBe(180);
+            expect(getTotal(7.00)).toBe(230);
+        });
+    });
+
+    describe("squareSum function", function () {
+        var squareSum = functions.squareSum;
+
+        it("should be defined", function () {
+            expect(squareSum).toBeDefined();
+        });
+        it("should not work against numbers", function () {
+            expect(squareSum(1.50)).toBe(false);
+            expect(squareSum(-1.50)).toBe(false);
+            expect(squareSum(2)).toBe(false);
+            expect(squareSum(-2)).toBe(false);
+            expect(squareSum(NaN)).toBe(false);
+            expect(squareSum(Infinity)).toBe(false);
+            expect(squareSum(-Infinity)).toBe(false);
+            expect(squareSum(0)).toBe(false);
+        });
+        it("should not work against functions", function () {
+            expect(squareSum(function() {})).toBe(false);
+        });
+        it("should not work against strings", function () {
+            expect(squareSum("hola mundo")).toBe(false);
+        });
+        it("should not work against objects", function () {
+            expect(squareSum({})).toBe(false);
+        });
+        it("should not work against regex", function () {
+            expect(squareSum(/abcd/)).toBe(false);
+        });
+        it("should not work against booleans", function () {
+            expect(squareSum(false)).toBe(false);
+            expect(squareSum(true)).toBe(false);
+        });
+        it("should not work against null or undefined", function () {
+            expect(squareSum(null)).toBe(false);
+            expect(squareSum(undefined)).toBe(false);
+        });
+        it("should work against arrays with positive integers", function () {
+            var ary = [1, 2, 3];
+            expect(squareSum(ary)).toBe(14);
+            var ary2 = [1, 2, 3, Infinity];
+            expect(squareSum(ary2)).toBe(Infinity);
+        });
+        it("should work against arrays with negative integers", function () {
+            var ary = [-1, -2, -3];
+            expect(squareSum(ary)).toBe(14);
+            var ary2 = [-1, -2, -3, -Infinity];
+            expect(squareSum(ary2)).toBe(Infinity);
+        });
+        it("should work against arrays of positive floats with a decimal part equal to zero", function () {
+            var ary = [1.00, 2.00, 3.00];
+            expect(squareSum(ary)).toBe(14);
+        });
+        it("should not work against arrays of positive floats with a decimal part greater than zero", function () {
+            var ary = [1.15, 2.15, 3.15];
+            expect(squareSum(ary)).toBe(false);
+        });
+        it("should not work against arrays of elements different than numbers", function () {
+            var ary = [1, 2, 3, false, {}, []];
+            expect(squareSum(ary)).toBe(false);
+        });
+    });
 });

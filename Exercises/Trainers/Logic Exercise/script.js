@@ -102,8 +102,81 @@ function rounded(number) {
     return result;
 }
 
+// Write a method that get the total price for a rent car
+function getTotal(days) {
+    let quotePerDay = 40;
+
+    if (typeof days !== 'number') {
+        return false;
+    }
+
+    if (isNaN(days)) {
+        return false;
+    }
+
+    if (days === -Infinity) {
+        return false;
+    }
+
+    if (days === Infinity) {
+        return Infinity;
+    }
+
+    if (days < 0) {
+        return false;
+    }
+
+    let daysAsString = days + "";
+    let daysAsArray = daysAsString.split(".");
+    let digitsAsString = daysAsArray[0];
+    let decimalsAsString = daysAsArray[1];
+
+    if (parseInt(decimalsAsString, 10) > 0) {
+        return false;
+    }
+
+    let subtotal = days * quotePerDay;
+    let total;
+    if (days >= 7) {
+        total = subtotal - 50;
+    } else if (days >= 3) {
+        total = subtotal -20;
+    } else {
+        total = subtotal;
+    }
+
+    return total;
+}
+
+// Write a function that return the sum of the squares of all elements
+function squareSum(ary) {
+    if (!Array.isArray(ary)) {
+        return false;
+    }
+
+    let result = ary.reduce( function(prev, current) {
+        return prev + (current * current);
+    }, 0);
+
+    if (isNaN(result)) {
+        return false;
+    }
+
+    if (result === Infinity) {
+        return Infinity;
+    }
+
+    if (parseInt(result, 10) !== result) {
+        return false;
+    }
+
+    return result;
+}
+
 module.exports = {
     isAnagram: isAnagram,
     convertSpaces: convertSpaces,
-    rounded: rounded
+    rounded: rounded,
+    getTotal: getTotal,
+    squareSum: squareSum
 };
