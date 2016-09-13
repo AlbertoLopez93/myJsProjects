@@ -1,5 +1,5 @@
 "use strict"
-function comparaObj(obj1, obj2){
+function deepCompare(obj1, obj2){
 
   if(typeof(obj1) !== "object" || typeof(obj2) !== "object"){
     return false;
@@ -30,6 +30,6 @@ function comparaObj(obj1, obj2){
   }
 
 }
-console.log(comparaObj({'name':'sergio', 'apellido':'rivera','edad':29},
+console.log(deepCompare({'name':'sergio', 'apellido':'rivera','edad':29},
             {'name':'sergio','apellido':'rivera','edad':20})
           );
