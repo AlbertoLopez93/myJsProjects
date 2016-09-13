@@ -15,7 +15,7 @@ function buscaM(texto){
     return texto.char===B;
 }
 
-function morseP (texto){
+function morseP(texto){
       if(texto===" "){
         return "   ";
       }else {
@@ -31,8 +31,10 @@ function morseEnc(texto){
     texto = texto.toUpperCase();
     let r1 = Array.from(texto);
     let r2 =  r1.map(morseP);
-    return r2.join("");
+    return r2.join(" ");
 }
 
   return morseEnc;
 }
+
+console.log(morseP("sergio"));
