@@ -278,4 +278,144 @@ describe("Testing Logic Exercises 1", function () {
             expect(squareSum(ary)).toBe(false);
         });
     });
+
+    describe("isRotation function", function () {
+        var isRotation = functions.isRotation;
+
+        it("should be defined", function () {
+            expect(isRotation).toBeDefined();
+        });
+        it("should not work against numbers", function () {
+            expect(isRotation(1.50, 1.50)).toBe(false);
+            expect(isRotation(-1.50, -1.50)).toBe(false);
+            expect(isRotation(2,2)).toBe(false);
+            expect(isRotation(-2, -2)).toBe(false);
+            expect(isRotation(NaN, NaN)).toBe(false);
+            expect(isRotation(Infinity, Infinity)).toBe(false);
+            expect(isRotation(-Infinity, -Infinity)).toBe(false);
+            expect(isRotation(0, 0)).toBe(false);
+        });
+        it("should not work against functions", function () {
+            expect(isRotation(function () {}, function() {})).toBe(false);
+        });
+        it("should not work against objects", function () {
+            expect(isRotation({},{})).toBe(false);
+        });
+        it("should not work against regex", function () {
+            expect(isRotation(/abcd/, /abcd/)).toBe(false);
+        });
+        it("should not work against booleans", function () {
+            expect(isRotation(true, true)).toBe(false);
+        });
+        it("should not work against null or undefined", function () {
+            expect(isRotation(null, null)).toBe(false);
+            expect(isRotation(undefined, undefined)).toBe(false);
+        });
+        it("should not work against arrays", function () {
+            expect(isRotation([], [])).toBe(false);
+        });
+        it("should return true with strings that are rotation of each other", function () {
+            expect(isRotation("waterbottle", "erbottlewat")).toBe(true);
+        });
+        it("should return false with strings that are not rotation of each other", function () {
+            expect(isRotation("watermelon", "waterbottle")).toBe(false);
+        });
+        it("should return true with strings that are the same word", function () {
+            expect(isRotation("watermelon", "watermelon")).toBe(true);
+        });
+    });
+
+    describe("convertMatrix function", function () {
+        var convertMatrix = functions.convertMatrix;
+
+        it("should be defined", function () {
+            expect(convertMatrix).toBeDefined();
+        });
+        it("should not work against numbers", function () {
+            expect(convertMatrix(1.50)).toBe(false);
+            expect(convertMatrix(-1.50)).toBe(false);
+            expect(convertMatrix(2)).toBe(false);
+            expect(convertMatrix(-2)).toBe(false);
+            expect(convertMatrix(NaN)).toBe(false);
+            expect(convertMatrix(Infinity)).toBe(false);
+            expect(convertMatrix(-Infinity)).toBe(false);
+            expect(convertMatrix(0)).toBe(false);
+        });
+        it("should not work against functions", function () {
+            expect(convertMatrix(function() {})).toBe(false);
+        });
+        it("should not work against strings", function () {
+            expect(convertMatrix("hola mundo")).toBe(false);
+        });
+        it("should not work against objects", function () {
+            expect(convertMatrix({})).toBe(false);
+        });
+        it("should not work against regex", function () {
+            expect(convertMatrix(/abcd/)).toBe(false);
+        });
+        it("should not work against booleans", function () {
+            expect(convertMatrix(false)).toBe(false);
+            expect(convertMatrix(true)).toBe(false);
+        });
+        it("should not work against null or undefined", function () {
+            expect(convertMatrix(null)).toBe(false);
+            expect(convertMatrix(undefined)).toBe(false);
+        });
+        it("should work against arrays", function () {
+            expect(convertMatrix([])).toEqual([]);
+            expect(convertMatrix([0])).toEqual([0]);
+            expect(convertMatrix([1])).toEqual([1]);
+            expect(convertMatrix([1, 0])).toEqual([0, 0]);
+            expect(convertMatrix([ [1, 1], [1, 1] ])).toEqual([ [1, 1], [1, 1] ]);
+            expect(convertMatrix([ [1, 1], [1, 0] ])).toEqual([ [1, 0], [0, 0] ]);
+            expect(convertMatrix([ [0, 1], [1, 1] ])).toEqual([ [0, 0], [0, 1] ]);
+            expect(convertMatrix([ [1, 1, 1], [1, 0, 1], [1, 1, 1] ])).toEqual([ [1, 0, 1], [0, 0, 0], [1, 0, 1] ]);
+        });
+    });
+
+    describe("rotate function", function () {
+        var rotate = functions.rotate;
+
+        it("should be defined", function () {
+            expect(rotate).toBeDefined();
+        });
+        it("should not work against numbers", function () {
+            expect(rotate(1.50)).toBe(false);
+            expect(rotate(-1.50)).toBe(false);
+            expect(rotate(2)).toBe(false);
+            expect(rotate(-2)).toBe(false);
+            expect(rotate(NaN)).toBe(false);
+            expect(rotate(Infinity)).toBe(false);
+            expect(rotate(-Infinity)).toBe(false);
+            expect(rotate(0)).toBe(false);
+        });
+        it("should not work against functions", function () {
+            expect(rotate(function() {})).toBe(false);
+        });
+        it("should not work against strings", function () {
+            expect(rotate("hola mundo")).toBe(false);
+        });
+        it("should not work against objects", function () {
+            expect(rotate({})).toBe(false);
+        });
+        it("should not work against regex", function () {
+            expect(rotate(/abcd/)).toBe(false);
+        });
+        it("should not work against booleans", function () {
+            expect(rotate(false)).toBe(false);
+            expect(rotate(true)).toBe(false);
+        });
+        it("should not work against null or undefined", function () {
+            expect(rotate(null)).toBe(false);
+            expect(rotate(undefined)).toBe(false);
+        });
+        it("should not work against not against non square matrix", function () {
+            expect(rotate([1, 2, 3])).toBe(false);
+            expect(rotate([ [1, 2, 3], [1, 2, 3]])).toBe(false);
+        });
+        it("should work against square matrix", function () {
+            expect(rotate( [ [1, 1], [1, 1] ] )).toEqual([ [1, 1], [1, 1] ]);
+            expect(rotate( [ [0, 1], [0, 1]])).toEqual([ [0, 0], [1, 1] ]);
+        });
+    })
 });

@@ -173,10 +173,102 @@ function squareSum(ary) {
     return result;
 }
 
+// Write a method than can say if a string is the rotation of another string
+function isRotation(str1, str2) {
+    if (typeof str1 !== 'string' || typeof str2 !== 'string') {
+        return false;
+    }
+
+    str1 += str1;
+    return str1.search(str2) > -1;
+}
+
+// Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column is set to 0.
+function convertMatrix(matrix) {
+    if (!Array.isArray(matrix)) {
+        return false;
+    }
+
+    if (matrix.length === 0) {
+        return matrix;
+    }
+
+    if (!Array.isArray(matrix[0])) {
+        if (matrix.filter(function(e) {
+            return e === 0;
+        }).length > 0) {
+            return matrix.map(function(e) {
+                return 0;
+            });
+        }
+    }
+
+    let row = new Array(matrix.length);
+    let column = new Array(matrix[0].length);
+    let result = [];
+
+    for(let i = 0; i < matrix.length; i++) {
+        for(let j = 0; j < matrix[i].length; j++) {
+            if (matrix[i][j] === 0) {
+                row[i] = 1;
+                column[j] = 1;
+            }
+        }
+    }
+
+    for(let i = 0; i < matrix.length; i++) {
+        for(let j = 0; j < matrix[i].length; j++) {
+            if (row[i] === 1 || column[j] === 1) {
+                matrix[i][j] = 0;
+            }
+        }
+    }
+
+    return matrix;
+}
+
+function rotate(matrix) {
+
+    if (!Array.isArray(matrix)) {
+        return false;
+    }
+
+    if (matrix.length === 0) {
+        return false;
+    }
+
+    if (matrix.length > 0 && !Array.isArray(matrix[0])) {
+        return false;
+    }
+
+    if (matrix.length !== matrix[0].length) {
+        return false;
+    }
+
+    let rotated = [];
+    let length = matrix.length
+
+    for (let i = 0; i < length; i++) {
+        rotated.push(new Array(length));
+    }
+
+    for (let i = 0; i < length; i++) {
+
+        for (let j = 0; j < matrix[i].length; j++) {
+            rotated[j][(length - 1) - i] = matrix[i][j];
+        }
+    }
+
+    return rotated;
+}
+
 module.exports = {
     isAnagram: isAnagram,
     convertSpaces: convertSpaces,
     rounded: rounded,
     getTotal: getTotal,
-    squareSum: squareSum
+    squareSum: squareSum,
+    isRotation: isRotation,
+    convertMatrix: convertMatrix,
+    rotate: rotate
 };
