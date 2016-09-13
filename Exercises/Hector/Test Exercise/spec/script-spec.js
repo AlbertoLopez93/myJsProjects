@@ -1,365 +1,112 @@
-function suma(numero1,numero2) {
-<<<<<<< HEAD
-      if( numero1 instanceof Number&&typeof numero2==="number"){
-        return res=numero1+numero2;
-      }
-      if( numero2 instanceof Number&&typeof numero1==="number"){
-        return res=numero1+numero2;
-      }
-      if(typeof numero1!=="number"||typeof numero2!=="number"){
-        return res=NaN
-      }
-      if(typeof numero1==="number"&&typeof numero2==="number"){
-        return res=numero1+numero2
-      }
-      if( numero1 instanceof Number&&numero2 instanceof Number){
-        return res=numero1+numero2;
-      }
-      if(numero1===Infinity&&numero2===Infinity){
-        return res=numero1+numero2
-      }
-      if(numero1===Infinity&&numero2 instanceof Infinity){
-        return res=numero1+numero2
-      }
-      if(numero1 instanceof Number&&numero2===Infinity){
-        return res=numero1+numero2
-      }
+function suma(x ,y){
+    if(typeof x !== "number" || typeof y !== "number"){
+        return res = NaN;
     }
-function resta(numero1,numero2) {
-  if( numero1 instanceof Number&&typeof numero2==="number"){
-    return res=numero1-numero2;
-  }
-  if( numero2 instanceof Number&&typeof numero1==="number"){
-    return res=numero1-numero2;
-  }
-  if(typeof numero1!=="number"||typeof numero2!=="number"){
-    return res=NaN
-  }
-  if(typeof numero1==="number"&&typeof numero2==="number"){
-    return res=numero1-numero2
-  }
-  if( numero1 instanceof Number&&numero2 instanceof Number){
-    return res=numero1-numero2;
-  }
-  if(numero1===Infinity&&numero2===Infinity){
-    return res=NaN
-  }
-  if(numero1===Infinity&&numero2 instanceof Infinity){
-    return res=NaN
-  }
-  if(numero1 instanceof Number&&numero2===Infinity){
-    return res=NaN
-  }
-}
-function multiplicacion(numero1,numero2) {
-  if( numero1 instanceof Number&&typeof numero2==="number"){
-    return res=numero1*numero2;
-  }
-  if( numero2 instanceof Number&&typeof numero1==="number"){
-    return res=numero1*numero2;
-  }
-  if(typeof numero1!=="number"||typeof numero2!=="number"){
-    return res=NaN
-  }
-  if(typeof numero1==="number"&&typeof numero2==="number"){
-    return res=numero1*numero2
-  }
-  if( numero1 instanceof Number&&numero2 instanceof Number){
-    return res=numero1*numero2;
-  }
-  if(numero1===Infinity&&numero2===Infinity){
-    return res=numero1*numero2
-  }
-  if(numero1===Infinity&&numero2 instanceof Infinity){
-    return res=numero1*numero2
-  }
-  if(numero1 instanceof Number&&numero2===Infinity){
-    return res=numero1*numero2
-  }
-}
-function division(numero1,numero2) {
-  if( numero1 instanceof Number&&typeof numero2==="number"){
-    return res=numero1/numero2;
-  }
-  if( numero2 instanceof Number&&typeof numero1==="number"){
-    return res=numero1/numero2;
-  }
-  if(typeof numero1!=="number"||typeof numero2!=="number"){
-    return res=NaN
-  }
-  if(typeof numero1==="number"&&typeof numero2==="number"){
-    return res=numero1/numero2
-  }
-  if( numero1 instanceof Number&&numero2 instanceof Number){
-    return res=numero1/numero2;
-  }
-  if(numero1===Infinity&&numero2===Infinity){
-    return res=NaN
-  }
-  if(numero1===Infinity&&numero2 instanceof Infinity){
-    return res=NaN
-  }
-  if(numero1 instanceof Number&&numero2===Infinity){
-    return res=NaN
-  }
-  if(typeof numero1==="number"&&numero2===0){
-    return res=Infinity
-  }
-  if(typeof numero2==="number"&&numero1===0){
-    return res=numero1/numero2
-  }
-  if(numero2===0&&numero1===0){
-    return res=NaN
-  }
-}
-describe("Testing suma",function(){
-  it("Espero que letra+numero sea NaN",function(){
-    var res=suma(6,Number(Infinity))
-      expect(res).toBe(Infinity)
-  });
-  it("Espero que infinity+infinity sea infinity",function(){
-    var res=suma(Infinity,Infinity)
-      expect(res).toBe(Infinity)
-  });
-  it("Espero que infinity+numero sea infinity",function(){
-    var res=suma(Infinity,3)
-      expect(res).toBe(Infinity)
-  });
-  it("Espero que Infinity+string sea NaN",function(){
-    var res=suma(true,true)
-      expect(res).toBeNaN()
-  });
-  it("Espero que numero*0 sea NaN",function(){
-    var res=multiplicacion(0,9)
-      expect(res).toBe(0)
-  });
-  it("Espero que numero*0 sea NaN",function(){
-    var res=division(9,0)
-      expect(res).toBe(Infinity)
-  });
-  it("Espero que Infinity-Infinity sea NaN",function(){
-    var res=division(Infinity,Infinity)
-      expect(res).toBeNaN()
-  });
-  it("Espero que Infinity*Infinity sea Infinity",function(){
-    var res=multiplicacion(Infinity,Infinity)
-      expect(res).toBe(Infinity)
-  });
-  it("Espero que 4*Infinity sea Infinity",function(){
-    var res=multiplicacion(4,Infinity)
-      expect(res).toBe(Infinity)
-  });
-  it("Espero que 4-Infinity sea -Infinity",function(){
-    var res=resta(4,Infinity)
-      expect(res).toBe(-Infinity)
-  });
-  it("Espero que 4/0 sea Infinity",function(){
-    var res=division(4,0)
-      expect(res).toBe(Infinity)
-  });
-  it("Espero que Infinity/Infinity sea NaN",function(){
-    var res=division(Infinity,Infinity)
-      expect(res).toBeNaN()
-  });
-  it("Espero que 4/0 sea Infinity",function(){
-    var res=division(4,0)
-      expect(res).toBe(Infinity)
-  });
-  it("Espero que 0/4 sea 0",function(){
-    var res=division(0,4)
-      expect(res).toBe(0)
-  });
-  it("Espero que 0/0 sea NaN",function(){
-    var res=division(0,0)
-      expect(res).toBeNaN()
-  });
-  it("Espero que Infinity/5 sea Infinity",function(){
-    var res=division(Infinity,5)
-      expect(res).toBe(Infinity)
-  });
-=======
-    if( numero1 instanceof Number&&typeof numero2==="number"){
-        return res=numero1+numero2;
+    if(typeof x === "number" || typeof y === "number"){
+        return res = x + y;
     }
-    if( numero2 instanceof Number&&typeof numero1==="number"){
-        return res=numero1+numero2;
+    if(x instanceof Number && y instanceof Number ){
+        return res = x + y;
     }
-    if(typeof numero1!=="number"||typeof numero2!=="number"){
-        return res=NaN
+    if(x instanceof Number && typeof y === "number"){
+        return res = x + y;
     }
-    if(typeof numero1==="number"&&typeof numero2==="number"){
-        return res=numero1+numero2
+    if(typeof x === "number" && y instanceof Number){
+        return res = x + y;
     }
-    if( numero1 instanceof Number&&numero2 instanceof Number){
-        return res=numero1+numero2;
+    if( x === Infinity &&  typeof y === "number"){
+        return res = Infinity + y;
     }
-    if(numero1===Infinity&&numero2===Infinity){
-        return res=numero1+numero2
+    if( x === Infinity && y === Infinity){
+        return res = Infinity + Infinity;
     }
-    if(numero1===Infinity&&numero2 instanceof Infinity){
-        return res=numero1+numero2
-    }
-    if(numero1 instanceof Number&&numero2===Infinity){
-        return res=numero1+numero2
+    if(typeof x === "number" && y === Infinity){
+        return res = x + y;
     }
 }
-function resta(numero1,numero2) {
-    if( numero1 instanceof Number&&typeof numero2==="number"){
-        return res=numero1-numero2;
-    }
-    if( numero2 instanceof Number&&typeof numero1==="number"){
-        return res=numero1-numero2;
-    }
-    if(typeof numero1!=="number"||typeof numero2!=="number"){
-        return res=NaN
-    }
-    if(typeof numero1==="number"&&typeof numero2==="number"){
-        return res=numero1-numero2
-    }
-    if( numero1 instanceof Number&&numero2 instanceof Number){
-        return res=numero1-numero2;
-    }
-    if(numero1===Infinity&&numero2===Infinity){
-        return res=NaN
-    }
-    if(numero1===Infinity&&numero2 instanceof Infinity){
-        return res=NaN
-    }
-    if(numero1 instanceof Number&&numero2===Infinity){
-        return res=NaN
-    }
-}
-function multiplicacion(numero1,numero2) {
-    if( numero1 instanceof Number&&typeof numero2==="number"){
-        return res=numero1*numero2;
-    }
-    if( numero2 instanceof Number&&typeof numero1==="number"){
-        return res=numero1*numero2;
-    }
-    if(typeof numero1!=="number"||typeof numero2!=="number"){
-        return res=NaN
-    }
-    if(typeof numero1==="number"&&typeof numero2==="number"){
-        return res=numero1*numero2
-    }
-    if( numero1 instanceof Number&&numero2 instanceof Number){
-        return res=numero1*numero2;
-    }
-    if(numero1===Infinity&&numero2===Infinity){
-        return res=numero1*numero2
-    }
-    if(numero1===Infinity&&numero2 instanceof Infinity){
-        return res=numero1*numero2
-    }
-    if(numero1 instanceof Number&&numero2===Infinity){
-        return res=numero1*numero2
-    }
-}
-function division(numero1,numero2) {
-    if( numero1 instanceof Number&&typeof numero2==="number"){
-        return res=numero1/numero2;
-    }
-    if( numero2 instanceof Number&&typeof numero1==="number"){
-        return res=numero1/numero2;
-    }
-    if(typeof numero1!=="number"||typeof numero2!=="number"){
-        return res=NaN
-    }
-    if(typeof numero1==="number"&&typeof numero2==="number"){
-        return res=numero1/numero2
-    }
-    if( numero1 instanceof Number&&numero2 instanceof Number){
-        return res=numero1/numero2;
-    }
-    if(numero1===Infinity&&numero2===Infinity){
-        return res=NaN
-    }
-    if(numero1===Infinity&&numero2 instanceof Infinity){
-        return res=NaN
-    }
-    if(numero1 instanceof Number&&numero2===Infinity){
-        return res=NaN
-    }
-    if(typeof numero1==="number"&&numero2===0){
-        return res=Infinity
-    }
-    if(typeof numero2==="number"&&numero1===0){
-        return res=numero1/numero2
-    }
-    if(numero2===0&&numero1===0){
-        return res=NaN
-    }
-}
-// describe("Testing suma",function(){
-//   it("Espero que letra+numero sea NaN",function(){
-//     var res=suma(6,Number(Infinity))
-//       expect(res).toBe(Infinity)
-//   });
-//   it("Espero que infinity+infinity sea infinity",function(){
-//     var res=suma(Infinity,Infinity)
-//       expect(res).toBe(Infinity)
-//   });
-//   it("Espero que infinity+numero sea infinity",function(){
-//     var res=suma(Infinity,3)
-//       expect(res).toBe(Infinity)
-//   });
-//   it("Espero que Infinity+string sea NaN",function(){
-//     var res=suma(true,true)
-//       expect(res).toBeNaN()
-//   });
-//   it("Espero que numero*0 sea NaN",function(){
-//     var res=multiplicacion(0,9)
-//       expect(res).toBe(0)
-//   });
-//   it("Espero que numero*0 sea NaN",function(){
-//     var res=division(9,0)
-//       expect(res).toBe(Infinity)
-//   });
-//   it("Espero que Infinity-Infinity sea NaN",function(){
-//     var res=division(Infinity,Infinity)
-//       expect(res).toBeNaN()
-//   });
-//   it("Espero que Infinity*Infinity sea Infinity",function(){
-//     var res=multiplicacion(Infinity,Infinity)
-//       expect(res).toBe(Infinity)
-//   });
-//   it("Espero que 4*Infinity sea Infinity",function(){
-//     var res=multiplicacion(4,Infinity)
-//       expect(res).toBe(Infinity)
-//   });
-//   it("Espero que 4-Infinity sea -Infinity",function(){
-//     var res=resta(4,Infinity)
-//       expect(res).toBe(-Infinity)
-//   });
-//   it("Espero que 4/0 sea Infinity",function(){
-//     var res=division(4,0)
-//       expect(res).toBe(Infinity)
-//   });
-//   it("Espero que Infinity/Infinity sea NaN",function(){
-//     var res=division(Infinity,Infinity)
-//       expect(res).toBeNaN()
-//   });
-//   it("Espero que 4/0 sea Infinity",function(){
-//     var res=division(4,0)
-//       expect(res).toBe(Infinity)
-//   });
-//   it("Espero que 0/4 sea 0",function(){
-//     var res=division(0,4)
-//       expect(res).toBe(0)
-//   });
-//   it("Espero que 0/0 sea NaN",function(){
-//     var res=division(0,0)
-//       expect(res).toBeNaN()
-//   });
-//   it("Espero que Infinity/5 sea Infinity",function(){
-//     var res=division(Infinity,5)
-//       expect(res).toBe(Infinity)
-//   });
-// });
 
+function resta(x ,y){
+    if(typeof x !== "number" || typeof y !== "number"){
+        return res = NaN;
+    }
+    if(typeof x === "number" || typeof y === "number"){
+        return res = x - y;
+    }
+    if(x instanceof Number && y instanceof Number ){
+        return res = x - y;
+    }
+    if(x instanceof Number && typeof y === "number"){
+        return res = x - y;
+    }
+    if(typeof x === "number" && y instanceof Number){
+        return res = x - y;
+    }
+    if( x === Infinity &&  typeof y === "number"){
+        return res = Infinity - y;
+    }
+    if( x === Infinity && y === Infinity){
+        return res = Infinity - Infinity;
+    }
+    if(typeof x === "number" && y === Infinity){
+        return res = x - y;
+    }
+}
+
+function multiplicacion(x ,y){
+    if(typeof x !== "number" || typeof y !== "number"){
+        return res = NaN;
+    }
+    if(typeof x === "number" || typeof y === "number"){
+        return res = x * y;
+    }
+    if(x instanceof Number && y instanceof Number ){
+        return res = x * y;
+    }
+    if(x instanceof Number && typeof y === "number"){
+        return res = x * y;
+    }
+    if(typeof x === "number" && y instanceof Number){
+        return res = x * y;
+    }
+    if( x === Infinity &&  typeof y === "number"){
+        return res = Infinity * y;
+    }
+    if( x === Infinity && y === Infinity){
+        return res = Infinity * Infinity;
+    }
+    if(typeof x === "number" && y === Infinity){
+        return res = x * y;
+    }
+}
+
+function division(x ,y){
+    if(typeof x !== "number" || typeof y !== "number"){
+        return res = NaN;
+    }
+    if(typeof x === "number" || typeof y === "number"){
+        return res = x / y;
+    }
+    if(x instanceof Number && y instanceof Number ){
+        return res = x / y;
+    }
+    if(x instanceof Number && typeof y === "number"){
+        return res = x / y;
+    }
+    if(typeof x === "number" && y instanceof Number){
+        return res = x / y;
+    }
+    if( x === Infinity &&  typeof y === "number"){
+        return res = Infinity / y;
+    }
+    if( x === Infinity && y === Infinity){
+        return res = Infinity / Infinity;
+    }
+    if(typeof x === "number" && y === Infinity){
+        return res = x / y;
+    }
+}
 
 describe("Testing basic functions", function () {
-
     describe("Testing suma function", function () {
         it("should exists", function () {
             expect(suma).toBeDefined();
@@ -738,5 +485,135 @@ describe("Testing basic functions", function () {
             expect(division(0, Infinity)).toBe(0);
        });
     });
->>>>>>> a68d6eb14c16fb8755146bb36f93533c098b895a
 });
+
+
+//
+// describe("Testing Suma", function(){
+//       it("Espero que letra mas numero sea NaN", function(){
+//         var res = suma("A", 5)
+//         expect(res).toBeNaN()
+//       });
+//
+//       it("Espero que 5 mas 5 sea 10", function(){
+//         var res = suma(5, 5)
+//         expect(res).toBe(10)
+//       });
+//
+//       it("Espero que instancia de Number 5 mas 5 sea 10", function(){
+//         var res = suma(Number(5), 5)
+//         expect(res).toBe(10)
+//       });
+//
+//       it("Espero que Infinity mas 5 sea Infinity", function(){
+//         var res = suma(Infinity, 5)
+//         expect(res).toBe(Infinity)
+//       });
+//
+//       it("Espero que Infinity mas Infinity sea Infinity", function(){
+//         var res = suma(Infinity, Infinity)
+//         expect(res).toBe(Infinity)
+//       });
+//
+//       it("Espero que 5 mas Infinity sea Infinity", function(){
+//         var res = suma(5, Infinity)
+//         expect(res).toBe(Infinity)
+//       });
+// });
+//
+// describe("Testing Resta", function(){
+//       it("Espero que letra menos numero sea NaN", function(){
+//         var res = resta("A", 5)
+//         expect(res).toBeNaN()
+//       });
+//
+//       it("Espero que 5 - 5 sea 10", function(){
+//         var res = resta(5, 5)
+//         expect(res).toBe(0)
+//       });
+//
+//       it("Espero que instancia de Number 5 - 5 sea 0", function(){
+//         var res = resta(Number(5), 5)
+//         expect(res).toBe(0)
+//       });
+//
+//       it("Espero que Infinity - 5 sea Infinity", function(){
+//         var res = resta(Infinity, 5)
+//         expect(res).toBe(Infinity)
+//       });
+//
+//       it("Espero que Infinity - Infinity sea NaN", function(){
+//         var res = resta(Infinity, Infinity)
+//         expect(res).toBeNaN()
+//       });
+//
+//       it("Espero que 5 - Infinity sea Infinity", function(){
+//         var res = resta(5, Infinity)
+//         expect(res).toBe(-Infinity)
+//       });
+// });
+//
+//
+// describe("Testing Multiplicacion", function(){
+//       it("Espero que letra * numero sea NaN", function(){
+//         var res = mul("A", 5)
+//         expect(res).toBeNaN()
+//       });
+//
+//       it("Espero que 5 * 5 sea 25", function(){
+//         var res = mul(5, 5)
+//         expect(res).toBe(25)
+//       });
+//
+//       it("Espero que instancia de Number 5 * 5 sea 25", function(){
+//         var res = mul(Number(5), 5)
+//         expect(res).toBe(25)
+//       });
+//
+//       it("Espero que Infinity * 5 sea Infinity", function(){
+//         var res = mul(Infinity, 5)
+//         expect(res).toBe(Infinity)
+//       });
+//
+//       it("Espero que Infinity * Infinity sea Infinity", function(){
+//         var res = mul(Infinity, Infinity)
+//         expect(res).toBe(Infinity)
+//       });
+//
+//       it("Espero que 5 * Infinity sea Infinity", function(){
+//         var res = mul(5, Infinity)
+//         expect(res).toBe(Infinity)
+//       });
+// });
+//
+// describe("Testing Division", function(){
+//       it("Espero que letra / numero sea NaN", function(){
+//         var res = div("A", 5)
+//         expect(res).toBeNaN()
+//       });
+//
+//       it("Espero que 5 / 5 sea 1", function(){
+//         var res = div(5, 5)
+//         expect(res).toBe(1)
+//       });
+//
+//       it("Espero que instancia de Number 5 / 5 sea 1", function(){
+//         var res = div(Number(5), 5)
+//         expect(res).toBe(1)
+//       });
+//
+//       it("Espero que Infinity / 5 sea Infinity", function(){
+//         var res = div(Infinity, 5)
+//         expect(res).toBe(Infinity)
+//       });
+//
+//       it("Espero que Infinity / Infinity sea NaN", function(){
+//         var res = div(Infinity, Infinity)
+//         expect(res).toBeNaN()
+//       });
+//
+//       it("Espero que 5 / Infinity sea 0", function(){
+//         var res = div(5, Infinity)
+//         expect(res).toBe(0)
+//       });
+// });
