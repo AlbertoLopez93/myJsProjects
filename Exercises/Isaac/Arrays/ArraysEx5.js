@@ -14,17 +14,17 @@ function morseEnc(message) {
         message = message.split('');
     }
     if (Array.isArray(message)) {
-        return message.map(function (char) {
-            if (char === ' ') {
-                return '   ';
-            }
-            var morseChar = '';
+        return message.map((char, i, a) => {
+            if (char === ' ') return '   ';
+            var morseCode = '';
             MORSE.forEach(function (code) {
                 if (code.char === char.toUpperCase()) {
-                    morseChar = code.morse;
+                    morseCode = code.morse;
                 }
             });
-            return morseChar;
+            return morseCode;
+        }).filter(e => {
+            return e;
         }).join(' ');
     } else {
         throw new Error('Message was expected to be an Array or a String');

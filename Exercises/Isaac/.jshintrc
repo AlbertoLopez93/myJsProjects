@@ -1,9 +1,12 @@
 {
+    "esversion": 6,
     "globals": {
         "it": true,
         "describe": true,
+        "xdescribe": true,
         "require": true,
         "expect": true,
-        "module": true
+        "module": true,
+        "console": true
     }
 }
