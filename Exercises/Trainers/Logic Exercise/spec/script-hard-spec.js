@@ -201,6 +201,9 @@ describe("Testing Logic Exercises 1", function () {
         it("should not work against negative numbers", function () {
             expect(getTotal(-5)).toBe(false);
         });
+        it("should return 0 for 0 days", function () {
+            expect(getTotal(0)).toBe(0);
+        });
         it("should work against positive integer numbers", function () {
             expect(getTotal(1)).toBe(40);
             expect(getTotal(2)).toBe(80);
@@ -415,7 +418,7 @@ describe("Testing Logic Exercises 1", function () {
         });
         it("should work against square matrix", function () {
             expect(rotate( [ [1, 1], [1, 1] ] )).toEqual([ [1, 1], [1, 1] ]);
-            expect(rotate( [ [0, 1], [0, 1]])).toEqual([ [0, 0], [1, 1] ]);
+            expect(rotate( [ [0, 1], [0, 1] ] )).toEqual([ [0, 0], [1, 1] ]);
         });
     })
 });
