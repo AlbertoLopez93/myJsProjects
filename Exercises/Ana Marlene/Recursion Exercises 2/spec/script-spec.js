@@ -24,6 +24,15 @@ function greatestCommonDivisor(num1,num2, m){
   if(num1<=0 || num2<=0 || typeof(num1)!=="number"||typeof(num2)!=="number"){
     return false;
   }
+  if(num1 === Infinity){
+    return num2;
+  }
+  if(num2 === Infinity){
+    return num1;
+  }
+  if(num2 === Infinity && num1 === Infinity ){
+    return Infinity;
+  }
   if(typeof(m) === "undefined"){
     if(num1<num2){
       m = num1
@@ -77,23 +86,25 @@ describe("Recursion basic functions", function () {
       });
     });
     describe("Recursion objectEquals function", function () {
-    it("should exists", function () {
+    it("Two Object are Equals", function () {
       expect(greatestCommonDivisor).toBeDefined();
     });
     describe("Two Objects are Equals", function () {
       });
-      it("Should not work with booleans", function () {
-        expect(greatestCommonDivisor(60,36)).toBe(true);
+        it("Maximo Comun Divisor", function () {
+        expect(greatestCommonDivisor(60,36)).toBe(12);
+        expect(greatestCommonDivisor(60,Infinity)).toBe(60);
       });
     });
-    describe("Recursion objectEquals function", function () {
+    describe("Function Replicate", function () {
     it("should exists", function () {
       expect(replicate).toBeDefined();
     });
-    describe("Two Objects are Equals", function () {
+    describe("Replicate", function () {
       });
       it("Should not work with booleans", function () {
-        expect(replicate(7,{})).toBe(true);
+        expect(replicate(7,{})).toBe(false);
+        expect(replicate(7,4)).toEqual([4,4,4,4,4,4,4]);
       });
     });
   });
