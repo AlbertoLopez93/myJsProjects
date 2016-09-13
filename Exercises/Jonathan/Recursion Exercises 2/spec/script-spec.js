@@ -6,6 +6,16 @@ function greatestCommonDivisor (n1, n2) {
   if(typeof n1 !== 'number' || typeof n2 !== 'number') {
       return false;
   } else {
+    if (n1 === Infinity){
+        return n2;
+    }
+    if (n2 === Infinity){
+        return n1;
+    }
+      if (!Number.isInteger(n1)||!Number.isInteger(n2)) {
+          return false;
+      }
+
       if (n1 > n2){
           aux = n1 % n2;
           if (n1 % aux === 0 && n2 % aux === 0) {
@@ -27,7 +37,7 @@ function greatestCommonDivisor (n1, n2) {
       }
   }
 }
-console.log(greatestCommonDivisor(900, 183.3));
+console.log(greatestCommonDivisor(900, Infinity));
 
 function recur (n3, n4, n5) {
   if (n3 % n5 === 0 && n4 % n5 === 0){
@@ -36,6 +46,7 @@ function recur (n3, n4, n5) {
       return recur (n3, n4, n5-1);
   }
 }
+
 
 //consecutive
 
@@ -46,6 +57,9 @@ function countSubArrays (ary) {
   if (Array.isArray(ary) !== true){
       return false;
   }else{
+    if (ary.length < 2) {
+        return false;
+    }
     for (var x = ary.length-1; x >=0; x--){
           cont += recur(x);
     }
@@ -53,7 +67,7 @@ function countSubArrays (ary) {
   }
 }
 
-console.log(countSubArrays ([1,2,3,4,5,[]]));
+console.log(countSubArrays ([1,2,3]));
 
 function recur (lngtR1) {
   var cont2=0;
@@ -66,11 +80,12 @@ function recur (lngtR1) {
     }
 }
 
+
 //replicate
 
 function replicate (a, b) {
  var ary = [], aux = 0;
-    if (typeof a !== 'number' || typeof b !== 'number') {
+    if (typeof a !== 'number') {
        return false;
     }
     if (a === Infinity) {
@@ -79,7 +94,7 @@ function replicate (a, b) {
     if (isNaN(a)) {
         return false;
     } else {
-        if (a === 0) {
+        if (a <= 0) {
             return [];
         }
         if (a === 1) {
@@ -91,4 +106,4 @@ function replicate (a, b) {
             return ary = ary.concat(aux);
     }
 }
-console.log(replicate (0, 9));
+console.log(replicate (7, false));
