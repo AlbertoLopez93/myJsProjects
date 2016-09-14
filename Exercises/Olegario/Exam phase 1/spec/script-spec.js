@@ -129,3 +129,139 @@ function deepReverse(array) {
   }
   return result;
 }
+
+
+function every(array, callback) {
+  let result = false;
+  let aux;
+  if ((Array.isArray(array)) && (callback instanceof Function)) {
+    for (let i = 0; i < array.length; i++) {
+      aux = callback(array[i], i, array);
+      if ((aux === false) || (aux === 0) ||(aux === null) || (aux === undefined) || (aux === "") || ((isNaN(aux)) && ((typeof(aux) === "number")))) {
+        result = false; break;
+      } else {
+        result = true;
+      }
+    }
+  }
+  return result;
+}
+
+
+function some(array, callback) {
+  let result = false;
+  let aux;
+  if ((Array.isArray(array)) && (callback instanceof Function)) {
+    for (let i = 0; i < array.length; i++) {
+      aux = callback(array[i], i, array);
+      if ((aux === false) || (aux === 0) ||(aux === null) || (aux === undefined) || (aux === "") || ((isNaN(aux)) && ((typeof(aux) === "number")))) {
+        result = false;
+      } else {
+        result = true; break;
+      }
+    }
+  }
+  return result;
+}
+
+
+function find(array, callback) {
+  let result = undefined;
+  let aux;
+  if ((Array.isArray(array)) && (callback instanceof Function)) {
+    for (let i = 0; i < array.length; i++) {
+      aux = callback(array[i], i, array);
+      if ((aux === false) || (aux === 0) ||(aux === null) || (aux === undefined) || (aux === "") || ((isNaN(aux)) && ((typeof(aux) === "number")))) {
+        result = undefined;
+      } else {
+        result = array[i];  break;
+      }
+    }
+  }
+  return result;
+}
+
+
+function map(array, callback) {
+  let result = false;
+  let aux = [];
+  if ((Array.isArray(array)) && (callback instanceof Function)) {
+    for (let i = 0; i < array.length; i++) {
+      aux = aux.concat(callback(array[i], i, array));
+    }
+    result = aux;
+  }
+  return result;
+}
+
+
+function foreach(array, callback) {
+  let result = false;
+  if ((Array.isArray(array)) && (callback instanceof Function)) {
+    for (let i = 0; i < array.length; i++) {
+      callback(array[i], i, array);
+    }
+    result = undefined;
+  }
+  return result;
+}
+
+function filter(array, callback) {
+  let result = false;
+  if ((Array.isArray(array)) && (callback instanceof Function)) {
+    let temp = [],  aux;
+    for (let i = 0; i < array.length; i++) {
+      aux = callback(array[i], i, array);
+      if ((aux !== false) && (aux !== 0) && (aux !== null) && (aux !== undefined) && (aux !== "")) {
+        if (isNaN(aux) && typeof(aux) === "number") {
+        } else {
+          temp.push(array[i]);
+        }
+      }
+    }
+    result = temp;
+  }
+  return result;
+}
+
+function concat(array) {
+  let result = false;
+  if (Array.isArray(array)) {
+    result = array;
+    if (arguments.length > 1) {
+      let aux = Array.prototype.slice.call(arguments);
+      for (let i = 1; i < aux.length; i++) {
+        if (Array.isArray(aux[i])) {
+          let temp = aux[i];
+          for (let j = 0; j < temp.length; j++) {
+            result[result.length] = temp[j]
+          }
+        } else {
+          result[result.length] = aux[i];
+        }
+      }
+    }
+  }
+  return result;
+}
+
+
+function encrypt(str, num) {
+  let result = false;
+
+  if ((typeof(str) === "string") && ((Number.isInteger(num)) && num >= 0)) {
+      for (let k = 0; k < num; k++) {
+        let pares = "";
+        let nones = "";
+        for (let i = 0; i < str.length; i=i+2) {
+          nones += str[i];
+        }
+        for (let i = 1; i < str.length; i=i+2) {
+          pares += str[i];
+        }
+        str = pares + nones;
+      }
+      result = str;
+  }
+  return result;
+}
