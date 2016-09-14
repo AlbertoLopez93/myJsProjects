@@ -127,11 +127,9 @@ function every(aray,f) {
   if((!Array.isArray(aray))||(typeof f!='function')) {
     return false;
   }
-  var index=f.index;
-  var array=f.array;
   var bool=true;
   verifing: for(var x in aray) {
-    bool=f(aray[x],index,array);
+    bool=f(aray[x],x,aray);
     if(bool!=true) {
       break verifing;
     }
@@ -143,11 +141,9 @@ function some(aray, f) {
   if((!Array.isArray(aray))||(typeof f!='function')) {
     return false;
   }
-  var index=f.index;
-  var array=f.array;
   var bool=false;
   verifing: for(var x in aray) {
-    bool=f(aray[x],index,array);
+    bool=f(aray[x],x,aray);
     if(bool!=false) {
       break verifing;
     }
@@ -159,11 +155,9 @@ function find(aray, f) {
   if((!Array.isArray(aray))||(typeof f!='function')) {
     return false;
   }
-  var index=f.index;
-  var array=f.array;
   var bool=false;
   for(var x in aray) {
-    bool=f(aray[x],index,array);
+    bool=f(aray[x],x,aray);
     if(bool==true) {
       return x;
     }
@@ -175,14 +169,12 @@ function map(aray, f) {
   if((!Array.isArray(aray))||(typeof f!='function')) {
     return false;
   }
-  var index=f.index;
-  var array=f.array;
   var elements=[];
   for(var u in aray) {
     elements.push(aray[u]);
   }
   for(var v in elements) {
-    elements[v]=f(elements[v],index,array);
+    elements[v]=f(elements[v],v,aray);
   }
   return elements;
 }
@@ -191,12 +183,10 @@ function filter(aray, f) {
   if((!Array.isArray(aray))||(typeof f!='function')) {
     return false;
   }
-  var index=f.index;
-  var array=f.array;
   var bool=false;
   var elements=[];
   for(var u in aray) {
-    bool=f(aray[u],index,array);
+    bool=f(aray[u],u,aray);
     if(bool!= false) {
       elements.push(aray[u]);
     }
