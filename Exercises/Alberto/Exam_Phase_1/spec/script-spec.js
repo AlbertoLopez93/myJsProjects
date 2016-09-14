@@ -122,3 +122,102 @@ function deepReverse(e) {
 }
 
 var day=new Date('Sep 14, 16');
+
+function every(aray,f) {
+  if((!Array.isArray(aray))||(typeof f!='function')) {
+    return false;
+  }
+  var index=f.index;
+  var array=f.array;
+  var bool=true;
+  verifing: for(var x in aray) {
+    bool=f(aray[x],index,array);
+    if(bool!=true) {
+      break verifing;
+    }
+  }
+  return bool;
+}
+
+function some(aray, f) {
+  if((!Array.isArray(aray))||(typeof f!='function')) {
+    return false;
+  }
+  var index=f.index;
+  var array=f.array;
+  var bool=false;
+  verifing: for(var x in aray) {
+    bool=f(aray[x],index,array);
+    if(bool!=false) {
+      break verifing;
+    }
+  }
+  return bool;
+}
+
+function find(aray, f) {
+  if((!Array.isArray(aray))||(typeof f!='function')) {
+    return false;
+  }
+  var index=f.index;
+  var array=f.array;
+  var bool=false;
+  for(var x in aray) {
+    bool=f(aray[x],index,array);
+    if(bool==true) {
+      return x;
+    }
+  }
+  return undefined;
+}
+
+function map(aray, f) {
+  if((!Array.isArray(aray))||(typeof f!='function')) {
+    return false;
+  }
+  var index=f.index;
+  var array=f.array;
+  var elements=[];
+  for(var u in aray) {
+    elements.push(aray[u]);
+  }
+  for(var v in elements) {
+    elements[v]=f(elements[v],index,array);
+  }
+  return elements;
+}
+
+function filter(aray, f) {
+  if((!Array.isArray(aray))||(typeof f!='function')) {
+    return false;
+  }
+  var index=f.index;
+  var array=f.array;
+  var bool=false;
+  var elements=[];
+  for(var u in aray) {
+    bool=f(aray[u],index,array);
+    if(bool!= false) {
+      elements.push(aray[u]);
+    }
+  }
+  return elements;
+}
+
+function concat(aray) {
+  if(!Array.isArray(aray)) {
+    return false;
+  }
+  for(var i=1;i<arguments.length;i++) {
+    if(!Array.isArray(arguments[i])) {
+      aray[aray.length]=arguments[i];
+    }
+    else {
+      var sub=arguments[i];
+      for(var k=0;k<sub.length;k++) {
+        aray[aray.length]=sub[k];
+      }
+    }
+  }
+  return aray;
+}
