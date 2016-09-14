@@ -5,7 +5,7 @@ timestamp: 1473264936000
 ****/
 
 var letra="";
-function morseEnc(morse) {
+function morseDec(morse) {
   morse=morse.split(" ")
   console.log(morse);
   var temp=morse.map(busqueda);
