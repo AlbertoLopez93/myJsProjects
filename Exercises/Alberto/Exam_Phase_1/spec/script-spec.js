@@ -156,7 +156,7 @@ function find(aray, f) {
     return false;
   }
   var bool=false;
-  for(var x in aray) {
+  for(var x=0; x<aray.length; x++) {
     bool=f(aray[x],x,aray);
     if(bool==true) {
       return x;
@@ -244,3 +244,58 @@ function encrypt(word,n) {
   }
   return word;
 }
+
+describe("Testing every", function () {
+  it("I expect [3,2,5,8], e<85", function () {
+    var ans=every([3,2,5,8],function(e){return e<85});
+    expect(ans).toBe(true);
+  });
+  it("I expect [3,2,5,8], e<5", function () {
+    var ans=every([3,2,5,8],function(e){return e<5});
+    expect(ans).toBe(false);
+  });
+  it("I expect 3, e<5", function () {
+    var ans=every(3,function(e){return e<5});
+    expect(ans).toBe(false);
+  });
+  it("I expect [3,2,5,8], 'bye'", function () {
+    var ans=every([3,2,5,8],'bye');
+    expect(ans).toBe(false);
+  });
+});
+
+describe("Testing some", function () {
+  it("I expect [3,2,5,8], e<5", function () {
+    var ans=some([3,2,5,8],function(e){return e<5});
+    expect(ans).toBe(true);
+  });
+  it("I expect [3,2,5,8], e<2", function () {
+    var ans=some([3,2,5,8],function(e){return e<2});
+    expect(ans).toBe(false);
+  });
+});
+
+describe("Testing find", function () {
+  it("I expect [3,2,5,8], e>4", function () {
+    var ans=find([3,2,5,8],function(e){return e>4});
+    expect(ans).toBe(2);
+  });
+  it("I expect [3,2,5,8], e>34", function () {
+    var ans=find([3,2,5,8],function(e){return e>34});
+    expect(ans).toBe(undefined);
+  });
+});
+
+describe("Testing map", function () {
+  it("I expect [3,2,5,8], e>4", function () {
+    var ans=map([3,2,5,8],function(e){return 3*e});
+    expect(ans).toEqual([9,6,15,24]);
+  });
+});
+
+describe("Testing filter", function () {
+  it("I expect [3,2,5,8], e>4", function () {
+    var ans=filter([3,2,5,8],function(e,index,array){return e<4});
+    expect(ans).toEqual([3,2]);
+  });
+});
