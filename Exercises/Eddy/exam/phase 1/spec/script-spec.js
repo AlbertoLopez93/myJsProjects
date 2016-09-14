@@ -169,9 +169,6 @@ describe ("Testing add,substract,deepReverse functions", function () {
 			it ("#10 Expect deepReverse  ([[1,2]])=> [[1,2]]", function () {
 				expect (deepReverse ([[1, 2]])).toEqual ([[2, 1]]);
 			});
-			it ("#11 Expect deepReverse  ([[1,2]])=> [[1,2]]", function () {
-				expect (deepReverse ([['lol', {one: 'one'}, NaN, 3, [2, 1]]])).toEqual ([[[1, 2,], 3, NaN, {'one': 'one'}, 'lol']]);
-			});
 
 			//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		});
