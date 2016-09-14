@@ -127,3 +127,143 @@ function deepReverse(array) {
   }
   return array.reverse();
 }
+
+function every(array, callback) {
+  if(!Array.isArray(array)) {
+    return false;
+  }
+  if(typeof callback !== 'function') {
+    return false;
+  }
+  for(var i = 0; i < array.length; i++) {
+    if(!callback(array[i], i, array.slice())) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function some(array, callback) {
+  if(!Array.isArray(array)) {
+    return false;
+  }
+  if(typeof callback !== 'function') {
+    return false;
+  }
+  for(var i = 0; i < array.length; i++) {
+    if(callback(array[i], i, array.slice())) {
+      return true;
+    }
+  }
+  return false;
+}
+
+function find(array, callback) {
+  if(!Array.isArray(array)) {
+    return false;
+  }
+  if(typeof callback !== 'function') {
+    return false;
+  }
+  for(var i = 0; i < array.length; i++) {
+    if(callback(array[i], i, array.slice())) {
+      return array[i];
+    }
+  }
+  return undefined;
+}
+
+function map(array, callback) {
+  if(!Array.isArray(array)) {
+    return false;
+  }
+  if(typeof callback !== 'function') {
+    return false;
+  }
+  var res = [];
+  for(var i = 0; i < array.length; i++) {
+    res[i] = callback(array[i], i, array.slice())
+  }
+  return res;
+}
+
+function foreach(array, callback) {
+  if(!Array.isArray(array)) {
+    return false;
+  }
+  if(typeof callback !== 'function') {
+    return false;
+  }
+  for(var i = 0; i < array.length; i++) {
+    callback(array[i], i, array)
+  }
+}
+
+function filter(array, callback) {
+  if(!Array.isArray(array)) {
+    return false;
+  }
+  if(typeof callback !== 'function') {
+    return false;
+  }
+  var res = [];
+  for(var i = 0; i < array.length; i++) {
+    if(callback(array[i], i, array.slice())) {
+      res[res.length] = array[i];
+    }
+  }
+  return res;
+}
+
+function concat() {
+  var res = []
+  for(var i = 0; i < arguments.length; i++) {
+    if(!Array.isArray(arguments[i])) {
+      return false;
+    }
+    for(var j = 0; j < arguments[i].length; j++) {
+      res[res.length] = arguments[i][j];
+    }
+  }
+  return res;
+}
+
+function encrypt(str, num) {
+  if(typeof str !== 'string') {
+    return false;
+  }
+  if(typeof num !== 'number') {
+    return false;
+  }
+  if(num % 1 !== 0) {
+    return false;
+  }
+  if(num + '' === 'Infinity') {
+    return false;
+  }
+  if(num + '' === 'NaN') {
+    return false;
+  }
+  if(num < 0) {
+    return false;
+  }
+  var res = str;
+  var aux = '';
+  for(var i = 0; i < num; i++) {
+    for(var j = 0; j < str.length; j++) {
+      if(j % 2 !== 0) {
+        aux += res[j];
+      }
+    }
+    for(var k = 0; k < str.length; k++) {
+      if(k % 2 === 0) {
+        aux += res[k];
+      }
+    }
+    res = aux;
+    aux = '';
+  }
+  return res;
+}
+
+console.log(encrypt('This is a test!', 2));
