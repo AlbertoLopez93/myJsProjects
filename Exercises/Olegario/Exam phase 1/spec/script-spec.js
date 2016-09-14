@@ -1,4 +1,4 @@
-
+"use strict"
 function add(date, num, str) {
   let result = false;
   if ((date instanceof Date) && ((Number.isInteger(num)) && (num >= 0)) && (typeof(str) === "string")) {
