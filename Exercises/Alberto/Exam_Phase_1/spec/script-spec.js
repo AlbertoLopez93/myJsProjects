@@ -194,6 +194,16 @@ function filter(aray, f) {
   return elements;
 }
 
+function foreach(aray, f) {
+  if((!Array.isArray(aray))||(typeof f!='function')) {
+    return false;
+  }
+  for(var w in aray) {
+    f(aray[w],w,aray);
+  }
+  return undefined;
+}
+
 function concat(aray) {
   if(!Array.isArray(aray)) {
     return false;
@@ -210,4 +220,27 @@ function concat(aray) {
     }
   }
   return aray;
+}
+
+function encrypt(word,n) {
+  if(typeof word!='string') {
+    return false;
+  }
+  if(isNaN(n) ||(n<0)||(!Number.isInteger(n))) {
+    return false;
+  }
+  for(var q=1; q<=n; q++) {
+    var word1='';
+    var word2='';
+    for(var h=0; h<word.length; h++) {
+      if(h % 2!=0) {
+        word1=word1.concat(word[h]);
+      }
+      else {
+        word2=word2.concat(word[h]);
+      }
+    }
+    word=word1.concat(word2);
+  }
+  return word;
 }
