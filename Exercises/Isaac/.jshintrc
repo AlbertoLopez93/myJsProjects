@@ -1,6 +1,7 @@
 {
     "esversion": 6,
     "globals": {
+        "xit": true,
         "it": true,
         "describe": true,
         "xdescribe": true,
