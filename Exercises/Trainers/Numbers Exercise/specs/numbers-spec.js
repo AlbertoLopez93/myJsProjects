@@ -1,27 +1,27 @@
 var numFunctions = require("../numbers.js");
 
 describe("Numbers functions exercise", function () {
-    describe("cal function", function () {
+    describe("calc function", function () {
         it("should exist", function () {
-            expect(numFunctions.cal).toBeDefined();
+            expect(numFunctions.calc).toBeDefined();
         });
-        it("cal test number 1", function () {
-            expect(numFunctions.cal('1','2','+')).toBe(3);
+        it("calc test number 1", function () {
+            expect(numFunctions.calc('1','2','+')).toBe(3);
         });
-        it("cal test number 2", function () {
-            expect(numFunctions.cal('1','2','*')).toBe(2);
+        it("calc test number 2", function () {
+            expect(numFunctions.calc('1','2','*')).toBe(2);
         });
-        it("cal test number 3", function () {
-            expect(numFunctions.cal('1','2','/')).toBe(0.5);
+        it("calc test number 3", function () {
+            expect(numFunctions.calc('1','2','/')).toBe(0.5);
         });
-        it("cal test number 4", function () {
-            expect(numFunctions.cal('1','2','-')).toBe(-1);
+        it("calc test number 4", function () {
+            expect(numFunctions.calc('1','2','-')).toBe(-1);
         });
-        it("cal test number 5", function () {
-            expect(Number.isNaN(numFunctions.cal('1','2a','-'))).toBe(true);
+        it("calc test number 5", function () {
+            expect(Number.isNaN(numFunctions.calc('1','2a','-'))).toBe(true);
         });
-        it("cal test number 6", function () {
-            expect(Number.isNaN(numFunctions.cal('1a','2','-'))).toBe(true);
+        it("calc test number 6", function () {
+            expect(Number.isNaN(numFunctions.calc('1a','2','-'))).toBe(true);
         });
     });
 

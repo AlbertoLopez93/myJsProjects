@@ -1,4 +1,4 @@
-function cal(str1, str2, op) {
+function calc(str1, str2, op) {
     let num1 = Number(str1);
     let num2 = Number(str2);
     if(Number.isNaN(num1) || Number.isNaN(num2)) {
@@ -96,7 +96,7 @@ function sumPositivesAndNegatives(arr) {
 }
 
 module.exports = {
-    cal: cal,
+    calc: calc,
     howBigNumberIs: howBigNumberIs,
     sumPositivesAndNegatives: sumPositivesAndNegatives
 }
