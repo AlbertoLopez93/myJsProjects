@@ -218,3 +218,243 @@ describe("testing substract",function () {
         expect(res.toString()).toBe('Mon Mar 14 2016 01:30:41 GMT-0600 (Hora estándar central (México))');
     });
 });
+
+function every(arg,fun) {
+
+    if (Array.isArray(arg)===false) {
+        return false;
+    }
+    if (fun instanceof Function===false) {
+        return false;
+    }
+    for (let i of arg) {
+        if(fun(i,i,arg)===false){
+            return false;
+        }
+    }
+
+    return true;
+}
+function foo(current,index,array) {
+    var result;
+    result=current<5;
+    return result;
+}
+describe("testing every",function () {
+    it("espero que [],function regresa true",function () {
+        expect(every([],function (element) {
+            return element<5;
+        })).toBe(true);
+    });
+    it("espero que [1,2,3],function regresa true",function () {
+        expect(every([1,2,3],function (element) {
+            return element<5;
+        })).toBe(true);
+    });
+    it("espero que [1,2,3],foo regresa true",function () {
+        expect(every([1,2,3],foo)).toBe(true);
+    });
+    it("espero que [1,2,3,[1,2]],function regresa false",function () {
+        expect(every([1,2,3,[1,2]],function (element) {
+            return element<5;
+        })).toBe(false);
+    });
+    it("espero que [1,2,3],fun regresa false",function () {
+        expect(every([1,2,3],'fun')).toBe(false);
+    });
+    it("espero que [1,2,3],null regresa false",function () {
+        expect(every([1,2,3],null)).toBe(false);
+    });
+    it("espero que [1,2,3],undefined regresa false",function () {
+        expect(every([1,2,3],undefined)).toBe(false);
+    });
+    it("espero que [1,2,3],true regresa false",function () {
+        expect(every([1,2,3],true)).toBe(false);
+    });
+    it("espero que null,function regresa false",function () {
+        expect(every(null,function (element) {
+            return element<5;
+        })).toBe(false);
+    });
+    it("espero que true,function regresa false",function () {
+        expect(every(true,function (element) {
+            return element<5;
+        })).toBe(false);
+    });
+    it("espero que false,function regresa false",function () {
+        expect(every(false,function (element) {
+            return element<5;
+        })).toBe(false);
+    });
+    it("espero que 5,function regresa false",function () {
+        expect(every(5,function (element) {
+            return element<5;
+        })).toBe(false);
+    });
+    it("espero que undefined,function regresa false",function () {
+        expect(every(undefined,function (element) {
+            return element<5;
+        })).toBe(false);
+    });
+    it("espero que {},function regresa false",function () {
+        expect(every({},function (element) {
+            return element<5;
+        })).toBe(false);
+    });
+    it("espero que hola,function regresa false",function () {
+        expect(every("hpla",function (element) {
+            return element<5;
+        })).toBe(false);
+    });
+});
+function some(arg,fun) {
+
+    if (Array.isArray(arg)===false) {
+        return false;
+    }
+    if (fun instanceof Function===false) {
+        return false;
+    }
+    for (let i of arg) {
+        if(fun(i,i,arg)===true){
+            return true;
+        }
+    }
+
+    return false;
+}
+describe("testing some",function () {
+    it("espero que [false,false,true],function regresa false",function () {
+        expect(some([false,false,true],function (element) {
+        return element===true;
+        })).toBe(true);
+    });
+    it("espero que [false,false,false],function regresa false",function () {
+        expect(some([false,false,false],function (element) {
+        return element===true;
+    })).toBe(false);
+    });
+    it("espero que [1,2,3],function regresa true",function () {
+        expect(some([1,2,3],function (element) {
+        return element===3;
+    })).toBe(true);
+    });
+});
+function find(arg,fun) {
+
+    if (Array.isArray(arg)===false) {
+        return false;
+    }
+    if (fun instanceof Function===false) {
+        return false;
+    }
+    for (let i of arg) {
+        if(fun(i,i,arg)===true){
+
+            return i;
+        }
+    }
+
+    return undefined;
+}
+describe("testing find",function () {
+    it("espero que [1,2,3],function regresa undefined",function () {
+        expect(find([1,2,3],function (element) {
+        return element===5;
+    })).toBe(undefined);
+    });
+    it("espero que [1,2,3,5],function regresa undefined",function () {
+        expect(find([1,2,3,5],function (element) {
+        return element===5;
+    })).toBe(5);
+    });
+});
+
+function map(arg,fun) {
+    let ary=[];
+    if (Array.isArray(arg)===false) {
+        return false;
+    }
+    if (fun instanceof Function===false) {
+        return false;
+    }
+    for (let i=0;i < arg.length;i++) {
+        ary.push(arg[i]);
+    }
+    for (let j=0;j < ary.length;j++) {
+        ary[j]=fun(ary[j],j,ary);
+    }
+
+    return ary;
+}
+function foo(element) {
+    let r=element + 5;
+    return r;
+}
+describe("testing map",function () {
+    it("espero q map funcione",function () {
+        expect(map([1,2,3],function (element) {
+            return element+3;
+        })).toEqual([4,5,6]);
+    });
+    it("espero q map funcione",function () {
+        expect(map([1,2,3],foo)).toEqual([6,7,8]);
+    });
+
+});
+function foreach(arg,fun) {
+
+    if (Array.isArray(arg)===false) {
+        return false;
+    }
+    if (fun instanceof Function===false) {
+        return false;
+    }
+    for (let j=0;j < arg.length;j++) {
+        fun(arg[j],j,arg);
+    }
+
+    return undefined;
+}
+describe("testing foreach",function () {
+    it("espero q regrese undefined y 6",function () {
+        var ary=[1,2,3];
+        var res=0;
+        expect(foreach(ary,function (element,index,ary) {
+            res =res+ ary[index];
+        })).toBe(undefined);
+        expect(res).toBe(6);
+    });
+
+});
+function filter(arg,fun) {
+    let ary=[];
+    if (Array.isArray(arg)===false) {
+        return false;
+    }
+    if (fun instanceof Function===false) {
+        return false;
+    }
+
+    for (let j=0;j < arg.length;j++) {
+        if(fun(arg[j],j,arg)===true){
+        ary[ary.length]=arg[j];
+
+        }
+    }
+
+    return ary;
+}
+describe("testing filter",function () {
+    it("espero q [1,2,3] regrese [1,2,3]",function () {
+        expect(filter([1,2,3],function (element) {
+            return element<5;
+        })).toEqual([1,2,3]);
+    });
+    it("espero q [1,6,2,6,36,3] regrese [1,2,3]",function () {
+        expect(filter([1,6,2,6,36,3],function (element) {
+            return element<5;
+        })).toEqual([1,2,3]);
+    });
+
+});
