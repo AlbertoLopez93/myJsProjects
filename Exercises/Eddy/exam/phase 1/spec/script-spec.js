@@ -872,7 +872,7 @@ describe("Testing Examen", function () {
                 expect(filter(ary, function(element, index, ary) {
                     ary[index]++;
                 })).toEqual([]);
-                expect(ary).toEqual([1, 2, 3]);
+                expect(ary).toEqual([2, 3, 4]);
 
                 expect(filter([false, false, false], function(element) {
                     return element === true;
