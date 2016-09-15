@@ -1,4 +1,5 @@
 "use strict"
+
 function deepReverse(array){
   var res=[];
   var aux=[];
@@ -22,8 +23,8 @@ function concat(array,n){
       x=arreglo.concat(n);
     }
     console.log(x);
-
 }
+
 function every(array,funct){
   if(typeof(array)!=="Array"){
     console.log(array);
@@ -42,26 +43,27 @@ function every(array,funct){
     }
   }
 }
- console.log(every([1,2,3]));
- function some(array,funct){
-   if(typeof(array)!=="Array"){
-     console.log(array);
-     return false;
-   }
+// console.log(every([1,2,3]));
 
-   if(typeof(funct)!=="objet"){
-     return false;
-   }else {
-     for(var i=0; i<array.length; i++){
-       if(funct(i,i,array)===true){
-         return true;
-       }else{
-         return false;
-       }
-     }
-   }
- }
-  console.log(some([6,7,8,9]));
+function some(array,funct){
+  if(typeof(array)!=="Array"){
+    console.log(array);
+    return false;
+  }
+
+  if(typeof(funct)!=="objet"){
+    return false;
+  }else {
+    for(var i=0; i<array.length; i++){
+      if(funct(i,i,array)===true){
+        return true;
+      }else{
+        return false;
+      }
+    }
+  }
+}
+// console.log(some([6,7,8,9]));
 
 
 describe("",function(){
