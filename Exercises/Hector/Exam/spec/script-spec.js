@@ -1,3 +1,5 @@
+"use strict"
+
 function add(date, num, str){
     if (arguments.length !== 3){
         return false;
@@ -112,11 +114,11 @@ function subtract(date, num, str){
     date.setTime(newDateMS);
     return date;
 }
-console.log(subtract(new Date(2016, 8, 14, 01, 30), 2, "minutes"));
-console.log(subtract(new Date(2016, 8, 14, 01, 30), 5, {4:4}));
+// console.log(subtract(new Date(2016, 8, 14, 01, 30), 2, "minutes"));
+// console.log(subtract(new Date(2016, 8, 14, 01, 30), 5, {4:4}));
 
 
-"use strict"
+// "use strict"
 function deepReverse(arr){
     if(!Array.isArray(arr)){
         return false;
@@ -136,7 +138,8 @@ function deepReverse(arr){
     var a = newArr.reverse();
     return a;
 }
-"use strict"
+// "use strict"
+
 function every(arr, func){
     if(arguments.length !== 2){
         return false;
@@ -155,6 +158,7 @@ function every(arr, func){
     }
     return true;
 }
+
 function validateEvery(current, index, arr){
     if(Boolean(current) == false){
         return false;
@@ -163,9 +167,7 @@ function validateEvery(current, index, arr){
         return true;
     }
 }
-console.log(every([1,2,"9",4,5,6], validateEvery));
-
-
+// console.log(every([1,2,"9",4,5,6], validateEvery));
 
 function some(arr, func){
     if(arguments.length !== 2){
@@ -185,6 +187,7 @@ function some(arr, func){
     }
     return false;
 }
+
 function validateSome(current, index, array){
     if(Boolean(current) === true){
         return true;
@@ -193,9 +196,7 @@ function validateSome(current, index, array){
         return false;
     }
 }
-console.log(some([0,"",NaN,false,null, undefined], validateSome));
-
-
+// console.log(some([0,"",NaN,false,null, undefined], validateSome));
 
 function find(arr, func){
     if(arguments.length !== 2){
@@ -215,6 +216,7 @@ function find(arr, func){
     }
     return undefined;
 }
+
 function validateFind(current, index, arr){
     if(Boolean(current) === true){
         return true;
@@ -223,8 +225,7 @@ function validateFind(current, index, arr){
         return false;
     }
 }
-console.log(find([0,'1',NaN,false,null, undefined], validateFind));
-
+// console.log(find([0,'1',NaN,false,null, undefined], validateFind));
 
 function map(arr, func){
     var nuevoArray =  [];
@@ -243,12 +244,11 @@ function map(arr, func){
     }
     return nuevoArray;
 }
+
 function validateMap(current, index, arr){
         return current + 3;
 }
-console.log(map([1,2,3,3, undefined], validateMap));
-
-
+// console.log(map([1,2,3,3, undefined], validateMap));
 
 function foreach(arr, func){
     let res = 0;
@@ -268,10 +268,11 @@ function foreach(arr, func){
     console.log(res);
     return undefined;
 }
+
 function validateForEach(current, index, arr){
     return current + 1;
 }
-console.log(foreach([0,1,1,2,3,5], validateForEach));
+// console.log(foreach([0,1,1,2,3,5], validateForEach));
 
 function filter(arr, func){
     var newArr = [];
@@ -292,12 +293,13 @@ function filter(arr, func){
     }
     return newArr;
 }
+
 function validateFilter(current, index, arr){
     if(Boolean(current) === true){
         return true;
     }
 }
-console.log(filter([0,'1',NaN,false,null, "Axel"], validateFilter));
+// console.log(filter([0,'1',NaN,false,null, "Axel"], validateFilter));
 
 function concat(){
     var first = arguments[0];
@@ -323,8 +325,7 @@ function concat(){
     }
     return newArr;
 }
-
-console.log(concat([NaN],undefined,2,3,[1,2,[3]]));
+// console.log(concat([NaN],undefined,2,3,[1,2,[3]]));
 
 function encrypt(str, num){
     if(str === ""){
@@ -359,4 +360,6 @@ function encrypt(str, num){
     }while(num>0)
     return final;
 }
-console.log(encrypt("Axel", 9));
+// console.log(encrypt("Axel", 9));
+
+
