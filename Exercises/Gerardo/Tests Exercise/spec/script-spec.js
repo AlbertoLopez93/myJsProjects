@@ -182,7 +182,7 @@ function map(array, callback) {
   }
   var res = [];
   for(var i = 0; i < array.length; i++) {
-    res[res.length] = callback(array[i], i, array.slice())
+    res[i] = callback(array[i], i, array.slice())
   }
   return res;
 }
@@ -265,3 +265,5 @@ function encrypt(str, num) {
   }
   return res;
 }
+
+console.log(encrypt('This is a test!', 2));
