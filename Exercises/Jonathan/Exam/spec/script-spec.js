@@ -128,3 +128,87 @@ function deespReverse (ary) {
 }
 
 console.log(deespReverse([1,2,3,4,[4,5,6],[7,8,9]]));
+
+//every
+
+function every (ary, func) {
+var res;
+var flag = true;
+var cont = 0;
+
+  if (!Array.isArray(ary) || typeof func !== 'function' || ary.length === 0) {
+    return undefined;
+  }
+
+  for (var x = 0; x < ary.length; x++) {
+        res = func (ary[x], x, ary);
+        console.log(res);
+        if (res === ary[x]){
+           cont++;
+        }
+  }
+  if (cont === ary.length-1) {
+     return true;
+  } else {
+      return false;
+  }
+
+}
+
+//some
+
+function some (ary, func) {
+var res;
+var flag = false;
+
+  if (!Array.isArray(ary) || typeof func !== 'function' || ary.length === 0) {
+    return undefined;
+  }
+  for (var x = 0; x < ary.length; x++) {
+        res = func (ary[x], x, ary);
+        if (!res){
+           flag = true;
+           break;
+        }
+  }
+  return flag;
+}
+
+//find
+
+function find (ary, func) {
+var res;
+var exit;
+
+  if (!Array.isArray(ary) || typeof func !== 'function' || ary.length === 0) {
+    return undefined;
+  }
+
+  for (var x = 0; x < ary.length; x++) {
+        res = func (ary[x], x, ary);
+        if (res === ary[x]){
+            exit = ary[x];
+           break;
+        }
+  }
+  return exit;
+}
+
+//map
+
+function map (ary, func) {
+var res;
+var newAry = [];
+
+  if (!Array.isArray(ary) || typeof func !== 'function' || ary.length === 0) {
+    return undefined;
+  }
+
+  for (var x = 0; x < ary.length; x++) {
+        res = func (ary[x], x, ary);
+        if (res){
+            newAry.push(ary[x]);
+        }
+  }
+  return newAry;
+}
