@@ -232,30 +232,15 @@ function deepReverse (arr){
 		return false;
 	}
 	var len = arr.length-1;
-	var flag = Array.from(arr);
-	for(let k = 0; k < arr.length; k++){
-		if(Array.isArray(arr[k])){
-			flag[k] = true;
-		}
-	}
-	for(let i = 0; i < arr.length; i++){
-		for(let j = 0; j < len; j++){
-			if(Array.isArray(arr[j]) && flag[j] === true){
-				arr[j] = deepReverse(arr[j]);
-				flag[j] = false;
-			}
-			if(Array.isArray(arr[j+1]) && flag[j+1] === true){
-				arr[j+1] = deepReverse(arr[j+1]);
-				flag[j+1] = false;
-			}
-			var temp = 0;
-			temp = arr[j];
-			arr[j] = arr[j+1];
-			arr[j+1] = temp;
-		}
-		len--;
-	}
-	return arr;
+    var resArr = [];
+    for(let i = len; i >= 0; i--){
+        if(Array.isArray(arr[i])){
+            resArr.push(deepReverse(arr[i]));
+        } else {
+            resArr.push(arr[i]);
+        }
+    }
+	return resArr;
 }
 
 describe("Tests deepReverse function", function () {
