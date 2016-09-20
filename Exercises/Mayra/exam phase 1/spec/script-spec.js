@@ -498,51 +498,29 @@ describe("testing filter",function () {
 });
 
 
-/*function encrypt(str,n){
-    if(typeof str!=='string'){
+function encrypt(str,n){
+    let str1="",str2="";
+    if(typeof (str)!=='string'||typeof(n)!=='number'||n<0||Number.isInteger(n)===false||n===Infinity){
         return false;
     }
 
-    if(str.length===0){
-        return "";
+    if(n===0){
+        return str;
     }
+
     if(str.length===1){
         return str;
     }
-    var res,c=0,mod;
-    mod=str.length%2;
-    res=sub(str);
-    function sub(str){
-        var cad,index;
-        cad="";
-        index=1;
-        while(cad.length!==str.length){
-            cad=cad+str[index];
-            console.log("index=",index);
-            index=index+2;
-            console.log(cad);
-            console.log("str.length=",str.length);
-            if(mod===0){
-                if(index===str.length-1){
-                    cad=cad+str[index];
-                    index=1;
-                }
-            }
-            else{
-                if(index===str.length-1 || index===str.length-2){
-                    cad=cad+str[index];
-                    index=0;
-                }
-            }
+    for (var i = 0; i < str.length; i++) {
+        if (i%2===1) {
+            str1+=str[i];
+        }else{
+            str2+=str[i];
         }
-        c++;
-        if(c<n){
-            cad=sub(cad);
-        }
-        return cad;
     }
-    return res;
-}*/
+    str1+=str2;
+    return encrypt(str1,n-1)
+}
 
 describe("Testing Examen", function () {
 
