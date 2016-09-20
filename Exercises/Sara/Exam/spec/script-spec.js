@@ -277,22 +277,65 @@ function encrypt(str,n){
   if(str.length===1){
     return str;
   }
-  var cad,index;
-  for(var i=0;i<n;i++){
-    if(i!==0){
-      str=cad;
-    }
+  var res,c=0,mod;
+  mod=str.length%2;
+  res=sub(str);
+  function sub(str){
+    var cad,index;
     cad="";
     index=1;
     while(cad.length!==str.length){
       cad=cad+str[index];
       index=index+2;
-      if(index===str.length){
-        index=0;
+        if(mod===0){
+          if(index===str.length-1){
+          cad=cad+str[index];
+          index=1;
+          }
+        }
+        else{
+          if(index===str.length-1 || index===str.length-2){
+            cad=cad+str[index];
+            index=0;
+          }
+        }
       }
+      c++;
+      if(c<n){
+        cad=sub(cad);
+      }
+     return cad;
+     }
+    return res;
+  }
+
+function deepReverse(a){
+  var ary=[],alength;
+  console.log(a.length);
+  if(Array.isArray(a)===false){
+    return a;
+  }
+  if(a.lenght===1){
+    if(Array.isArray(a[0])===false){
+      return a;
+    }
+    else{
+      return deepReverse(a[0]);
     }
   }
-return cad;
+  else{
+      alength=a.length-1;
+      for(var i=0;i<a.length;i++){
+        if(Array.isArray(a[i])===true){
+          ary[alength]=deepReverse(a[i]);
+        }
+        else{
+          ary[alength]=a[i];
+        }
+        alength--;
+      }
+    }
+  return ary;
 }
 
 describe("Testing every", function () {
