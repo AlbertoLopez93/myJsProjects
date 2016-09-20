@@ -70,7 +70,7 @@ function add(fecha,cant,str){
   return fecha;
 }
 
-function substract(fecha,cant,str){
+function subtract(fecha,cant,str){
   if(fecha instanceof Date===false){
     return false;
   }
@@ -312,8 +312,10 @@ function encrypt(str,n){
   }
 
 function deepReverse(a){
+  if(Array.isArray(a)===false){
+    return false;
+  }
   var ary=[],alength;
-  console.log(a.length);
   if(Array.isArray(a)===false){
     return a;
   }
@@ -638,7 +640,7 @@ describe("Testing Examen", function () {
             });
         });
 
-        describe("Substract function", function () {
+        describe("Subtract function", function () {
             it("should be defined", function () {
                 expect(subtract).toBeDefined();
             });
