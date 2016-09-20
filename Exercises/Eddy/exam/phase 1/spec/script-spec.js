@@ -75,24 +75,20 @@ function subtract (date, Quantity, key) {
 function deepReverse (arr) {
 	if (isType (arr, Array, 'array')) {
 		var copy = arr.slice (0);
+		var i = 0;
 		if (copy.length === 0) {
 			return copy;
-		} else if (copy.length === 1 && !isType (copy[0], Array, 'array')) {
-			return copy;
-		} else if (copy.length === 1 && isType (copy[0], Array, 'array')) {
-			return [deepReverse (copy[0])];
-		} else if (copy.length > 1) {
-			for (var i = 0; i < copy.length; i++) {
-				if (isType(copy[i],Array,'array')){
-					deepReverse(copy[i].reverse());
+		}
+		if (copy.length >= 1) {
+			for (i = 0; i < copy.length; i++) {
+				if (isType (copy[i], Array, 'array')){
+					copy[i] = deepReverse (copy[i]);
 				}
 			}
+			return copy.reverse ();
 		}
-		return copy.reverse ()
 	}
-	else {
-		return false;
-	}
+	return false;
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++phase #1.2
