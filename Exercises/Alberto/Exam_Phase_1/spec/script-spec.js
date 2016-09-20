@@ -223,26 +223,26 @@ function concat(aray) {
 }
 
 function encrypt(word,n) {
-  if(typeof word!='string') {
+  if(typeof word!="string" || n<0 || !Number.isInteger(n)) {
     return false;
   }
-  if(isNaN(n) ||(n<0)||(!Number.isInteger(n))) {
-    return false;
-  }
-  for(var q=1; q<=n; q++) {
-    var word1='';
-    var word2='';
-    for(var h=0; h<word.length; h++) {
-      if(h % 2!=0) {
-        word1=word1.concat(word[h]);
-      }
-      else {
-        word2=word2.concat(word[h]);
-      }
+  var word1="",word2="";
+  for(i=0; i<word.length; i++) {
+    if(i%2!=0) {
+      word1+=word[i]; //word1 save chars starting in second
     }
-    word=word1.concat(word2);
+    else {
+      word2+=word[i]; //word2 save the others chars
+    }
   }
-  return word;
+  word1+=word2; //putting other chars to end
+  if(n==0) {
+    return word; //original word
+  }
+  else {
+    return encrypt(word1,n-1);
+  }
+  return word1;
 }
 
 describe("Testing every", function () {
