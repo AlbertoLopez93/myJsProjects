@@ -74,25 +74,25 @@ function subtract (date, Quantity, key) {
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function deepReverse (arr) {
 	if (isType (arr, Array, 'array')) {
-		var copyArr = arr.slice(0);
-		var i = 0;
-		if (copyArr.length === 0) {
-			return copyArr;
-		}
-		if (copyArr.length === 1 && (isType (copyArr[0], Number, 'number') || isType (copyArr[0], String, 'string'))) {
-			return copyArr;
-		}
-		if (copyArr.length === 1 && isType (copyArr[0], Array, 'array')) {
-			return [deepReverse (copyArr[0])];
-		}
-		if (copyArr.length > 1) {
-			for (i = 0; i < copyArr.length; i++) {
-				deepReverse (copyArr[i]);
+		var copy = arr.slice (0);
+		if (copy.length === 0) {
+			return copy;
+		} else if (copy.length === 1 && !isType (copy[0], Array, 'array')) {
+			return copy;
+		} else if (copy.length === 1 && isType (copy[0], Array, 'array')) {
+			return [deepReverse (copy[0])];
+		} else if (copy.length > 1) {
+			for (var i = 0; i < copy.length; i++) {
+				if (isType(copy[i],Array,'array')){
+					deepReverse(copy[i].reverse());
+				}
 			}
-			return copyArr.reverse ();
 		}
+		return copy.reverse ()
 	}
-	return false;
+	else {
+		return false;
+	}
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++phase #1.2
