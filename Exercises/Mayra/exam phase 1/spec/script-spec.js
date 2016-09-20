@@ -53,7 +53,7 @@ function add(date,quantity,key) {
     return date;
 }
 
-describe("testing add",function () {
+xdescribe("testing add",function () {
     it("espero que (new Date(2016,8,14),'y','minutes'), regrese false",function () {
         var res=add(new Date(2016,8,14),'y','minutes');
         expect(res).toBe(false);
@@ -207,7 +207,9 @@ function subtract(date,quantity,key) {
     }
     return date;
 }
+
 /*describe("testing substract",function () {
+
     it("espero que (new Date(2016,8,14,1,30,40,1654),2,'years'), regrese Sun Sep 14 2014 01:30:41 GMT-0500 (Hora de verano central (México))",function () {
         var res=substract(new Date(2016,8,14,1,30,40,1654),2,"years");
         expect(res.toString()).toBe('Sun Sep 14 2014 01:30:41 GMT-0500 (Hora de verano central (México))');
@@ -257,7 +259,7 @@ function foo(current,index,array) {
     result=current<5;
     return result;
 }
-describe("testing every",function () {
+xdescribe("testing every",function () {
     it("espero que [],function regresa true",function () {
         expect(every([],function (element) {
             return element<5;
@@ -340,7 +342,7 @@ function some(arg,fun) {
 
     return false;
 }
-describe("testing some",function () {
+xdescribe("testing some",function () {
     it("espero que [false,false,true],function regresa false",function () {
         expect(some([false,false,true],function (element) {
         return element===true;
@@ -374,7 +376,7 @@ function find(arg,fun) {
 
     return undefined;
 }
-describe("testing find",function () {
+xdescribe("testing find",function () {
     it("espero que [1,2,3],function regresa undefined",function () {
         expect(find([1,2,3],function (element) {
         return element===5;
@@ -407,7 +409,7 @@ function foo(element) {
     let r=element + 5;
     return r;
 }
-describe("testing map",function () {
+xdescribe("testing map",function () {
     it("espero q map funcione",function () {
         expect(map([1,2,3],function (element) {
             return element+3;
@@ -432,7 +434,7 @@ function foreach(arg,fun) {
 
     return undefined;
 }
-describe("testing foreach",function () {
+xdescribe("testing foreach",function () {
     it("espero q regrese undefined y 6",function () {
         var ary=[1,2,3];
         var res=0;
@@ -461,6 +463,7 @@ function filter(arg,fun) {
 
     return ary;
 }
+
 function concat(x) {
     let ary=[],args=Array.prototype.slice.call(arguments);
     if (Array.isArray(x)===false) {
@@ -480,6 +483,7 @@ function concat(x) {
 
 }
 describe("testing filter",function () {
+
     it("espero q [1,2,3] regrese [1,2,3]",function () {
         expect(filter([1,2,3],function (element) {
             return element<5;
@@ -492,6 +496,7 @@ describe("testing filter",function () {
     });
 
 });
+
 
 /*function encrypt(str,n){
     if(typeof str!=='string'){
@@ -538,6 +543,7 @@ describe("testing filter",function () {
     }
     return res;
 }*/
+
 describe("Testing Examen", function () {
 
     describe("Array's functions", function () {
@@ -977,7 +983,9 @@ describe("Testing Examen", function () {
             });
         });
 
-    describe("concat function", function () {
+
+        describe("concat function", function () {
+
             it("should be defined", function () {
                 expect(concat).toBeDefined();
             });
@@ -1215,7 +1223,10 @@ describe("Testing Examen", function () {
     });
 
     describe("Katas functions", function () {
-    /*    describe("encrypt function", function () {
+
+
+        describe("encrypt function", function () {
+
             it("should be defined", function () {
                 expect(encrypt).toBeDefined();
             });
@@ -1269,7 +1280,9 @@ describe("Testing Examen", function () {
                 expect(encrypt("This is a test!", 2)).toBe("s eT ashi tist!");
                 expect(encrypt("This is a test!", 3)).toBe(" Tah itse sits!");
             });
-        });*/
+
+        });
+
 
         describe("deepReverse function", function () {
             it("should be defined", function () {
