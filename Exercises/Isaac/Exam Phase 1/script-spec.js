@@ -12,8 +12,8 @@
      * Returns a dictionary of time for the functions 'add' and 'subtract'.
      */
     function dictionaryOfTime() {
-        let miliseconds = 1,
-            seconds = 1000 * miliseconds,
+        let milliseconds = 1,
+            seconds = 1000 * milliseconds,
             minutes = 60 * seconds,
             hours = 60 * minutes,
             days = 24 * hours,
@@ -22,7 +22,7 @@
             years = 365 * days;
 
         return {
-            miliseconds: miliseconds,
+            milliseconds: milliseconds,
             seconds: seconds,
             minutes: minutes,
             hours: hours,
@@ -115,21 +115,23 @@
                     return array[i];
                 }
             }
+            return undefined;
         }
-        return undefined;
+        return false;
     }
 
     /*
      * 4) Returns a new array with the elemenents changed by a function given.
      */
     function map(array, fnCallBack) {
-        let mapped = [];
         if (Array.isArray(array) && fnCallBack instanceof Function) {
+            let mapped = [];
             for (let i = 0; i < array.length; i++) {
                 mapped.push(fnCallBack(array[i], i, array));
             }
+            return mapped;
         }
-        return mapped;
+        return false;
     }
 
     /*
@@ -140,22 +142,25 @@
             for (let i = 0; i < array.length; i++) {
                 fnCallBack(array[i], i, array);
             }
+            return undefined;
         }
+        return false;
     }
 
     /*
      * 6) Returns a new array of elements which matched the condition given.
      */
     function filter(array, fnCallBack) {
-        let filtered = [];
         if (Array.isArray(array) && fnCallBack instanceof Function) {
+            let filtered = [];
             for (let i = 0; i < array.length; i++) {
                 if (fnCallBack(array[i], i, array)) {
                     filtered.push(array[i]);
                 }
             }
+            return filtered;
         }
-        return filtered;
+        return false;
     }
 
     /*
@@ -164,8 +169,8 @@
      */
     function concat() {
         let args = Array.prototype.slice.call(arguments);
-        let result = [];
         if (args && args[0] && Array.isArray(args[0])) {
+            let result = [];
             result = args[0].slice(0);
             for (let i = 1; i < args.length; i++) {
                 if (Array.isArray(args[i])) {
@@ -176,14 +181,15 @@
                     result.push(args[i]);
                 }
             }
+            return result;
         }
-        return result;
+        return false;
     }
 
     /*
      * 8) Shifts the even chars from a string 'times' times, then it concatenates the odd chars.
      */
-    function encrypt(msg, times) {
+    function _encrypt(msg, times) {
         if ((typeof msg === 'string' || msg instanceof String) && ((typeof times === 'number' || times instanceof Number) && Number.isInteger(times) && times >= 0)) {
             for (let n = 0; n < times; n++) {
                 let odds = '',
@@ -196,6 +202,25 @@
                     }
                 }
                 msg = evens + odds;
+            }
+            return msg;
+        }
+        return false;
+    }
+
+    function encrypt(msg, times) {
+        if ((typeof msg === 'string' || msg instanceof String) && ((typeof times === 'number' || times instanceof Number) && Number.isInteger(times) && times >= 0)) {
+            if (times) {
+                let odds = '',
+                    evens = '';
+                for (let i = 0; i < msg.length; i++) {
+                    if (i % 2 === 0) {
+                        odds += msg[i];
+                    } else {
+                        evens += msg[i];
+                    }
+                }
+                msg = encrypt(evens + odds, times - 1);
             }
             return msg;
         }
@@ -312,7 +337,7 @@
                             expect(add(new Date(), 1, true)).toBe(false);
                         });
                         it("Should NOT work with Keys that don't exist", function () {
-                            expect(add(new Date(), 2, 'milisecond')).toBe(false);
+                            expect(add(new Date(), 2, 'millisecond')).toBe(false);
                             expect(add(new Date(), 1, 'second')).toBe(false);
                             expect(add(new Date(), 1, 'minute')).toBe(false);
                             expect(add(new Date(), 1, 'hour')).toBe(false);
@@ -325,7 +350,7 @@
                 });
                 describe("Testing valid inputs", function () {
                     it("Should WORK with valid inputs", function () {
-                        expect(add(new Date(), 2, 'miliseconds')).not.toBe(false);
+                        expect(add(new Date(), 2, 'milliseconds')).not.toBe(false);
                         expect(add(new Date(), 1, 'seconds')).not.toBe(false);
                         expect(add(new Date(), 1, 'minutes')).not.toBe(false);
                         expect(add(new Date(), 1, 'hours')).not.toBe(false);
@@ -334,10 +359,10 @@
                         expect(add(new Date(), 1, 'quarters')).not.toBe(false);
                         expect(add(new Date(), 1, 'years')).not.toBe(false);
                     });
-                    it("Should add miliseconds", function () {
-                        expect(add(new Date(2016, 8, 14, 1, 30, 30, 500), 0, "miliseconds").toString()).toBe(new Date(2016, 8, 14, 1, 30, 30, 500).toString());
-                        expect(add(new Date(2016, 8, 14, 1, 30, 30, 500), 101, "miliseconds").toString()).toBe(new Date(2016, 8, 14, 1, 30, 30, 601).toString());
-                        expect(add(new Date(2016, 8, 14, 1, 59, 59, 999), 1, "miliseconds").toString()).toBe(new Date(2016, 8, 14, 2, 0, 0, 0).toString());
+                    it("Should add milliseconds", function () {
+                        expect(add(new Date(2016, 8, 14, 1, 30, 30, 500), 0, "milliseconds").toString()).toBe(new Date(2016, 8, 14, 1, 30, 30, 500).toString());
+                        expect(add(new Date(2016, 8, 14, 1, 30, 30, 500), 101, "milliseconds").toString()).toBe(new Date(2016, 8, 14, 1, 30, 30, 601).toString());
+                        expect(add(new Date(2016, 8, 14, 1, 59, 59, 999), 1, "milliseconds").toString()).toBe(new Date(2016, 8, 14, 2, 0, 0, 0).toString());
                     });
                     it("Should add seconds", function () {
                         expect(add(new Date(2016, 8, 14, 1, 30, 30, 500), 0, "seconds").toString()).toBe(new Date(2016, 8, 14, 1, 30, 30, 500).toString());
@@ -480,7 +505,7 @@
                             expect(subtract(new Date(), 1, true)).toBe(false);
                         });
                         it("Should NOT work with Keys that don't exist", function () {
-                            expect(subtract(new Date(), 2, 'milisecond')).toBe(false);
+                            expect(subtract(new Date(), 2, 'millisecond')).toBe(false);
                             expect(subtract(new Date(), 1, 'second')).toBe(false);
                             expect(subtract(new Date(), 1, 'minute')).toBe(false);
                             expect(subtract(new Date(), 1, 'hour')).toBe(false);
@@ -493,7 +518,7 @@
                 });
                 describe("Testing valid inputs", function () {
                     it("Should WORK with valid inputs", function () {
-                        expect(subtract(new Date(), 2, 'miliseconds')).not.toBe(false);
+                        expect(subtract(new Date(), 2, 'milliseconds')).not.toBe(false);
                         expect(subtract(new Date(), 1, 'seconds')).not.toBe(false);
                         expect(subtract(new Date(), 1, 'minutes')).not.toBe(false);
                         expect(subtract(new Date(), 1, 'hours')).not.toBe(false);
@@ -502,10 +527,10 @@
                         expect(subtract(new Date(), 1, 'quarters')).not.toBe(false);
                         expect(subtract(new Date(), 1, 'years')).not.toBe(false);
                     });
-                    it("Should subtract miliseconds", function () {
-                        expect(subtract(new Date(2016, 8, 14, 1, 30, 30, 500), 0, "miliseconds").toString()).toBe(new Date(2016, 8, 14, 1, 30, 30, 500).toString());
-                        expect(subtract(new Date(2016, 8, 14, 1, 30, 30, 601), 101, "miliseconds").toString()).toBe(new Date(2016, 8, 14, 1, 30, 30, 500).toString());
-                        expect(subtract(new Date(2016, 8, 14, 2, 0, 0, 0), 1, "miliseconds").toString()).toBe(new Date(2016, 8, 14, 1, 59, 59, 999).toString());
+                    it("Should subtract milliseconds", function () {
+                        expect(subtract(new Date(2016, 8, 14, 1, 30, 30, 500), 0, "milliseconds").toString()).toBe(new Date(2016, 8, 14, 1, 30, 30, 500).toString());
+                        expect(subtract(new Date(2016, 8, 14, 1, 30, 30, 601), 101, "milliseconds").toString()).toBe(new Date(2016, 8, 14, 1, 30, 30, 500).toString());
+                        expect(subtract(new Date(2016, 8, 14, 2, 0, 0, 0), 1, "milliseconds").toString()).toBe(new Date(2016, 8, 14, 1, 59, 59, 999).toString());
                     });
                     it("Should subtract seconds", function () {
                         expect(subtract(new Date(2016, 8, 14, 1, 30, 30, 500), 0, "seconds").toString()).toBe(new Date(2016, 8, 14, 1, 30, 30, 500).toString());
@@ -954,41 +979,41 @@
                     expect(every(0, 0)).toBe(false);
                     expect(every(Infinity, 6)).toBe(false);
                     expect(every(6, Infinity)).toBe(false);
-                    expect(every([1,2,3], 5)).toBe(false);
-                    expect(every(3, function() {})).toBe(false);
+                    expect(every([1, 2, 3], 5)).toBe(false);
+                    expect(every(3, function () {})).toBe(false);
                 });
                 it("should not work against string", function () {
                     expect(every("", "")).toBe(false);
                     expect(every(new String(""), new String(""))).toBe(false);
                     expect(every("hola", "mundo")).toBe(false);
                     expect(every([1, 2, 3], "hola")).toBe(false);
-                    expect(every("hola", function() {})).toBe(false);
+                    expect(every("hola", function () {})).toBe(false);
                 });
                 it("should not work against object", function () {
                     expect(every({}, {})).toBe(false);
                     expect(every(new Object(), new Object())).toBe(false);
                     expect(every([1, 2, 3], {})).toBe(false);
-                    expect(every({}, function() {})).toBe(false);
+                    expect(every({}, function () {})).toBe(false);
                 });
                 it("should not work against booleans", function () {
                     expect(every(true, true)).toBe(false);
                     expect(every([1, 2, 3], true)).toBe(false);
-                    expect(every(true, function() {})).toBe(false);
+                    expect(every(true, function () {})).toBe(false);
                 });
                 it("should not work against null", function () {
                     expect(every(null, null)).toBe(false);
                     expect(every([1, 2, 3], null)).toBe(false);
-                    expect(every(null, function() {})).toBe(false);
+                    expect(every(null, function () {})).toBe(false);
                 });
                 it("should not work against undefined", function () {
                     expect(every(undefined, undefined)).toBe(false);
                     expect(every([1, 2, 3], undefined)).toBe(false);
-                    expect(every(undefined, function() {})).toBe(false);
+                    expect(every(undefined, function () {})).toBe(false);
                 });
                 it("should not work against 2 functions as parameters", function () {
-                    expect(every(function() {}, function() {})).toBe(false);
-                    expect(every(function() {}, undefined)).toBe(false);
-                    expect(every({}, function() {})).toBe(false);
+                    expect(every(function () {}, function () {})).toBe(false);
+                    expect(every(function () {}, undefined)).toBe(false);
+                    expect(every({}, function () {})).toBe(false);
                 });
                 it("should not work against 2 arrays as parameters", function () {
                     expect(every([1, 2, 3], [1, 2, 3])).toBe(false);
@@ -998,13 +1023,13 @@
                     expect(every([1, 2, 3], function (element) {
                         return element < 5;
                     })).toBe(true);
-                    expect(every([false, false, false], function(element) {
+                    expect(every([false, false, false], function (element) {
                         return element === true;
                     })).toBe(false);
-                    expect(every([true, true, false], function(element) {
+                    expect(every([true, true, false], function (element) {
                         return element === true;
                     })).toBe(false);
-                    expect(every([true, true, true], function(element) {
+                    expect(every([true, true, true], function (element) {
                         return element === true;
                     })).toBe(true);
                 });
@@ -1023,41 +1048,41 @@
                     expect(some(0, 0)).toBe(false);
                     expect(some(Infinity, 6)).toBe(false);
                     expect(some(6, Infinity)).toBe(false);
-                    expect(some([1,2,3], 5)).toBe(false);
-                    expect(some(3, function() {})).toBe(false);
+                    expect(some([1, 2, 3], 5)).toBe(false);
+                    expect(some(3, function () {})).toBe(false);
                 });
                 it("should not work against string", function () {
                     expect(some("", "")).toBe(false);
                     expect(some(new String(""), new String(""))).toBe(false);
                     expect(some("hola", "mundo")).toBe(false);
                     expect(some([1, 2, 3], "hola")).toBe(false);
-                    expect(some("hola", function() {})).toBe(false);
+                    expect(some("hola", function () {})).toBe(false);
                 });
                 it("should not work against object", function () {
                     expect(some({}, {})).toBe(false);
                     expect(some(new Object(), new Object())).toBe(false);
                     expect(some([1, 2, 3], {})).toBe(false);
-                    expect(some({}, function() {})).toBe(false);
+                    expect(some({}, function () {})).toBe(false);
                 });
                 it("should not work against booleans", function () {
                     expect(some(true, true)).toBe(false);
                     expect(some([1, 2, 3], true)).toBe(false);
-                    expect(some(true, function() {})).toBe(false);
+                    expect(some(true, function () {})).toBe(false);
                 });
                 it("should not work against null", function () {
                     expect(some(null, null)).toBe(false);
                     expect(some([1, 2, 3], null)).toBe(false);
-                    expect(some(null, function() {})).toBe(false);
+                    expect(some(null, function () {})).toBe(false);
                 });
                 it("should not work against undefined", function () {
                     expect(some(undefined, undefined)).toBe(false);
                     expect(some([1, 2, 3], undefined)).toBe(false);
-                    expect(some(undefined, function() {})).toBe(false);
+                    expect(some(undefined, function () {})).toBe(false);
                 });
                 it("should not work against 2 functions as parameters", function () {
-                    expect(some(function() {}, function() {})).toBe(false);
-                    expect(some(function() {}, undefined)).toBe(false);
-                    expect(some({}, function() {})).toBe(false);
+                    expect(some(function () {}, function () {})).toBe(false);
+                    expect(some(function () {}, undefined)).toBe(false);
+                    expect(some({}, function () {})).toBe(false);
                 });
                 it("should not work against 2 arrays as parameters", function () {
                     expect(some([1, 2, 3], [1, 2, 3])).toBe(false);
@@ -1067,16 +1092,16 @@
                     expect(some([1, 2, 3], function (element) {
                         return element < 5;
                     })).toBe(true);
-                    expect(some([false, false, false], function(element) {
+                    expect(some([false, false, false], function (element) {
                         return element === true;
                     })).toBe(false);
-                    expect(some([true, true, false], function(element) {
+                    expect(some([true, true, false], function (element) {
                         return element === true;
                     })).toBe(true);
-                    expect(some([true, true, true], function(element) {
+                    expect(some([true, true, true], function (element) {
                         return element === true;
                     })).toBe(true);
-                    expect(some([false, false, true], function(element) {
+                    expect(some([false, false, true], function (element) {
                         return element === true;
                     })).toBe(true);
                 });
@@ -1095,41 +1120,41 @@
                     expect(find(0, 0)).toBe(false);
                     expect(find(Infinity, 6)).toBe(false);
                     expect(find(6, Infinity)).toBe(false);
-                    expect(find([1,2,3], 5)).toBe(false);
-                    expect(find(3, function() {})).toBe(false);
+                    expect(find([1, 2, 3], 5)).toBe(false);
+                    expect(find(3, function () {})).toBe(false);
                 });
                 it("should not work against string", function () {
                     expect(find("", "")).toBe(false);
                     expect(find(new String(""), new String(""))).toBe(false);
                     expect(find("hola", "mundo")).toBe(false);
                     expect(find([1, 2, 3], "hola")).toBe(false);
-                    expect(find("hola", function() {})).toBe(false);
+                    expect(find("hola", function () {})).toBe(false);
                 });
                 it("should not work against object", function () {
                     expect(find({}, {})).toBe(false);
                     expect(find(new Object(), new Object())).toBe(false);
                     expect(find([1, 2, 3], {})).toBe(false);
-                    expect(find({}, function() {})).toBe(false);
+                    expect(find({}, function () {})).toBe(false);
                 });
                 it("should not work against booleans", function () {
                     expect(find(true, true)).toBe(false);
                     expect(find([1, 2, 3], true)).toBe(false);
-                    expect(find(true, function() {})).toBe(false);
+                    expect(find(true, function () {})).toBe(false);
                 });
                 it("should not work against null", function () {
                     expect(find(null, null)).toBe(false);
                     expect(find([1, 2, 3], null)).toBe(false);
-                    expect(find(null, function() {})).toBe(false);
+                    expect(find(null, function () {})).toBe(false);
                 });
                 it("should not work against undefined", function () {
                     expect(find(undefined, undefined)).toBe(false);
                     expect(find([1, 2, 3], undefined)).toBe(false);
-                    expect(find(undefined, function() {})).toBe(false);
+                    expect(find(undefined, function () {})).toBe(false);
                 });
                 it("should not work against 2 functions as parameters", function () {
-                    expect(find(function() {}, function() {})).toBe(false);
-                    expect(find(function() {}, undefined)).toBe(false);
-                    expect(find({}, function() {})).toBe(false);
+                    expect(find(function () {}, function () {})).toBe(false);
+                    expect(find(function () {}, undefined)).toBe(false);
+                    expect(find({}, function () {})).toBe(false);
                 });
                 it("should not work against 2 arrays as parameters", function () {
                     expect(find([1, 2, 3], [1, 2, 3])).toBe(false);
@@ -1142,9 +1167,21 @@
                     expect(find([1, 2, 3], function (element) {
                         return element === 3;
                     })).toBe(3);
-                    expect(find([{name: "apples", quantity: 2}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 5}], function (element) {
+                    expect(find([{
+                        name: "apples",
+                        quantity: 2
+                    }, {
+                        name: "bananas",
+                        quantity: 0
+                    }, {
+                        name: "cherries",
+                        quantity: 5
+                    }], function (element) {
                         return element.name === "cherries";
-                    })).toEqual({name: "cherries", quantity: 5});
+                    })).toEqual({
+                        name: "cherries",
+                        quantity: 5
+                    });
                 });
             });
 
@@ -1161,41 +1198,41 @@
                     expect(map(0, 0)).toBe(false);
                     expect(map(Infinity, 6)).toBe(false);
                     expect(map(6, Infinity)).toBe(false);
-                    expect(map([1,2,3], 5)).toBe(false);
-                    expect(map(3, function() {})).toBe(false);
+                    expect(map([1, 2, 3], 5)).toBe(false);
+                    expect(map(3, function () {})).toBe(false);
                 });
                 it("should not work against string", function () {
                     expect(map("", "")).toBe(false);
                     expect(map(new String(""), new String(""))).toBe(false);
                     expect(map("hola", "mundo")).toBe(false);
                     expect(map([1, 2, 3], "hola")).toBe(false);
-                    expect(map("hola", function() {})).toBe(false);
+                    expect(map("hola", function () {})).toBe(false);
                 });
                 it("should not work against object", function () {
                     expect(map({}, {})).toBe(false);
                     expect(map(new Object(), new Object())).toBe(false);
                     expect(map([1, 2, 3], {})).toBe(false);
-                    expect(map({}, function() {})).toBe(false);
+                    expect(map({}, function () {})).toBe(false);
                 });
                 it("should not work against booleans", function () {
                     expect(map(true, true)).toBe(false);
                     expect(map([1, 2, 3], true)).toBe(false);
-                    expect(map(true, function() {})).toBe(false);
+                    expect(map(true, function () {})).toBe(false);
                 });
                 it("should not work against null", function () {
                     expect(map(null, null)).toBe(false);
                     expect(map([1, 2, 3], null)).toBe(false);
-                    expect(map(null, function() {})).toBe(false);
+                    expect(map(null, function () {})).toBe(false);
                 });
                 it("should not work against undefined", function () {
                     expect(map(undefined, undefined)).toBe(false);
                     expect(map([1, 2, 3], undefined)).toBe(false);
-                    expect(map(undefined, function() {})).toBe(false);
+                    expect(map(undefined, function () {})).toBe(false);
                 });
                 it("should not work against 2 functions as parameters", function () {
-                    expect(map(function() {}, function() {})).toBe(false);
-                    expect(map(function() {}, undefined)).toBe(false);
-                    expect(map({}, function() {})).toBe(false);
+                    expect(map(function () {}, function () {})).toBe(false);
+                    expect(map(function () {}, undefined)).toBe(false);
+                    expect(map({}, function () {})).toBe(false);
                 });
                 it("should not work against 2 arrays as parameters", function () {
                     expect(map([1, 2, 3], [1, 2, 3])).toBe(false);
@@ -1213,13 +1250,40 @@
                     })).toEqual([4, 5, 6]);
                     expect(ary).toEqual([1, 2, 3]);
 
-                    var inventory = [{name: "apples", quantity: 2}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 5}];
+                    var inventory = [{
+                        name: "apples",
+                        quantity: 2
+                    }, {
+                        name: "bananas",
+                        quantity: 0
+                    }, {
+                        name: "cherries",
+                        quantity: 5
+                    }];
                     expect(map(inventory, function (element) {
                         element.quantity = 0;
                         return element;
-                    })).toEqual([{name: "apples", quantity: 0}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 0}]);
+                    })).toEqual([{
+                        name: "apples",
+                        quantity: 0
+                    }, {
+                        name: "bananas",
+                        quantity: 0
+                    }, {
+                        name: "cherries",
+                        quantity: 0
+                    }]);
 
-                    expect(inventory).toEqual([{name: "apples", quantity: 2}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 5}]);
+                    expect(inventory).toEqual([{
+                        name: "apples",
+                        quantity: 0
+                    }, {
+                        name: "bananas",
+                        quantity: 0
+                    }, {
+                        name: "cherries",
+                        quantity: 0
+                    }]);
                 });
             });
 
@@ -1236,41 +1300,41 @@
                     expect(foreach(0, 0)).toBe(false);
                     expect(foreach(Infinity, 6)).toBe(false);
                     expect(foreach(6, Infinity)).toBe(false);
-                    expect(foreach([1,2,3], 5)).toBe(false);
-                    expect(foreach(3, function() {})).toBe(false);
+                    expect(foreach([1, 2, 3], 5)).toBe(false);
+                    expect(foreach(3, function () {})).toBe(false);
                 });
                 it("should not work against string", function () {
                     expect(foreach("", "")).toBe(false);
                     expect(foreach(new String(""), new String(""))).toBe(false);
                     expect(foreach("hola", "mundo")).toBe(false);
                     expect(foreach([1, 2, 3], "hola")).toBe(false);
-                    expect(foreach("hola", function() {})).toBe(false);
+                    expect(foreach("hola", function () {})).toBe(false);
                 });
                 it("should not work against object", function () {
                     expect(foreach({}, {})).toBe(false);
                     expect(foreach(new Object(), new Object())).toBe(false);
                     expect(foreach([1, 2, 3], {})).toBe(false);
-                    expect(foreach({}, function() {})).toBe(false);
+                    expect(foreach({}, function () {})).toBe(false);
                 });
                 it("should not work against booleans", function () {
                     expect(foreach(true, true)).toBe(false);
                     expect(foreach([1, 2, 3], true)).toBe(false);
-                    expect(foreach(true, function() {})).toBe(false);
+                    expect(foreach(true, function () {})).toBe(false);
                 });
                 it("should not work against null", function () {
                     expect(foreach(null, null)).toBe(false);
                     expect(foreach([1, 2, 3], null)).toBe(false);
-                    expect(foreach(null, function() {})).toBe(false);
+                    expect(foreach(null, function () {})).toBe(false);
                 });
                 it("should not work against undefined", function () {
                     expect(foreach(undefined, undefined)).toBe(false);
                     expect(foreach([1, 2, 3], undefined)).toBe(false);
-                    expect(foreach(undefined, function() {})).toBe(false);
+                    expect(foreach(undefined, function () {})).toBe(false);
                 });
                 it("should not work against 2 functions as parameters", function () {
-                    expect(foreach(function() {}, function() {})).toBe(false);
-                    expect(foreach(function() {}, undefined)).toBe(false);
-                    expect(foreach({}, function() {})).toBe(false);
+                    expect(foreach(function () {}, function () {})).toBe(false);
+                    expect(foreach(function () {}, undefined)).toBe(false);
+                    expect(foreach({}, function () {})).toBe(false);
                 });
                 it("should not work against 2 arrays as parameters", function () {
                     expect(foreach([1, 2, 3], [1, 2, 3])).toBe(false);
@@ -1290,11 +1354,29 @@
                     })).toBe(undefined);
                     expect(ary).toEqual([2, 3, 4]);
 
-                    let inventory = [{name: "apples", quantity: 2}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 5}];
+                    let inventory = [{
+                        name: "apples",
+                        quantity: 2
+                    }, {
+                        name: "bananas",
+                        quantity: 0
+                    }, {
+                        name: "cherries",
+                        quantity: 5
+                    }];
                     expect(foreach(inventory, function (element) {
                         element.quantity = 0;
                     })).toEqual(undefined);
-                    expect(inventory).toEqual([{name: "apples", quantity: 0}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 0}]);
+                    expect(inventory).toEqual([{
+                        name: "apples",
+                        quantity: 0
+                    }, {
+                        name: "bananas",
+                        quantity: 0
+                    }, {
+                        name: "cherries",
+                        quantity: 0
+                    }]);
                 });
             });
 
@@ -1311,41 +1393,41 @@
                     expect(filter(0, 0)).toBe(false);
                     expect(filter(Infinity, 6)).toBe(false);
                     expect(filter(6, Infinity)).toBe(false);
-                    expect(filter([1,2,3], 5)).toBe(false);
-                    expect(filter(3, function() {})).toBe(false);
+                    expect(filter([1, 2, 3], 5)).toBe(false);
+                    expect(filter(3, function () {})).toBe(false);
                 });
                 it("should not work against string", function () {
                     expect(filter("", "")).toBe(false);
                     expect(filter(new String(""), new String(""))).toBe(false);
                     expect(filter("hola", "mundo")).toBe(false);
                     expect(filter([1, 2, 3], "hola")).toBe(false);
-                    expect(filter("hola", function() {})).toBe(false);
+                    expect(filter("hola", function () {})).toBe(false);
                 });
                 it("should not work against object", function () {
                     expect(filter({}, {})).toBe(false);
                     expect(filter(new Object(), new Object())).toBe(false);
                     expect(filter([1, 2, 3], {})).toBe(false);
-                    expect(filter({}, function() {})).toBe(false);
+                    expect(filter({}, function () {})).toBe(false);
                 });
                 it("should not work against booleans", function () {
                     expect(filter(true, true)).toBe(false);
                     expect(filter([1, 2, 3], true)).toBe(false);
-                    expect(filter(true, function() {})).toBe(false);
+                    expect(filter(true, function () {})).toBe(false);
                 });
                 it("should not work against null", function () {
                     expect(filter(null, null)).toBe(false);
                     expect(filter([1, 2, 3], null)).toBe(false);
-                    expect(filter(null, function() {})).toBe(false);
+                    expect(filter(null, function () {})).toBe(false);
                 });
                 it("should not work against undefined", function () {
                     expect(filter(undefined, undefined)).toBe(false);
                     expect(filter([1, 2, 3], undefined)).toBe(false);
-                    expect(filter(undefined, function() {})).toBe(false);
+                    expect(filter(undefined, function () {})).toBe(false);
                 });
                 it("should not work against 2 functions as parameters", function () {
-                    expect(filter(function() {}, function() {})).toBe(false);
-                    expect(filter(function() {}, undefined)).toBe(false);
-                    expect(filter({}, function() {})).toBe(false);
+                    expect(filter(function () {}, function () {})).toBe(false);
+                    expect(filter(function () {}, undefined)).toBe(false);
+                    expect(filter({}, function () {})).toBe(false);
                 });
                 it("should not work against 2 arrays as parameters", function () {
                     expect(filter([1, 2, 3], [1, 2, 3])).toBe(false);
@@ -1358,19 +1440,19 @@
                     })).toEqual([1, 2, 3]);
                     expect(ary).toEqual([1, 2, 3]);
 
-                    expect(filter(ary, function(element, index, ary) {
+                    expect(filter(ary, function (element, index, ary) {
                         ary[index]++;
                     })).toEqual([]);
                     expect(ary).toEqual([2, 3, 4]);
 
-                    expect(filter([false, false, false], function(element) {
+                    expect(filter([false, false, false], function (element) {
                         return element === true;
                     })).toEqual([]);
 
-                    expect(filter([true, true, false], function(element) {
+                    expect(filter([true, true, false], function (element) {
                         return element === true;
                     })).toEqual([true, true]);
-                    expect(filter([true, true, true], function(element) {
+                    expect(filter([true, true, true], function (element) {
                         return element === true;
                     })).toEqual([true, true, true]);
                 });
@@ -1383,7 +1465,7 @@
                 it("it should not work if 1st parameter isn't an Array", function () {
                     expect(concat()).toBe(false);
                     expect(concat("")).toBe(false);
-                    expect(concat(function(){})).toBe(false);
+                    expect(concat(function () {})).toBe(false);
                     expect(concat(true)).toBe(false);
                     expect(concat(1)).toBe(false);
                     expect(concat({})).toBe(false);
@@ -1417,41 +1499,41 @@
                     expect(add(0, 0, 0)).toBe(false);
                     expect(add(Infinity, 6, 6)).toBe(false);
                     expect(add(6, Infinity, Infinity)).toBe(false);
-                    expect(add([1,2,3], 5, 5)).toBe(false);
-                    expect(add(3, function() {}, function() {})).toBe(false);
+                    expect(add([1, 2, 3], 5, 5)).toBe(false);
+                    expect(add(3, function () {}, function () {})).toBe(false);
                 });
                 it("should not work against string", function () {
                     expect(add("", "", "")).toBe(false);
                     expect(add(new String(""), new String(""), new String(""))).toBe(false);
                     expect(add("hola", "mundo", "mundo")).toBe(false);
                     expect(add([1, 2, 3], "hola", "amigo")).toBe(false);
-                    expect(add("hola", function() {}, "amigo")).toBe(false);
+                    expect(add("hola", function () {}, "amigo")).toBe(false);
                 });
                 it("should not work against object", function () {
                     expect(add({}, {}, {})).toBe(false);
                     expect(add(new Object(), new Object(), new Object())).toBe(false);
                     expect(add([1, 2, 3], {}, {})).toBe(false);
-                    expect(add({}, function() {}, function() {})).toBe(false);
+                    expect(add({}, function () {}, function () {})).toBe(false);
                 });
                 it("should not work against booleans", function () {
                     expect(add(true, true, true)).toBe(false);
                     expect(add([1, 2, 3], true, true)).toBe(false);
-                    expect(add(true, function() {}, function() {})).toBe(false);
+                    expect(add(true, function () {}, function () {})).toBe(false);
                 });
                 it("should not work against null", function () {
                     expect(add(null, null, null)).toBe(false);
                     expect(add([1, 2, 3], null, null)).toBe(false);
-                    expect(add(null, function() {}, function() {})).toBe(false);
+                    expect(add(null, function () {}, function () {})).toBe(false);
                 });
                 it("should not work against undefined", function () {
                     expect(add(undefined, undefined, undefined)).toBe(false);
                     expect(add([1, 2, 3], undefined, undefined)).toBe(false);
-                    expect(add(undefined, function() {}, function() {})).toBe(false);
+                    expect(add(undefined, function () {}, function () {})).toBe(false);
                 });
                 it("should not work against 2 functions as parameters", function () {
-                    expect(add(function() {}, function() {}, function() {})).toBe(false);
-                    expect(add(function() {}, undefined, undefined)).toBe(false);
-                    expect(add({}, function() {}, function() {})).toBe(false);
+                    expect(add(function () {}, function () {}, function () {})).toBe(false);
+                    expect(add(function () {}, undefined, undefined)).toBe(false);
+                    expect(add({}, function () {}, function () {})).toBe(false);
                 });
                 it("should not work against 2 arrays as parameters", function () {
                     expect(add([1, 2, 3], [1, 2, 3], [1, 2, 3])).toBe(false);
@@ -1521,41 +1603,41 @@
                     expect(subtract(0, 0, 0)).toBe(false);
                     expect(subtract(Infinity, 6, 6)).toBe(false);
                     expect(subtract(6, Infinity, Infinity)).toBe(false);
-                    expect(subtract([1,2,3], 5, 5)).toBe(false);
-                    expect(subtract(3, function() {}, function() {})).toBe(false);
+                    expect(subtract([1, 2, 3], 5, 5)).toBe(false);
+                    expect(subtract(3, function () {}, function () {})).toBe(false);
                 });
                 it("should not work against string", function () {
                     expect(subtract("", "", "")).toBe(false);
                     expect(subtract(new String(""), new String(""), new String(""))).toBe(false);
                     expect(subtract("hola", "mundo", "mundo")).toBe(false);
                     expect(subtract([1, 2, 3], "hola", "amigo")).toBe(false);
-                    expect(subtract("hola", function() {}, "amigo")).toBe(false);
+                    expect(subtract("hola", function () {}, "amigo")).toBe(false);
                 });
                 it("should not work against object", function () {
                     expect(subtract({}, {}, {})).toBe(false);
                     expect(subtract(new Object(), new Object(), new Object())).toBe(false);
                     expect(subtract([1, 2, 3], {}, {})).toBe(false);
-                    expect(subtract({}, function() {}, function() {})).toBe(false);
+                    expect(subtract({}, function () {}, function () {})).toBe(false);
                 });
                 it("should not work against booleans", function () {
                     expect(subtract(true, true, true)).toBe(false);
                     expect(subtract([1, 2, 3], true, true)).toBe(false);
-                    expect(subtract(true, function() {}, function() {})).toBe(false);
+                    expect(subtract(true, function () {}, function () {})).toBe(false);
                 });
                 it("should not work against null", function () {
                     expect(subtract(null, null, null)).toBe(false);
                     expect(subtract([1, 2, 3], null, null)).toBe(false);
-                    expect(subtract(null, function() {}, function() {})).toBe(false);
+                    expect(subtract(null, function () {}, function () {})).toBe(false);
                 });
                 it("should not work against undefined", function () {
                     expect(subtract(undefined, undefined, undefined)).toBe(false);
                     expect(subtract([1, 2, 3], undefined, undefined)).toBe(false);
-                    expect(subtract(undefined, function() {}, function() {})).toBe(false);
+                    expect(subtract(undefined, function () {}, function () {})).toBe(false);
                 });
                 it("should not work against 2 functions as parameters", function () {
-                    expect(subtract(function() {}, function() {}, function() {})).toBe(false);
-                    expect(subtract(function() {}, undefined, undefined)).toBe(false);
-                    expect(subtract({}, function() {}, function() {})).toBe(false);
+                    expect(subtract(function () {}, function () {}, function () {})).toBe(false);
+                    expect(subtract(function () {}, undefined, undefined)).toBe(false);
+                    expect(subtract({}, function () {}, function () {})).toBe(false);
                 });
                 it("should not work against 2 arrays as parameters", function () {
                     expect(subtract([1, 2, 3], [1, 2, 3], [1, 2, 3])).toBe(false);
@@ -1620,9 +1702,9 @@
                     expect(encrypt).toBeDefined();
                 });
                 it("should not work against functions", function () {
-                    expect(encrypt(function() {}, function() {})).toBe(false);
-                    expect(encrypt(function() {}, 3)).toBe(false);
-                    expect(encrypt("hola", function() {})).toBe(false);
+                    expect(encrypt(function () {}, function () {})).toBe(false);
+                    expect(encrypt(function () {}, 3)).toBe(false);
+                    expect(encrypt("hola", function () {})).toBe(false);
                 });
                 it("should not work against objects", function () {
                     expect(encrypt({}, {})).toBe(false);
@@ -1695,7 +1777,7 @@
                     expect(deepReverse(new Object())).toBe(false);
                 });
                 it("should not work against functions", function () {
-                    expect(deepReverse(function() {})).toBe(false);
+                    expect(deepReverse(function () {})).toBe(false);
                 });
                 it("should not work against booleans", function () {
                     expect(deepReverse(true)).toBe(false);
@@ -1713,9 +1795,9 @@
                 it("should only work against arrays", function () {
                     expect(deepReverse([])).toEqual([]);
                     expect(deepReverse([1, 2, 3, 4, 5])).toEqual([5, 4, 3, 2, 1]);
-                    expect(deepReverse([[1,2],[3,4]])).toEqual([[4,3],[2,1]]);
-                    expect(deepReverse([[9,8,7],[6,5,4],[3,2,1]])).toEqual([[1,2,3],[4,5,6],[7,8,9]]);
-                    expect(deepReverse([ [1, 2], [3, 4], 5, 6])).toEqual([6, 5, [4, 3], [2, 1]]);
+                    expect(deepReverse([[1, 2], [3, 4]])).toEqual([[4, 3], [2, 1]]);
+                    expect(deepReverse([[9, 8, 7], [6, 5, 4], [3, 2, 1]])).toEqual([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+                    expect(deepReverse([[1, 2], [3, 4], 5, 6])).toEqual([6, 5, [4, 3], [2, 1]]);
                 });
             });
         });
