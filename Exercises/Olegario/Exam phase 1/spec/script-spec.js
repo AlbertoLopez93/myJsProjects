@@ -248,19 +248,26 @@ function concat(array) {
 
 function encrypt(str, num) {
   let result = false;
-
+  let pares = "";
+  let nones = "";
   if ((typeof(str) === "string") && ((Number.isInteger(num)) && num >= 0)) {
-      for (let k = 0; k < num; k++) {
-        let pares = "";
-        let nones = "";
+      if (num === 1) {
+          for (let i = 0; i < str.length; i=i+2) {
+            nones += str[i];
+          }
+          for (let i = 1; i < str.length; i=i+2) {
+            pares += str[i];
+          }
+      } else {
+        str= encrypt(str,num-1);
         for (let i = 0; i < str.length; i=i+2) {
           nones += str[i];
         }
         for (let i = 1; i < str.length; i=i+2) {
           pares += str[i];
         }
-        str = pares + nones;
       }
+      str = pares + nones;
       result = str;
   }
   return result;
