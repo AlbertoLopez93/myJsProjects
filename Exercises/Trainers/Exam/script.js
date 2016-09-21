@@ -50,7 +50,7 @@ function map(ary, callback) {
 
     for (let i = 0; i < ary.length; i++) {
         if (typeof ary[i] === 'object') {
-            copy.push(Object.create(ary[i]));
+            copy.push(ary[i]);
         } else {
             copy.push(ary[i]);
         }
