@@ -308,15 +308,15 @@ function encrypt(str, num){
 }
 
 module.exports = {
-    add: add,
-    subtract: subtract,
+    add        : add,
+    subtract   : subtract,
     deepReverse: deepReverse,
-    every: every,
-    some: some,
-    find: find,
-    map: map,
-    foreach: foreach,
-    filter: filter,
-    concat: concat,
-    encrypt: encrypt
+    every      : every,
+    some       : some,
+    find       : find,
+    map        : map,
+    foreach    : foreach,
+    filter     : filter,
+    concat     : concat,
+    encrypt    : encrypt
 };
