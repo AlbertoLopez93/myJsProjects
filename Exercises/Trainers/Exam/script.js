@@ -42,22 +42,13 @@ function find(ary, callback) {
 
 function map(ary, callback) {
     let result = [];
-    let copy = [];
 
     if (!Array.isArray(ary) || typeof callback !== 'function') {
         return false;
     }
 
     for (let i = 0; i < ary.length; i++) {
-        if (typeof ary[i] === 'object') {
-            copy.push(ary[i]);
-        } else {
-            copy.push(ary[i]);
-        }
-    }
-
-    for (let i = 0; i < copy.length; i++) {
-        result.push(callback(copy[i], i, copy));
+        result.push(callback(ary[i], i, ary));
     }
     return result;
 }
@@ -75,22 +66,13 @@ function foreach(ary, callback) {
 
 function filter(ary, callback) {
     let result = [];
-    let copy = [];
 
     if (!Array.isArray(ary) || typeof callback !== 'function') {
         return false;
     }
 
     for (let i = 0; i < ary.length; i++) {
-        if (typeof ary[i] === 'object') {
-            copy.push(Object.create(ary[i]));
-        } else {
-            copy.push(ary[i]);
-        }
-    }
-
-    for (let i = 0; i < copy.length; i++) {
-        if (callback(copy[i], i, copy)) {
+        if (callback(ary[i], i, ary)) {
             result.push(ary[i]);
         }
     }
