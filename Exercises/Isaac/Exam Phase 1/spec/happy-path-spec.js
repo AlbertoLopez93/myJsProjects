@@ -25,13 +25,13 @@ describe("Testing Examen", function () {
                 expect(every([1, 2, 3], function (element) {
                     return element < 5;
                 })).toBe(true);
-                expect(every([false, false, false], function(element) {
+                expect(every([false, false, false], function (element) {
                     return element === true;
                 })).toBe(false);
-                expect(every([true, true, false], function(element) {
+                expect(every([true, true, false], function (element) {
                     return element === true;
                 })).toBe(false);
-                expect(every([true, true, true], function(element) {
+                expect(every([true, true, true], function (element) {
                     return element === true;
                 })).toBe(true);
             });
@@ -45,16 +45,16 @@ describe("Testing Examen", function () {
                 expect(some([1, 2, 3], function (element) {
                     return element < 5;
                 })).toBe(true);
-                expect(some([false, false, false], function(element) {
+                expect(some([false, false, false], function (element) {
                     return element === true;
                 })).toBe(false);
-                expect(some([true, true, false], function(element) {
+                expect(some([true, true, false], function (element) {
                     return element === true;
                 })).toBe(true);
-                expect(some([true, true, true], function(element) {
+                expect(some([true, true, true], function (element) {
                     return element === true;
                 })).toBe(true);
-                expect(some([false, false, true], function(element) {
+                expect(some([false, false, true], function (element) {
                     return element === true;
                 })).toBe(true);
             });
@@ -71,9 +71,21 @@ describe("Testing Examen", function () {
                 expect(find([1, 2, 3], function (element) {
                     return element === 3;
                 })).toBe(3);
-                expect(find([{name: "apples", quantity: 2}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 5}], function (element) {
+                expect(find([{
+                    name: "apples",
+                    quantity: 2
+                }, {
+                    name: "bananas",
+                    quantity: 0
+                }, {
+                    name: "cherries",
+                    quantity: 5
+                }], function (element) {
                     return element.name === "cherries";
-                })).toEqual({name: "cherries", quantity: 5});
+                })).toEqual({
+                    name: "cherries",
+                    quantity: 5
+                });
             });
         });
 
@@ -93,13 +105,40 @@ describe("Testing Examen", function () {
                 })).toEqual([4, 5, 6]);
                 expect(ary).toEqual([1, 2, 3]);
 
-                var inventory = [{name: "apples", quantity: 2}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 5}];
+                var inventory = [{
+                    name: "apples",
+                    quantity: 2
+                }, {
+                    name: "bananas",
+                    quantity: 0
+                }, {
+                    name: "cherries",
+                    quantity: 5
+                }];
                 expect(map(inventory, function (element) {
                     element.quantity = 0;
                     return element;
-                })).toEqual([{name: "apples", quantity: 0}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 0}]);
+                })).toEqual([{
+                    name: "apples",
+                    quantity: 0
+                }, {
+                    name: "bananas",
+                    quantity: 0
+                }, {
+                    name: "cherries",
+                    quantity: 0
+                }]);
 
-                expect(inventory).toEqual([{name: "apples", quantity: 0}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 0}]);
+                expect(inventory).toEqual([{
+                    name: "apples",
+                    quantity: 0
+                }, {
+                    name: "bananas",
+                    quantity: 0
+                }, {
+                    name: "cherries",
+                    quantity: 0
+                }]);
             });
         });
 
@@ -121,11 +160,29 @@ describe("Testing Examen", function () {
                 })).toBe(undefined);
                 expect(ary).toEqual([2, 3, 4]);
 
-                let inventory = [{name: "apples", quantity: 2}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 5}];
+                let inventory = [{
+                    name: "apples",
+                    quantity: 2
+                }, {
+                    name: "bananas",
+                    quantity: 0
+                }, {
+                    name: "cherries",
+                    quantity: 5
+                }];
                 expect(foreach(inventory, function (element) {
                     element.quantity = 0;
                 })).toEqual(undefined);
-                expect(inventory).toEqual([{name: "apples", quantity: 0}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 0}]);
+                expect(inventory).toEqual([{
+                    name: "apples",
+                    quantity: 0
+                }, {
+                    name: "bananas",
+                    quantity: 0
+                }, {
+                    name: "cherries",
+                    quantity: 0
+                }]);
             });
         });
 
@@ -140,19 +197,20 @@ describe("Testing Examen", function () {
                 })).toEqual([1, 2, 3]);
                 expect(ary).toEqual([1, 2, 3]);
 
-                expect(filter(ary, function(element, index, ary) {
+                expect(filter(ary, function (element, index, ary) {
                     ary[index]++;
                 })).toEqual([]);
-                expect(ary).toEqual([1, 2, 3]);
 
-                expect(filter([false, false, false], function(element) {
+                expect(ary).toEqual([2, 3, 4]);
+
+                expect(filter([false, false, false], function (element) {
                     return element === true;
                 })).toEqual([]);
 
-                expect(filter([true, true, false], function(element) {
+                expect(filter([true, true, false], function (element) {
                     return element === true;
                 })).toEqual([true, true]);
-                expect(filter([true, true, true], function(element) {
+                expect(filter([true, true, true], function (element) {
                     return element === true;
                 })).toEqual([true, true, true]);
             });
@@ -175,7 +233,6 @@ describe("Testing Examen", function () {
 
     })
 
-
     describe("Dates functions", function () {
 
         describe("Add function", function () {
@@ -192,25 +249,25 @@ describe("Testing Examen", function () {
                 expect(add(date, 1, "days2")).toEqual(date);
             });
             it("should work with 'years' as 3rd parameter", function () {
-                let date1 = new Date;
+                let date1 = new Date();
                 let year1 = date1.getFullYear();
-                let date2 = new Date;
+                let date2 = new Date();
                 let year2 = date2.getFullYear();
                 expect(add(date1, 1, "years").getFullYear()).toBe(year1 + 1);
                 expect(add(date2, -1, "years").getFullYear()).toBe(year2 - 1);
             });
             it("should work with 'quarters' as 3rd parameter", function () {
-                let date1 = new Date;
+                let date1 = new Date();
                 let month1 = date1.getMonth();
-                let date2 = new Date;
+                let date2 = new Date();
                 let month2 = date2.getMonth();
                 expect(add(date1, 1, "quarters").getMonth()).toBe(month1 + 3);
                 expect(add(date2, -1, "quarters").getMonth()).toBe(month2 - 3);
             });
             it("should work with 'months' as 3rd parameter", function () {
-                let date1 = new Date;
+                let date1 = new Date();
                 let month1 = date1.getMonth();
-                let date2 = new Date;
+                let date2 = new Date();
                 let month2 = date2.getMonth();
                 expect(add(date1, 1, "months").getMonth()).toBe(month1 + 1);
                 expect(add(date2, -1, "months").getMonth()).toBe(month2 - 1);
@@ -360,9 +417,9 @@ describe("Testing Examen", function () {
             it("should only work against arrays", function () {
                 expect(deepReverse([])).toEqual([]);
                 expect(deepReverse([1, 2, 3, 4, 5])).toEqual([5, 4, 3, 2, 1]);
-                expect(deepReverse([[1,2],[3,4]])).toEqual([[4,3],[2,1]]);
-                expect(deepReverse([[9,8,7],[6,5,4],[3,2,1]])).toEqual([[1,2,3],[4,5,6],[7,8,9]]);
-                expect(deepReverse([ [1, 2], [3, 4], 5, 6])).toEqual([6, 5, [4, 3], [2, 1]]);
+                expect(deepReverse([[1, 2], [3, 4]])).toEqual([[4, 3], [2, 1]]);
+                expect(deepReverse([[9, 8, 7], [6, 5, 4], [3, 2, 1]])).toEqual([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+                expect(deepReverse([[1, 2], [3, 4], 5, 6])).toEqual([6, 5, [4, 3], [2, 1]]);
             });
         });
     });

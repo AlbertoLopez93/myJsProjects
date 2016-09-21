@@ -38,8 +38,12 @@
      */
     function add(date, quantity, key) {
         let dictTime = dictionaryOfTime();
-        if (date instanceof Date && ((typeof quantity === 'number' || quantity instanceof Number) && Number.isInteger(quantity) && quantity >= 0) && ((typeof key === 'string' || key instanceof String) && dictTime.hasOwnProperty(key))) {
-            return new Date(date.valueOf() + quantity * dictTime[key]);
+        if (date instanceof Date && ((typeof quantity === 'number' || quantity instanceof Number) && Number.isInteger(quantity)) && (typeof key === 'string' || key instanceof String)) {
+            if (dictTime.hasOwnProperty(key)) {
+                return new Date(date.valueOf() + quantity * dictTime[key]);
+            } else {
+                return date;
+            }
         }
         return false;
     }
@@ -49,8 +53,12 @@
      */
     function subtract(date, quantity, key) {
         let dictTime = dictionaryOfTime();
-        if (date instanceof Date && ((typeof quantity === 'number' || quantity instanceof Number) && Number.isInteger(quantity) && quantity >= 0) && ((typeof key === 'string' || key instanceof String) && dictTime.hasOwnProperty(key))) {
-            return new Date(date.valueOf() - quantity * dictTime[key]);
+        if (date instanceof Date && ((typeof quantity === 'number' || quantity instanceof Number) && Number.isInteger(quantity)) && (typeof key === 'string' || key instanceof String)) {
+            if (dictTime.hasOwnProperty(key)) {
+                return new Date(date.valueOf() - quantity * dictTime[key]);
+            } else {
+                return date;
+            }
         }
         return false;
     }
@@ -964,16 +972,16 @@
 
 
     module.exports = {
-        add        : add,
-        subtract   : subtract,
+        add: add,
+        subtract: subtract,
         deepReverse: deepReverse,
-        every      : every,
-        some       : some,
-        find       : find,
-        map        : map,
-        foreach    : foreach,
-        filter     : filter,
-        concat     : concat,
-        encrypt    : encrypt
+        every: every,
+        some: some,
+        find: find,
+        map: map,
+        foreach: foreach,
+        filter: filter,
+        concat: concat,
+        encrypt: encrypt
     };
 }());
