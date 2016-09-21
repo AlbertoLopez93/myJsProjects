@@ -2,7 +2,7 @@
 
 function add(date, num, str){
     if(date instanceof Date && (typeof num === 'number' || num instanceof Number) && (typeof str === 'string' || str instanceof String)){
-        if(!Number.isInteger(num) || num < 0){
+        if(!Number.isInteger(num)){
             return false;
         }
         str.toLowerCase();
@@ -41,7 +41,7 @@ function add(date, num, str){
                 date.setMilliseconds(milliseconds + num);
                 return date;
             default:
-                return false;
+                return date;
         }
     } else {
         return false;
@@ -50,7 +50,7 @@ function add(date, num, str){
 
 function subtract(date, num, str){
     if(date instanceof Date && (typeof num === 'number' || num instanceof Number) && (typeof str === 'string' || str instanceof String)){
-        if(!Number.isInteger(num) || num < 0){
+        if(!Number.isInteger(num)){
             return false;
         }
         str.toLowerCase();
@@ -89,7 +89,7 @@ function subtract(date, num, str){
                 date.setMilliseconds(milliseconds - num);
                 return date;
             default:
-                return false;
+                return date;
         }
     } else {
         return false;
@@ -183,8 +183,9 @@ function foreach (arr, callback){
 function filter (arr, callback){
     if(Array.isArray(arr) && (callback instanceof Function)){
         var resArray = [];
+        var copyArr = Array.from(arr);
         for(let i = 0; i < arr.length; i++){
-            var flag = callback(arr[i], i, arr);
+            var flag = callback(arr[i], i, copyArr);
             if(flag){
                 resArray.push(arr[i]);
             }
