@@ -245,15 +245,15 @@ function encrypt(word,n) {
 
 
 module.exports = {
-  add: add,
-  substract: substract,
+  add        : add,
+  substract  : substract,
   deepReverse: deepReverse,
-  every: every,
-  some: some,
-  find: find,
-  map: map,
-  filter: filter,
-  foreach: foreach,
-  concat: concat,
-  encrypt: encrypt
+  every      : every,
+  some       : some,
+  find       : find,
+  map        : map,
+  filter     : filter,
+  foreach    : foreach,
+  concat     : concat,
+  encrypt    : encrypt
 };
