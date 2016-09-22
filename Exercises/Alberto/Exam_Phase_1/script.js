@@ -127,8 +127,6 @@ function deepReverse(e) {
   return e;
 }
 
-//var day=new Date('Sep 14, 16');
-
 function every(aray,f) {
   if((!Array.isArray(aray))||(typeof f!='function')) {
     return false;
@@ -177,7 +175,7 @@ function map(aray, f) {
   }
   var elements=[];
   for(let v in aray) {
-    /*if(typeof aray[v]=='object') {
+    if(typeof aray[v]=='object') {
       var oneObj=aray[v];
       var newObj={};
       for(let w in oneObj) {
@@ -185,9 +183,9 @@ function map(aray, f) {
       }
       elements.push(f(newObj,v,aray));
     }
-    else {*/
+    else {
       elements.push(f(aray[v],v,aray))
-    //}
+    }
   }
   return elements;
 }
