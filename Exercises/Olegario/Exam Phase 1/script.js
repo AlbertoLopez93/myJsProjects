@@ -2,7 +2,7 @@
 
 function add(date, num, str) {
   let result = false;
-  if ((date instanceof Date) && ((Number.isInteger(num)) && (num >= 0)) && (typeof(str) === "string")) {
+  if ((date instanceof Date) && (Number.isInteger(num)) && (typeof(str) === "string")) {
     //console.log(date);
     let strYear = date.getFullYear();
     let strMonth = date.getMonth();
@@ -23,7 +23,7 @@ function add(date, num, str) {
                      result = new Date(strYear, insert, strDay, strHour, strMinute, strSecond, strMilliseconds);
                      break;
 
-      case "months":insert = (num * 31) + strMonth;
+      case "months":insert = num + strMonth;
                   result = new Date(strYear, insert, strDay, strHour, strMinute, strSecond, strMilliseconds);
                   break;
 
@@ -55,7 +55,7 @@ function add(date, num, str) {
 
 function subtract(date, num, str) {
   let result = false;
-  if ((date instanceof Date) && ((Number.isInteger(num)) && (num >= 0)) && (typeof(str) === "string")) {
+  if ((date instanceof Date) && (Number.isInteger(num)) && (typeof(str) === "string")) {
     //console.log(date);
     let strYear= date.getFullYear();
     let strMonth= date.getMonth();
@@ -76,7 +76,7 @@ function subtract(date, num, str) {
                      result = new Date(strYear, insert, strDay, strHour, strMinute, strSecond, strMilliseconds);
                      break;
 
-      case "months":insert = strMonth - (num * 31);
+      case "months":insert = strMonth - num;
                   result = new Date(strYear, insert, strDay, strHour, strMinute, strSecond, strMilliseconds);
                   break;
 
@@ -105,6 +105,7 @@ function subtract(date, num, str) {
   }
   return result;
 }
+
 
 function deepReverse(array) {
   let result = false;
@@ -159,7 +160,7 @@ function some(array, callback) {
 }
 
 function find(array, callback) {
-  let result = undefined;
+  let result = false;
   let aux;
   if ((Array.isArray(array)) && (callback instanceof Function)) {
     for (let i = 0; i < array.length; i++) {
@@ -201,12 +202,16 @@ function filter(array, callback) {
   let result = false;
   if ((Array.isArray(array)) && (callback instanceof Function)) {
     let temp = [],  aux;
-    for (let i = 0; i < array.length; i++) {
-      aux = callback(array[i], i, array);
+    let array2 = [];
+    for (var i = 0; i < array.length; i++) {
+      array2.push(array[i]);
+    }
+    for (let i = 0; i < array2.length; i++) {
+      aux = callback(array2[i], i, array2);
       if ((aux !== false) && (aux !== 0) && (aux !== null) && (aux !== undefined) && (aux !== "")) {
         if (isNaN(aux) && typeof(aux) === "number") {
         } else {
-          temp.push(array[i]);
+          temp.push(array2[i]);
         }
       }
     }
@@ -218,7 +223,10 @@ function filter(array, callback) {
 function concat(array) {
   let result = false;
   if (Array.isArray(array)) {
-    result = array;
+    result = [];
+    for (var i = 0; i < array.length; i++) {
+      result.push(array[i]);
+    }
     if (arguments.length > 1) {
       let aux = Array.prototype.slice.call(arguments);
       for (let i = 1; i < aux.length; i++) {
@@ -241,24 +249,27 @@ function encrypt(str, num) {
   let pares = "";
   let nones = "";
   if ((typeof(str) === "string") && ((Number.isInteger(num)) && num >= 0)) {
-      if (num === 1) {
-          for (let i = 0; i < str.length; i=i+2) {
-            nones += str[i];
-          }
-          for (let i = 1; i < str.length; i=i+2) {
-            pares += str[i];
-          }
-      } else {
-        str= encrypt(str,num-1);
-        for (let i = 0; i < str.length; i=i+2) {
-          nones += str[i];
-        }
-        for (let i = 1; i < str.length; i=i+2) {
-          pares += str[i];
-        }
+    if (num === 0) {
+      return str;
+    }
+    if (num === 1) {
+      for (let i = 0; i < str.length; i=i+2) {
+        nones += str[i];
       }
-      str = pares + nones;
-      result = str;
+      for (let i = 1; i < str.length; i=i+2) {
+        pares += str[i];
+      }
+    } else {
+      str= encrypt(str,num-1);
+      for (let i = 0; i < str.length; i=i+2) {
+        nones += str[i];
+      }
+      for (let i = 1; i < str.length; i=i+2) {
+        pares += str[i];
+      }
+    }
+    str = pares + nones;
+    result = str;
   }
   return result;
 }
