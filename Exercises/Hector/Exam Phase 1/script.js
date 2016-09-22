@@ -13,12 +13,10 @@ function add(date, num, str){
     if(typeof num !== "number" || isNaN(num) || num === Infinity || num === -Infinity ){
         return false;
     }
-    if(num % 1 !== 0 || num < 0){
+    if(num % 1 !== 0){
         return false;
     }
-    if(typeof str !== "string"){
-        return false;
-    }
+
     var date = date;
     var num = num;
     var str = str.toLowerCase();
@@ -51,11 +49,13 @@ function add(date, num, str){
             newDateMS = msDate + (num * 32140800000);
         break;
         default:
-        return false;
+        return date;
     }
     date.setTime(newDateMS);
     return date;
 }
+
+
 
 function subtract(date, num, str){
     if (arguments.length !== 3){
@@ -70,7 +70,7 @@ function subtract(date, num, str){
     if(typeof num !== "number" || isNaN(num) || num === Infinity || num === -Infinity ){
         return false;
     }
-    if(num % 1 !== 0 || num < 0){
+    if(num % 1 !== 0){
         return false;
     }
     if(typeof str !== "string"){
@@ -108,7 +108,7 @@ function subtract(date, num, str){
             newDateMS = msDate - (num * 32140800000);
         break;
         default:
-        return false;
+        return date;
     }
     date.setTime(newDateMS);
     return date;
@@ -204,7 +204,7 @@ function map(arr, func){
     }
 
     for (var i = 0; i < arr.length; i++) {
-      nuevoArray.push(validateMap(arr[i], i, arr));
+      nuevoArray.push(func(arr[i], i, arr));
     }
     return nuevoArray;
 }
@@ -229,6 +229,10 @@ function foreach(arr, func){
 }
 
 function filter(arr, func){
+    if(arr === null && func === null){
+        return false;
+    }
+    var copiaArreglo = Array.from(arr);
     var newArr = [];
     if(arguments.length !== 2){
         return false;
@@ -236,17 +240,20 @@ function filter(arr, func){
     if(!Array.isArray(arr)){
         return false;
     }
+    if(arr === null){
+        return false;
+    }
     if(typeof func !== "function"){
         return false;
     }
-
-    for (var i = 0; i < arr.length; i++) {
-        if(func(arr[i], i, arr) === true){
-            newArr.push(arr[i]);
+    for (var i = 0; i < copiaArreglo.length; i++) {
+        if(func(copiaArreglo[i], i, copiaArreglo) === true){
+            newArr.push(copiaArreglo[i]);
         }
     }
     return newArr;
 }
+
 
 function concat(){
     var first = arguments[0];
@@ -280,8 +287,11 @@ function encrypt(str, num){
     if(str === " "){
         return " ";
     }
+    if(num === 0){
+        return str;
+    }
 
-    if(typeof str !== "string" || typeof num !== "number" || !isNaN(str) || isNaN(num)){
+    if(typeof str !== "string" || typeof num !== "number" || !isNaN(str) || isNaN(num) || num % 1 !== 0 || num < 0){
         return false
     }
     if(num === Infinity || num === -Infinity ){
