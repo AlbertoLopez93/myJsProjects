@@ -1,11 +1,13 @@
 "use strict";
-
 function add(fecha,cant,str){
   if(fecha instanceof Date===false){
     return false;
   }
-  if(cant<=0 || isNaN(cant)===true || cant===Infinity || cant===null || cant===undefined || typeof cant==='boolean'){
+  if(isNaN(cant)===true || cant===Infinity || cant===null || cant===undefined || typeof cant==='boolean' || Number.isInteger(cant)===false){
     return false;
+  }
+  if(typeof str!=='string'){
+    return fecha;
   }
   function addYear(f,q){
     f.setDate(f.getDate()+365*q);
@@ -65,7 +67,7 @@ function add(fecha,cant,str){
       addMillisecond(fecha,cant);
       break;
     default:
-      return false;
+      return fecha;
     }
   return fecha;
 }
@@ -74,8 +76,11 @@ function subtract(fecha,cant,str){
   if(fecha instanceof Date===false){
     return false;
   }
-  if(cant<=0 || isNaN(cant)===true || cant===Infinity || cant===null || cant===undefined || typeof cant==='boolean'){
+  if(isNaN(cant)===true || cant===Infinity || cant===null || cant===undefined || typeof cant==='boolean' || Number.isInteger(cant)===false){
     return false;
+  }
+  if(typeof str!=='string'){
+    return fecha;
   }
   function substractYear(f,q){
     f.setDate(f.getDate()-365*q);
@@ -135,7 +140,7 @@ function subtract(fecha,cant,str){
       substractMillisecond(fecha,cant);
       break;
     default:
-      return false;
+      return fecha;
     }
   return fecha;
 }
@@ -195,7 +200,7 @@ find([],function(element){
 });
 
 function map(a,fun){
-  if(Array.isArray(a)===false){
+  if(typeof a!=='object'){
     return false;
   }
   if(typeof fun!=='function'){
@@ -270,6 +275,9 @@ function encrypt(str,n){
   if(typeof str!=='string'){
     return false;
   }
+  if(n===0){
+    return str;
+  }
   if(isNaN(n)===true || Number.isInteger(n)===false || n===Infinity || n===null || typeof n==='boolean'){
     return false;
   }
@@ -341,62 +349,6 @@ function deepReverse(a){
     }
   return ary;
 }
-
-describe("Testing every", function () {
-  it("Debe regresar true si le mandas [1,2,3]",function(){
-    expect(every([1,2,3],function(element){
-      return element<5;
-    })).toBe(true);
-  })
-  it("Debe regresar false si le mandas [5,1,2]",function(){
-    expect(every([5,1,2],function(element){
-      return element<5;
-    })).toBe(false)
-  })
-  it("Debe regresar true si le mandas []",function(){
-    expect(every([],function(element){
-      return element<5;
-    })).toBe(true);
-  })
-  it("Debe regresar false si le mandas 'hola'",function(){
-    expect(every('hola',function(element){
-      return element<5;
-    })).toBe(false);
-  })
-  it("Debe regresar false si le mandas null",function(){
-    expect(every(null,function(element){
-      return element<5;
-    })).toBe(false);
-  })
-  it("Debe regresar false si le mandas Infinity",function(){
-    expect(every(Infinity,function(element){
-      return element<5;
-    })).toBe(false);
-  })
-  it("Debe regresar false si le mandas true",function(){
-    expect(every(true,function(element){
-      return element<5;
-    })).toBe(false);
-  })
-});
-describe("Testing some", function () {
-  it("Debe regresar true si le mandas [1,2,3]",function(){
-    expect(every([1,2,3],function(element){
-      return element<5;
-    })).toBe(true);
-  })
-  it("Debe regresar true si le mandas [5,1,2]",function(){
-    expect(every([5,1,2],function(element){
-      return element<5;
-    })).toBe(false)
-  })
-  it("Debe regresar true si le mandas [5,5,6]",function(){
-    expect(every([5,5,6],function(element){
-      return element<5;
-    })).toBe(false)
-  })
-});
-
 
 describe("Testing Examen", function () {
     describe("Array's functions", function () {
@@ -483,7 +435,7 @@ describe("Testing Examen", function () {
                     return element;
                 })).toEqual([{name: "apples", quantity: 0}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 0}]);
 
-                expect(inventory).toEqual([{name: "apples", quantity: 2}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 5}]);
+                expect(inventory).toEqual([{name: "apples", quantity: 0}, {name: "bananas", quantity: 0}, {name: "cherries", quantity: 0}]);
             });
         });
 
@@ -527,7 +479,7 @@ describe("Testing Examen", function () {
                 expect(filter(ary, function(element, index, ary) {
                     ary[index]++;
                 })).toEqual([]);
-                expect(ary).toEqual([1, 2, 3]);
+                expect(ary).toEqual([2, 3, 4]);
 
                 expect(filter([false, false, false], function(element) {
                     return element === true;

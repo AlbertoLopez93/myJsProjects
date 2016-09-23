@@ -1,11 +1,13 @@
 "use strict";
-
 function add(fecha,cant,str){
   if(fecha instanceof Date===false){
     return false;
   }
-  if(cant<=0 || isNaN(cant)===true || cant===Infinity || cant===null || cant===undefined || typeof cant==='boolean'){
+  if(isNaN(cant)===true || cant===Infinity || cant===null || cant===undefined || typeof cant==='boolean' || Number.isInteger(cant)===false){
     return false;
+  }
+  if(typeof str!=='string'){
+    return fecha;
   }
   function addYear(f,q){
     f.setDate(f.getDate()+365*q);
@@ -65,7 +67,7 @@ function add(fecha,cant,str){
       addMillisecond(fecha,cant);
       break;
     default:
-      return false;
+      return fecha;
     }
   return fecha;
 }
@@ -74,8 +76,11 @@ function subtract(fecha,cant,str){
   if(fecha instanceof Date===false){
     return false;
   }
-  if(cant<=0 || isNaN(cant)===true || cant===Infinity || cant===null || cant===undefined || typeof cant==='boolean'){
+  if(isNaN(cant)===true || cant===Infinity || cant===null || cant===undefined || typeof cant==='boolean' || Number.isInteger(cant)===false){
     return false;
+  }
+  if(typeof str!=='string'){
+    return fecha;
   }
   function substractYear(f,q){
     f.setDate(f.getDate()-365*q);
@@ -135,7 +140,7 @@ function subtract(fecha,cant,str){
       substractMillisecond(fecha,cant);
       break;
     default:
-      return false;
+      return fecha;
     }
   return fecha;
 }
@@ -154,6 +159,9 @@ function every(a,fun){
   }
   return true;
 }
+every([],function(element){
+  return element<5;
+});
 
 function some(a,fun){
   if(Array.isArray(a)===false){
@@ -169,6 +177,9 @@ function some(a,fun){
   }
   return false;
 }
+some([],function(element){
+  return element===true;
+});
 
 function find(a,fun){
   if(Array.isArray(a)===false){
@@ -184,6 +195,9 @@ function find(a,fun){
   }
   return undefined;
 }
+find([],function(element){
+  return element===5;
+});
 
 function map(a,fun){
   if(Array.isArray(a)===false){
@@ -198,6 +212,9 @@ function map(a,fun){
     }
   return res;
 }
+map([0,0,0],function(element){
+  return element+5;
+});
 
 function foreach(a,fun){
   if(Array.isArray(a)===false){
@@ -211,6 +228,9 @@ function foreach(a,fun){
     }
   return undefined;
 }
+foreach([1,2,3],function(element,i,a){
+  //console.log(a[i]);
+});
 
 function filter(a,fun){
   if(Array.isArray(a)===false){
@@ -227,6 +247,9 @@ function filter(a,fun){
   }
   return res;
 }
+filter([],function(element){
+  return element<=2;
+});
 
 function concat(a){
   if(Array.isArray(a)===false){
@@ -246,10 +269,16 @@ function concat(a){
   }
   return ary;
 }
-
+concat([],true,6,[6,7],'hola',[2,4,[7,2,4,[5]]]);
 
 function encrypt(str,n){
   if(typeof str!=='string'){
+    return false;
+  }
+  if(n===0){
+    return str;
+  }
+  if(n<0){
     return false;
   }
   if(isNaN(n)===true || Number.isInteger(n)===false || n===Infinity || n===null || typeof n==='boolean'){
@@ -323,7 +352,6 @@ function deepReverse(a){
     }
   return ary;
 }
-
 module.exports = {
   add        : add,
   subtract   : subtract,
