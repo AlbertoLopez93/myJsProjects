@@ -229,7 +229,11 @@ function foreach(arr, func){
 }
 
 function filter(arr, func){
-    if(arr === null && func === null){
+    if(arr === null || func === null){
+        return false;
+    }
+    
+    if(arr === undefined || func === undefined){
         return false;
     }
     var copiaArreglo = Array.from(arr);
