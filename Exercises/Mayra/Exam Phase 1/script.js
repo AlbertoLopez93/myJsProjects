@@ -6,7 +6,7 @@ function add(date,quantity,key) {
     if (date instanceof Date===false) {
         return false;
     }
-    if (typeof(quantity)!=="number"||quantity===Infinity||quantity<0||Number.isInteger(quantity)===false) {
+    if (typeof(quantity)!=="number"||quantity===Infinity||Number.isInteger(quantity)===false) {
         return false;
     }
     if (typeof(key)!=="string") {
@@ -48,7 +48,7 @@ function add(date,quantity,key) {
         date.setMilliseconds(aux);
             break;
         default:
-        return false;
+        return date;
 
     }
     return date;
@@ -60,7 +60,7 @@ function subtract(date,quantity,key) {
     if (date instanceof Date===false) {
         return false;
     }
-    if (typeof(quantity)!=="number"||quantity===Infinity||quantity<0||Number.isInteger(quantity)===false) {
+    if (typeof(quantity)!=="number"||quantity===Infinity||Number.isInteger(quantity)===false) {
         return false;
     }
     if (typeof(key)!=="string") {
@@ -102,7 +102,7 @@ function subtract(date,quantity,key) {
         date.setMilliseconds(aux);
             break;
         default:
-        return false;
+        return date;
 
     }
     return date;
