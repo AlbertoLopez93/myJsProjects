@@ -1,3 +1,5 @@
+"use strict"
+
 var schools = [
   {
     "_id": "57c461186d5c3f98ca57bb46",
