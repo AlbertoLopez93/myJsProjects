@@ -4,7 +4,7 @@ timestamp: 1472838900000
 
 ****/
 
-function createCoord(n){
+function createCoords(n){
   "use strict";
 let largo = n;
 let ary = [];
