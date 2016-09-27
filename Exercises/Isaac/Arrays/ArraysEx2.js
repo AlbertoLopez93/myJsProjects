@@ -11,7 +11,7 @@ function isInLine(coordinates) {
     for (var i = 0; i < coordinates.length - 1; i++) {
         totalDistance += calcDistance(coordinates[i], coordinates[i + 1]);
     }
-    return maxDistance === totalDistance;
+    return maxDistance.toPrecision(12) === totalDistance.toPrecision(12);
 
     // Helper functions
     //==================================================
