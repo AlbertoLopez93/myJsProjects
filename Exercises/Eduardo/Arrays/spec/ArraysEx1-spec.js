@@ -1,7 +1,7 @@
 /****************************************************************************
 
 Name: ArraysEx1.js
-Search: label:interns {subject:"arrays ex 1" subject:"arrays ex1" subject:arraysex1} 
+Search: label:interns {subject:"arrays ex 1" subject:"arrays ex1" subject:arraysex1}
 Target: Exercises/$1/Arrays
 Function: createCoords
 
@@ -39,7 +39,7 @@ describe("Testing Arrays exercise 1", function() {
       expect(new Date(+metadata.timestamp)).toBeLessThan(DeliveryLimit);
     })
   });
-  
+
   it("return an array of " + nElements + " elements", function() {
     var res = createCoords(nElements);
     expect(Array.isArray(res)).toBe(true);
@@ -67,7 +67,7 @@ describe("Testing Arrays exercise 1", function() {
 
   it("the coordinates are filled with integers", function(){
     res = createCoords(nElements);
-    
+
     for (let i = 0, c; i < nElements; i++) {
       c = res[i];
 
