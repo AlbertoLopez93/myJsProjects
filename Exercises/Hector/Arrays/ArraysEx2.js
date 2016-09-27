@@ -7,7 +7,6 @@ timestamp: 1472846862000
 
 function isInLine(coords){
 	"use strict";
-
 	var arrTemp = [];
 	var sumas = 0;
 	var res1;
@@ -26,47 +25,48 @@ function isInLine(coords){
 
 		//console.log(arrTemp);
 		res1 = arrTemp[1][0] - arrTemp[0][0];
-		//console.log(res1); 
+		//console.log(res1);
 		//console.log(res1);
 		res2 = arrTemp[1][1] - arrTemp[0][1];
 		//console.log(res2);
 		//console.log(res2);
-		res1 = Math.pow(res1, 2);
+		res1 = Math.pow(res1.toPrecision(10) , 2);
 		//console.log(res1);
-		res2 = Math.pow(res2, 2);
+		res2 = Math.pow(res2.toPrecision(10) , 2);
 		//console.log(res2);
 		sumPxP = res1 + res2;
 		//console.log(sumPxP);
-		sumPxP = Math.sqrt(sumPxP);
+		sumPxP = Math.sqrt(sumPxP.toPrecision(10) );
 		//console.log(sumPxP);
 		total += sumPxP;
-		
-
 	}
 
-	
+
 	first = coords[0];
 	last = coords[coords.length-1];
 
 	var resT1 = last[0] - first[0];
 	var resT2 = last[1] - first[1];
-	resT1 = Math.pow(resT1, 2);
+	resT1 = Math.pow(resT1.toPrecision(10), 2);
 	//console.log(resT1);
-	resT2 = Math.pow(resT2, 2);
+	resT2 = Math.pow(resT2.toPrecision(10), 2);
 	//console.log(resT2);
 	var lastSum = resT1 + resT2;
 	lastSum = Math.sqrt(lastSum.toPrecision(10) ,2);
-	
-	//console.log(lastSum + " " + total);
-	if(lastSum === total){
+	lastSum = lastSum.toFixed(8);
+	total = total.toFixed(8);
+
+console.log(lastSum + " " + total);
+	if(lastSum == total){
 		return true;
 	}
 	else{
 		return false;
 	}
 
-	//res1 = arr[1][0] - arr[0][0]; 
-	//res2 = arr[0][1] - arr[1][1];	
+
+	//res1 = arr[1][0] - arr[0][0];
+	//res2 = arr[0][1] - arr[1][1];
 }
 
-isInLine([[0,0],[1,1],[2,2],[3,3],[4,4]]);
+isInLine([[0,0],[1,1],[2,2],[3,3],[4,4],[5,5],[6,6]]);

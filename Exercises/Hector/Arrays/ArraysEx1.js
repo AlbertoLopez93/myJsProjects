@@ -13,8 +13,11 @@ function createCoords(n){
 		newArr[i] = [];
 		for(let j=0; j<2; j++){
 			var y = 0;
-			aux += Math.random() * 100
+			aux += Math.random() * 50;
 			aux = Math.round(aux);
+			if(aux > aux+100){
+				aux += aux-50;			
+			}
 			y = Math.round(Math.random() * 100);
 			if(j==0){
 				newArr[i][j] = aux;	
