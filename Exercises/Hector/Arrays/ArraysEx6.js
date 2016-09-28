@@ -161,7 +161,7 @@ function morseDec(morse){
     m = morse.join(" ");
     m = m.split(" ");
   }else{
-    morse = morse.toUpperCase();
+    //morse = morse.toUpperCase();
     m = morse.split(" ");
   }
   m.forEach(function(n){
@@ -176,9 +176,11 @@ function morseDec(morse){
     }
   });
 
+
+
   var newIndex = word.map(function (a){
     if(a === " "){
-      return " ";
+      return "  ";
     }
     else{
       var index = MORSE.findIndex(function (obj){
@@ -192,16 +194,19 @@ function morseDec(morse){
         return MORSE[index].char;
       }
       else{
-        return a;
+        return false;
       }
     }
   });
-
+  newIndex = newIndex.filter(Boolean);
   newIndex = newIndex.join("");
+  newIndex = newIndex.replace(/\s\s+/g, ' ');
   return newIndex;
+
+
+
 
 }
 
 //console.log(morseDec(['....', '---', '.-..', '.-','','','','', '','--', '..-','-.', '-..','---', '','','','', '','---', '.-.', '.-']));
 console.log(morseDec('.... --- .-.. .-       -- ..- -. -.. ---    --- .-. .-'));
-

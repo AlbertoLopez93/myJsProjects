@@ -13,7 +13,7 @@ function play(arr, first, end, arr2){
 	newArr = arr.slice();
 	newArr.unshift(first);
 	newArr.push(end);
-	newArr.splice(indice, 0, str.toString());
+	newArr.splice(indice, 0, str);
 //console.log(arr + '\n\n');
 return newArr;
 }

@@ -25,11 +25,11 @@ const texts = [
   },
   {
     text: "hola  mundo",
-    morse: ".... --- .-.. .-         -- ..- -. -.. ---"
+    morse: ".... --- .-.. .-     -- ..- -. -.. ---"
   },
   {
     text: "hola  mundo&^&$%^(**&%^^&*&^&$%",
-    morse: ".... --- .-.. .-         -- ..- -. -.. ---"
+    morse: ".... --- .-.. .-     -- ..- -. -.. ---"
   },
   {
     text: "However, the standard does not specify how long that is.",
@@ -71,7 +71,7 @@ describe("Testing Arrays exercise 5 (morse encoder)", function() {
       expect(new Date(+metadata.timestamp)).toBeLessThan(DeliveryLimit);
     })
   });
-  
+
   res = morseEnc("Hola mundo");
 
   describe("Simple tests", function(){

@@ -151,20 +151,17 @@ timestamp: 1473122336000
 //     }
 // ];
 
-var text = ["Hola"," ", "Mundo"];
+//var text = ["Hola"," ", "Mundo"];
 //var text = "Hola Mundo";
-
-
 function morseEnc(text){
   if(Array.isArray(text)){
     a = text.join("");
     a = a.toUpperCase();
     a = a.split("");
-    console.log(a);
-  }else{
-    text = text.toUpperCase();
-    a = text.split("");
-  }
+    } else {
+        text = text.toUpperCase();
+        a = text.split("");
+    }
 
 
 
@@ -201,13 +198,14 @@ function morseEnc(text){
         return MORSE[index].morse;
       }
       else{
-        return a;
+        return false;
       }
     }
   });
-
+  newIndex = newIndex.filter(Boolean);
   newIndex = newIndex.join(' ');
+
   return newIndex;
 }
 
-console.log(morseEnc(text));
+//console.log(morseEnc(text));
