@@ -2,7 +2,7 @@
 
 let InvoiceItem = require("../InvoiceItem");
 
-xdescribe("InvoiceItem Class", function () {
+describe("InvoiceItem Class", function () {
     let data = {id: 1, desc: "MBP 13", qty: 10, unitPrice: 1234.55};
     let invoiceItem;
 

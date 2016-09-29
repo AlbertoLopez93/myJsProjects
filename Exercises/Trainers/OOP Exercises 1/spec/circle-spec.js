@@ -2,7 +2,7 @@
 
 let Circle = require("../Circle");
 
-xdescribe("Circle Class", function () {
+describe("Circle Class", function () {
     let data = {radius: 10, color: "white"};
     let circle;
 

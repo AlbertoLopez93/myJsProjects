@@ -2,7 +2,7 @@
 
 let Account = require("../Account");
 
-xdescribe("Account Class", function () {
+describe("Account Class", function () {
     let data1 = {id: 1, name: "John", balance: 100};
     let data2 = {id: 2, name: "Doe", balance: 50};
     let account1;
@@ -73,6 +73,7 @@ xdescribe("Account Class", function () {
             });
             it("should subtract the amount to the balance's instance if the given amount is less or equal than the current balance", function () {
                 expect(account1.debit(10)).toBe(90);
+                expect(account1.debit(90)).toBe(0);
             });
             it("should not subtract the amount to the balance's instance if the give amount is more than the current balance", function () {
                 expect(account1.debit(150)).toBe(100);

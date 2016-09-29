@@ -2,7 +2,7 @@
 
 let Employee = require("../Employee");
 
-xdescribe("Employee Class", function () {
+describe("Employee Class", function () {
     let data = {id: 1, firstName: "John", lastName: "Doe", salary: 100};
     let employee;
 

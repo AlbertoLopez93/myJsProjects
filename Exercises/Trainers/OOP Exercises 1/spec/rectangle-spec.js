@@ -2,7 +2,7 @@
 
 let Rectangle = require("../Rectangle");
 
-xdescribe("Rectangle Class", function () {
+describe("Rectangle Class", function () {
     let data = {length: 10, width: 20};
     let rectangle;
 
