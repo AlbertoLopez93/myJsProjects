@@ -51,3 +51,5 @@ console.log(x.getArea());
 console.log(x.getColor());
 console.log(x.getRadius());
 console.log(x.getCircumference());
+
+module.exports = Circle;

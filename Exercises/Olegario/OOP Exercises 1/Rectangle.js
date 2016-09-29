@@ -53,3 +53,5 @@ console.log(x.getWidth());
 console.log(x.getArea());
 console.log(x.getPerimeter());
 console.log(x.toString());
+
+module.exports = Rectangle;
