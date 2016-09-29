@@ -31,10 +31,11 @@ function Account(data) {
 
 Account.prototype ={};
 Account.prototype.toString = function() {
-  return 'Account[id='+getID();
+  return 'Account[id='+this.getID()+', name='+this.getName()+', balance='+this.getBalance()+']';
 }
 
 var user = new Account({id:'',name:'Happy Bank',balance:870});
 console.log(user.credit(40));
 console.log(user.debit(520));
 console.log(user.debit(520));
+console.log(user.toString());
