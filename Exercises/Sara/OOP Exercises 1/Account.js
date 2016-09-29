@@ -26,3 +26,5 @@ InvoiceItem.prototype.toString=function(){
 }
 var c=new Account({id:"38438743",name:"posi",balance:20});
 console.log(c.getID());
+
+module.exports = Account;

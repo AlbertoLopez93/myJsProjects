@@ -38,3 +38,5 @@ var c=new Rectangle({width:5,length:6});
 console.log(c.getArea());
 console.log(c.getPerimeter());
 console.log(c.toString());
+
+module.exports = Rectangle;

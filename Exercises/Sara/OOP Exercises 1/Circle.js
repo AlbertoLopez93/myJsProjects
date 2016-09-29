@@ -30,3 +30,5 @@ Circle.prototype.getCircumference=function(){
 var c=new Circle({radius:5,color:"green"});
 console.log(c.getArea());
 console.log(c.getCircumference());
+
+module.exports = Circle;

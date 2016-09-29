@@ -48,3 +48,5 @@ console.log(c.getAnnualSalary());
 console.log(c.raiseSalary(50));
 console.log(c.getSalary());
 console.log(c.toString());
+
+module.exports = Employee;
