@@ -35,3 +35,5 @@ rectangulo.setLength(7);
 rectangulo.setWidth(7);
 console.log(rectangulo.getLength());
 console.log(rectangulo.getWidth());
+
+module.exports = Rectangle;
