@@ -1,3 +1,5 @@
+"use strict"
+
 function Rectangle(data) {
   var width = data.width;
   var length = data.length;

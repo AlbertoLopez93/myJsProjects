@@ -1,3 +1,5 @@
+"use strict"
+
 function Account(data) {
   var id = data.id;
   var name = data.name;
@@ -17,14 +19,25 @@ function Account(data) {
   }
   this.debit = function debit(amount) {
     if(amount <= balance) {
-      balance +- amount;
+      balance -= amount;
       return balance;
     } else {
       console.log("Amount exceeded balance");
       return balance;
     }
   }
-  this.transferTo = function transferTo(another, amount) {  
+  this.transferTo = function transferTo(another, amount) {
+    if(amount <= balance) {
+      balance -= amount;
+      another.credit(amount);
+      return balance;
+    } else {
+      console.log("Amount exceeded balance");
+      return balance;
+    }
+  }
+  this.toString = function toString() {
+    return "Account[id=" + id + ", name=" + name + ", balance=" + balance + "]"
   }
 }
 

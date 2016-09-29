@@ -1,3 +1,5 @@
+"use strict"
+
 function InvoiceItem(data) {
   var id = data.id;
   var desc = data.desc;
@@ -15,7 +17,7 @@ function InvoiceItem(data) {
   this.getUnitPrice = function getUnitPrice() {
     return unitPrice;
   }
-  this.setUnitePrice = function setUnitePrice(newUnitPrice) {
+  this.setUnitPrice = function setUnitPrice(newUnitPrice) {
     unitPrice = newUnitPrice;
   }
   this.getTotal = function getTotal() {

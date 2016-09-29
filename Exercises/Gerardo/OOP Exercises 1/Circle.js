@@ -1,3 +1,5 @@
+"use strict"
+
 function Circle(data) {
   var radius = data.radius;
   var color = data.color;

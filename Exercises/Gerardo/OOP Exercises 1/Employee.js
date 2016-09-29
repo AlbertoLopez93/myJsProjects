@@ -1,3 +1,5 @@
+"use strict"
+
 function Employee(data) {
   var id = data.id;
   var firstName = data.firstName;
