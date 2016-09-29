@@ -26,3 +26,5 @@ function InvoiceItem(data) {
     return "InvoiceItem[id=" + id + ", desc=" + desc + ", qty=" + qty + ", unitPrice=" + unitPrice + "]";
   }
 }
+
+module.exports = InvoiceItem;

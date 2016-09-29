@@ -23,3 +23,5 @@ function Rectangle(data) {
     return "Rectangle[length=" + length + ", width=" +  width  + "]"
   }
 }
+
+module.exports = Rectangle;

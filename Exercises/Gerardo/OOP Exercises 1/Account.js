@@ -27,3 +27,5 @@ function Account(data) {
   this.transferTo = function transferTo(another, amount) {  
   }
 }
+
+module.exports = Account;

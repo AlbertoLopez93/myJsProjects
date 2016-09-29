@@ -24,3 +24,5 @@ function Circle(data) {
     return Math.PI * radius * 2;
   }
 }
+
+module.exports = Circle;

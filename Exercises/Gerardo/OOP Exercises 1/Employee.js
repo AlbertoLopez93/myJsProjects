@@ -29,3 +29,5 @@ function Employee(data) {
     return "Employee[id=" + id + ", name=" + firstName + " " + lastName + ", salary=" + salary + "]";
   }
 }
+
+module.exports = Employee;
