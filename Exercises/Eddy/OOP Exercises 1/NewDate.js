@@ -81,7 +81,7 @@ console.log (newDate.setYear (1999));
 console.log (newDate.getDay ());
 console.log (newDate.getMonth ());
 console.log (newDate.getYear ());
-console.log (newDate.setDate (1, 2, 9999));
+console.log (newDate.setDate (31, 12, 9999));
 console.log (newDate.getDay ());
 console.log (newDate.getMonth ());
 console.log (newDate.getYear ());
