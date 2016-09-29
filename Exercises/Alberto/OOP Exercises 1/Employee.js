@@ -32,7 +32,7 @@ function Employee(human) {
 
 Employee.prototype ={};
 Employee.prototype.toString = function() {
-  return "Employee [id="+this.getID()+", name="+this.getName()+", salary="+this.getSalary()+"]";
+  return "Employee[id="+this.getID()+", name="+this.getName()+", salary="+this.getSalary()+"]";
 }
 
 /*var worker = new Employee({id:45,firstName:'Peter',lastName:'Johnson',salary:450});
