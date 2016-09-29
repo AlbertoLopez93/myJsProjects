@@ -1,3 +1,4 @@
+"use strict";
 function InvoiceItem(obj) {
     var id=obj.id,desc=obj.desc,qty=obj.qty,unitPrice=obj.unitPrice,salary=obj.salary;
     this.setID=function setID(newId) {
