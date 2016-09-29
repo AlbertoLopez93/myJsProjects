@@ -36,7 +36,6 @@ function NewDate (data) {
 	this.getYear = function getDay () {
 		return year;
 	};
-
 	this.setDay = function setDay (newDay) {
 		return day = newDay;
 	};
@@ -45,17 +44,34 @@ function NewDate (data) {
 	};
 	this.setYear = function setYear (newYear) {
 		return year = newYear;
-	}
+	};
+
+	this.setDate = function setDate (newDay, newMonth, newYear) {
+		day = newDay;
+		month = newMonth;
+		year = newYear;
+
+	};
+
 }
+
+NewDate.prototype.toString = function toSring () {
+	return '' + this.getDay () + '/' + this.getMonth () + '/' + this.getYear ();
+};
 
 var newDate = new NewDate (dat);
 
 console.log (newDate.getDay ());
 console.log (newDate.getMonth ());
 console.log (newDate.getYear ());
-console.log (newDate.setDay (31));
-console.log (newDate.setMonth (12));
+console.log (newDate.setDay (15));
+console.log (newDate.setMonth (6));
 console.log (newDate.setYear (1999));
 console.log (newDate.getDay ());
 console.log (newDate.getMonth ());
 console.log (newDate.getYear ());
+console.log (newDate.setDate (31, 12, 9999));
+console.log (newDate.getDay ());
+console.log (newDate.getMonth ());
+console.log (newDate.getYear ());
+console.log(newDate.toString());
