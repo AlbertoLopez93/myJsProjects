@@ -4,7 +4,7 @@ function Employee(obj) {
         newId=id;
         return this;
     }
-    this.getId=function getId() {
+    this.getID=function getID() {
         return id;
 
     }
@@ -13,14 +13,14 @@ function Employee(obj) {
         return firstName+" "+lastName;
 
     }
-    this.setFirtsName=function setFirtsName(newFirstName) {
+    this.setFirstName=function setFirstName(newFirstName) {
         if (typeof newFirstName!=='string') {
             return this;
         }
         firstName=newFirstName;
         return this;
     }
-    this.getFirtsName=function getFirtsName() {
+    this.getFirstName=function getFirstName() {
         return firstName;
 
     }
@@ -39,6 +39,13 @@ function Employee(obj) {
         return salary;
 
     }
+    this.setSalary=function setSalary(newSalary) {
+        if (typeof newSalary!=='number') {
+            return this;
+        }
+        salary=newSalary;
+        return this;
+    }
 
 }
 Employee.prototype={};
@@ -47,29 +54,16 @@ Employee.prototype.getAnnualSalary=function getAnnualSalary() {
     return annualSalary;
 }
 Employee.prototype.raiseSalary=function raiseSalary(porcentaje) {
-    var raise=this.getSalary()*porcentaje;
-
-    return this.getSalary()+raise;;
+    var raise=this.getSalary()+this.getSalary()*porcentaje/100;
+    this.setSalary(raise);
+    return this.getSalary();
 
 }
 Employee.prototype.toString=function toString() {
-    var empleado="Empleado["+this.getId()+", name="+this.getFirtsName()+" "+this.getLastName()+", salary="+this.getSalary()+"]";
+    var empleado="Employee[id="+this.getID()+", name="+this.getFirstName()+" "+this.getLastName()+", salary="+this.getSalary()+"]";
     return empleado;
 }
 var erik=new Employee({id:2323,firstName:"Erik",lastName:"Rodríguez",salary:13000})
-console.log(erik.getId());
-erik.setId(2323-0)
-console.log(erik.getId());
-console.log(erik.getFirtsName());
-erik.setFirtsName("Erik Fernando")
-console.log(erik.getFirtsName());
-console.log(erik.getLastName());
-erik.setLastName("Rodriguez Duran")
-console.log(erik.getLastName());
-console.log(erik.getSalary());
-console.log(erik.getAnnualSalary());
-console.log(erik.raiseSalary(15));
-console.log(erik.toString());
+
 
 module.exports = Employee;
-

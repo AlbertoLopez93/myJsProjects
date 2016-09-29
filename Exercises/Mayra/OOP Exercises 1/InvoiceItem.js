@@ -1,14 +1,17 @@
 function InvoiceItem(obj) {
-    var id=obj.id,desc=obj.dec,qty=obj.qty,unitPrice=obj.unitPrice;
-    this.setId=function setId(newId) {
+    var id=obj.id,desc=obj.desc,qty=obj.qty,unitPrice=obj.unitPrice,salary=obj.salary;
+    this.setID=function setID(newId) {
         id=newId;
         return this;
     }
-    this.getId=function getId() {
+    this.getID=function getID() {
         return id;
 
     }
     this.setDesc=function setDesc(newDesc) {
+        if (typeof newDesc!=='string') {
+            return this;
+        }
         desc=newDesc;
         return this;
     }
@@ -24,6 +27,14 @@ function InvoiceItem(obj) {
         return qty;
 
     }
+    this.setSalary=function setSalary(newSalary) {
+        salary=newSalary;
+        return this;
+    }
+    this.getSalary=function getSalary() {
+        return salary;
+
+    }
     this.setUnitPrice=function setUnitPrice(newUnitPrice) {
         unitPrice=newUnitPrice;
         return this;
@@ -35,10 +46,11 @@ function InvoiceItem(obj) {
 }
 InvoiceItem.prototype={};
 InvoiceItem.prototype.getTotal=function getTotal() {
-    var this.setSalary(this.getSalary()*this.getUnitPrice())
+    var total=this.getQty()*this.getUnitPrice();
     return total;
+    }
 InvoiceItem.prototype.toString=function toString() {
-    var pattern="InvoiceItem["+this.getId()+", desc="+this.getDesc()+" ,qty"+this.getQty()+", unitPrice="+this.getUnitPrice()+"]";
+    var pattern="InvoiceItem[id="+this.getID()+", desc="+this.getDesc()+", qty="+this.getQty()+", unitPrice="+this.getUnitPrice()+"]";
     return pattern;
 }
 

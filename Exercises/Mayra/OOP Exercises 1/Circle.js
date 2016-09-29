@@ -1,10 +1,13 @@
-
+"use strict";
 function Circle(obj) {
     var radius=obj.radius,color=obj.color;
     this.getRadius=function getRadius() {
         return radius;
     }
     this.setRadius=function setRadius(newRadius) {
+        if (typeof newRadius!=='number') {
+            return this;
+        }
         radius=newRadius;
         return this;
     }
@@ -41,4 +44,3 @@ circulo.setColor("magenta");
 console.log(circulo.getColor());
 
 module.exports = Circle;
-
