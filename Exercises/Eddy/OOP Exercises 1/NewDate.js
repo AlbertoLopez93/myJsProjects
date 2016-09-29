@@ -86,3 +86,5 @@ console.log (newDate.getDay ());
 console.log (newDate.getMonth ());
 console.log (newDate.getYear ());
 console.log (newDate.toString ());
+
+module.exports = NewDate;

@@ -73,3 +73,5 @@ console.log (inve.setUnitPrice(10));
 console.log (inve.getUnitPrice ());
 console.log (inve.getTotal ());
 console.log (inve.toString());
+
+module.exports = InvoiceItem;

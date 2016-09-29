@@ -58,3 +58,5 @@ console.log (rectangle1.getWidth ());
 console.log (rectangle1.getArea ());
 console.log (rectangle1.getPerimeter ());
 console.log (rectangle1.toString ());
+
+module.exports = Rectangle;

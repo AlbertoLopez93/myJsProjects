@@ -58,3 +58,5 @@ circle1.setColor ('red');
 console.log (circle1.getArea ());
 console.log (circle1.getColor ());
 console.log (circle1.getCircumference ());
+
+module.exports = Circle;

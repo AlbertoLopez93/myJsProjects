@@ -97,4 +97,4 @@ console.log (client2.getBalance () + ' client2');
 
 
 
-
+module.exports = Account;

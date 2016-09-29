@@ -78,3 +78,5 @@ console.log (employee1.getAnnualSalary ());
 console.log (employee1.raiseSalary (10));
 console.log (employee1.getSalary ());
 console.log (employee1.toString ());
+
+module.exports = Employee;
