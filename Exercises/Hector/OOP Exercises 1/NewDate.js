@@ -27,6 +27,12 @@ NewDate.prototype.setDate = function(_day, _month, _year){
 NewDate.prototype.toString = function(){
     var day = this.getDay().toString();
     month = this.getMonth();
+    if (day < 10 && month < 10 ) {
+        return "0" + day + "/0" + month + "/" + this.getYear();
+    }
+    // if (month < 10) {
+    //     return day + "/0" + month + "/" + this.getYear();
+    // }
     return day + "/" + month + "/" + this.getYear();
 }//:string returns a string that will follow
 //the pattern: “dd/mm/yyyy”,

@@ -22,6 +22,9 @@ function Employee(data) {
         return salary = (this.getSalary() + raise);
     }
 }
+Employee.prototype.getName = function(){
+    return this.getFirstName() + " " + this.getLastName();
+}
 
 Employee.prototype.getAnnualSalary = function(){
     return this.getSalary() * 12;

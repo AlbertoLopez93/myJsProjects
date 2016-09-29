@@ -8,10 +8,18 @@ function Circle(data){
         return color;
     };
     this.setRadius = function(newRadius) {
-        return radius = newRadius;
+        if(typeof newRadius !== "number"){
+            return radius;
+        } else {
+            return radius = newRadius;
+        }
     }
     this.setColor = function(newColor){
-        return color = newColor;
+        if(typeof newColor !== "string"){
+            return color;
+        } else {
+            return color = newColor;
+        }
     }
 }
 
@@ -19,18 +27,18 @@ Circle.prototype.getArea = function(){
     var radiusPow = Math.pow(this.getRadius(), 2);
     return Math.PI * radiusPow;
 }
-Circle.prototype.getCircunference = function() {
+Circle.prototype.getCircumference = function() {
     var radius = this.getRadius() * 2;
     return Math.PI * radius;
 }
 
-var circulo = new Circle({radius:3, color:"Green"});
-console.log(circulo.getArea());
-circulo.setRadius(10);
-console.log(circulo.getColor());
-console.log(circulo.getArea());
-circulo.setColor("Red");
-console.log(circulo.getColor());
-console.log(circulo.getCircunference());
+// var circulo = new Circle({radius:3, color:"Green"});
+// console.log(circulo.getArea());
+// circulo.setRadius(10);
+// console.log(circulo.getColor());
+// console.log(circulo.getArea());
+// circulo.setColor("Red");
+// console.log(circulo.getColor());
+// console.log(circulo.getCircumference());
 
 module.exports = Circle;
