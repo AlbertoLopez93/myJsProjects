@@ -70,3 +70,6 @@ console.log(erik.getSalary());
 console.log(erik.getAnnualSalary());
 console.log(erik.raiseSalary(15));
 console.log(erik.toString());
+
+module.exports = Employee;
+

@@ -39,3 +39,6 @@ console.log(circulo.getRadius());
 console.log(circulo.getColor());
 circulo.setColor("magenta");
 console.log(circulo.getColor());
+
+module.exports = Circle;
+

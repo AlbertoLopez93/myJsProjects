@@ -41,3 +41,5 @@ InvoiceItem.prototype.toString=function toString() {
     var pattern="InvoiceItem["+this.getId()+", desc="+this.getDesc()+" ,qty"+this.getQty()+", unitPrice="+this.getUnitPrice()+"]";
     return pattern;
 }
+
+module.exports = InvoiceItem;
