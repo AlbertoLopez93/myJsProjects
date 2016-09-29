@@ -34,3 +34,5 @@ item.setUnitPrice(50);
 console.log(item.getUnitPrice());
 console.log(item.toString());
 console.log(item.getTotal());
+
+module.exports = InvoiceItem;

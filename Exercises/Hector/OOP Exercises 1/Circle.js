@@ -32,3 +32,5 @@ console.log(circulo.getArea());
 circulo.setColor("Red");
 console.log(circulo.getColor());
 console.log(circulo.getCircunference());
+
+module.exports = Circle;

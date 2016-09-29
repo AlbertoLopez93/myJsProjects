@@ -35,3 +35,5 @@ rectangle.setWidth(30);
 console.log(rectangle.getArea());
 console.log(rectangle.getPerimeter());
 console.log(rectangle.toString());
+
+module.exports = Rectangle;

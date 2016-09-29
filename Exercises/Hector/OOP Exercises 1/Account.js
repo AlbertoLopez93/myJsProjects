@@ -47,3 +47,5 @@ console.log(account2.toString());
 console.log("\n");
 console.log(account1.getBalance());
 console.log(account2.getBalance());
+
+module.exports = Account;

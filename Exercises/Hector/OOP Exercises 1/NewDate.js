@@ -37,3 +37,5 @@ var date = new NewDate({day:28,month:9, year:2016});
 console.log(date.toString());
 date.setDate(10,10,1993);
 console.log(date.toString());
+
+module.exports = NewDate;
