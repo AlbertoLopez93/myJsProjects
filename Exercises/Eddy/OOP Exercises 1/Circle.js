@@ -30,13 +30,17 @@ function Circle (data) {
 		return radius;
 	};
 	this.setRadius = function setRadius (newRadius) {
-		return radius = newRadius;
+		if (typeof newRadius === 'number') {
+			return radius = newRadius;
+		}
 	};
 	this.getColor = function getColor () {
 		return color;
 	};
 	this.setColor = function setColor (newColor) {
-		return color = newColor
+		if (typeof newColor === 'string') {
+			return color = newColor
+		}
 	};
 
 }

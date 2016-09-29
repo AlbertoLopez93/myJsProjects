@@ -42,7 +42,7 @@ Rectangle.prototype.getPerimeter = function getPerimeter () {
 };
 
 Rectangle.prototype.toString = function toString () {
-	return 'Rectangle[length=' + this.getLength () + ',width=' + this.getWidth () + ']'
+	return 'Rectangle[length=' + this.getLength () + ', width=' + this.getWidth () + ']'
 };
 
 var rectangle1 = new Rectangle (ren);
