@@ -1,7 +1,7 @@
 function InvoiceItem(obj) {
     var id=obj.id,desc=obj.dec,qty=obj.qty,unitPrice=obj.unitPrice;
     this.setId=function setId(newId) {
-        newId=id;
+        id=newId;
         return this;
     }
     this.getId=function getId() {
@@ -9,7 +9,7 @@ function InvoiceItem(obj) {
 
     }
     this.setDesc=function setDesc(newDesc) {
-        newDesc=desc;
+        desc=newDesc;
         return this;
     }
     this.getDesc=function getDesc() {
@@ -17,7 +17,7 @@ function InvoiceItem(obj) {
 
     }
     this.setQty=function setQty(newQty) {
-        newQty=qty;
+        qty=newQty;
         return this;
     }
     this.getQty=function getQty() {
@@ -25,7 +25,7 @@ function InvoiceItem(obj) {
 
     }
     this.setUnitPrice=function setUnitPrice(newUnitPrice) {
-        newUnitPrice=unitPrice;
+        unitPrice=newUnitPrice;
         return this;
     }
     this.getUnitPrice=function getUnitPrice() {
@@ -35,7 +35,7 @@ function InvoiceItem(obj) {
 }
 InvoiceItem.prototype={};
 InvoiceItem.prototype.getTotal=function getTotal() {
-    var total=this.getSalary()*this.getUnitPrice();
+    var this.setSalary(this.getSalary()*this.getUnitPrice())
     return total;
 InvoiceItem.prototype.toString=function toString() {
     var pattern="InvoiceItem["+this.getId()+", desc="+this.getDesc()+" ,qty"+this.getQty()+", unitPrice="+this.getUnitPrice()+"]";
