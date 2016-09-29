@@ -51,3 +51,5 @@ var account2 = new Account({
 	name: "yours",
 	balance: 1000
 });
+
+module.exports = Account;

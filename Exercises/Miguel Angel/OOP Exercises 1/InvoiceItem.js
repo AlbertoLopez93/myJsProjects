@@ -37,3 +37,5 @@ var invItem = new InvoiceItem({
 	qty: 10,
 	unitPrice: "10"
 });
+
+module.exports = InvoiceItem;
