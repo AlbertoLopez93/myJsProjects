@@ -34,3 +34,5 @@ Rectangle.prototype.toString = function toString(){
 	var result = "Rectangle[length=" + this.getLength() + ", width=" + this.getWidth() +"]";
 	return result;
 }
+
+module.exports = Rectangle;

@@ -50,3 +50,5 @@ var newDate = new NewDate ({
 	month: 8,
 	year: 1992
 });
+
+module.exports = NewDate;

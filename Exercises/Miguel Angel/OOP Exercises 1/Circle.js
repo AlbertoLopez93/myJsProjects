@@ -30,3 +30,4 @@ Circle.prototype.getCircumference = function getCircumference(){
 	return result;
 }
 
+module.exports = Circle;
