@@ -45,10 +45,5 @@ NewDate.prototype.toString = function toString(){
 	return result;
 };
 
-var newDate = new NewDate ({
-	day: 9,
-	month: 8,
-	year: 1992
-});
 
 module.exports = NewDate;

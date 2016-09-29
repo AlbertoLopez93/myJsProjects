@@ -31,11 +31,4 @@ InvoiceItem.prototype.toString = function toString(){
 	return result;
 };
 
-var invItem = new InvoiceItem({
-	id: 0,
-	desc: "holasdasd",
-	qty: 10,
-	unitPrice: "10"
-});
-
 module.exports = InvoiceItem;

@@ -9,10 +9,14 @@ function Circle (circle){
 		return color;
 	};
 	this.setRadius = function setRadius(newRadius){
-		radius = newRadius;
+		if(newRadius instanceof Number || typeof newRadius === 'number'){
+			radius = newRadius;
+		}
 	};
 	this.setColor = function setColor(newColor){
-		color = newColor;
+		if(newColor instanceof String || typeof newColor === 'string'){
+			color = newColor;
+		}
 	};
 }
 

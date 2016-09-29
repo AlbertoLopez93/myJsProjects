@@ -40,16 +40,4 @@ Account.prototype.toString = function toString(){
 	return result;
 };
 
-var account = new Account({
-	id: 0,
-	name: "mine",
-	balance: 11000
-});
-
-var account2 = new Account({
-	id: 1,
-	name: "yours",
-	balance: 1000
-});
-
 module.exports = Account;

@@ -34,20 +34,5 @@ Employee.prototype.toString = function toString(){
 	return result;
 }
 
-var emp = {
- id: 123,
- firstName: 'string',
- lastName: 'stringson',
- salary: 10000
-};
-var employee1 = new Employee(emp);
-console.log(employee1.getID());
-console.log(employee1.getFirstName());
-console.log(employee1.getLastName());
-console.log(employee1.getName());
-console.log(employee1.getSalary());
-console.log(employee1.getAnnualSalary());
-console.log(employee1.raiseSalary(10));
-console.log(employee1.getSalary());
 
 module.exports = Employee;
