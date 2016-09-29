@@ -28,7 +28,7 @@
             if (assert.Number(amount)) {
                 balance += amount;
             }
-            return this.getBalance();
+            return balance;
         };
 
         // debit(amount:int):int this method will check the amount you wanna use is less than the balance you have in the account.
@@ -44,7 +44,7 @@
                     console.log("Amount exceeded balance");
                 }
             }
-            return this.getBalance();
+            return balance;
         };
     }
 
