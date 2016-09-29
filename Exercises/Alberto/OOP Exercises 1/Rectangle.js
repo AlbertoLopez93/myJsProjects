@@ -32,3 +32,5 @@ Rectangle.prototype.toString = function() {
 console.log(figure.getArea());
 console.log(figure.getPerimeter());
 console.log(figure.toString());*/
+
+module.exports = Rectangle;

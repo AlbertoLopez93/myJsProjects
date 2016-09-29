@@ -39,3 +39,5 @@ console.log(user.credit(40));
 console.log(user.debit(520));
 console.log(user.debit(520));
 console.log(user.toString());
+
+module.exports = Account;

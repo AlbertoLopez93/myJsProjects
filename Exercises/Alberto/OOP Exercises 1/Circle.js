@@ -32,3 +32,5 @@ any.setRadius(1);
 console.log(any.getRadius());
 console.log(any.getArea());
 console.log(any.getCircumference());*/
+
+module.exports = Circle;

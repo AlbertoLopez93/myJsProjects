@@ -34,3 +34,5 @@ InvoiceItem.prototype.toString = function() {
 var product = new InvoiceItem({id:'xz3', desc:'chips', qty:3, unitPrice:9.5});
 console.log(product.getTotal());
 console.log(product.toString());
+
+module.exports = InvoiceItem;
