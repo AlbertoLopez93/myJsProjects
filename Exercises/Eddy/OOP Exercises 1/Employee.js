@@ -52,9 +52,6 @@ function Employee (data) {
 		return salary;
 	};
 
-	this.toString = function toString () {
-		return 'Employee[id=' + this.getID () + ', name=' + this.getName () + ', salary=' + this.getSalary () + ']'
-	}
 }
 
 Employee.prototype.getName = function getName () {
@@ -80,4 +77,4 @@ console.log (employee1.getSalary ());
 console.log (employee1.getAnnualSalary ());
 console.log (employee1.raiseSalary (10));
 console.log (employee1.getSalary ());
-console.log (employee1.toString());
+console.log (employee1.toString ());

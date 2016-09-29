@@ -44,7 +44,7 @@ function Account (data) {
 		return name;
 	};
 
-	this.getBalane = function getBalance () {
+	this.getBalance = function getBalance () {
 		return balance;
 	};
 
@@ -54,7 +54,7 @@ function Account (data) {
 
 	this.debit = function debit (amount) {
 
-		if (this.getBalane () < amount) {
+		if (this.getBalance () < amount) {
 			console.log ('Amount exceeded balance');
 			return balance;
 
@@ -64,32 +64,36 @@ function Account (data) {
 	};
 
 	this.transferTo = function transferTo (account, amount) {
-		this.debit(amount);
-		account.credit(amount);
-		return this.getBalane();
-	};
+		this.debit (amount);
+		if (amount > this.getBalance ()) {
 
+		} else {
+			account.credit (amount);
+		}
+
+		return this.getBalance ();
+	};
 
 }
 
 Account.prototype.toString = function toString () {
-	return 'Account[id=' + this.getID () + ', name=' + this.getName () + ', balance=' + this.getBalane () + ']'
+	return 'Account[id=' + this.getID () + ', name=' + this.getName () + ', balance=' + this.getBalance () + ']'
 };
 
 var client = new Account (acc);
 console.log (client.getID ());
 console.log (client.getName ());
-console.log (client.getBalane ());
+console.log (client.getBalance ());
 console.log (client.credit (1000));
-console.log (client.getBalane ());
+console.log (client.getBalance ());
 console.log (client.debit (1000));
 console.log (client.toString ());
 var client2 = new Account (acc2);
-console.log (client2.getBalane ()+' client2');
-console.log (client.getBalane () +' client1');
-console.log (client.transferTo (client2, 1000));
-console.log (client.getBalane () +' client1');
-console.log (client2.getBalane ()+' client2');
+console.log (client2.getBalance () + ' client2');
+console.log (client.getBalance () + ' client1');
+console.log (client.transferTo (client2, 10000));
+console.log (client.getBalance () + ' client1');
+console.log (client2.getBalance () + ' client2');
 
 
 

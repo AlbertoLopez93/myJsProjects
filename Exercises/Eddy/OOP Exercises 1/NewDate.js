@@ -68,7 +68,7 @@ NewDate.prototype.toString = function toSring () {
 		month = this.getMonth ();
 	}
 
-	return '' + day + '/' + month + '/' + this.getYear ();
+	return day + '/' + month + '/' + this.getYear ();
 };
 
 var newDate = new NewDate (dat);
