@@ -27,25 +27,25 @@ function Account(data) {
     }
     return balance;
   }
-  this.transferTo = function(another,amount) {
-    if(typeof another!='object'||typeof amount!='number') {
-      console.log("Internal Error");
-      return ;
-    }
-    if(amount<=balance) {
-      balance -= amount;
-      another.credit(amount);
-    }
-    else {
-      console.log("Amount exceeded balance");
-    }
-    return balance;
-  }
 }
 
 Account.prototype ={};
 Account.prototype.toString = function() {
   return 'Account[id='+this.getID()+', name='+this.getName()+', balance='+this.getBalance()+']';
+}
+Account.prototype.transferTo = function(another,amount) {
+  if(typeof another!='object'||typeof amount!='number') {
+    console.log("Internal Error");
+    return ;
+  }
+  if(amount<=this.debit(0)) {
+    this.debit(amount);
+    another.credit(amount);
+  }
+  else {
+    console.log("Amount exceeded balance");
+  }
+  return this.debit(0);
 }
 
 var user = new Account({id:'',name:'John',balance:870});
