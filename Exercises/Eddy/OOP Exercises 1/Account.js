@@ -63,18 +63,18 @@ function Account (data) {
 		}
 	};
 
-	this.transferTo = function transferTo (account, amount) {
-		this.debit (amount);
-		if (amount > this.getBalance ()) {
-
-		} else {
-			account.credit (amount);
-		}
-
-		return this.getBalance ();
-	};
-
 }
+
+Account.prototype.transferTo = function transferTo (account, amount) {
+
+	if (amount > this.getBalance ()) {
+
+	} else {
+		this.debit (amount);
+		account.credit (amount);
+	}
+	return this.getBalance ();
+};
 
 Account.prototype.toString = function toString () {
 	return 'Account[id=' + this.getID () + ', name=' + this.getName () + ', balance=' + this.getBalance () + ']'
@@ -94,7 +94,5 @@ console.log (client.getBalance () + ' client1');
 console.log (client.transferTo (client2, 10000));
 console.log (client.getBalance () + ' client1');
 console.log (client2.getBalance () + ' client2');
-
-
 
 module.exports = Account;
