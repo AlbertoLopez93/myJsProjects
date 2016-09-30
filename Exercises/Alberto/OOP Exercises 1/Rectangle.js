@@ -4,10 +4,14 @@ function Rectangle(obj) {
   var length = obj.length;
   var width = obj.width;
   this.setLength = function(newLength) {
-    length=newLength;
+    if(typeof newLength=='number') {
+      length=newLength;
+    }
   }
   this.setWidth = function(newWidth) {
-    width=newWidth;
+    if(typeof newWidth=='number') {
+      width=newWidth;
+    }
   }
   this.getLength = function() {
     return length;
@@ -32,3 +36,5 @@ Rectangle.prototype.toString = function() {
 console.log(figure.getArea());
 console.log(figure.getPerimeter());
 console.log(figure.toString());*/
+
+module.exports = Rectangle;

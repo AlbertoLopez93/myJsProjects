@@ -40,3 +40,5 @@ console.log(worker.getName());
 console.log(worker.raiseSalary(10));
 console.log(worker.getSalary());
 console.log(worker.toString());*/
+
+module.exports = Employee;

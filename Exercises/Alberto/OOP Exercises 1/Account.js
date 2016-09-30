@@ -27,6 +27,20 @@ function Account(data) {
     }
     return balance;
   }
+  this.transferTo = function(another,amount) {
+    if(typeof another!='object'||typeof amount!='number') {
+      console.log("Internal Error");
+      return ;
+    }
+    if(amount<=balance) {
+      balance -= amount;
+      another.credit(amount);
+    }
+    else {
+      console.log("Amount exceeded balance");
+    }
+    return balance;
+  }
 }
 
 Account.prototype ={};
@@ -34,8 +48,14 @@ Account.prototype.toString = function() {
   return 'Account[id='+this.getID()+', name='+this.getName()+', balance='+this.getBalance()+']';
 }
 
-var user = new Account({id:'',name:'Happy Bank',balance:870});
+var user = new Account({id:'',name:'John',balance:870});
+var cobrar = new Account({id:'',name:'Peter',balance:870});
 console.log(user.credit(40));
 console.log(user.debit(520));
 console.log(user.debit(520));
 console.log(user.toString());
+console.log(user.transferTo(cobrar,1560));
+console.log(user.credit(0));
+console.log(cobrar.credit(0));
+
+module.exports = Account;

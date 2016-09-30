@@ -7,15 +7,19 @@ function Circle(obj) {
     return Math.PI*radius*radius;
   }
   this.setRadius = function setRadius(newRad) {
-    radius=newRad;
+    if(typeof newRad=='number') {
+      radius=newRad;
+    }
   }
-  this.getRadius = function setRadius() {
+  this.getRadius = function getRadius() {
     return radius;
   }
   this.setColor = function setColor(newColor) {
-    color=newColor;
+    if(typeof newColor=='string') {
+      color=newColor;
+    }
   }
-  this.getColor = function setColor() {
+  this.getColor = function getColor() {
     return color;
   }
 }
@@ -32,3 +36,5 @@ any.setRadius(1);
 console.log(any.getRadius());
 console.log(any.getArea());
 console.log(any.getCircumference());*/
+
+module.exports = Circle;
