@@ -2,7 +2,7 @@
 function Account(obj){
     var id=obj.id,name=obj.name,balance=obj.balance;
     this.setId=function setId(newId) {
-        newId=id;
+        id=newId;
         return this;
     }
     this.getID=function getID() {
