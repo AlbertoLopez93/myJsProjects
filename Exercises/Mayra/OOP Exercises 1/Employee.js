@@ -1,9 +1,6 @@
+"this strict";
 function Employee(obj) {
     var id=obj.id,firstName=obj.firstName,lastName=obj.lastName,salary=obj.salary;
-    this.setId=function setId(newId) {
-        newId=id;
-        return this;
-    }
     this.getID=function getID() {
         return id;
 
