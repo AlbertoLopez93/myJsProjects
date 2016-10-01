@@ -11,17 +11,6 @@ function NewBook(book) {
     return name;
   }
   this.getAuthors = function getAuthors() {
-    for(var i in authors) {
-      authors[i].name = authors[i].getName();
-      authors[i].email = authors[i].getEmail();
-      authors[i].gender = authors[i].getGender();
-    }
-    /*for(var i in authors) {
-      delete authors[i].getName;
-      delete authors[i].getEmail;
-      delete authors[i].setEmail;
-      delete authors[i].getGender;
-    }*/
     return authors;
   }
   this.getPrice = function getPrice() {
@@ -44,6 +33,11 @@ NewBook.prototype.toString = function() {
   stringy +='}, price='+this.getPrice()+', qty='+this.getQty()+']';
   return stringy;
 }
+NewBook.prototype.getAuthorNames = function() {
+  var theAuthors=this.getAuthors().map(function(g){return g.getName()});
+  return theAuthors.reduce(function(g,h){return g+', '+h});
+}
+
 module.exports = NewBook;
 
 var Manuel = new Author({name:'I Manuel Altamirano',email:'ima@domain',gender:'m'});
@@ -51,3 +45,4 @@ var Peter = new Author({name:'Peter Hunts',email:'peter@domain',gender:'m'});
 var Navidad = new NewBook({name:'Navidad en Montañas',Author:[Manuel,Peter],price:35.6});
 console.log(Navidad.getAuthors());
 console.log(Navidad.toString());
+console.log(Navidad.getAuthorNames());
