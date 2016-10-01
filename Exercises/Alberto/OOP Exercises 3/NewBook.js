@@ -34,8 +34,8 @@ NewBook.prototype.toString = function() {
   return stringy;
 }
 NewBook.prototype.getAuthorNames = function() {
-  var theAuthors=this.getAuthors().map(function(g){return g.getName()});
-  return theAuthors.reduce(function(g,h){return g+', '+h});
+  var authorNames=this.getAuthors().map(function(g){return g.getName()});
+  return authorNames.reduce(function(g,h){return g+', '+h});
 }
 
 module.exports = NewBook;
