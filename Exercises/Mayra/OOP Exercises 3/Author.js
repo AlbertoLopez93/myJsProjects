@@ -22,9 +22,10 @@ Author.prototype.toString = function toString() {
     return str;
 };
 var paulo=new Author({name:"Paulo",email:"email@email",gender:"m"})
-console.log(paulo.getName());
+/*console.log(paulo.getName());
 console.log(paulo.getEmail());
 paulo.setEmail("nuevomail@email")
 console.log(paulo.getEmail());
 console.log(paulo.getGender());
-console.log(paulo.toString());
+console.log(paulo.toString());*/
+module.exports = Author;
