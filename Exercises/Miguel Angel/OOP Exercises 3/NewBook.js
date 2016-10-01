@@ -27,7 +27,7 @@ function NewBook(data){
 
 NewBook.prototype.toString = function toString(){
 	let authorsString = this.getAuthors().map(function(current){
-			return current.toString();
+		return current.toString();
 	}).join(", ");
 	return "NewBook[name=" + this.getName() + ", authors={" + authorsString + "}, price=" + this.getPrice() + ", qty=" + this.getQty() + "]"
 };
