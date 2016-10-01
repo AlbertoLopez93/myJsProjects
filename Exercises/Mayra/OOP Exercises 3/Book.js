@@ -2,7 +2,6 @@
 let Author = require("./Author.js");
 function Book(obj) {
     let name=obj.name, author=obj.author,price=obj.price,qty;
-    console.log(qty);
     if (qty===undefined) {
         qty=0;
     }else{
@@ -36,7 +35,7 @@ Book.prototype.toString=function toString() {
     let str= "Book[name="+this.getName()+","+this.getAuthor().toString()+", price="+this.getPrice()+", qty="+this.getQty()+"]";
     return str;
 }
-var paulo=new Author({name:"Paulo",email:"email@email",gender:"m"})
+/*var paulo=new Author({name:"Paulo",email:"email@email",gender:"m"})
 var libro= new Book({name:"narnia",author:paulo,price:220.20,qty:3})
 console.log(libro.toString());
 console.log(libro.getName());
@@ -44,7 +43,8 @@ console.log(libro.getAuthor());
 console.log(libro.getPrice());
 libro.setPrice(100.33);
 console.log(libro.getPrice());
-libro.setPrice(2);
+libro.setQty(2);
 console.log(libro.getQty());
 var libro= new Book({name:"narnia",author:paulo,price:220.20})
-console.log(libro.toString());
+console.log(libro.toString());*/
+module.exports=Book;

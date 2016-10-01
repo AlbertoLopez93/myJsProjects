@@ -93,7 +93,7 @@ NewTime.prototype.previousSecond=function previousSecond() {
         return this;
     }
 
-}
+}/*
 var hora=new NewTime({hour:20,minute:59,second:59})
 hora.nextSecond();
 console.log(hora.toString());
@@ -112,3 +112,5 @@ console.log(hora.toString());
 var hora=new NewTime({hour:5,minute:5,second:0})
 hora.previousSecond();
 console.log(hora.toString());
+*/
+module.exports=NewTime;
