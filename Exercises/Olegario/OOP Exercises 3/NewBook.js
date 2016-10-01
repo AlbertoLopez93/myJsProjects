@@ -45,7 +45,7 @@ NewBook.prototype.toString = function () {
       autores += ", ";
     }
   }
-  return "Book[name=" + this.getName() + ", authors={" + autores + "}, price=" + this.getPrice() + ", qty="+ this.getQty() + "]";
+  return "NewBook[name=" + this.getName() + ", authors={" + autores + "}, price=" + this.getPrice() + ", qty="+ this.getQty() + "]";
 };
 
 NewBook.prototype.getAuthorNames = function () {
@@ -79,13 +79,13 @@ var x = {
   price : 235,
   qty : 34
 };
-/*
-var w = new NewBook(x);
 
+var w = new NewBook(x);
+/*
 //console.log(w.getName(), w.getAuthors(), w.getPrice(), w.getQty());
 console.log(w.setQty(10));
 console.log(w.getName(), w.getAuthors(), w.getPrice(), w.getQty());
 
-console.log(w.getAuthorNames());*/
+console.log(w.toString());*/
 
 module.exports = NewBook;
