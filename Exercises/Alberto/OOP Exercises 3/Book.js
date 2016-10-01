@@ -38,4 +38,4 @@ module.exports = Book;
 
 var Person = new Author({name:'I Manuel Altamirano',email:'ima@domain',gender:'m'});
 var Navidad = new Book({name:'Navidad en Montañas',Author:Person,price:35.6});
-console.log(Navidad.toString());
+//console.log(Navidad.toString());

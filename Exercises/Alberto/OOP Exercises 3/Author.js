@@ -25,6 +25,6 @@ Author.prototype.toString = function() {
 module.exports = Author;
 
 var Person = new Author({name:'Peter Hunts',email:'peter@domain',gender:'m'});
-console.log(Person.getName());
+/*console.log(Person.getName());
 Person.setEmail('peter@mx');
-console.log(Person.toString());
+console.log(Person.toString());*/
