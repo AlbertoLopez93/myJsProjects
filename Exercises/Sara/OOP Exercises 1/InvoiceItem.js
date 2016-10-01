@@ -1,3 +1,4 @@
+"use strict";
 function InvoiceItem(object){
   var id=object.id;
   var desc=object.desc;
@@ -20,25 +21,15 @@ function InvoiceItem(object){
   };
 }
 InvoiceItem.prototype.getTotal=function(){
-  qty=this.getQty();
-  unitPrice=this.getUnitPrice();
+  var qty=this.getQty();
+  var unitPrice=this.getUnitPrice();
   return qty*unitPrice;
 }
 InvoiceItem.prototype.toString=function(){
-  id=this.getID();
-  desc=this.getDesc();
-  qty=this.getQty();
-  unitPrice=this.getUnitPrice();
+  var id=this.getID();
+  var desc=this.getDesc();
+  var qty=this.getQty();
+  var unitPrice=this.getUnitPrice();
   return "InvoiceItem[id="+id+", desc="+desc+", qty="+qty+", unitPrice="+unitPrice+"]";
 }
-var c=new InvoiceItem({id:"idejemplo",desc:"lo que sea",qty:3,unitPrice:"3"});
-console.log(c.getID());
-console.log(c.getDesc());
-console.log(c.getQty());
-console.log(c.getUnitPrice());
-c.setUnitPrice("4");
-console.log(c.getUnitPrice());
-console.log(c.getTotal());
-console.log(c.toString());
-
 module.exports = InvoiceItem;

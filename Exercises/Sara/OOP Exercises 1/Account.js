@@ -1,9 +1,10 @@
+"use strict";
 function Account(object){
   var id=object.id;
   var name=object.name;
   var balance=object.balance;
   this.getID = function() {
-    return id;
+   return id;
   };
   this.getName = function() {
     return name;
@@ -11,20 +12,31 @@ function Account(object){
   this.getBalance = function() {
     return balance;
   };
+  this.credit=function credit(amount){
+    balance=balance+amount;
+    return balance;
+  }
+  this.debit=function debit(amount){
+    if(amount<=this.getBalance()){
+      balance=balance-amount;
+    }
+    else{
+      console.log("Amount exceeded balance");
+    }
+    return this.getBalance();
+  }
 }
-Account.prototype.credit=function(){
-  return ;
+Account.prototype.transferTo=function(another,amount){
+    if(amount<=this.getBalance()){
+      this.debit(amount);
+      another.credit(amount);
+    }
+    else{
+      console.log("Amount exceeded balance");
+    }
+    return this.getBalance();
+  }
+Account.prototype.toString=function(){
+  return "Account[id="+this.getID()+", name="+this.getName()+", balance="+this.getBalance()+"]";
 }
-Account.prototype.debit=function(){
-  return ;
-}
-InvoiceItem.prototype.transferTo=function(){
-  return ;
-}
-InvoiceItem.prototype.toString=function(){
-  return "Account[id=?, name=?, balance=?]";
-}
-var c=new Account({id:"38438743",name:"posi",balance:20});
-console.log(c.getID());
-
-module.exports = Account;
+module.exports=Account;

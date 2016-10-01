@@ -1,3 +1,4 @@
+"use strict";
 function Rectangle(object){
   var length=object.length;
   var width=object.width;
@@ -13,30 +14,26 @@ function Rectangle(object){
     return length;
   };
   this.setLength = function(newLength){
-    if(typeof newLength==='string'){
+    if(typeof newLength==='number'){
       length = newLength;
     }
   };
 }
 Rectangle.prototype={};
 Rectangle.prototype.getArea=function(){
-  width=this.getWidth();
-  length=this.getLength();
+  var width=this.getWidth();
+  var length=this.getLength();
   return width*length;
 }
 Rectangle.prototype.getPerimeter=function(){
-  width=this.getWidth();
-  length=this.getLength();
+  var width=this.getWidth();
+  var length=this.getLength();
   return width*2+length*2;
 }
 Rectangle.prototype.toString=function(){
-  width=this.getWidth();
-  length=this.getLength();
+  var width=this.getWidth();
+  var length=this.getLength();
   return "Rectangle[length="+length+", width="+width+"]";
 }
 var c=new Rectangle({width:5,length:6});
-console.log(c.getArea());
-console.log(c.getPerimeter());
-console.log(c.toString());
-
 module.exports = Rectangle;
