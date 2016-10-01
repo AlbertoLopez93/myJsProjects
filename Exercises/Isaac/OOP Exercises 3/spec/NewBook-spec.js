@@ -40,7 +40,7 @@
             book.setQty(1000);
             expect(book.getQty()).toBe(1000);
             console.log(book.toString());
-            expect(book.toString()).toBe("Book[name=JavaScript II, authors={Author[name=Isaac, email=iramirezc@live.com.mx, gender=m], Author[name=Nahum, email=nahum@live.com.mx, gender=m], Author[name=Pamela, email=pamela@gmail.com, gender=f]}, price=101, qty=1000]");
+            expect(book.toString()).toBe("NewBook[name=JavaScript II, authors={Author[name=Isaac, email=iramirezc@live.com.mx, gender=m], Author[name=Nahum, email=nahum@live.com.mx, gender=m], Author[name=Pamela, email=pamela@gmail.com, gender=f]}, price=101, qty=1000]");
 
         });
     });

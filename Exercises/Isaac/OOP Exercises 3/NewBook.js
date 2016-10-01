@@ -40,7 +40,7 @@
 
     //toString():string returns a string following the pattern: “Book[name=?, authors={Author[name=?, email=?, gender=?], …}, price=?, qty=?]”
     NewBook.prototype.toString = function toString() {
-        return "Book[name=" + this.getName() + ", authors={" + this.getAuthors().join(', ') + "}, price=" + this.getPrice() + ", qty=" + this.getQty() + "]";
+        return "NewBook[name=" + this.getName() + ", authors={" + this.getAuthors().join(', ') + "}, price=" + this.getPrice() + ", qty=" + this.getQty() + "]";
     };
 
     //getAuthorNames():string will return a string containing all the instance’s authors’ names following the pattern: “authorName1, authorName2, …”
