@@ -2,7 +2,7 @@
 
 let Author = require("../Author");
 
-xdescribe("Author class", () => {
+describe("Author class", () => {
   let author1Data = {
     name: "John",
     email : "john@gmail.com",

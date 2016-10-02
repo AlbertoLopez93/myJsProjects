@@ -2,7 +2,7 @@
 
 let NewTime = require("../NewTime");
 
-xdescribe("NewTime class", function () {
+describe("NewTime class", function () {
   let midnightData = {hour: 0, minute: 0, second: 0};
   let middayData = {hour:12, minute: 0, second: 0};
   let almostMidnightData = {hour: 23, minute: 59, second: 59};
