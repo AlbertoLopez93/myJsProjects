@@ -2,7 +2,7 @@
  * Created by jazielsama on 2/10/16.
  */
 /*
-* Create a class called MyRectangle. This class will used the MyPoint class, so don’t start this unless you have finished the exercise #1. The instances will have 2 private properties:
+ * Create a class called MyRectangle. This class will used the MyPoint class, so don’t start this unless you have finished the exercise #1. The instances will have 2 private properties:
  topLeft:MyPoint
  bottomRight:MyPoint
  The constructor of this class can receive 2 or 6 parameters.
@@ -14,3 +14,58 @@
  toString():int returns a string following the pattern: “MyRectangle[topLeft=(x1, y1), bottomRight=(x2, y2)]”.
 
  * */
+var MyPoint = require ('./MyPoint');
+
+function MyRectangle () {
+	var aLen = arguments.length;
+	if (aLen === 2 || aLen === 4) {
+		var topLeft, bottomRight;
+		if (aLen === 2) {
+			topLeft = arguments[0];
+			bottomRight = arguments [1];
+			if (!(topLeft instanceof MyPoint || bottomRight instanceof MyPoint )) {
+				return undefined;
+			}
+			if (topLeft.getX () === bottomRight.getX () || topLeft.getY () === bottomRight.getY ()) {
+				return undefined;
+			}
+		} else {
+			var x1 = arguments[0];
+			var y1 = arguments[1];
+			var x2 = arguments[2];
+			var y2 = arguments[3];
+			var triangle = [x1, x2, y1, y2];
+			if (triangle.every (function (element) {
+					return Number.isInteger (element);
+				}) && x1 !== x2 && y1 !== y2) {
+				topLeft = new MyPoint (x1, y1);
+				bottomRight = new MyPoint (x2, y2);
+			}
+		}
+	}
+
+	this.getTopLeft = (function getTopLeft () {
+		return topLeft;
+	}) ();
+	this.getBottomRight = (function getBottomRight () {
+		return bottomRight;
+	}) ();
+}
+
+MyRectangle.prototype.getArea = function getArea () {
+	var width = this.getTopLeft.getX () - this.getBottomRight.getX ();
+	var height = this.getTopLeft.getY () - this.getBottomRight.getY ();
+	return Math.abs (width * height);
+};
+
+MyRectangle.prototype.getPerimeter = function getPerimeter () {
+	var width = this.getTopLeft.getX () - this.getBottomRight.getX ();
+	var height = this.getTopLeft.getY () - this.getBottomRight.getY ();
+	return Math.abs (2 * width + 2 * height);
+};
+
+MyRectangle.prototype.toString = function toString () {
+	return this.constructor.name + '[topLeft=' + this.getTopLeft.toString () + ', bottomRight=' + this.getBottomRight.toString () + ']'
+};
+
+module.exports = MyRectangle;

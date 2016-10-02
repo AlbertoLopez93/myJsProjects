@@ -21,9 +21,7 @@ function MyTriangle () {
 
 	var aLen = arguments.length;
 	if (aLen === 3 || aLen === 6) {
-		var v1;
-		var v2;
-		var v3;
+		var v1,v2,v3;
 		if (aLen === 3) {
 			v1 = arguments[0];
 			v2 = arguments[1];
@@ -99,12 +97,4 @@ MyTriangle.prototype.getType = function getType () {
 	}
 };
 
-var pointOne = new MyPoint ();
-var pointTwo = new MyPoint (0, 4);
-var pointThree = new MyPoint (4, 3);
-
-var triangleOne = new MyTriangle (0, 0, 4, 0, 4, 3);
-console.log();
-console.log (triangleOne.toString ());
-console.log (triangleOne.getPerimeter ());
-console.log (triangleOne.getType ());
+module.exports = MyTriangle;

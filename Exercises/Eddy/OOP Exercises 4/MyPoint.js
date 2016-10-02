@@ -72,11 +72,11 @@ MyPoint.prototype.toString = function toString () {
 
 MyPoint.prototype.distance = function distance (x, y) {
 	if (x === undefined && y === undefined) {
-		return Math.sqrt (Math.pow (this.getX (), 2) + Math.pow (this.getY (), 2), 2).toPrecision (12);
+		return Math.sqrt (Math.pow (this.getX (), 2) + Math.pow (this.getY (), 2), 2);
 	} else if (Number.isInteger (x) && Number.isInteger (y)) {
-		return Math.sqrt (Math.pow (x - this.getX (), 2) + Math.pow (y - this.getY (), 2), 2).toPrecision (12);
+		return Math.sqrt (Math.pow (x - this.getX (), 2) + Math.pow (y - this.getY (), 2), 2);
 	} else if (x instanceof MyPoint) {
-		return Math.sqrt (Math.pow (x.getX () - this.getX (), 2) + Math.pow (x.getY () - this.getY (), 2), 2).toPrecision (12);
+		return Math.sqrt (Math.pow (x.getX () - this.getX (), 2) + Math.pow (x.getY () - this.getY (), 2), 2);
 	}
 };
 

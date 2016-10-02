@@ -33,8 +33,7 @@ var MyPoint = require ('./MyPoint');
 function MyCircle () {
 	var aLen = arguments.length;
 	if (aLen === 0 || aLen === 2 || aLen === 3) {
-		var center;
-		var radius;
+		var center,radius;
 		if (aLen === 0) {
 			center = new MyPoint ();
 			radius = 1;
