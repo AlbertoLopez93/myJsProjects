@@ -12,6 +12,7 @@ describe("Testing function MyPoint", function(){
 	it("Constructor should work", function(){
 		expect(newPoint1 instanceof MyPoint).toBe(true);
 		expect(newPoint2 instanceof MyPoint).toBe(true);
+		expect(newPoint3 instanceof MyPoint).toBe(true);
 	});
 	it("Get methods should work", function(){
 		expect(newPoint1.getX()).toBe(2);
