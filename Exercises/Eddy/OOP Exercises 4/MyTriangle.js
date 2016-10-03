@@ -85,8 +85,3 @@ function MyTriangle () {
 	//console.log('use only 3 MyPoint instances or only 6 integers ')
 }
 module.exports = MyTriangle;
-
-var tri = new  MyTriangle(-4,0,4,0,0,3);
-console.log(tri.toString());
-console.log(tri.getType());
-console.log(tri.getPerimeter());
