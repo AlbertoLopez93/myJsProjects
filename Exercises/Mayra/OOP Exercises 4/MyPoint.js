@@ -55,7 +55,7 @@ MyPoint.prototype.distance=function distance() {
     return distanceResult;
     }
     if (typeof argumentos[0]==="object") {
-        let x=obj.getX(),y=obj.getY();
+        let x=argumentos[0].getX(),y=argumentos[0].getY();
     let distanceResult=Math.sqrt((Math.pow((x-this.getX()),2)+Math.pow((y-this.getY()),2)));
     return distanceResult;
     }
