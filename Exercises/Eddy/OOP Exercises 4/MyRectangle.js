@@ -54,7 +54,7 @@ function MyRectangle () {
 	this.getPerimeter = function getPerimeter () {
 		var width =  topLeft.getX () - bottomRight.getX ();
 		var height = topLeft.getY () - bottomRight.getY ();
-		return Math.abs (2 * width + 2 * height);
+		return 2 * Math.abs(width) + 2 * Math.abs(height);
 	};
 
 	this.toString = function toString () {
