@@ -25,7 +25,7 @@ this.setSecond=function setSecond(newSecond) {
 }
 NewTime.prototype.setTime=function setTime(newHour,newMinutes,newSecond) {
     this.setHour(newHour);
-    this.setMinute(newMinute);
+    this.setMinute(newMinutes);
     this.setSecond(newSecond);
     return this;
 }

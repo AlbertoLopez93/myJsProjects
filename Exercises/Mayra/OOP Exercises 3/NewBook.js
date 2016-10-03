@@ -2,7 +2,7 @@
 let Author = require("./Author.js");
 function NewBook(obj) {
     let name=obj.name,authors=obj.authors,price=obj.price,qty;
-    if (qty===undefined) {
+    if (obj.qty===undefined) {
         qty=0;
     }else{
         qty=obj.qty
@@ -33,10 +33,10 @@ function NewBook(obj) {
 }
 
 NewBook.prototype.toString = function toString() {
-  return "Newbook[name=" + this.getName() + ", authors={" + this.getAuthors().reduce(function(previus,current) {return previus.toString() +  ", "  +
+  return "NewBook[name=" + this.getName() + ", authors={" + this.getAuthors().reduce(function(previus,current) {return previus.toString() +  ", "  +
   current.toString();}) + "}" + ", price=" + this.getPrice() + ", qty=" + this.getQty() + "]";
 }
-NewBook.prototype.getAuthorsNames = function getAuthorsNames() {
+NewBook.prototype.getAuthorNames = function getAuthorNames() {
     let ary=this.getAuthors(),aux="";
     for (var i = 0; i < ary.length; i++) {
         aux+=ary[i].getName();
@@ -59,5 +59,5 @@ libro.setQty(2);
 console.log(libro.getQty());
 var libro= new NewBook({name:"narnia",authors:[paulo,coelo,jhon],price:55})
 console.log(libro.toString());
-console.log(libro.getAuthorsNames());*/
+console.log(typeof libro.getAuthorsNames());*/
 module.exports = NewBook;

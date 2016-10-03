@@ -1,12 +1,8 @@
 "use strict";
 let Author = require("./Author.js");
 function Book(obj) {
-    let name=obj.name, author=obj.author,price=obj.price,qty;
-    if (qty===undefined) {
-        qty=0;
-    }else{
-        qty=obj.qty
-    }
+    let name=obj.name, author=obj.author,price=obj.price,qty=obj.qty||0;
+        
     this.getName=function getName() {
         return name;
     }
@@ -32,7 +28,7 @@ function Book(obj) {
 
 }
 Book.prototype.toString=function toString() {
-    let str= "Book[name="+this.getName()+","+this.getAuthor().toString()+", price="+this.getPrice()+", qty="+this.getQty()+"]";
+    let str= "Book[name="+this.getName()+", "+this.getAuthor().toString()+", price="+this.getPrice()+", qty="+this.getQty()+"]";
     return str;
 }
 /*var paulo=new Author({name:"Paulo",email:"email@email",gender:"m"})
