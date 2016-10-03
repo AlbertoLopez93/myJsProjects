@@ -24,8 +24,8 @@ var Author = require ('./Author');
 
 function Book (data) {
 	var name = data.name;
-	author = data.author;
-	var price = data.price;
+	var author = data.author; // forget to write VAR VAR VAR
+ 	var price = data.price;
 	var qty = data.qty?data.qty:0;
 
 	this.getName = function getName () {
