@@ -34,7 +34,7 @@ function MyTriangle() {
             return "equilateral";
         }
         else{
-            if((d1===d2 && d2!==d3) || (d2===d3 && d3!==d1) || (d3===d1 && d1!==d2)){
+            if((distance1===distance2 && distance2!==distance3) || (distance2===distance3 && distance3!==distance1) || (distance3===distance1 && distance1!==distance2)){
                 return "isosceles";
             }
             else{
