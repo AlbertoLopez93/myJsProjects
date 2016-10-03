@@ -41,6 +41,6 @@ NewBook.prototype.toString = function toString() {
 return "NewBook[name="+this.getName()+", authors={"
   +this.getAuthors().reduce(function(anterior,actual) {
   return anterior.toString()+", "+actual.toString();
-})+"}"+",price="+this.getPrice()+", qty="+this.getQty()+"]";
+})+"}"+", price="+this.getPrice()+", qty="+this.getQty()+"]";
 }
 module.exports=NewBook;
