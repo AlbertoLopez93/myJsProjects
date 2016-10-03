@@ -73,11 +73,11 @@ MyCircle.prototype.distance=function(another){
     var distance;
     return another.distance(this.getCenterX(),this.getCenterY());
 }
-
+/*
 var circulo=new MyCircle(1,2,3);
 var newCirculo=new MyPoint(2,3);
 circulo.setCenterXY(5,11);
 console.log(circulo.getArea());
 console.log(circulo.getCircumference());
-console.log(circulo.distance(newCirculo));
+console.log(circulo.distance(newCirculo));*/
 module.exports=Mycircle;
