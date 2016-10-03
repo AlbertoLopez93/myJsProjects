@@ -69,9 +69,4 @@ MyCircle.prototype.distance=function(another){
  return another.distance(this.getCenterX(),this.getCenterY());
 }
 var c=new MyCircle(0);
-
-console.log(c.getCenterX());
-//console.log(c.getCenterY());
-
-
 module.exports=MyCircle;
