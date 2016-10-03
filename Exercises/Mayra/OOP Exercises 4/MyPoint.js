@@ -59,9 +59,9 @@ MyPoint.prototype.distance=function distance() {
     let distanceResult=Math.sqrt((Math.pow((x-this.getX()),2)+Math.pow((y-this.getY()),2)));
     return distanceResult;
     }
-}
+}/*
 var prueba = new MyPoint(5,6);
-var obj= new MyPoint(1,1);
+var obj= new MyPoint(2,2);
 console.log(prueba.getX());
 console.log(prueba.getY());
 prueba.setX(1);
@@ -74,4 +74,5 @@ console.log(prueba.getXY());
 console.log(prueba.x);
 console.log(prueba.distance());
 console.log(prueba.distance(1,1));
-console.log(prueba.distance(obj));
+console.log(prueba.distance(obj));*/
+module.exports=MyPoint;
