@@ -44,17 +44,15 @@ NewTime.prototype.toString = function () {
 
 NewTime.prototype.nextSecond = function () {
   let fecha = new Date(2009, 7, 24, this.getHour(), this.getMinute(), this.getSecond()+1);
-  this.hour = fecha.getHours();
-  this.minute = fecha.getMinutes();
-  this.second = fecha.getSeconds();
-  return this;
+  this.setHour(fecha.getHours());
+  this.setMinute(fecha.getMinutes());
+  this.setSecond(fecha.getSeconds());
 }
 NewTime.prototype.previousSecond = function () {
   let fecha = new Date(2009, 7, 24, this.getHour(), this.getMinute(), this.getSecond()-1);
-  this.hour = fecha.getHours();
-  this.minute = fecha.getMinutes();
-  this.second = fecha.getSeconds();
-  return this;
+  this.setHour(fecha.getHours());
+  this.setMinute(fecha.getMinutes());
+  this.setSecond(fecha.getSeconds());
 }
 var x = {
   hour : 4,
@@ -62,6 +60,8 @@ var x = {
   second : 29
 };
 
+let midnightData = {hour: 0, minute: 0, second: 0};
+let midnight = new NewTime(midnightData);
 var w = new NewTime(x);
 /*
 console.log(w.getHour(), w.getMinute(), w.getSecond());
@@ -71,5 +71,7 @@ console.log(w.setTime(7,0,0));
 console.log(w.getHour(), w.getMinute(), w.getSecond());
 console.log(w.toString());
 console.log(w.previousSecond());*/
+midnight.nextSecond();
+console.log(midnight.getSecond());
 
 module.exports = NewTime;
