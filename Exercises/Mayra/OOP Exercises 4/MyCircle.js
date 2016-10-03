@@ -80,3 +80,4 @@ circulo.setCenterXY(5,11);
 console.log(circulo.getArea());
 console.log(circulo.getCircumference());
 console.log(circulo.distance(newCirculo));
+module.exports=Mycircle;
