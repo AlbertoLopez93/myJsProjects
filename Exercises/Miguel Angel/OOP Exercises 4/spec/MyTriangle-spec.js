@@ -39,7 +39,8 @@ describe("Testing function MyTriangle", function(){
 		expect(result3).toBe(13.569720777555155);
 	});
 	it("getType method should work", function(){
-		expect(newTriangle1.getType()).toBe("equilateral");
+		let newTriangle = new MyTriangle(0,0,0,0,0,0);
+		expect(newTriangle.getType()).toBe("equilateral");
 		expect(newTriangle2.getType()).toBe("isosceles");
 		expect(newTriangle3.getType()).toBe("scalene");
 	})
