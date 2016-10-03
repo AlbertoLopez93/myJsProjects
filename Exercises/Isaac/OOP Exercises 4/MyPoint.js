@@ -2,8 +2,8 @@
     'use strict';
 
     function MyPoint(pointX, pointY) {
-        var x = pointX || 0;
-        var y = pointY || 0;
+        let x = pointX || 0;
+        let y = pointY || 0;
 
         /**
          * Returns 'x' point.
