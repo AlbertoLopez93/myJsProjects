@@ -38,12 +38,9 @@ NewBook.prototype.getAuthorNames=function(){
   return autor;
 }
 NewBook.prototype.toString = function toString() {
-return "Newbook[name="+this.getName()+", authors={"
+return "NewBook[name="+this.getName()+", authors={"
   +this.getAuthors().reduce(function(anterior,actual) {
   return anterior.toString()+", "+actual.toString();
 })+"}"+",price="+this.getPrice()+", qty="+this.getQty()+"]";
 }
-var autor1=new Author({email:"saraarrobaalgo",name:"sara",gender:"f"});
-var autor2=new Author({email:"mayraarrobaalgo",name:"mayra",gender:"f"});
-var c=new NewBook({name:"shine on you",authors:[autor1,autor2],price:40,qty:2});
-console.log(c.getAuthorNames());
+module.exports=NewBook;

@@ -36,14 +36,4 @@ Book.prototype.toString=function(){
   var qty=this.getQty();
   return "Book[name="+name+", Author[name="+author.getName()+", email="+author.getEmail()+", gender="+author.getGender()+"], price="+price+", qty="+qty+"]";
 }
-var b=new Author({email:"saraarrobaalgo",name:"sara",gender:"m"});
-var c=new Book({name:"Alice in wonderland",author:b,price:80});
-console.log(c.getName());
-console.log(c.getAuthor());
-console.log(c.getPrice());
-console.log(c.getQty());
-c.setPrice(50);
-console.log(c.getPrice());
-c.setQty(6);
-console.log(c.getQty());
-console.log(c.toString());
+module.exports=Book;

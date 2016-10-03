@@ -91,8 +91,4 @@ NewTime.prototype.previousSecond=function (){
   }
   return this;
 }
-var c=new NewTime({hour:23,minute:0,second:0});
-c.previousSecond();
-console.log(c.toString());
-c.nextSecond();
-console.log(c.toString());
+module.exports=NewTime;
