@@ -44,28 +44,23 @@ function MyRectangle () {
 		}
 	}
 
-	this.getTopLeft = (function getTopLeft () {
-		return topLeft;
-	}) ();
-	this.getBottomRight = (function getBottomRight () {
-		return bottomRight;
-	}) ();
+
+	this.getArea = function getArea () {
+		var width = topLeft.getX () - bottomRight.getX ();
+		var height = topLeft.getY () - bottomRight.getY ();
+		return Math.abs (width * height);
+	};
+
+	this.getPerimeter = function getPerimeter () {
+		var width =  topLeft.getX () - bottomRight.getX ();
+		var height = topLeft.getY () - bottomRight.getY ();
+		return Math.abs (2 * width + 2 * height);
+	};
+
+	this.toString = function toString () {
+		return this.constructor.name + '[topLeft=' + topLeft.toString () + ', bottomRight=' + bottomRight.toString () + ']'
+	};
+
+
 }
-
-MyRectangle.prototype.getArea = function getArea () {
-	var width = this.getTopLeft.getX () - this.getBottomRight.getX ();
-	var height = this.getTopLeft.getY () - this.getBottomRight.getY ();
-	return Math.abs (width * height);
-};
-
-MyRectangle.prototype.getPerimeter = function getPerimeter () {
-	var width = this.getTopLeft.getX () - this.getBottomRight.getX ();
-	var height = this.getTopLeft.getY () - this.getBottomRight.getY ();
-	return Math.abs (2 * width + 2 * height);
-};
-
-MyRectangle.prototype.toString = function toString () {
-	return this.constructor.name + '[topLeft=' + this.getTopLeft.toString () + ', bottomRight=' + this.getBottomRight.toString () + ']'
-};
-
 module.exports = MyRectangle;

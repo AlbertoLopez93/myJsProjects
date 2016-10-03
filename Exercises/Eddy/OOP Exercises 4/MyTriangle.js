@@ -61,40 +61,32 @@ function MyTriangle () {
 				return undefined;
 			}
 		}
+		this.toString = function toString () {
+			return this.constructor.name + '[v1=' +v1.toString () + ', v2=' + v2.toString () + ', v3=' + v3.toString () + ']'
+		};
 
-		this.v1 = (function getV1 () {
-			return v1;
-		}) ();
-		this.v2 = (function getV2 () {
-			return v2;
-		}) ();
-		this.v3 = (function getV3 () {
-			return v3;
-		}) ();
+		this.getPerimeter = function getPerimeter () {
+			return parseFloat (v1.distance (v2)) + parseFloat (v2.distance (v3)) + parseFloat (v3.distance (v1));
+		};
+		this.getType = function getType () {
+			var v1v2 = v1.distance (v2);
+			var v2v3 = v2.distance (v3);
+			var v3v1 = v3.distance (v1);
+			if (v1v2 === v2v3 && v2v3 === v3v1 && v3v1 === v1v2) {
+				return "equilateral"
+			} else if (v1v2 !== v2v3 && v2v3 !== v3v1 && v3v1 !== v1v2) {
+				return "scalene"
+			} else {
+				return "isosceles"
+			}
+		};
 
 	}
 	//console.log('use only 3 MyPoint instances or only 6 integers ')
 }
-
-MyTriangle.prototype.toString = function toString () {
-	return this.constructor.name + '[v1=' + this.v1.toString () + ', v2=' + this.v2.toString () + ', v3=' + this.v3.toString () + ']'
-};
-
-MyTriangle.prototype.getPerimeter = function getPerimeter () {
-	return parseFloat (this.v1.distance (this.v2)) + parseFloat (this.v2.distance (this.v3)) + parseFloat (this.v3.distance (this.v1));
-};
-
-MyTriangle.prototype.getType = function getType () {
-	var v1v2 = parseFloat (this.v1.distance (this.v2));
-	var v2v3 = parseFloat (this.v2.distance (this.v3));
-	var v3v1 = parseFloat (this.v3.distance (this.v1));
-	if (v1v2 === v2v3 && v2v3 === v3v1 && v3v1 === v1v2) {
-		return "equilateral"
-	} else if (v1v2 !== v2v3 && v2v3 !== v3v1 && v3v1 !== v1v2) {
-		return "scalene"
-	} else {
-		return "equilateral"
-	}
-};
-
 module.exports = MyTriangle;
+
+var tri = new  MyTriangle(-4,0,4,0,0,3);
+console.log(tri.toString());
+console.log(tri.getType());
+console.log(tri.getPerimeter());

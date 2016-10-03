@@ -81,3 +81,5 @@ MyPoint.prototype.distance = function distance (x, y) {
 };
 
 module.exports = MyPoint;
+
+
