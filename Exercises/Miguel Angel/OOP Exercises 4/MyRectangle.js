@@ -11,8 +11,6 @@ function MyRectangle(){
 		var bottomRight = arguments[1];
 	}
 	let topRight = new MyPoint(bottomRight.getX(), topLeft.getY());
-	console.log(topRight.getX());
-	console.log(bottomRight.getX());
 	let height = bottomRight.distance(topRight);
 	let length = topLeft.distance(topRight);
 	this.getArea = function getArea(){
