@@ -28,7 +28,7 @@ function MyCircle(){
     center=newCenter;
   }
   this.getCenterX=function getCenterX(){
-  return this.getCenter().getX();
+    return this.getCenter();
   }
   this.getCenterY=function getCenterY(){
     return this.getCenter().getY();
@@ -68,3 +68,10 @@ MyCircle.prototype.distance=function(another){
  var distance;
  return another.distance(this.getCenterX(),this.getCenterY());
 }
+var c=new MyCircle(0);
+
+console.log(c.getCenterX());
+//console.log(c.getCenterY());
+
+
+module.exports=MyCircle;
