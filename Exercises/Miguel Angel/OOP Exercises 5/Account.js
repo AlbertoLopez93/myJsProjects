@@ -37,7 +37,7 @@ Account.prototype.withdraw = function withdraw(amount){
   if(amount < this.getBalance()){
     this.setBalance(this.getBalance() - amount);
   } else {
-    console.log("Amount exceeded balance");
+    console.log("Amount withdraw exceeds the current balance");
   }
   return this;
 };
