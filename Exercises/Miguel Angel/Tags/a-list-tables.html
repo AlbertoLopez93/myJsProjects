@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="author" content="Miguel Delgado">
+	<title>A-Tags-Tables-Inputs</title>
+</head>
+<body>
+	<h1>A-Tags-Tables-Inputs</h1>
+	<div id="anchor">
+		<h3>Examples: anchor <&it;a></h3>
+		<a href="http://www.facebook.com" target="_blank"> Visit Facebook </a><br>
+		<a href="http://www.google.com.mx" target="_self"> Visit Google </a><br>
+		<a href="tel: +523481058717"> Call me </a><br>
+		<a href="mailto: miguedelgado1324@gmail.com"> Send me an email </a><br>
+		<a href="#tables"> Link to tables examples </a><hr>
+	</div>
+	<div id="lists">
+		<h3>Examples: lists <&it;ul> and <&it;ol></h3>
+		<h4>Unordered list example: <&it;ul></h4>
+		<ul>
+			<li>Cats</li>
+			<li>Dogs</li>
+			<li>ElePHPant</li>
+			<li>Tux</li>
+		</ul>
+		<h4>Ordered list example: <&it;ol></h4>
+		<ol>
+			<li>This is the first element of the list</li>
+			<li>This is the second element of the list</li>
+			<li>This is the third element of the list</li>
+			<li>This is the fourth element of the list</li>
+		</ol><hr>
+	</div>
+	<div id="tables">
+		<h3>Examples: tables <&it;table></h3>
+		<h4>Simple table</h4>
+		<table cellpadding="5">
+			<thead>
+				<th>Cell 1 Head</th>
+				<th>Cell 2 Head</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Cell 1</td>
+					<td>Cell 2</td>
+				</tr>
+				<tr>
+					<td>Cell 3</td>
+					<td>Cell 4</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<th colspan="2">Cell foot</th>
+			</tfoot>
+		</table>
+		<h4>Table with border</h4>
+		<table border="1" cellpadding="5">
+			<thead>
+				<th>Cell 1 Head</th>
+				<th>Cell 2 Head</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Cell 1</td>
+					<td>Cell 2</td>
+				</tr>
+				<tr>
+					<td>Cell 3</td>
+					<td>Cell 4</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<th colspan="2">Cell foot</th>
+			</tfoot>
+		</table>
+		<h4>Table with rowspan and colspan 1</h4>
+		<table border="1" cellpadding="10" cellspacing="5">
+			<thead>
+				<th>Cell 1 Header</th>
+				<th>Cell 2 Header</th>
+				<th>Cell 3 Header</th>
+				<th>Cell 4 Header</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td rowspan="2" colspan="2">Cell 1 Body</td>
+					<td colspan="2">Cell 2 Body</td>
+				</tr>
+				<tr>
+					<td colspan="2">Cell 3 Body</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<th colspan="4">Cell foot</th>
+			</tfoot>
+		</table>
+		<h4>Table with rowspan and colspan 2</h4>
+		<table border="1" cellpadding="15" cellspacing="10">
+			<thead>
+				<th>Cell 1 Header</th>
+				<th>Cell 2 Header</th>
+				<th>Cell 3 Header</th>
+				<th>Cell 4 Header</th>
+				<th>Cell 5 Header</th>
+				<th>Cell 6 Header</th>
+				<th>Cell 7 Header</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td colspan="2">Cell 8 Body</td>
+					<td colspan="3">Cell 9 Body</td>
+					<td colspan="2">Cell 10 Body</td>
+				</tr>
+				<tr>
+					<td colspan="1">Cell 11 Body</td>
+					<td colspan="2">Cell 12 Body</td>
+					<td colspan="2">Cell 13 Body</td>
+					<td colspan="1">Cell 14 Body</td>
+					<td rowspan="2">Cell 15 Body</td>
+				</tr>
+				<tr>
+					<td colspan="2">Cell 16 Body</td>
+					<td colspan="1">Cell 17 Body</td>
+					<td colspan="1">Cell 18 Body</td>
+					<td colspan="2">Cell 19 Body</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<th colspan="7">Cell foot</th>
+			</tfoot>
+		</table>
+	</div><hr>
+	<div id="inputs">
+		<h3>Examples inputs</h3><hr>
+		<h4>Input type text</h4>
+		<input type="text" name="username">
+		<h4>Input type password</h4>
+		<input type="password" name="password">
+		<h4>Input type reset</h4>
+		<input type="reset" name="reset" value="Reset">
+		<h4>Input type submit</h4>
+		<input type="submit" name="submit" value="Submit">
+		<h4>Input type button</h4>
+		<input type="button" name="click" value="Click Me!">
+		<h4>Input type checkbox</h4>
+		<input type="checkbox" name="checkbox">
+		<h4>Input type file</h4>
+		<input type="file" name="file">
+		<h4>Input type radio</h4>
+		<input type="radio" name="radio">
+		<h4>Input type hidden</h4>
+		<input type="hidden" name="hidden">
+		<h4>Input type image</h4>
+		<input type="image" name="img" src="img/path" width="150" height="100">
+	</div><hr>
+</body>
+</html>
