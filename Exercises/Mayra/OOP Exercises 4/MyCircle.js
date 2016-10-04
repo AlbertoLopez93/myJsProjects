@@ -25,7 +25,7 @@ function MyCircle() {
     this.getCenter=function getCenter() {
         return center;
     }
-    this.setCenter=function setRadius(newCenter) {
+    this.setCenter=function setCenter(newCenter) {
         if (typeof newCenter==="object") {
             center=newCenter;
         }
@@ -53,23 +53,23 @@ MyCircle.prototype.getCenterXY=function(){
     ary[1]=this.getCenterY();
     return ary;
 }
-MyCircle.prototype.setCenterXY=function(newX,newY){
+MyCircle.prototype.setCenterXY=function setCenterXY(newX,newY){
     this.setCenterX(newX);
     this.setCenterY(newY);
 }
-MyCircle.prototype.toString=function(){
+MyCircle.prototype.toString=function toString(){
     let str="MyCircle[radius="+this.getRadius()+", center=("+this.getCenterX()+", "+this.getCenterY()+")]";
     return str;
 }
-MyCircle.prototype.getArea=function(){
+MyCircle.prototype.getArea=function getArea(){
     var result=Math.PI*(this.getRadius()*this.getRadius());
     return result;
 }
-MyCircle.prototype.getCircumference=function(){
+MyCircle.prototype.getCircumference=function getCircumference(){
     var result=2*Math.PI*this.getRadius();
     return result;
 }
-MyCircle.prototype.distance=function(another){
+MyCircle.prototype.distance=function distance(another){
     var distance;
     return another.distance(this.getCenterX(),this.getCenterY());
 }

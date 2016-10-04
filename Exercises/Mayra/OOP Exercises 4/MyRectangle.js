@@ -42,7 +42,7 @@ function MyRectangle() {
         let str="MyRectangle[topLeft=("+x1+","+ y1+"), bottomRight=("+x2+","+ y2+")]";
         return str;
     }
-}
+}/*
 var uno=new MyPoint(2,8);
 var dos=new MyPoint(8,3);
 var rectangulo=new MyRectangle(2,2,9,8);
@@ -52,5 +52,5 @@ console.log(rectangulo.toString());
 var rectangulo=new MyRectangle(uno,dos);
 console.log(rectangulo.getPerimeter());
 console.log(rectangulo.getArea());
-console.log(rectangulo.toString());
+console.log(rectangulo.toString());*/
 module.exports=MyRectangle;
