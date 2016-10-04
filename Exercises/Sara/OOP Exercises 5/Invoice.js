@@ -25,8 +25,4 @@ Invoice.prototype.getAmountAfterDiscount=function(){
   amount=amount-(amount*(this.getCustomer().getDiscount())/100);
   return amount;
 }
-var cliente=new Customer(34567,"Sara Wong",20);
-var c=new Invoice(121312313,cliente,200);
-console.log(c.getCustomerName());
-console.log(c.getAmountAfterDiscount());
-  module.exports=Invoice;
+module.exports=Invoice;

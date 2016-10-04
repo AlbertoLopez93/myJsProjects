@@ -19,12 +19,4 @@ Customer.prototype.toString=function(){
   id=this.getID();
   return name+"("+id+")";
 }
-var c=new Customer(34567,"Sara",20);
-// console.log(c.getID());
-// console.log(c.getName());
-// console.log(c.getDiscount());
-// console.log(c.toString());
-// console.log(c.id);
-// c.setDiscount(45);
-// console.log(c.getDiscount());
 module.exports=Customer;

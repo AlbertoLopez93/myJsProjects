@@ -31,11 +31,12 @@ Account.prototype.deposit=function(newAmount){
   return this;
 }
 Account.prototype.withdraw=function(newAmount){
-  this.setBalance(this.getBalance()-newAmount);
+  if(newAmount<=this.getBalance()){
+    this.setBalance(this.getBalance()-newAmount);
+  }
+  else{
+    console.log("Amount withdraw exceeds the current balance");
+  }
   return this;
 }
-var cliente=new NewCustomer(34567,"Sara WOng","f");
-var c=new Account(112233,cliente,2500);
-c.withdraw(250);
-console.log(c.getBalance());
 module.exports=Account;
