@@ -37,7 +37,7 @@ describe("Validating gets and sets. ", function() {
     expect(typeof Clock.getMinute).toBe('function');
   });
   it("getMinute works", function() {
-    expect(Clock.getHour()).toBe(0);
+    expect(Clock.getMinute()).toBe(0);
   });
   it("getHour works", function() {
     expect(Night.getMinute()).toBe(8);
