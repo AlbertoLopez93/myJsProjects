@@ -31,18 +31,12 @@ function MyDate (year, month, day) {
 				}
 			}
 			daysInMonths[1] = 28;
-		} else {
-
 		}
 		if (Number.isInteger (month) && month > 0 && month <= 12) {
 			fMonth = month;
-		} else {
-
 		}
 		if (Number.isInteger (day) && day > 0 && day <= daysInMonths[month - 1]) {
 			fDay = day;
-		} else {
-
 		}
 	}
 	Object.defineProperty (this, "getYear", {
@@ -89,5 +83,5 @@ var date = new MyDate (2000, 2, 28);
 console.log (date.getYear ());
 console.log (date.getMonth ());
 console.log (date.getDay ());
-console.log (date.isLeapYear (2000));
+console.log (date.isLeapYear (2001));
 console.log (date.isValidDate (2000, 2, 29));
