@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
     let MyPoint = require("./MyPoint");
 
@@ -8,16 +8,16 @@
         let v3;
 
         switch (arguments.length) {
-        case 3:
-            v1 = arguments[0];
-            v2 = arguments[1];
-            v3 = arguments[2];
-            break;
-        case 6:
-            v1 = new MyPoint(arguments[0], arguments[1]);
-            v2 = new MyPoint(arguments[2], arguments[3]);
-            v3 = new MyPoint(arguments[4], arguments[5]);
-            break;
+            case 3:
+                v1 = arguments[0];
+                v2 = arguments[1];
+                v3 = arguments[2];
+                break;
+            case 6:
+                v1 = new MyPoint(arguments[0], arguments[1]);
+                v2 = new MyPoint(arguments[2], arguments[3]);
+                v3 = new MyPoint(arguments[4], arguments[5]);
+                break;
         }
 
         // toString():string returns a string following the pattern: “MyTriangle[v1=(x1, y1), v2=(x2, y2), v3=(x3, y3)]”.
@@ -48,7 +48,7 @@
             let distances = getSidesDistances();
             if (distances[0] === distances[1] && distances[1] === distances[2]) {
                 return "equilateral";
-            } else if (distances[0] === distances[1] || distances[1] === distances[2]) {
+            } else if (distances[0] === distances[1] || distances[1] === distances[2] || distances[2] === distances[0]) {
                 return "isosceles";
             } else {
                 return "scalene";
