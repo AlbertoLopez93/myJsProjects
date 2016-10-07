@@ -166,11 +166,4 @@ Object.defineProperties(MyTime.prototype, {
   }
 });
 
-var time = new MyTime(22, 58, 58);
-for(var prop in time) {
-  console.log(prop);
-}
-
-
-
 module.exports = MyTime;
