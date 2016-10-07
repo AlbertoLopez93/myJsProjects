@@ -99,7 +99,7 @@ Object.defineProperty(MyTime.prototype,'nextSecond',
   },
   enumerable:true, configurable:true, writable:false});
 
-Object.defineProperty(MyTime.prototype,'prevHour',
+Object.defineProperty(MyTime.prototype,'previousHour',
   {value:function(){
     let hour= this.getHour();
     if(hour>0){this.setHour(hour-1);}
@@ -108,25 +108,25 @@ Object.defineProperty(MyTime.prototype,'prevHour',
   },
   enumerable:true, configurable:true, writable:false});
 
-Object.defineProperty(MyTime.prototype,'prevMinute',
+Object.defineProperty(MyTime.prototype,'previousMinute',
   {value:function(){
     let min= this.getMinute();
     if(min>0){this.setMinute(min-1);}
     else{
       this.setMinute(59);
-      this.prevHour();
+      this.previousHour();
     }
     return this;
   },
   enumerable:true, configurable:true, writable:false});
 
-Object.defineProperty(MyTime.prototype,'prevSecond',
+Object.defineProperty(MyTime.prototype,'previousSecond',
   {value:function(){
     let sec= this.getSecond();
     if(sec>0){this.setSecond(sec-1);}
     else{
       this.setSecond(59);
-      this.prevMinute();
+      this.previousMinute();
     }
     return this;
   },

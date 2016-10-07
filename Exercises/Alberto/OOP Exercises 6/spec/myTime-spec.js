@@ -105,17 +105,17 @@ describe("Testing to String and sets validation. ", function(){
 });
 
 describe('Testing nexts and prevs', function() {
-  it('Testing prevSecond return instance', function() {
-    expect(typeof Night.prevSecond()).toBe('object');
+  it('Testing previousSecond return instance', function() {
+    expect(typeof Night.previousSecond()).toBe('object');
   });
-  it('Testing prevMinute return instance', function() {
-    expect(typeof Night.prevMinute()).toBe('object');
+  it('Testing previousMinute return instance', function() {
+    expect(typeof Night.previousMinute()).toBe('object');
   });
-  it('Testing prevHour return instance', function() {
-    expect(typeof Night.prevHour()).toBe('object');
+  it('Testing previousHour return instance', function() {
+    expect(typeof Night.previousHour()).toBe('object');
   });
-  it('Testing prevSecond with 00:00:00, because call others', function() {
-    expect(Clock.prevSecond().toString()).toBe('23:59:59');
+  it('Testing previousSecond with 00:00:00, because call others', function() {
+    expect(Clock.previousSecond().toString()).toBe('23:59:59');
   });
   it('Testing nextSecond return instance', function() {
     expect(typeof Night.nextSecond()).toBe('object');
