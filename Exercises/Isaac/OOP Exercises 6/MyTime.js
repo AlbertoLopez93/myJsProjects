@@ -9,12 +9,12 @@
         // Class Methods.
         Object.defineProperties(this, {
             getHour: {
-                value: function() {
+                value: function getHour() {
                     return hour;
                 }
             },
             setHour: {
-                value: function(newHour) {
+                value: function setHour(newHour) {
                     if (this.isValidHour(newHour)) {
                         hour = newHour;
                     } else {
@@ -23,12 +23,12 @@
                 }
             },
             getMinute: {
-                value: function() {
+                value: function getMinute() {
                     return minute;
                 }
             },
             setMinute: {
-                value: function(newMinute) {
+                value: function setMinute(newMinute) {
                     if (this.isValidMinute(newMinute)) {
                         minute = newMinute;
                     } else {
@@ -37,12 +37,12 @@
                 }
             },
             getSecond: {
-                value: function() {
+                value: function getSecond() {
                     return second;
                 }
             },
             setSecond: {
-                value: function(newSecond) {
+                value: function setSecond(newSecond) {
                     if (this.isValidSecond(newSecond)) {
                         second = newSecond;
                     } else {
@@ -63,33 +63,33 @@
     // Prototype Methods.
     Object.defineProperties(MyTime.prototype, {
         leadZeros: {
-            value: function(number) {
+            value: function leadZeros(number) {
                 return number < 10 ? '0' + number : '' + number;
             }
         },
         toString: {
-            value: function() {
+            value: function toString() {
                 return this.leadZeros(this.getHour()) + ':' + this.leadZeros(this.getMinute()) + ':' +
                     this.leadZeros(this.getSecond());
             }
         },
         isValidHour: {
-            value: function(hour) {
-                return hour >= 0 && hour <= 23;
+            value: function isValidHour(hour) {
+                return typeof hour === 'number' && Number.isInteger(hour) && hour >= 0 && hour <= 23;
             }
         },
         isValidMinute: {
-            value: function(minute) {
-                return minute >= 0 && minute <= 59;
+            value: function isValidMinute(minute) {
+                return typeof minute === 'number' && Number.isInteger(minute) && minute >= 0 && minute <= 59;
             }
         },
         isValidSecond: {
-            value: function(second) {
-                return second >= 0 && second <= 59;
+            value: function isValidSecond(second) {
+                return typeof second === 'number' && Number.isInteger(second) && second >= 0 && second <= 59;
             }
         },
         setTime: {
-            value: function(newHour, newMinute, newSecond) {
+            value: function setTime(newHour, newMinute, newSecond) {
                 if (this.isValidHour(newHour) && this.isValidMinute(newMinute) && this.isValidSecond(newSecond)) {
                     this.setHour(newHour);
                     this.setMinute(newMinute);
@@ -100,92 +100,66 @@
             }
         },
         nextSecond: {
-            value: function() {
-                let newSecond = this.getSecond() + 1,
-                    newMinute = this.getMinute(),
-                    newHour = this.getHour();
-                if (newSecond === 60) {
+            value: function nextSecond() {
+                let newSecond = this.getSecond() + 1;
+                if (newSecond > 59) {
                     newSecond = 0;
-                    newMinute += 1;
-                    if (newMinute === 60) {
-                        newMinute = 0;
-                        newHour += 1;
-                        if (newHour === 24) {
-                            newHour = 0;
-                        }
-                    }
+                    this.nextMinute();
                 }
-                this.setTime(newHour, newMinute, newSecond);
+                this.setSecond(newSecond);
                 return this;
             }
         },
         previousSecond: {
-            value: function() {
-                let newSecond = this.getSecond() - 1,
-                    newMinute = this.getMinute(),
-                    newHour = this.getHour();
+            value: function previousSecond() {
+                let newSecond = this.getSecond() - 1;
                 if (newSecond < 0) {
                     newSecond = 59;
-                    newMinute -= 1;
-                    if (newMinute < 0) {
-                        newMinute = 59;
-                        newHour -= 1;
-                        if (newHour < 0) {
-                            newHour = 23;
-                        }
-                    }
+                    this.previousMinute();
                 }
-                this.setTime(newHour, newMinute, newSecond);
+                this.setSecond(newSecond);
                 return this;
             }
         },
         nextMinute: {
-            value: function() {
-                let newMinute = this.getMinute() + 1,
-                    newHour = this.getHour();
-                if (newMinute === 60) {
+            value: function nextMinute() {
+                let newMinute = this.getMinute() + 1;
+                if (newMinute > 59) {
                     newMinute = 0;
-                    newHour += 1;
-                    if (newHour === 24) {
-                        newHour = 0;
-                    }
+                    this.nextHour();
                 }
-                this.setTime(newHour, newMinute, this.getSecond());
+                this.setMinute(newMinute);
                 return this;
             }
         },
         previousMinute: {
-            value: function() {
-                let newMinute = this.getMinute() - 1,
-                    newHour = this.getHour();
+            value: function previousMinute() {
+                let newMinute = this.getMinute() - 1;
                 if (newMinute < 0) {
                     newMinute = 59;
-                    newHour -= 1;
-                    if (newHour < 0) {
-                        newHour = 23;
-                    }
+                    this.previousHour();
                 }
-                this.setTime(newHour, newMinute, this.getSecond());
+                this.setMinute(newMinute);
                 return this;
             }
         },
         nextHour: {
-            value: function() {
+            value: function nextHour() {
                 let newHour = this.getHour() + 1;
-                if (newHour === 24) {
+                if (newHour > 23) {
                     newHour = 0;
                 }
-                this.setTime(newHour, this.getMinute(), this.getSecond());
+                this.setHour(newHour);
                 return this;
             }
         },
         previousHour: {
-            value: function() {
+            value: function previousHour() {
                 let newHour = this.getHour() - 1;
                 if (newHour < 0) {
                     newHour = 23;
                 }
-                this.setTime(newHour, this.getMinute(), this.getSecond());
+                this.setHour(newHour);
                 return this;
             }
         }

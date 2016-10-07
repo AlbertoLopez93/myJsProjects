@@ -78,6 +78,7 @@
         });
 
         describe('Public Static Methods', function() {
+
             describe('isLeapYear(year)', function() {
                 it('should be defined', function() {
                     expect(myDate1.isLeapYear).toBeDefined();
@@ -260,18 +261,375 @@
                     expect(myDate1.getDayOfWeek(1987, 9, 27)).toBe(0);
                     expect(myDate1.getDayOfWeek(2016, 10, 6)).toBe(4);
 
-                    //expect(myDate1.getDayOfWeek(2000, 1, 1)).toBe(6);
-                    //expect(myDate1.getDayOfWeek(2001, 2, 1)).toBe(4);
-                     expect(myDate1.getDayOfWeek(2002, 3, 1)).toBe(5);
-                     expect(myDate1.getDayOfWeek(2003, 4, 1)).toBe(2);
-                     expect(myDate1.getDayOfWeek(2004, 5, 1)).toBe(6);
-                     expect(myDate1.getDayOfWeek(2005, 6, 1)).toBe(3);
-                     expect(myDate1.getDayOfWeek(2006, 7, 1)).toBe(6);
-                    // expect(myDate1.getDayOfWeek(2007, 8, 1)).toBe(5);
-                    // expect(myDate1.getDayOfWeek(2008, 9, 1)).toBe(2);
-                    // expect(myDate1.getDayOfWeek(2010, 10, 1)).toBe(5);
-                     expect(myDate1.getDayOfWeek(2011, 11, 1)).toBe(2);
-                     expect(myDate1.getDayOfWeek(2012, 10, 1)).toBe(1);
+                    expect(myDate1.getDayOfWeek(2000, 1, 1)).toBe(6);
+                    expect(myDate1.getDayOfWeek(2001, 2, 1)).toBe(4);
+                    expect(myDate1.getDayOfWeek(2002, 3, 1)).toBe(5);
+                    expect(myDate1.getDayOfWeek(2003, 4, 1)).toBe(2);
+                    expect(myDate1.getDayOfWeek(2004, 5, 1)).toBe(6);
+                    expect(myDate1.getDayOfWeek(2005, 6, 1)).toBe(3);
+                    expect(myDate1.getDayOfWeek(2006, 7, 1)).toBe(6);
+                    expect(myDate1.getDayOfWeek(2007, 8, 1)).toBe(3);
+                    expect(myDate1.getDayOfWeek(2008, 9, 1)).toBe(1);
+                    expect(myDate1.getDayOfWeek(2010, 10, 1)).toBe(5);
+                    expect(myDate1.getDayOfWeek(2011, 11, 1)).toBe(2);
+                    expect(myDate1.getDayOfWeek(2012, 10, 1)).toBe(1);
+                    // for (let year = 100; year <= 9999; year++) {
+                    //     expect(myDate1.getDayOfWeek(year, 1, 1)).toBe(new Date(year, 0, 1).getDay());
+                    // }
+                });
+            });
+
+        });
+
+        describe('Getters and Setters Methods', function() {
+
+            describe('getYear()', function() {
+                it('should be defined', function() {
+                    expect(myDate1.getYear).toBeDefined();
+                    expect(typeof myDate1.getYear).toBe('function');
+                });
+                it('should return the year', function() {
+                    expect(myDate1.getYear()).toBe(1987);
+                    expect(myDate2.getYear()).toBe(2016);
+                });
+            });
+
+            describe('setYear()', function() {
+                it('should be defined', function() {
+                    expect(myDate1.setYear).toBeDefined();
+                    expect(typeof myDate1.setYear).toBe('function');
+                });
+                it('should update the year', function() {
+                    expect(myDate1.setYear(2200)).toBeUndefined();
+                    expect(myDate1.getYear()).toBe(2200);
+                    expect(myDate2.setYear(1)).toBeUndefined();
+                    expect(myDate2.getYear()).toBe(1);
+                });
+                it('should NOT update the year', function() {
+                    expect(myDate1.setYear(0)).toBeUndefined();
+                    expect(myDate1.getYear()).toBe(1987);
+                    expect(myDate2.setYear(10000)).toBeUndefined();
+                    expect(myDate2.getYear()).toBe(2016);
+                });
+            });
+
+            describe('getMonth()', function() {
+                it('should be defined', function() {
+                    expect(myDate1.getMonth).toBeDefined();
+                    expect(typeof myDate1.getMonth).toBe('function');
+                });
+                it('should return the month', function() {
+                    expect(myDate1.getMonth()).toBe(9);
+                    expect(myDate2.getMonth()).toBe(10);
+                });
+            });
+
+            describe('setMonth()', function() {
+                it('should be defined', function() {
+                    expect(myDate1.setMonth).toBeDefined();
+                    expect(typeof myDate1.setMonth).toBe('function');
+                });
+                it('should update the month', function() {
+                    expect(myDate1.setMonth(1)).toBeUndefined();
+                    expect(myDate1.getMonth()).toBe(1);
+                    expect(myDate2.setMonth(12)).toBeUndefined();
+                    expect(myDate2.getMonth()).toBe(12);
+                });
+                it('should NOT update the month', function() {
+                    expect(myDate1.setMonth(0)).toBeUndefined();
+                    expect(myDate1.getMonth()).toBe(9);
+
+                    expect(myDate2.setMonth(13)).toBeUndefined();
+                    expect(myDate2.getMonth()).toBe(10);
+                });
+                it('should NOT update the month if the day doesn\'t match', function() {
+                    expect(myDate1.setDay(30)).toBeUndefined();
+                    expect(myDate1.getDay()).toBe(30);
+                    expect(myDate1.setMonth(2)).toBeUndefined();
+                    expect(myDate1.getMonth()).toBe(9);
+                });
+            });
+
+            describe('getDay()', function() {
+                it('should be defined', function() {
+                    expect(myDate1.getDay).toBeDefined();
+                    expect(typeof myDate1.getDay).toBe('function');
+                });
+                it('should return the day', function() {
+                    expect(myDate1.getDay()).toBe(27);
+                    expect(myDate2.getDay()).toBe(6);
+                });
+            });
+
+            describe('setDay()', function() {
+                it('should be defined', function() {
+                    expect(myDate1.setDay).toBeDefined();
+                    expect(typeof myDate1.setDay).toBe('function');
+                });
+                it('should update the day', function() {
+                    expect(myDate1.setDay(30)).toBeUndefined();
+                    expect(myDate1.getDay()).toBe(30);
+
+                    expect(myDate2.setDay(31)).toBeUndefined();
+                    expect(myDate2.getDay()).toBe(31);
+                });
+                it('should NOT update the day', function() {
+                    expect(myDate1.setDay(31)).toBeUndefined();
+                    expect(myDate1.getDay()).toBe(27);
+
+                    expect(myDate2.setDay(32)).toBeUndefined();
+                    expect(myDate2.getDay()).toBe(6);
+                });
+                it('should NOT update the day if the month doesn\'t match', function() {
+                    expect(myDate1.setMonth(2)).toBeUndefined();
+                    expect(myDate1.getMonth()).toBe(2);
+                    expect(myDate1.setDay(30)).toBeUndefined();
+                    expect(myDate1.getDay()).toBe(27);
+                });
+            });
+
+        });
+
+        describe('Public Methods', function() {
+
+            describe('setDate(year, month, day)', function() {
+                it('should be defined', function() {
+                    expect(myDate1.setDate).toBeDefined();
+                    expect(typeof myDate1.setDate).toBe('function');
+                });
+                it('should update the date', function() {
+                    expect(myDate1.setDate(2016, 12, 31)).toBeUndefined();
+                    expect(myDate1.getYear()).toBe(2016);
+                    expect(myDate1.getMonth()).toBe(12);
+                    expect(myDate1.getDay()).toBe(31);
+
+                    expect(myDate2.setDate(1800, 5, 15)).toBeUndefined();
+                    expect(myDate2.getYear()).toBe(1800);
+                    expect(myDate2.getMonth()).toBe(5);
+                    expect(myDate2.getDay()).toBe(15);
+                });
+                it('should NOT update the date', function() {
+                    expect(myDate1.setDate(2016, 13, 31)).toBeUndefined();
+                    expect(myDate1.getYear()).toBe(1987);
+                    expect(myDate1.getMonth()).toBe(9);
+                    expect(myDate1.getDay()).toBe(27);
+
+                    expect(myDate2.setDate(2015, 2, 29)).toBeUndefined();
+                    expect(myDate2.getYear()).toBe(2016);
+                    expect(myDate2.getMonth()).toBe(10);
+                    expect(myDate2.getDay()).toBe(6);
+
+                    expect(myDate2.setDate(0, 1, 1)).toBeUndefined();
+                    expect(myDate2.getYear()).toBe(2016);
+                    expect(myDate2.getMonth()).toBe(10);
+                    expect(myDate2.getDay()).toBe(6);
+                });
+            });
+
+            describe('toString()', function() {
+                it('should be defined', function() {
+                    expect(myDate1.toString).toBeDefined();
+                    expect(typeof myDate1.toString).toBe('function');
+                });
+                it('should return the date as string', function() {
+                    expect(myDate1.toString()).toBe('Sunday 27 Sep 1987');
+                    expect(myDate2.toString()).toBe('Thursday 6 Oct 2016');
+                });
+            });
+
+            describe('nextYear()', function() {
+                it('should be defined', function() {
+                    expect(myDate1.nextYear).toBeDefined();
+                    expect(typeof myDate1.nextYear).toBe('function');
+                });
+                it('should increment the year', function() {
+                    expect(myDate1.nextYear()).toBe(myDate1);
+                    expect(myDate1.getYear()).toBe(1988);
+
+                    expect(myDate2.nextYear()).toBe(myDate2);
+                    expect(myDate2.getYear()).toBe(2017);
+                });
+                it('should NOT increment the year', function() {
+                    expect(myDate1.setYear(9999)).toBeUndefined();
+                    expect(myDate1.getYear()).toBe(9999);
+                    expect(myDate1.nextYear()).toBe(myDate1);
+                    expect(myDate1.getYear()).toBe(9999);
+                });
+            });
+
+            describe('nextMonth()', function() {
+                it('should be defined', function() {
+                    expect(myDate1.nextMonth).toBeDefined();
+                    expect(typeof myDate1.nextMonth).toBe('function');
+                });
+                it('should increment the month', function() {
+                    expect(myDate1.nextMonth()).toBe(myDate1);
+                    expect(myDate1.getMonth()).toBe(10);
+
+                    expect(myDate2.nextMonth()).toBe(myDate2);
+                    expect(myDate2.getMonth()).toBe(11);
+                });
+                it('should increment the month and the year', function() {
+                    expect(myDate2.setMonth(12)).toBeUndefined();
+                    expect(myDate2.getMonth()).toBe(12);
+                    expect(myDate2.getYear()).toBe(2016);
+                    expect(myDate2.nextMonth()).toBe(myDate2);
+                    expect(myDate2.getMonth()).toBe(1);
+                    expect(myDate2.getYear()).toBe(2017);
+                });
+                it('should NOT increment the month nor the year', function() {
+                    expect(myDate2.setMonth(12)).toBeUndefined();
+                    expect(myDate2.setYear(9999)).toBeUndefined();
+                    expect(myDate2.getMonth()).toBe(12);
+                    expect(myDate2.getYear()).toBe(9999);
+                    expect(myDate2.nextMonth()).toBe(myDate2);
+                    expect(myDate2.getMonth()).toBe(12);
+                    expect(myDate2.getYear()).toBe(9999);
+                });
+            });
+
+            describe('nextDay()', function() {
+                it('should be defined', function() {
+                    expect(myDate1.nextDay).toBeDefined();
+                    expect(typeof myDate1.nextDay).toBe('function');
+                });
+                it('should increment the day', function() {
+                    expect(myDate1.nextDay()).toBe(myDate1);
+                    expect(myDate1.getDay()).toBe(28);
+
+                    expect(myDate2.nextDay()).toBe(myDate2);
+                    expect(myDate2.getDay()).toBe(7);
+                });
+                it('should increment the day and the month', function() {
+                    expect(myDate2.setDay(31)).toBeUndefined();
+                    expect(myDate2.getDay()).toBe(31);
+                    expect(myDate2.getMonth()).toBe(10);
+                    expect(myDate2.nextDay()).toBe(myDate2);
+                    expect(myDate2.getDay()).toBe(1);
+                    expect(myDate2.getMonth()).toBe(11);
+                });
+                it('should increment the day, the month and the year', function() {
+                    expect(myDate2.setDay(31)).toBeUndefined();
+                    expect(myDate2.setMonth(12)).toBeUndefined();
+                    expect(myDate2.getDay()).toBe(31);
+                    expect(myDate2.getMonth()).toBe(12);
+                    expect(myDate2.getYear()).toBe(2016);
+
+                    expect(myDate2.nextDay()).toBe(myDate2);
+                    expect(myDate2.getDay()).toBe(1);
+                    expect(myDate2.getMonth()).toBe(1);
+                    expect(myDate2.getYear()).toBe(2017);
+                });
+                it('should NOT increment the day nor the month nor the year', function() {
+                    expect(myDate2.setDay(31)).toBeUndefined();
+                    expect(myDate2.setMonth(12)).toBeUndefined();
+                    expect(myDate2.setYear(9999)).toBeUndefined();
+                    expect(myDate2.getDay()).toBe(31);
+                    expect(myDate2.getMonth()).toBe(12);
+                    expect(myDate2.getYear()).toBe(9999);
+
+                    expect(myDate2.nextDay()).toBe(myDate2);
+                    expect(myDate2.getDay()).toBe(31);
+                    expect(myDate2.getMonth()).toBe(12);
+                    expect(myDate2.getYear()).toBe(9999);
+                });
+            });
+
+            describe('previousYear()', function() {
+                it('should be defined', function() {
+                    expect(myDate1.previousYear).toBeDefined();
+                    expect(typeof myDate1.previousYear).toBe('function');
+                });
+                it('should decrement the year', function() {
+                    expect(myDate1.previousYear()).toBe(myDate1);
+                    expect(myDate1.getYear()).toBe(1986);
+
+                    expect(myDate2.previousYear()).toBe(myDate2);
+                    expect(myDate2.getYear()).toBe(2015);
+                });
+                it('should NOT decrement the year', function() {
+                    expect(myDate1.setYear(1)).toBeUndefined();
+                    expect(myDate1.getYear()).toBe(1);
+                    expect(myDate1.previousYear()).toBe(myDate1);
+                    expect(myDate1.getYear()).toBe(1);
+                });
+            });
+
+            describe('previousMonth()', function() {
+                it('should be defined', function() {
+                    expect(myDate1.previousMonth).toBeDefined();
+                    expect(typeof myDate1.previousMonth).toBe('function');
+                });
+                it('should decrement the month', function() {
+                    expect(myDate1.previousMonth()).toBe(myDate1);
+                    expect(myDate1.getMonth()).toBe(8);
+
+                    expect(myDate2.previousMonth()).toBe(myDate2);
+                    expect(myDate2.getMonth()).toBe(9);
+                });
+                it('should decrement the month and the year', function() {
+                    expect(myDate2.setMonth(1)).toBeUndefined();
+                    expect(myDate2.getMonth()).toBe(1);
+                    expect(myDate2.getYear()).toBe(2016);
+                    expect(myDate2.previousMonth()).toBe(myDate2);
+                    expect(myDate2.getMonth()).toBe(12);
+                    expect(myDate2.getYear()).toBe(2015);
+                });
+                it('should NOT decrement the month nor the year', function() {
+                    expect(myDate2.setMonth(1)).toBeUndefined();
+                    expect(myDate2.setYear(1)).toBeUndefined();
+                    expect(myDate2.getMonth()).toBe(1);
+                    expect(myDate2.getYear()).toBe(1);
+                    expect(myDate2.previousMonth()).toBe(myDate2);
+                    expect(myDate2.getMonth()).toBe(1);
+                    expect(myDate2.getYear()).toBe(1);
+                });
+            });
+
+            describe('previousDay()', function() {
+                it('should be defined', function() {
+                    expect(myDate1.previousDay).toBeDefined();
+                    expect(typeof myDate1.previousDay).toBe('function');
+                });
+                it('should decrement the day', function() {
+                    expect(myDate1.previousDay()).toBe(myDate1);
+                    expect(myDate1.getDay()).toBe(26);
+
+                    expect(myDate2.previousDay()).toBe(myDate2);
+                    expect(myDate2.getDay()).toBe(5);
+                });
+                it('should decrement the day and the month', function() {
+                    expect(myDate2.setDay(1)).toBeUndefined();
+                    expect(myDate2.getDay()).toBe(1);
+                    expect(myDate2.getMonth()).toBe(10);
+                    expect(myDate2.previousDay()).toBe(myDate2);
+                    expect(myDate2.getDay()).toBe(30);
+                    expect(myDate2.getMonth()).toBe(9);
+                });
+                it('should decrement the day, the month and the year', function() {
+                    expect(myDate2.setDay(1)).toBeUndefined();
+                    expect(myDate2.setMonth(1)).toBeUndefined();
+                    expect(myDate2.getDay()).toBe(1);
+                    expect(myDate2.getMonth()).toBe(1);
+                    expect(myDate2.getYear()).toBe(2016);
+
+                    expect(myDate2.previousDay()).toBe(myDate2);
+                    expect(myDate2.getDay()).toBe(31);
+                    expect(myDate2.getMonth()).toBe(12);
+                    expect(myDate2.getYear()).toBe(2015);
+                });
+                it('should NOT decrement the day nor the month nor the year', function() {
+                    expect(myDate2.setDay(1)).toBeUndefined();
+                    expect(myDate2.setMonth(1)).toBeUndefined();
+                    expect(myDate2.setYear(1)).toBeUndefined();
+                    expect(myDate2.getDay()).toBe(1);
+                    expect(myDate2.getMonth()).toBe(1);
+                    expect(myDate2.getYear()).toBe(1);
+
+                    expect(myDate2.previousDay()).toBe(myDate2);
+                    expect(myDate2.getDay()).toBe(1);
+                    expect(myDate2.getMonth()).toBe(1);
+                    expect(myDate2.getYear()).toBe(1);
                 });
             });
         });
