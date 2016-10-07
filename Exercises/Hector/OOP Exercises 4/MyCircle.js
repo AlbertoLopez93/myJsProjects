@@ -73,17 +73,17 @@ function MyCircle(){
     this.getRadius = function() {
         return radius;
     };
+    this.setCenter = function(newCen) {
+        center = newCen;
+    };//:void receives as argument, an
+    //object of type MyPoint and uses it to set a new center to the instance.
     this.setRadius = function(newRadius) {
         radius = newRadius;
     };
     this.getCenter = function() {
         return center;
     };//:MyPoint returns the center of the instance, which must be a MyPoint object.
-    this.setCenter = function(newCenter) {
-        this.setCenterX(newCenter.getCenterX());
-        this.setCenterY(newCenter.getCenterY());
-    };//:void receives as argument, an
-    //object of type MyPoint and uses it to set a new center to the instance.
+
     this.getCenterX = function() {
         return center.getX();
     };//int returns the x value of the center property.
@@ -103,6 +103,7 @@ function MyCircle(){
     this.setCenterXY = function(newX, newY) {
         center.setX(newX);
         center.setY(newY);
+        return this;
     };//:void uses the new x value and the
     //y value to set a new center.
 }
@@ -132,16 +133,5 @@ MyCircle.prototype.distance = function(otherCircle) {
     return distance;
 };//number returns the distance between
 //the intance’s center and the center of the received circle.*/
-var circulo1 = new MyCircle(1,2,3);
-var circulo2 = new MyCircle(5,5,3);
-console.log(circulo1.toString());
-console.log(circulo1.getArea());
-console.log(circulo1.getCircumference());
-console.log(circulo1.distance(circulo2));
-circulo1.setCenterX(9);
-console.log(circulo1.toString());
-circulo1.setCenterY(8);
-console.log(circulo1.toString());
-circulo1.setCenter(circulo2);
-console.log(circulo1.toString());
+
 module.exports = MyCircle;

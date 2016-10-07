@@ -62,7 +62,7 @@ function  MyPoint(){
         y = newY;
     };
     this.toString = function(){
-        return "(" + x + "," + y +")";
+        return "(" + x + ", " + y +")";
     };
 }
 
@@ -109,17 +109,6 @@ MyPoint.prototype.distance = function () {
 //distance(another:Point):number will return the distance between
     //the instance and the received point.*/
 
-var point = new MyPoint();
-var point2 = new MyPoint(0,0);
-// console.log(point.toString());
-// console.log(point.getXY());
-// point.setX(9);
-// console.log(point.toString());
-// point.setY(9);
-// console.log(point.toString());
-// console.log(point2.toString());
-// console.log(point.distance());
-// console.log(point.distance(1,1));
-// console.log(point.distance(point2));
+
 
 module.exports = MyPoint;
