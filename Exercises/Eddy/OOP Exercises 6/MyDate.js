@@ -32,17 +32,17 @@ function MyDate (year, month, day) {
 			}
 			daysInMonths[1] = 28;
 		} else {
-			return;
+
 		}
 		if (Number.isInteger (month) && month > 0 && month <= 12) {
 			fMonth = month;
 		} else {
-			return;
+
 		}
 		if (Number.isInteger (day) && day > 0 && day <= daysInMonths[month - 1]) {
 			fDay = day;
 		} else {
-			return;
+
 		}
 	}
 	Object.defineProperty (this, "getYear", {
@@ -74,5 +74,20 @@ function MyDate (year, month, day) {
 	});
 }
 
-
+Object.defineProperty (MyDate.prototype, "isValidDate", {
+	value: function isValidDate (year, month, day) {
+		var isValid = new MyDate (year, month, day);
+		if (isValid.getYear () && isValid.getMonth () && isValid.getDay ()) {
+			return true;
+		}
+		return false;
+	}, enumerable: true
+});
 module.exports = MyDate;
+
+var date = new MyDate (2000, 2, 28);
+console.log (date.getYear ());
+console.log (date.getMonth ());
+console.log (date.getDay ());
+console.log (date.isLeapYear (2000));
+console.log (date.isValidDate (2000, 2, 29));
