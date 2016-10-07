@@ -1,6 +1,6 @@
 {
     "esversion": 6,
-    "unused": true,
+    "unused": false,
     "globals": {
         "xit": true,
         "it": true,
