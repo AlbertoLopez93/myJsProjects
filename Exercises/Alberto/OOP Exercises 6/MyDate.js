@@ -153,7 +153,6 @@ Object.defineProperty(MyDate.prototype,'previousDay',
       day= this.daysInMonths[month-1];
       this.setDay(day);
       console.log(day+','+month+','+year);
-      //let flag= this.isValidDate(year,month,day);
       if(!this.isValidDate(year,month,day)) {this.setDay(day-1);}
     }
     return this;
