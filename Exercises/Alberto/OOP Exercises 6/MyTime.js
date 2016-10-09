@@ -6,7 +6,7 @@ function MyTime(hour,minute,second) {
   second = second ||0;
 
   Object.defineProperty(this,'getHour', {value:function(){return hour;} ,
-  enumerable:true, configurable:true, writable:false});
+  enumerable:true, configurable:false, writable:false});
 
   Object.defineProperty(this,'setHour',
   {value:function(h){
@@ -14,10 +14,10 @@ function MyTime(hour,minute,second) {
     else if(h<0 || h>23){console.log('Invalid hour!');}
     else{hour=h}
   } ,
-  enumerable:true, configurable:true, writable:false});
+  enumerable:true, configurable:false, writable:false});
 
   Object.defineProperty(this,'getMinute', {value:function(){return minute;} ,
-  enumerable:true, configurable:true, writable:false});
+  enumerable:true, configurable:false, writable:false});
 
   Object.defineProperty(this,'setMinute',
   {value:function(m){
@@ -25,10 +25,10 @@ function MyTime(hour,minute,second) {
     else if(m<0 || m>59){console.log('Invalid minute!');}
     else{minute=m}
   } ,
-  enumerable:true, configurable:true, writable:false});
+  enumerable:true, configurable:false, writable:false});
 
   Object.defineProperty(this,'getSecond', {value:function(){return second;} ,
-  enumerable:true, configurable:true, writable:false});
+  enumerable:true, configurable:false, writable:false});
 
   Object.defineProperty(this,'setSecond',
   {value:function(sec){
@@ -36,7 +36,7 @@ function MyTime(hour,minute,second) {
     else if(sec<0 || sec>59){console.log('Invalid second!');}
     else{second=sec}
   } ,
-  enumerable:true, configurable:true, writable:false});
+  enumerable:true, configurable:false, writable:false});
 }
 
 Object.defineProperty(MyTime.prototype,'setTime',
@@ -52,7 +52,7 @@ Object.defineProperty(MyTime.prototype,'setTime',
       this.setSecond(sec);
     }
   },
-  enumerable:true, configurable:true, writable:false});
+  enumerable:true, configurable:false, writable:false});
 
 Object.defineProperty(MyTime.prototype,'toString',
   {value:function(){
@@ -64,7 +64,7 @@ Object.defineProperty(MyTime.prototype,'toString',
     if(sec<10){sec= '0'+sec;}
     return h+':'+min+':'+sec;
   },
-  enumerable:true, configurable:true, writable:false});
+  enumerable:true, configurable:false, writable:false});
 
 Object.defineProperty(MyTime.prototype,'nextHour',
   {value:function(){
@@ -73,7 +73,7 @@ Object.defineProperty(MyTime.prototype,'nextHour',
     else{this.setHour(0);}
     return this;
   },
-  enumerable:true, configurable:true, writable:false});
+  enumerable:true, configurable:false, writable:false});
 
 Object.defineProperty(MyTime.prototype,'nextMinute',
   {value:function(){
@@ -85,7 +85,7 @@ Object.defineProperty(MyTime.prototype,'nextMinute',
     }
     return this;
   },
-  enumerable:true, configurable:true, writable:false});
+  enumerable:true, configurable:false, writable:false});
 
 Object.defineProperty(MyTime.prototype,'nextSecond',
   {value:function(){
@@ -97,7 +97,7 @@ Object.defineProperty(MyTime.prototype,'nextSecond',
     }
     return this;
   },
-  enumerable:true, configurable:true, writable:false});
+  enumerable:true, configurable:false, writable:false});
 
 Object.defineProperty(MyTime.prototype,'previousHour',
   {value:function(){
@@ -106,7 +106,7 @@ Object.defineProperty(MyTime.prototype,'previousHour',
     else{this.setHour(23);}
     return this;
   },
-  enumerable:true, configurable:true, writable:false});
+  enumerable:true, configurable:false, writable:false});
 
 Object.defineProperty(MyTime.prototype,'previousMinute',
   {value:function(){
@@ -118,7 +118,7 @@ Object.defineProperty(MyTime.prototype,'previousMinute',
     }
     return this;
   },
-  enumerable:true, configurable:true, writable:false});
+  enumerable:true, configurable:false, writable:false});
 
 Object.defineProperty(MyTime.prototype,'previousSecond',
   {value:function(){
@@ -130,7 +130,7 @@ Object.defineProperty(MyTime.prototype,'previousSecond',
     }
     return this;
   },
-  enumerable:true, configurable:true, writable:false});
+  enumerable:true, configurable:false, writable:false});
 
 module.exports = MyTime;
 
