@@ -5,8 +5,8 @@ function abbreviateNumber(largeNumber){
     if(largeNumber < 1000){
         largeNumberStr = "" + largeNumber;
     } else if(largeNumber < 10000){
-        largeNumberStr = Math.floor(largeNumber / 1000);
-        largeNumberStr += "," + largeNumber % 1000;
+        largeNumberStr = Math.floor(largeNumber / 1000) + "," +
+                         largeNumber % 1000;
     } else if(largeNumber < 999500){
         if(largeNumber < 99999){
             largeNumberStr = Math.floor(largeNumber / 1000) + "." +
