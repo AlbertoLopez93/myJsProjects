@@ -74,8 +74,38 @@ describe("Testing prototype. ", function(){
   it('setDate', function() {
     expect(Calendar.setDate(2025,2,30)).toBeUndefined();
   });
+  it('Test Day of week on October 2016', function() {
+    expect(Calendar.getDayOfWeek(2016,10,6)).toBe(4);
+  });
+  it('Test Day of week when I borned', function() {
+    expect(Calendar.getDayOfWeek(1993,3,26)).toBe(5);
+  });
+  it('Test Day of week on March 2016(leap)', function() {
+    expect(Calendar.getDayOfWeek(2016,3,1)).toBe(2);
+  });
+  it('Test Day of week on February 2016(leap)', function() {
+    expect(Calendar.getDayOfWeek(2016,2,28)).toBe(0);
+  });
+  it('Test Day of week on March 1996(leap)', function() {
+    expect(Calendar.getDayOfWeek(1996,3,1)).toBe(5);
+  });
+  it('Test Day of week on February 1996(leap)', function() {
+    expect(Calendar.getDayOfWeek(1996,2,28)).toBe(3);
+  });
+  it('Test Day of week on March 2017(not-leap)', function() {
+    expect(Calendar.getDayOfWeek(2017,3,1)).toBe(3);
+  });
+  it('Test Day of week on February 2017(not-leap)', function() {
+    expect(Calendar.getDayOfWeek(2017,2,28)).toBe(2);
+  });
+  it('Test Day of week on January 2003', function() {
+    expect(Calendar.getDayOfWeek(2003,1,30)).toBe(4);
+  });
+  it('Test Day of week on September 2003', function() {
+    expect(Calendar.getDayOfWeek(2003,9,16)).toBe(2);
+  });
   it('Test setDate with toString', function() {
-    expect(Calendar.toString()).toBe('Sunday 30 May 2005');
+    expect(Calendar.toString()).toBe('Monday 30 May 2005');
   });
 });
 
@@ -86,7 +116,7 @@ var DayFour = new MyDate(1996,3,1);
 var DayFive = new MyDate(1996,5,1);
 describe('Testing nexts and previous, ', function() {
   it('nextDay with leap year', function() {
-    expect(OneDay.nextDay().toString()).toBe('Sunday 29 Feb 2012');
+    expect(OneDay.nextDay().toString()).toBe('Wednesday 29 Feb 2012');
   });
   it('nextDay without leap year', function() {
     expect(DayTwo.nextDay().toString()).toBe('Sunday 1 Mar 2015');
@@ -95,19 +125,19 @@ describe('Testing nexts and previous, ', function() {
     expect(DayThree.nextDay().toString()).toBe('Sunday 31 Dec 1995');
   });
   it('nextDay at yearend', function() {
-    expect(DayThree.nextDay().toString()).toBe('Sunday 1 Jan 1996');
+    expect(DayThree.nextDay().toString()).toBe('Monday 1 Jan 1996');
   });
 
   it('previousDay with leap year', function() {
-    expect(DayFour.previousDay().toString()).toBe('Sunday 29 Feb 1996');
+    expect(DayFour.previousDay().toString()).toBe('Thursday 29 Feb 1996');
   });
   it('previousDay without leap year', function() {
-    expect(DayTwo.previousDay().toString()).toBe('Sunday 28 Feb 2015');
+    expect(DayTwo.previousDay().toString()).toBe('Saturday 28 Feb 2015');
   });
   it('previousDay at New Year', function() {
     expect(DayThree.previousDay().toString()).toBe('Sunday 31 Dec 1995');
   });
   it('previousDay where before month has 30 days', function() {
-    expect(DayFive.previousDay().toString()).toBe('Sunday 30 Apr 1996');
+    expect(DayFive.previousDay().toString()).toBe('Tuesday 30 Apr 1996');
   });
 });

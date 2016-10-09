@@ -48,14 +48,15 @@ enumerable:false, configurable:true, writable:false});
 
 Object.defineProperty(MyDate.prototype,'toString',
   {value:function(){
-    let y = this.getYear();
-    if(y<10){y= '000'+y;}
-    if(y<100){y= '00'+y;}
-    if(y<1000){y= '0'+y;}
-    let m = this.getMonth();
-    if(m<10){m= '0'+m;}
-    let d = this.getDay();
-    return this.strDays[0]+' '+d+' '+this.strMonths[m-1]+' '+y;
+    let year = this.getYear();
+    if(year<10){year= '000'+year;}
+    if(year<100){year= '00'+year;}
+    if(year<1000){year= '0'+year;}
+    let month = this.getMonth();
+    if(month<10){month= '0'+month;}
+    let day = this.getDay();
+    let dayOfWeek = this.getDayOfWeek(year,month,day);
+    return this.strDays[dayOfWeek]+' '+day+' '+this.strMonths[month-1]+' '+year;
   },
   enumerable:true, configurable:true, writable:false});
 
@@ -152,10 +153,22 @@ Object.defineProperty(MyDate.prototype,'previousDay',
       let year= this.getYear();
       day= this.daysInMonths[month-1];
       this.setDay(day);
-      console.log(day+','+month+','+year);
       if(!this.isValidDate(year,month,day)) {this.setDay(day-1);}
     }
     return this;
+  },
+  enumerable:true, configurable:true, writable:false});
+
+Object.defineProperty(MyDate.prototype,'getDayOfWeek',
+  {value:function(year,month,day){
+    let addForMonth = [0,3,2,5,0,3,5,1,4,6,2,4];
+    if(month<3) {
+      year--;
+    }
+    let numDayInWeek = year + parseInt(year/4,10) - parseInt(year/100) + parseInt(year/400);
+    numDayInWeek = numDayInWeek + addForMonth[month-1] + day;
+    numDayInWeek %= 7;
+    return numDayInWeek;
   },
   enumerable:true, configurable:true, writable:false});
 
