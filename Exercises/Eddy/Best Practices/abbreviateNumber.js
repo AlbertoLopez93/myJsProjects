@@ -16,7 +16,7 @@ function abbreviateNumber(num) {
 		} else if(len < 5) {
 			return num.slice(0, -3) + "," + num.slice(1);
 		} else if(len < 6) {
-			num = ((num / 1000).toFixed(2) * 1000).toString();
+			num = ((num / 1000).toFixed(1) * 1000).toString();
 			return num.slice(0, -3) + "." + num.slice(2, 3) + "K";
 		} else if(len < 7 && num < 999500) {
 			num = ((num / 1000).toFixed(2) * 1000).toString();
