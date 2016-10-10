@@ -62,12 +62,13 @@ function Account () {
 
 		this.deposit = function deposit (amount) {
 			balance += amount;
+			return this;  // forget to return this :(
 		};
 
 		this.withdraw = function withdraw (amount) {
-			if (amount <= this.getBalance()){
+			if (amount < this.getBalance()){
 				balance -= amount;
-			}
+			}return this; //forget to return this :(
 		}
 	}
 }
