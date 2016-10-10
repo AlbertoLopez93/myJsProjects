@@ -2,7 +2,10 @@
 
 let howManyTimes = require("../howManyTimes");
 
-describe ( "Function return 0 if don't receive valid parameters. ", function ( ) {
+/*This code evaluate function howManyTimes that verify hoy many times
+you can entry with annual pass to make cheaper than entry with single tickets*/
+
+describe ( "Function howManyTimes return 0 if don't receive valid parameters. ", function ( ) {
   it ( "With undefined parameters", function ( ) {
     expect ( howManyTimes ( ) ).toBe ( 0 );
   } );
@@ -20,14 +23,10 @@ describe ( "Function return 0 if don't receive valid parameters. ", function ( )
 describe ( "Function operating. ", function ( ) {
   it ( "With integers parameters", function ( ) {
     expect ( howManyTimes ( 350, 15 ) ).toBe ( 24 );
-  } );
-  it ( "With integers parameters", function ( ) {
     expect ( howManyTimes ( 450, 27 ) ).toBe ( 17 );
   } );
   it ( "With float parameters", function ( ) {
     expect ( howManyTimes ( 450, 23.54 ) ).toBe ( 20 );
-  } );
-  it ( "With float parameters", function ( ) {
     expect ( howManyTimes ( 345.73, 14.85 ) ).toBe ( 24 );
   } );
   it ( "Evaluate integer days", function ( ) {
@@ -41,11 +40,9 @@ describe ( "Function operating. ", function ( ) {
   } );
   it ( "Evaluate negative numbers", function ( ) {
     expect ( howManyTimes ( -353, 10 ) ). toBe ( 0 );
-  } );
-  it ( "Evaluate negative numbers", function ( ) {
     expect ( howManyTimes ( -353, -10 ) ). toBe ( 0 );
   } );
-  it ( "Evaluate annual is more expensive", function ( ) {
+  it ( "Evaluate annual is more expensive than 365 single tickets", function ( ) {
     expect ( howManyTimes ( 35320, 10 ) ). toBe ( 0 );
   } );
 } );
