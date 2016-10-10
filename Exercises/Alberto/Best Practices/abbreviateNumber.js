@@ -1,48 +1,49 @@
 "use strict";
 
-function abbreviateNumber(numberReceived) {
+function abbreviateNumber ( numberReceived ) {
   let shortNumber;
-  if(numberReceived < 1e3) {
-    return numberReceived + "";
+  if ( numberReceived < 1e3 ) {
+    numberReceived.toFixed(3);
+    shortNumber = parseFloat(numberReceived) + "";
+    if ( shortNumber === "1000" ) {
+      abbreviateNumber ( 1e3 );
+    }
   }
-  if(numberReceived < 1e4) {
-    shortNumber = parseInt(numberReceived/1000) + ",";
-    let finalChars = numberReceived % 1000;
-    finalChars += "";
-    return shortNumber + finalChars;
-  }
-  if(numberReceived < 1e5) {
-    shortNumber = numberReceived / 1000;
-    shortNumber = shortNumber.toFixed(1);
-    if(shortNumber === "100.0") {
-      abbreviateNumber(1e5);
+  else if ( numberReceived < 1e4 ) {
+    numberReceived = numberReceived.toFixed(0);
+    if ( numberReceived === 1e4 ) {
+      abbreviateNumber ( 1e4 );
     }
     else {
-      return shortNumber + "K";
+      shortNumber = numberReceived [ 0 ] + "," + numberReceived [ 1 ] + numberReceived [ 2 ] + numberReceived [ 3 ];
     }
   }
-  if(numberReceived < 1e6) {
-    shortNumber = numberReceived / 1000;
-    shortNumber = shortNumber.toFixed(0);
-    if(shortNumber === "1000") {
-      abbreviateNumber(1e6);
+  else if ( numberReceived < 1e6 ) {
+    numberReceived /= 1000;
+    shortNumber = numberReceived.toPrecision(3);
+    if ( shortNumber === "1000" ) {
+      abbreviateNumber ( 1e6 );
     }
     else {
-      return shortNumber + "K";
+      shortNumber += "K";
     }
   }
-  if(numberReceived < 1e8) {
-    shortNumber = numberReceived / 1e6;
-    shortNumber = shortNumber.toFixed(2);
-    if(shortNumber === "100.00") {
-      abbreviateNumber (1e8);
-    } else {
-      return shortNumber + "M";
+  else if ( numberReceived < 1e9 ) {
+    numberReceived /= 1e6;
+    shortNumber = numberReceived.toPrecision(3);
+    if ( shortNumber === "1000" ) {
+      abbreviateNumber ( 1e9 );
+    }
+    else {
+      shortNumber += "M";
     }
   }
-  shortNumber = numberReceived / 1e6;
-  shortNumber = shortNumber.toFixed(0);
-  return shortNumber + "M";
+  else {
+    numberReceived /= 1e6;
+    shortNumber = parseInt(numberReceived);
+    shortNumber += "M";
+  }
+  return shortNumber;
 }
 
 module.exports = abbreviateNumber;
