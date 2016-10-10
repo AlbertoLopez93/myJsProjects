@@ -39,7 +39,7 @@ function MyRectangle() {
         return result;
     }
     this.toString=function toString() {
-        let str="MyRectangle[topLeft=("+x1+","+ y1+"), bottomRight=("+x2+","+ y2+")]";
+        let str="MyRectangle[topLeft=("+x1+", "+ y1+"), bottomRight=("+x2+", "+ y2+")]";
         return str;
     }
 }/*

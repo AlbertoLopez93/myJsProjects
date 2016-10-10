@@ -40,7 +40,7 @@ MyPoint.prototype.setXY=function setXY(newX,newY) {
     }
 }
 MyPoint.prototype.toString=function toString() {
-    let str="("+getX()+","+getY()+")";
+    let str="("+this.getX()+", "+this.getY()+")";
     return str;
 }
 MyPoint.prototype.distance=function distance() {

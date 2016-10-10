@@ -48,7 +48,7 @@ function MyCircle() {
     }
 }
 MyCircle.prototype.getCenterXY=function(){
-    var ar=[];
+    var ary=[];
     ary[0]=this.getCenterX();
     ary[1]=this.getCenterY();
     return ary;
@@ -80,4 +80,4 @@ circulo.setCenterXY(5,11);
 console.log(circulo.getArea());
 console.log(circulo.getCircumference());
 console.log(circulo.distance(newCirculo));*/
-module.exports=Mycircle;
+module.exports=MyCircle;

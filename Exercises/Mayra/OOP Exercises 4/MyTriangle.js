@@ -4,9 +4,9 @@ function MyTriangle() {
     var v1,v2,v3;
     var argumentos=Array.prototype.slice.call(arguments);
     if(argumentos.length===6){
-        v1=new MyPoint(argumentos[0],args[1]);
-        v2=new MyPoint(argumentos[2],args[3]);
-        v3=new MyPoint(argumentos[4],args[5]);
+        v1=new MyPoint(argumentos[0],argumentos[1]);
+        v2=new MyPoint(argumentos[2],argumentos[3]);
+        v3=new MyPoint(argumentos[4],argumentos[5]);
     }
     if(argumentos.length===3){
         v1=argumentos[0];
