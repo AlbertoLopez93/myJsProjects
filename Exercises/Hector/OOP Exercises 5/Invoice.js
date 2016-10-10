@@ -8,6 +8,13 @@ function Invoice(_id, _customer, _amount){
     this.getInvoice = function() {
         return Invoice;
     }
+    var customer = _customer;
+    this.getCustomer = function() {
+        return customer;
+    }
+    this.setCustomer = function(newCustomer) {
+        customer = newCustomer;
+    }
     var amount = _amount;
     this.getAmount = function() {
         return amount;
@@ -18,6 +25,10 @@ function Invoice(_id, _customer, _amount){
 }
 Invoice.prototype.getInvoiceName = function () {
     var instance = this.getInvoice();
+    return instance.getName();
+};
+Invoice.prototype.getCustomerName = function () {
+    var instance = this.getCustomer();
     return instance.getName();
 };
 Invoice.prototype.getAmountAfterDiscount = function () {

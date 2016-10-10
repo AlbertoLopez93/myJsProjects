@@ -12,5 +12,8 @@ function NewCustomer(_id, _name, _gender){
         return gender;
     }
 }
+NewCustomer.prototype.toString = function() {
+    return this.getName() + "(" + this.getID() + ")";
+};
 
 module.exports = NewCustomer;
