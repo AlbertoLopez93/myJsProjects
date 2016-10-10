@@ -9,7 +9,7 @@ let customer;
 let invoiceData = {id: 20, customer: undefined, amount: 100.00};
 let invoice;
 
-xdescribe('Invoice Class', () => {
+describe('Invoice Class', () => {
   beforeEach(() => {
     customer = new Customer(customerData.id, customerData.name, customerData.discount);
     invoiceData.customer = customer;

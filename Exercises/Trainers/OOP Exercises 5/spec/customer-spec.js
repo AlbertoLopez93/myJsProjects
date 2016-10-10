@@ -5,7 +5,7 @@ let Customer = require("../Customer");
 let customerData = {id: 1, name: "John", discount: 20};
 let customer;
 
-xdescribe('Customer class', () => {
+describe('Customer class', () => {
   beforeEach(() => {
     customer = new Customer(customerData.id, customerData.name, customerData.discount);
   });
