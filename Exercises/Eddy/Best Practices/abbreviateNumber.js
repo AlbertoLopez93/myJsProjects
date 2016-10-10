@@ -1,42 +1,37 @@
-/**
- * Created by eddy velaquez on 7/10/16. BEST PRECTICES
- *
- */
-
 "use strict";
 
 function abbreviateNumber(num) {
 
-	function positive() {
-
-		num = num.toString();
-		let len = num.length;
-		if(len < 4) {
-			return num;
-		} else if(len < 5) {
-			return num.slice(0, -3) + "," + num.slice(1);
-		} else if(len < 6) {
-			num = ((num / 1000).toFixed(1) * 1000).toString();
-			return num.slice(0, -3) + "." + num.slice(2, 3) + "K";
-		} else if(len < 7 && num < 999500) {
-			num = ((num / 1000).toFixed(2) * 1000).toString();
-			return num.slice(0, -3) + "K";
-		} else if(len < 7) {
-			num = ((num / 1000000).toFixed(2) * 1000000).toString();
-			return "1.00M";
-		} else if(len < 9) {
-			return num.slice(0, -6) + "." + num.slice(-6, -4) + "M";
-		} else {
-			return num.slice(0, -6) + "M";
-		}
-	}
-
 	if(num >= 0) {
-		return positive();
+		return positive(num);
 	} else {
-		num = num * -1;
-		return "-" + positive();
+		return "-" + positive(num * -1);
 	}
 }
 
+function positive(num) {
+	let keys = ['K', 'M'];                          // kilos & Megas
+	let ran = [1000, 10000, 999500, 100000000];     //ranges
+	let den = [1000, 1000000];                      // denomitors
+
+	if(num < ran[0]) {
+		num = num.toPrecision(2);
+	} else if(num < ran[1]) {
+		num = num.toPrecision(4);
+		num = num.slice(0, 1) + ',' + num.slice(1);
+	} else if(num < ran[2]) {
+		num = (num / den[0]).toPrecision(3);
+		num = num + keys[0];
+	} else if(num < ran[3]) {
+		num = (num / den[1]).toPrecision(3);
+		num = num + keys[1];
+	} else {
+		num = Math.floor(num / den[1]) + keys[1];
+	}
+
+	return num;
+}
+
 module.exports = abbreviateNumber;
+
+console.log(abbreviateNumber(999999));
