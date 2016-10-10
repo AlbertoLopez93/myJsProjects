@@ -4,13 +4,13 @@ function abbreviateNumber ( numberReceived ) {
   let shortNumber;
   if ( numberReceived < 1e3 ) {
     numberReceived.toFixed(3);
-    shortNumber = parseFloat(numberReceived) + "";
+    shortNumber = parseFloat ( numberReceived ) + "";
     if ( shortNumber === "1000" ) {
       abbreviateNumber ( 1e3 );
     }
   }
   else if ( numberReceived < 1e4 ) {
-    numberReceived = numberReceived.toFixed(0);
+    numberReceived = numberReceived.toFixed ( 0 );
     if ( numberReceived === 1e4 ) {
       abbreviateNumber ( 1e4 );
     }
@@ -20,7 +20,7 @@ function abbreviateNumber ( numberReceived ) {
   }
   else if ( numberReceived < 1e6 ) {
     numberReceived /= 1000;
-    shortNumber = numberReceived.toPrecision(3);
+    shortNumber = numberReceived.toPrecision ( 3 );
     if ( shortNumber === "1000" ) {
       abbreviateNumber ( 1e6 );
     }
@@ -30,7 +30,7 @@ function abbreviateNumber ( numberReceived ) {
   }
   else if ( numberReceived < 1e9 ) {
     numberReceived /= 1e6;
-    shortNumber = numberReceived.toPrecision(3);
+    shortNumber = numberReceived.toPrecision ( 3 );
     if ( shortNumber === "1000" ) {
       abbreviateNumber ( 1e9 );
     }
@@ -38,9 +38,9 @@ function abbreviateNumber ( numberReceived ) {
       shortNumber += "M";
     }
   }
-  else {
+  else { //last case, you may increase code
     numberReceived /= 1e6;
-    shortNumber = parseInt(numberReceived);
+    shortNumber = numberReceived.toFixed ( 0 );
     shortNumber += "M";
   }
   return shortNumber;
