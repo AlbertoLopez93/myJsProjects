@@ -8,7 +8,7 @@
             range = {
                 "a thousand": 1000,
                 "ten thousand": 10000,
-                "hundred thousand": 99500,
+                "hundred thousand": 100000,
                 "a million": 999500,
                 "ten million": 9995000,
                 "hundred million": 99995000,
@@ -19,7 +19,7 @@
                 output = "" + number;
                 break;
             case (number < range["ten thousand"]):
-                output = Math.floor(number).toLocaleString("es-EN");
+                output = Number(number.toFixed(0)).toLocaleString("es-EN");
                 break;
             case (number < range["hundred thousand"]):
                 output = (number / factors[0]).toFixed(1) + units[0];
