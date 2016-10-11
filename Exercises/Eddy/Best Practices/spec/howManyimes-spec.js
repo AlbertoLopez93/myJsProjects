@@ -17,7 +17,7 @@ const howManyTimes = require("../howManyTimes");
 
 describe("Testing function howManyTimes  ", function() {
 
-	it("Testing values that are good deals ", function() {
+	it("Testing prices that are good deals ", function() {
 		expect(howManyTimes(1000, 50)).toBe(21);
 		expect(howManyTimes(365, 2)).toBe(183);
 		expect(howManyTimes(3650, 11)).toBe(332);
