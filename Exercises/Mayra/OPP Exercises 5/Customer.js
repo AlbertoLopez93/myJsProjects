@@ -18,7 +18,7 @@ function Customer(ID,name,discount) {
 }
 
 Customer.prototype.toString = function toString() {
-    let str="name("+this.getID()+")";
+    let str=this.getName()+"("+this.getID()+")";
     return str;
 };/*
 var cus= new Customer(2323,"sara",25);

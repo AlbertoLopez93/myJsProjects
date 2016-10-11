@@ -22,7 +22,7 @@ function Account(id,customer,balance) {
     }
 }
 Account.prototype.toString = function toString() {
-    let str="name("+this.getID()+" balance=$"+this.getBalance().toFixed(2)+")";
+    let str=this.getName()+"("+this.getID()+" balance=$"+this.getBalance().toFixed(2)+")";
     return str;
 };
 Account.prototype.getCustomerName=function getCustomerName() {
