@@ -1,4 +1,4 @@
-(function() {
+(function () {
     "use strict";
 
     /**
@@ -8,7 +8,7 @@
      * @param  {float} dayPrice   Price for a day pass.
      * @return {int}	          Number of days.
      */
-    function howManyTimes(anualPrice, dayPrice) {
+    function howManyTimes (anualPrice, dayPrice) {
         const daysInYear = 365;
 
         if (anualPrice / daysInYear < dayPrice) {
