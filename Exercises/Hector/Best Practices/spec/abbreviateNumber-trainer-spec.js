@@ -1,9 +1,7 @@
 /****************************************************************************
 
-Name: abbreviateNumber.js
-Search: label:interns {subject:"arrays ex 1" subject:"arrays ex1" subject:arraysex1} 
-Target: Exercises/$1/Arrays
-Function: abbreviateNumber
+Name: howManyTimes.js
+Function: howManyTimes
 
 ****************************************************************************/
 
@@ -46,7 +44,7 @@ const largeIntegers = [
   [ "92323", "92.3K" ],
   [ "98431", "98.4K" ],
   [ "95966", "96.0K" ],
-  
+
   [ "5055041", "5.06M" ],
   [ "1123220", "1.12M" ],
   [ "2677012", "2.68M" ],
@@ -113,7 +111,7 @@ const largeNumbersDecimals = [
     [ "92323.86", "92.3K" ],
     [ "98431.25", "98.4K" ],
     [ "95966.72", "96.0K" ],
-    
+
     [ "5055041.64", "5.06M" ],
     [ "1123220.59", "1.12M" ],
     [ "2677012.60", "2.68M" ],
@@ -174,7 +172,7 @@ const largeNumbersDecimals = [
     [ "8655096753.73", "8655M" ],
     [ "9384259803.45", "9384M" ],
     [ "9150506594.92", "9151M" ],
-    [ "9574500102.55", "9575M" ] 
+    [ "9574500102.55", "9575M" ]
   ];
 
 describe("Testing using integers", function() {
