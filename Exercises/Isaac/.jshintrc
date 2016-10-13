@@ -9,6 +9,7 @@
         "require": true,
         "expect": true,
         "module": true,
-        "console": true
+        "console": true,
+        "beforeEach": true
     }
 }
