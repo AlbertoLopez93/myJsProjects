@@ -3,7 +3,7 @@
 
 let MyTime = require("../MyTime");
 
-xdescribe("MyTime class", () => {
+describe("MyTime class", () => {
   describe("Private properties", () => {
     it("should have a private property called hour", () => {
       expect(new MyTime().hour).toBeUndefined();
