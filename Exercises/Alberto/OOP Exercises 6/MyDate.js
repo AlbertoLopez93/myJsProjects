@@ -7,8 +7,8 @@ function MyDate(year,month,day) {
 
   Object.defineProperty(this,'setYear',
   {value:function(y){
-    if(y<0 || y>9999){console.log('Invalid year!');}
-    else{year=y;}
+    if(y<1 || y>9999){console.log('Invalid year!');}
+    else if(MyDate.isValidDate(y,month,day)){year=y;}
   } ,
   enumerable:true, configurable:false, writable:false});
 
@@ -18,7 +18,7 @@ function MyDate(year,month,day) {
   Object.defineProperty(this,'setMonth',
   {value:function(m){
     if(m<1 || m>12){console.log('Invalid month!');}
-    else{month=m;}
+    else if(MyDate.isValidDate(year,m,day)){month=m;}
   } ,
   enumerable:true, configurable:false, writable:false});
 
@@ -27,25 +27,73 @@ function MyDate(year,month,day) {
 
   Object.defineProperty(this,'setDay',
   {value:function(d){
-    let month=this.getMonth();
-    if(d<1 || d>this.daysInMonths[month-1]){console.log('Invalid day!');}
-    else{day=d;}
+    if(d>=1 && d<=MyDate.daysInMonths[month-1]){day=d;}
+    else if ( (2 === month && 29 === d) && MyDate.isLeapYear ( year ) ) { day = 29; }
+    else{console.log('Invalid day!');}
   } ,
   enumerable:true, configurable:false, writable:false});
+
+  Object.defineProperty(this,'setDate',
+    {value:function(year_,month_,day_){
+      if(MyDate.isValidDate(year_,month_,day_)) {
+        year = year_;
+        month = month_;
+        day = day_;
+      }
+      else {console.log("Invalid year, month, or day!");}
+    },
+    enumerable:true, configurable:false, writable:false});
+
 }
 
-Object.defineProperty(MyDate.prototype,'strMonths',
+//Static atributes
+Object.defineProperty(MyDate,'daysInMonths',
+{value:[31,28,31,30,31,30,31,31,30,31,30,31],
+enumerable:false, configurable:false, writable:false});
+
+Object.defineProperty(MyDate,'strMonths',
 {value:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'] ,
 enumerable:false, configurable:false, writable:false});
 
-Object.defineProperty(MyDate.prototype,'strDays',
+Object.defineProperty(MyDate,'strDays',
 {value:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
 enumerable:false, configurable:false, writable:false});
 
-Object.defineProperty(MyDate.prototype,'daysInMonths',
-{value:[31,29,31,30,31,30,31,31,30,31,30,31],
-enumerable:false, configurable:false, writable:false});
+//Static methods
+Object.defineProperty(MyDate,'getDayOfWeek',
+  {value:function(year,month,day){
+    let addForMonth = [0,3,2,5,0,3,5,1,4,6,2,4];
+    if(month<3) {
+      year--;
+    }
+    let numDayInWeek = year + parseInt(year/4,10) - parseInt(year/100) + parseInt(year/400);
+    numDayInWeek = numDayInWeek + addForMonth[month-1] + day;
+    numDayInWeek %= 7;
+    return numDayInWeek;
+  },
+  enumerable:true, configurable:false, writable:false});
 
+Object.defineProperty(MyDate, 'isLeapYear',
+  {value:function(year){
+    if(year %4 !=0) {return false;}
+    if(year %100 ==0 && year %400 !=0) {return false;}
+    return true;
+  },
+  enumerable:true, configurable:false, writable:false});
+
+  Object.defineProperty(MyDate,'isValidDate',
+    {value:function(year,month,day){
+      if ( ! year ) { return false; }
+      if(year<1 || year>9999){return false;}
+      if(month<1 || month>12){return false;}
+      if(29==day && 2==month && MyDate.isLeapYear(year)){return true;}
+      if(day<1 || day>MyDate.daysInMonths[month-1]){return false;}
+      return true;
+    },
+    enumerable:true, configurable:false, writable:false});
+
+
+//Prototype Object
 Object.defineProperty(MyDate.prototype,'toString',
   {value:function(){
     let year = this.getYear();
@@ -55,56 +103,44 @@ Object.defineProperty(MyDate.prototype,'toString',
     let month = this.getMonth();
     if(month<10){month= '0'+month;}
     let day = this.getDay();
-    let dayOfWeek = this.getDayOfWeek(year,month,day);
-    return this.strDays[dayOfWeek]+' '+day+' '+this.strMonths[month-1]+' '+year;
-  },
-  enumerable:true, configurable:false, writable:false});
-
-Object.defineProperty(MyDate.prototype,'isLeapYear',
-  {value:function(year){
-    if(year %4 !=0) {return false;}
-    if(year %100 ==0 && year %400 !=0) {return false;}
-    return true;
-  },
-  enumerable:true, configurable:false, writable:false});
-
-Object.defineProperty(MyDate.prototype,'isValidDate',
-  {value:function(year,month,day){
-    if(year<0 || year>9999){return false;}
-    if(month<1 || month>12){return false;}
-    if(day<1 || day>this.daysInMonths[month-1]){return false;}
-    if(29==day && 2==month && !this.isLeapYear(year)){return false;}
-    return true;
-  },
-  enumerable:true, configurable:false, writable:false});
-
-Object.defineProperty(MyDate.prototype,'setDate',
-  {value:function(year,month,day){
-    if(this.isValidDate(year,month,day)) {
-      this.setYear(year);
-      this.setMonth(month);
-      this.setDay(day);
-    }
-    else {console.log("Invalid year, month, or day!");}
+    let dayOfWeek = MyDate.getDayOfWeek(year,month,day);
+    return MyDate.strDays[dayOfWeek]+' '+day+' '+MyDate.strMonths[month-1]+' '+year;
   },
   enumerable:true, configurable:false, writable:false});
 
 Object.defineProperty(MyDate.prototype,'nextYear',
   {value:function(){
-    let year= this.getYear();
-    this.setYear(year+1);
+    let year = this.getYear();
+    if(year === 9999) {return this;}
+    year +=1;
+    let month = this.getMonth();
+    let day= this.getDay();
+    while(! MyDate.isValidDate(year, month, day)) {
+      day--;
+    }
+    this.setDay(day);
+    this.setYear(year);
     return this;
   },
   enumerable:true, configurable:false, writable:false});
 
 Object.defineProperty(MyDate.prototype,'nextMonth',
   {value:function(){
+    let day= this.getDay();
     let month= this.getMonth();
-    if(month<12) {this.setMonth(month+1);}
-    else {
-      this.setMonth(1);
-      this.nextYear();
+    let year= this.getYear();
+    month += 1;
+    if(month === 13 && year === 9999) {return this;}
+    if(month === 13) {
+      month = 1;
+      year += 1;
     }
+    while(! MyDate.isValidDate(year, month, day)) {
+      day--;
+    }
+    this.setDay(day);
+    this.setMonth(month);
+    this.setYear(year);
     return this;
   },
   enumerable:true, configurable:false, writable:false});
@@ -114,7 +150,8 @@ Object.defineProperty(MyDate.prototype,'nextDay',
     let day= this.getDay();
     let month= this.getMonth();
     let year= this.getYear();
-    if(this.isValidDate(year,month,day+1)){this.setDay(day+1);}
+    if ( year === 9999 && month === 12 && day === 31 ) {return this;}
+    if ( MyDate.isValidDate(year,month,day+1) ){this.setDay(day+1);}
     else{
       this.setDay(1);
       this.nextMonth();
@@ -125,20 +162,37 @@ Object.defineProperty(MyDate.prototype,'nextDay',
 
 Object.defineProperty(MyDate.prototype,'previousYear',
   {value:function(){
-    let year= this.getYear();
-    this.setYear(year-1);
+    let year = this.getYear();
+    if(year === 1) {return this;}
+    year -=1;
+    let month = this.getMonth();
+    let day= this.getDay();
+    while(! MyDate.isValidDate(year, month, day)) {
+      day--;
+    }
+    this.setDay(day);
+    this.setYear(year);
     return this;
   },
   enumerable:true, configurable:false, writable:false});
 
 Object.defineProperty(MyDate.prototype,'previousMonth',
   {value:function(){
+    let day= this.getDay();
     let month= this.getMonth();
-    if(month>1) {this.setMonth(month-1);}
-    else {
-      this.setMonth(12);
-      this.previousYear();
+    let year= this.getYear();
+    month -= 1;
+    if(month === 0 && year === 1) {return this;}
+    if(month === 0) {
+      month = 12;
+      year -= 1;
     }
+    while(! MyDate.isValidDate(year, month, day)) {
+      day--;
+    }
+    this.setDay(day);
+    this.setMonth(month);
+    this.setYear(year);
     return this;
   },
   enumerable:true, configurable:false, writable:false});
@@ -146,29 +200,26 @@ Object.defineProperty(MyDate.prototype,'previousMonth',
 Object.defineProperty(MyDate.prototype,'previousDay',
   {value:function(){
     let day= this.getDay();
-    if(day>1) {this.setDay(day-1);}
-    else {
-      this.previousMonth();
-      let month= this.getMonth();
-      let year= this.getYear();
-      day= this.daysInMonths[month-1];
-      this.setDay(day);
-      if(!this.isValidDate(year,month,day)) {this.setDay(day-1);}
+    let month= this.getMonth();
+    let year= this.getYear();
+    day -= 1;
+    if ( year === 1 && month === 1 && day === 0 ) {return this;}
+    if (day <1) {
+      day = 31;
+      month--;
+      if(month === 2) {day = 29;}
+      if (month === 0) {
+        month = 12;
+        year--;
+      }
     }
+    if ( ! MyDate.isValidDate( year, month, day ) ) {
+      day--;
+    }
+    this.setDay(day);
+    this.setMonth(month);
+    this.setYear(year);
     return this;
-  },
-  enumerable:true, configurable:false, writable:false});
-
-Object.defineProperty(MyDate.prototype,'getDayOfWeek',
-  {value:function(year,month,day){
-    let addForMonth = [0,3,2,5,0,3,5,1,4,6,2,4];
-    if(month<3) {
-      year--;
-    }
-    let numDayInWeek = year + parseInt(year/4,10) - parseInt(year/100) + parseInt(year/400);
-    numDayInWeek = numDayInWeek + addForMonth[month-1] + day;
-    numDayInWeek %= 7;
-    return numDayInWeek;
   },
   enumerable:true, configurable:false, writable:false});
 
