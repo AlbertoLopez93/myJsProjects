@@ -8,12 +8,12 @@
 
 function MyTime (hour, minute, second) {
 
-	var len = arguments.length;
-	if (len === 3 || len === 0) {
-		var fHour;
-		var fMinute;
-		var fSecond;
+	let len = arguments.length;
+	let fHour;
+	let fMinute;
+	let fSecond;
 
+	if (len === 3 || len === 0) {
 		if (len === 3) {
 			if (Number.isInteger (hour)) {
 				fHour = hour;
@@ -79,23 +79,23 @@ function MyTime (hour, minute, second) {
 
 Object.defineProperty (MyTime.prototype, "toString", {
 	value: function toString () {
-		var hour, minute, second;
+		let hour, minute, second;
 		if (this.getHour () < 10) {
-			hour = '0' + this.getHour ();
+			hour = "0" + this.getHour ();
 		} else {
 			hour = this.getHour ();
 		}
 		if (this.getMinute () < 10) {
-			minute = '0' + this.getMinute ();
+			minute = "0" + this.getMinute ();
 		} else {
 			minute = this.getMinute ();
 		}
 		if (this.getSecond () < 10) {
-			second = '0' + this.getSecond ();
+			second = "0" + this.getSecond ();
 		} else {
 			second = this.getSecond ();
 		}
-		return hour + ':' + minute + ':' + second;
+		return hour + ":" + minute + ":" + second;
 	}, enumerable: true
 });
 
@@ -197,7 +197,7 @@ Object.defineProperty (MyTime.prototype, "previousHour", {
 
 Object.defineProperty (MyTime.prototype, "setTime", {
 	value: function setTime (newHour, newMinute, newSecond) {
-		var len = arguments.length;
+		let len = arguments.length;
 		if (len === 3) {
 			if (newHour < 24 && newHour >= 0 && Number.isInteger (newHour)) {
 				if (newMinute < 60 && newMinute >= 0 && Number.isInteger (newMinute)) {
@@ -209,8 +209,7 @@ Object.defineProperty (MyTime.prototype, "setTime", {
 				}
 			}
 		}
-	}
-})
-;
-module.exports = MyTime;
+	},enumerable:true
+});
 
+module.exports = MyTime;
