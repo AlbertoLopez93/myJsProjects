@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 //var NewCustomer = require("./NewCustomer");
 
@@ -23,32 +23,7 @@ function MyTime() {
     }
   }
 
-  Object.defineProperty(this, "setTime" , {
-    value: function (newHour, newMinute, newSecond) {
-      if (arguments.length === 3) {
-        if (Number.isInteger(newHour) && Number.isInteger(newMinute) && Number.isInteger(newSecond)) {
-          if ((newHour >= 0) && (newHour <= 23)) {
-            if ((newMinute >= 0) && (newMinute <= 59)) {
-              if ((newSecond >= 0) && (newSecond <= 59)) {
-                hour = newHour;
-                minute = newMinute;
-                second = newSecond;
-              } else {
-                console.log("Invalid second!");
-              }
-            } else {
-              console.log("Invalid minute");
-            }
-          } else {
-            console.log("Invalid hour");
-          }
-        }
-      }
-    },
-    configurable : false,
-    enumerable : false,
-    writable : false
-  });
+
   Object.defineProperty(this, "setHour" , {
     value: function (newHour) {
       if (Number.isInteger(newHour)) {
@@ -58,7 +33,7 @@ function MyTime() {
       }
     },
     configurable : false,
-    enumerable : false,
+    enumerable : true,
     writable : false
   });
   Object.defineProperty(this, "setMinute" , {
@@ -70,7 +45,7 @@ function MyTime() {
       }
     },
     configurable : false,
-    enumerable : false,
+    enumerable : true,
     writable : false
   });
   Object.defineProperty(this, "setSecond" , {
@@ -82,7 +57,7 @@ function MyTime() {
       }
     },
     configurable : false,
-    enumerable : false,
+    enumerable : true,
     writable : false
   });
   Object.defineProperty(this, "getHour" , {
@@ -90,7 +65,7 @@ function MyTime() {
       return hour;
     },
     configurable : false,
-    enumerable : false,
+    enumerable : true,
     writable : false
   });
   Object.defineProperty(this, "getMinute" , {
@@ -98,7 +73,7 @@ function MyTime() {
       return minute;
     },
     configurable : false,
-    enumerable : false,
+    enumerable : true,
     writable : false
   });
   Object.defineProperty(this, "getSecond" , {
@@ -106,10 +81,37 @@ function MyTime() {
       return second;
     },
     configurable : false,
-    enumerable : false,
+    enumerable : true,
     writable : false
   });
 }
+
+Object.defineProperty(MyTime.prototype, "setTime" , {
+  value: function (newHour, newMinute, newSecond) {
+    if (arguments.length === 3) {
+      if (Number.isInteger(newHour) && Number.isInteger(newMinute) && Number.isInteger(newSecond)) {
+        if ((newHour >= 0) && (newHour <= 23)) {
+          if ((newMinute >= 0) && (newMinute <= 59)) {
+            if ((newSecond >= 0) && (newSecond <= 59)) {
+              this.setHour(newHour);
+              this.setMinute(newMinute);
+              this.setSecond(newSecond);
+            } else {
+              console.log("Invalid second!");
+            }
+          } else {
+            console.log("Invalid minute");
+          }
+        } else {
+          console.log("Invalid hour");
+        }
+      }
+    }
+  },
+  configurable : false,
+  enumerable : true,
+  writable : false
+});
 
 Object.defineProperty(MyTime.prototype, "toString" , {
   value: function () {
@@ -132,7 +134,7 @@ Object.defineProperty(MyTime.prototype, "toString" , {
     return format;
   },
   configurable : false,
-  enumerable : false,
+  enumerable : true,
   writable : false
 });
 Object.defineProperty(MyTime.prototype, "nextSecond" , {
@@ -155,7 +157,7 @@ Object.defineProperty(MyTime.prototype, "nextSecond" , {
     return this;
   },
   configurable : false,
-  enumerable : false,
+  enumerable : true,
   writable : false
 });
 Object.defineProperty(MyTime.prototype, "nextMinute" , {
@@ -173,7 +175,7 @@ Object.defineProperty(MyTime.prototype, "nextMinute" , {
     return this;
   },
   configurable : false,
-  enumerable : false,
+  enumerable : true,
   writable : false
 });
 Object.defineProperty(MyTime.prototype, "nextHour" , {
@@ -186,7 +188,7 @@ Object.defineProperty(MyTime.prototype, "nextHour" , {
     return this;
   },
   configurable : false,
-  enumerable : false,
+  enumerable : true,
   writable : false
 });
 Object.defineProperty(MyTime.prototype, "previousSecond" , {
@@ -209,7 +211,7 @@ Object.defineProperty(MyTime.prototype, "previousSecond" , {
     return this;
   },
   configurable : false,
-  enumerable : false,
+  enumerable : true,
   writable : false
 });
 Object.defineProperty(MyTime.prototype, "previousMinute" , {
@@ -227,7 +229,7 @@ Object.defineProperty(MyTime.prototype, "previousMinute" , {
     return this;
   },
   configurable : false,
-  enumerable : false,
+  enumerable : true,
   writable : false
 });
 Object.defineProperty(MyTime.prototype, "previousHour" , {
@@ -240,7 +242,7 @@ Object.defineProperty(MyTime.prototype, "previousHour" , {
     return this;
   },
   configurable : false,
-  enumerable : false,
+  enumerable : true,
   writable : false
 });
 
