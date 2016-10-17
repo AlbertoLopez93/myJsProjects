@@ -668,7 +668,7 @@ describe('MyDate class', () => {
       it('should update the instance to the next year', () => {
         expect(validDate.nextYear().getYear()).toBe(2017);
       });
-      xit('should update the date if the next year will end up into an invalid date due to leapDate', () => {
+      it('should update the date if the next year will end up into an invalid date due to leapDate', () => {
         expect(leapDate.getYear()).toBe(2016);
         expect(leapDate.getMonth()).toBe(2);
         expect(leapDate.getDay()).toBe(29);
@@ -716,7 +716,7 @@ describe('MyDate class', () => {
       it('should update the instance to the previous year', () => {
         expect(validDate.previousYear().getYear()).toBe(2015);
       });
-      xit('should update the date of the previous year will end up into an invalid date due to leapDate', () => {
+      it('should update the date of the previous year will end up into an invalid date due to leapDate', () => {
         expect(leapDate.getYear()).toBe(2016);
         expect(leapDate.getMonth()).toBe(2);
         expect(leapDate.getDay()).toBe(29);
@@ -765,7 +765,7 @@ describe('MyDate class', () => {
         expect(validDate.nextMonth().getMonth()).toBe(11);
         expect(validDate.getDay()).toBe(14);
       });
-      xit('should update the date if the next month will end up into an invalid date due to a month with less days than the current', function() {
+      it('should update the date if the next month will end up into an invalid date due to a month with less days than the current', function() {
         let myDate = new MyDate(2016, 10, 31);
         myDate.nextMonth();
         expect(myDate.getYear()).toBe(2016);

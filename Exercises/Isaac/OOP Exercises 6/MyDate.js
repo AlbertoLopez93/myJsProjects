@@ -218,17 +218,29 @@
         },
         nextMonth: {
             value: function nextMonth() {
-                let newMonth = this.getMonth() + 1;
+                let newMonth = this.getMonth() + 1,
+                maxDay = getMaxDay(this.getMonth(), this.getYear()),
+                changeMaxDay = false;
+                if(this.getDay() === maxDay){
+                    this.setDay(1);
+                    changeMaxDay = true;
+                }
                 if (newMonth > 12) {
-                    let oldMonth = this.getMonth(),
+                    let oldDay = this.getDay(),
+                        oldMonth = this.getMonth(),
                         oldYear = this.getYear();
                     this.setMonth(1);
                     let updated = this.nextYear();
                     if (oldYear === updated.getYear()) {
                         this.setMonth(oldMonth);
+                        this.setDay(oldDay);
+                        changeMaxDay = false;
                     }
                 } else {
                     this.setMonth(newMonth);
+                }
+                if(changeMaxDay){
+                    this.setDay(getMaxDay(this.getMonth(), this.getYear()));
                 }
                 return this;
             },
@@ -256,6 +268,9 @@
             value: function nextYear() {
                 let newYear = this.getYear() + 1;
                 if (newYear <= 9999) {
+                    if(MyDate.isLeapYear(this.getYear()) && this.getMonth() === 2 && this.getDay() === 29){
+                        this.setDay(28);
+                    }
                     this.setYear(newYear);
                 } else {
                     console.log('Year out of range!');
@@ -268,6 +283,9 @@
             value: function previousYear() {
                 let newYear = this.getYear() - 1;
                 if (newYear >= 1) {
+                    if(MyDate.isLeapYear(this.getYear()) && this.getMonth() === 2 && this.getDay() === 29){
+                        this.setDay(28);
+                    }
                     this.setYear(newYear);
                 } else {
                     console.log('Year out of range!');
