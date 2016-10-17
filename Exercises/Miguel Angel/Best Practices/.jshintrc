@@ -1,0 +1,17 @@
+{
+    "camelcase": true,
+    "curly":     true,
+    "eqeqeq":    true,
+    "esversion": 6,
+    "funcscope": false,
+    "latedef":   true,
+    "maxdepth":  4,
+    "newcap":    true,
+    "node":      true,
+    "predef":    ["describe", "expect", "it"],
+    "quotmark":  "double",
+    "strict":    "global",
+    "undef":     true,
+    "unused":    true,
+    "varstmt":   true
+}
