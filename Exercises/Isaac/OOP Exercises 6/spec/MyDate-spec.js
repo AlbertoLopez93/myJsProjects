@@ -81,200 +81,200 @@
 
             describe('isLeapYear(year)', function() {
                 it('should be defined', function() {
-                    expect(myDate1.isLeapYear).toBeDefined();
-                    expect(typeof myDate1.isLeapYear).toBe('function');
+                    expect(MyDate.isLeapYear).toBeDefined();
+                    expect(typeof MyDate.isLeapYear).toBe('function');
                 });
                 it('should return true', function() {
-                    expect(myDate1.isLeapYear(4)).toBe(true);
-                    expect(myDate1.isLeapYear(400)).toBe(true);
-                    expect(myDate1.isLeapYear(1200)).toBe(true);
-                    expect(myDate1.isLeapYear(1904)).toBe(true);
-                    expect(myDate1.isLeapYear(1908)).toBe(true);
-                    expect(myDate1.isLeapYear(1992)).toBe(true);
-                    expect(myDate1.isLeapYear(1996)).toBe(true);
-                    expect(myDate1.isLeapYear(2000)).toBe(true);
-                    expect(myDate1.isLeapYear(2004)).toBe(true);
-                    expect(myDate1.isLeapYear(2016)).toBe(true);
-                    expect(myDate1.isLeapYear(2096)).toBe(true);
-                    expect(myDate1.isLeapYear(2400)).toBe(true);
+                    expect(MyDate.isLeapYear(4)).toBe(true);
+                    expect(MyDate.isLeapYear(400)).toBe(true);
+                    expect(MyDate.isLeapYear(1200)).toBe(true);
+                    expect(MyDate.isLeapYear(1904)).toBe(true);
+                    expect(MyDate.isLeapYear(1908)).toBe(true);
+                    expect(MyDate.isLeapYear(1992)).toBe(true);
+                    expect(MyDate.isLeapYear(1996)).toBe(true);
+                    expect(MyDate.isLeapYear(2000)).toBe(true);
+                    expect(MyDate.isLeapYear(2004)).toBe(true);
+                    expect(MyDate.isLeapYear(2016)).toBe(true);
+                    expect(MyDate.isLeapYear(2096)).toBe(true);
+                    expect(MyDate.isLeapYear(2400)).toBe(true);
                 });
                 it('should return false', function() {
-                    expect(myDate1.isLeapYear(3)).toBe(false);
-                    expect(myDate1.isLeapYear(100)).toBe(false);
-                    expect(myDate1.isLeapYear(1987)).toBe(false);
-                    expect(myDate1.isLeapYear(1700)).toBe(false);
-                    expect(myDate1.isLeapYear(1800)).toBe(false);
-                    expect(myDate1.isLeapYear(1900)).toBe(false);
-                    expect(myDate1.isLeapYear(2100)).toBe(false);
-                    expect(myDate1.isLeapYear(2200)).toBe(false);
-                    expect(myDate1.isLeapYear(2294)).toBe(false);
+                    expect(MyDate.isLeapYear(3)).toBe(false);
+                    expect(MyDate.isLeapYear(100)).toBe(false);
+                    expect(MyDate.isLeapYear(1987)).toBe(false);
+                    expect(MyDate.isLeapYear(1700)).toBe(false);
+                    expect(MyDate.isLeapYear(1800)).toBe(false);
+                    expect(MyDate.isLeapYear(1900)).toBe(false);
+                    expect(MyDate.isLeapYear(2100)).toBe(false);
+                    expect(MyDate.isLeapYear(2200)).toBe(false);
+                    expect(MyDate.isLeapYear(2294)).toBe(false);
                 });
             });
 
             describe('isValidDate(year, month, day)', function() {
                 it('should be defined', function() {
-                    expect(myDate1.isValidDate).toBeDefined();
-                    expect(typeof myDate1.isValidDate).toBe('function');
+                    expect(MyDate.isValidDate).toBeDefined();
+                    expect(typeof MyDate.isValidDate).toBe('function');
                 });
 
                 describe('Validating Day', function() {
                     it('should return true', function() {
-                        expect(myDate1.isValidDate(2016, 1, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 1, 31)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 1, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 1, 31)).toBe(true);
 
-                        expect(myDate1.isValidDate(2016, 2, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 2, 29)).toBe(true);
-                        expect(myDate1.isValidDate(400, 2, 29)).toBe(true);
-                        expect(myDate1.isValidDate(2000, 2, 29)).toBe(true);
-                        expect(myDate1.isValidDate(2400, 2, 29)).toBe(true);
-                        expect(myDate1.isValidDate(1908, 2, 29)).toBe(true);
-                        expect(myDate1.isValidDate(2096, 2, 29)).toBe(true);
-                        expect(myDate1.isValidDate(1992, 2, 29)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 2, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 2, 29)).toBe(true);
+                        expect(MyDate.isValidDate(400, 2, 29)).toBe(true);
+                        expect(MyDate.isValidDate(2000, 2, 29)).toBe(true);
+                        expect(MyDate.isValidDate(2400, 2, 29)).toBe(true);
+                        expect(MyDate.isValidDate(1908, 2, 29)).toBe(true);
+                        expect(MyDate.isValidDate(2096, 2, 29)).toBe(true);
+                        expect(MyDate.isValidDate(1992, 2, 29)).toBe(true);
 
-                        expect(myDate1.isValidDate(2016, 3, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 3, 31)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 3, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 3, 31)).toBe(true);
 
-                        expect(myDate1.isValidDate(2016, 4, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 4, 30)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 4, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 4, 30)).toBe(true);
 
-                        expect(myDate1.isValidDate(2016, 5, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 5, 31)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 5, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 5, 31)).toBe(true);
 
-                        expect(myDate1.isValidDate(2016, 6, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 6, 30)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 6, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 6, 30)).toBe(true);
 
-                        expect(myDate1.isValidDate(2016, 7, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 7, 31)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 7, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 7, 31)).toBe(true);
 
-                        expect(myDate1.isValidDate(2016, 8, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 8, 31)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 8, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 8, 31)).toBe(true);
 
-                        expect(myDate1.isValidDate(2016, 9, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 9, 30)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 9, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 9, 30)).toBe(true);
 
-                        expect(myDate1.isValidDate(2016, 10, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 10, 6)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 10, 31)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 10, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 10, 6)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 10, 31)).toBe(true);
 
-                        expect(myDate1.isValidDate(2016, 11, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 11, 30)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 11, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 11, 30)).toBe(true);
 
-                        expect(myDate1.isValidDate(2016, 12, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 12, 31)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 12, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 12, 31)).toBe(true);
                     });
 
                     it('should return false', function() {
-                        expect(myDate1.isValidDate(2016, 1, 0)).toBe(false);
-                        expect(myDate1.isValidDate(2016, 1, 32)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 1, 0)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 1, 32)).toBe(false);
 
-                        expect(myDate1.isValidDate(2016, 2, 0)).toBe(false);
-                        expect(myDate1.isValidDate(2015, 2, 29)).toBe(false);
-                        expect(myDate1.isValidDate(1987, 2, 30)).toBe(false);
-                        expect(myDate1.isValidDate(1500, 2, 29)).toBe(false);
-                        expect(myDate1.isValidDate(1100, 2, 29)).toBe(false);
-                        expect(myDate1.isValidDate(2100, 2, 29)).toBe(false);
-                        expect(myDate1.isValidDate(3, 2, 29)).toBe(false);
-                        expect(myDate1.isValidDate(2294, 2, 29)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 2, 0)).toBe(false);
+                        expect(MyDate.isValidDate(2015, 2, 29)).toBe(false);
+                        expect(MyDate.isValidDate(1987, 2, 30)).toBe(false);
+                        expect(MyDate.isValidDate(1500, 2, 29)).toBe(false);
+                        expect(MyDate.isValidDate(1100, 2, 29)).toBe(false);
+                        expect(MyDate.isValidDate(2100, 2, 29)).toBe(false);
+                        expect(MyDate.isValidDate(3, 2, 29)).toBe(false);
+                        expect(MyDate.isValidDate(2294, 2, 29)).toBe(false);
 
-                        expect(myDate1.isValidDate(2016, 3, 0)).toBe(false);
-                        expect(myDate1.isValidDate(2016, 3, 32)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 3, 0)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 3, 32)).toBe(false);
 
-                        expect(myDate1.isValidDate(2016, 4, -1)).toBe(false);
-                        expect(myDate1.isValidDate(2016, 4, 33)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 4, -1)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 4, 33)).toBe(false);
 
-                        expect(myDate1.isValidDate(2016, 5, 0.1)).toBe(false);
-                        expect(myDate1.isValidDate(2016, 5, 320)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 5, 0.1)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 5, 320)).toBe(false);
 
-                        expect(myDate1.isValidDate(2016, 6, 1.5)).toBe(false);
-                        expect(myDate1.isValidDate(2016, 6, 15.5)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 6, 1.5)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 6, 15.5)).toBe(false);
 
-                        expect(myDate1.isValidDate(2016, 7, 'a')).toBe(false);
-                        expect(myDate1.isValidDate(2016, 7, 'b')).toBe(false);
+                        expect(MyDate.isValidDate(2016, 7, 'a')).toBe(false);
+                        expect(MyDate.isValidDate(2016, 7, 'b')).toBe(false);
 
-                        expect(myDate1.isValidDate(2016, 8, 0)).toBe(false);
-                        expect(myDate1.isValidDate(2016, 8, 32)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 8, 0)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 8, 32)).toBe(false);
 
-                        expect(myDate1.isValidDate(2016, 9, 0)).toBe(false);
-                        expect(myDate1.isValidDate(2016, 9, 31)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 9, 0)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 9, 31)).toBe(false);
 
-                        expect(myDate1.isValidDate(2016, 10, '1')).toBe(false);
-                        expect(myDate1.isValidDate(2016, 10, '31')).toBe(false);
+                        expect(MyDate.isValidDate(2016, 10, '1')).toBe(false);
+                        expect(MyDate.isValidDate(2016, 10, '31')).toBe(false);
 
-                        expect(myDate1.isValidDate(2016, 11, 0)).toBe(false);
-                        expect(myDate1.isValidDate(2016, 11, 31)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 11, 0)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 11, 31)).toBe(false);
 
-                        expect(myDate1.isValidDate(2016, 12, 0)).toBe(false);
-                        expect(myDate1.isValidDate(2016, 12, 32)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 12, 0)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 12, 32)).toBe(false);
                     });
                 });
 
                 describe('Validating Month', function() {
                     it('should return true', function() {
-                        expect(myDate1.isValidDate(2016, 1, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 2, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 3, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 4, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 5, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 6, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 7, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 8, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 9, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 10, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 11, 1)).toBe(true);
-                        expect(myDate1.isValidDate(2016, 12, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 1, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 2, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 3, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 4, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 5, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 6, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 7, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 8, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 9, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 10, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 11, 1)).toBe(true);
+                        expect(MyDate.isValidDate(2016, 12, 1)).toBe(true);
                     });
                     it('should return false', function() {
-                        expect(myDate1.isValidDate(2016, 0, 1)).toBe(false);
-                        expect(myDate1.isValidDate(2016, 13, 1)).toBe(false);
-                        expect(myDate1.isValidDate(2016, '1', 1)).toBe(false);
-                        expect(myDate1.isValidDate(2016, 'a', 1)).toBe(false);
-                        expect(myDate1.isValidDate(2016, -1, 1)).toBe(false);
-                        expect(myDate1.isValidDate(2016, 14, 1)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 0, 1)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 13, 1)).toBe(false);
+                        expect(MyDate.isValidDate(2016, '1', 1)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 'a', 1)).toBe(false);
+                        expect(MyDate.isValidDate(2016, -1, 1)).toBe(false);
+                        expect(MyDate.isValidDate(2016, 14, 1)).toBe(false);
                     });
                 });
 
                 describe('Validating Year', function() {
                     it('should return true', function() {
-                        expect(myDate1.isValidDate(1, 1, 1)).toBe(true);
-                        expect(myDate1.isValidDate(10, 1, 1)).toBe(true);
-                        expect(myDate1.isValidDate(100, 1, 1)).toBe(true);
-                        expect(myDate1.isValidDate(1000, 1, 1)).toBe(true);
-                        expect(myDate1.isValidDate(9000, 1, 1)).toBe(true);
-                        expect(myDate1.isValidDate(9999, 1, 1)).toBe(true);
+                        expect(MyDate.isValidDate(1, 1, 1)).toBe(true);
+                        expect(MyDate.isValidDate(10, 1, 1)).toBe(true);
+                        expect(MyDate.isValidDate(100, 1, 1)).toBe(true);
+                        expect(MyDate.isValidDate(1000, 1, 1)).toBe(true);
+                        expect(MyDate.isValidDate(9000, 1, 1)).toBe(true);
+                        expect(MyDate.isValidDate(9999, 1, 1)).toBe(true);
                     });
                     it('should return false', function() {
-                        expect(myDate1.isValidDate(-1, 1, 1)).toBe(false);
-                        expect(myDate1.isValidDate(0, 1, 1)).toBe(false);
-                        expect(myDate1.isValidDate('1987', 1, 1)).toBe(false);
-                        expect(myDate1.isValidDate('a', 1, 1)).toBe(false);
-                        expect(myDate1.isValidDate(10000, 1, 1)).toBe(false);
+                        expect(MyDate.isValidDate(-1, 1, 1)).toBe(false);
+                        expect(MyDate.isValidDate(0, 1, 1)).toBe(false);
+                        expect(MyDate.isValidDate('1987', 1, 1)).toBe(false);
+                        expect(MyDate.isValidDate('a', 1, 1)).toBe(false);
+                        expect(MyDate.isValidDate(10000, 1, 1)).toBe(false);
                     });
                 });
             });
 
             describe('getDayOfWeek(year, month, day)', function() {
                 it('should be defined', function() {
-                    expect(myDate1.getDayOfWeek).toBeDefined();
-                    expect(typeof myDate1.getDayOfWeek).toBe('function');
+                    expect(MyDate.getDayOfWeek).toBeDefined();
+                    expect(typeof MyDate.getDayOfWeek).toBe('function');
                 });
                 it('should return the day of the week', function() {
-                    expect(myDate1.getDayOfWeek(1987, 9, 27)).toBe(0);
-                    expect(myDate1.getDayOfWeek(2016, 10, 6)).toBe(4);
+                    expect(MyDate.getDayOfWeek(1987, 9, 27)).toBe(0);
+                    expect(MyDate.getDayOfWeek(2016, 10, 6)).toBe(4);
 
-                    expect(myDate1.getDayOfWeek(2000, 1, 1)).toBe(6);
-                    expect(myDate1.getDayOfWeek(2001, 2, 1)).toBe(4);
-                    expect(myDate1.getDayOfWeek(2002, 3, 1)).toBe(5);
-                    expect(myDate1.getDayOfWeek(2003, 4, 1)).toBe(2);
-                    expect(myDate1.getDayOfWeek(2004, 5, 1)).toBe(6);
-                    expect(myDate1.getDayOfWeek(2005, 6, 1)).toBe(3);
-                    expect(myDate1.getDayOfWeek(2006, 7, 1)).toBe(6);
-                    expect(myDate1.getDayOfWeek(2007, 8, 1)).toBe(3);
-                    expect(myDate1.getDayOfWeek(2008, 9, 1)).toBe(1);
-                    expect(myDate1.getDayOfWeek(2010, 10, 1)).toBe(5);
-                    expect(myDate1.getDayOfWeek(2011, 11, 1)).toBe(2);
-                    expect(myDate1.getDayOfWeek(2012, 10, 1)).toBe(1);
+                    expect(MyDate.getDayOfWeek(2000, 1, 1)).toBe(6);
+                    expect(MyDate.getDayOfWeek(2001, 2, 1)).toBe(4);
+                    expect(MyDate.getDayOfWeek(2002, 3, 1)).toBe(5);
+                    expect(MyDate.getDayOfWeek(2003, 4, 1)).toBe(2);
+                    expect(MyDate.getDayOfWeek(2004, 5, 1)).toBe(6);
+                    expect(MyDate.getDayOfWeek(2005, 6, 1)).toBe(3);
+                    expect(MyDate.getDayOfWeek(2006, 7, 1)).toBe(6);
+                    expect(MyDate.getDayOfWeek(2007, 8, 1)).toBe(3);
+                    expect(MyDate.getDayOfWeek(2008, 9, 1)).toBe(1);
+                    expect(MyDate.getDayOfWeek(2010, 10, 1)).toBe(5);
+                    expect(MyDate.getDayOfWeek(2011, 11, 1)).toBe(2);
+                    expect(MyDate.getDayOfWeek(2012, 10, 1)).toBe(1);
                     // for (let year = 100; year <= 9999; year++) {
-                    //     expect(myDate1.getDayOfWeek(year, 1, 1)).toBe(new Date(year, 0, 1).getDay());
+                    //     expect(MyDate.getDayOfWeek(year, 1, 1)).toBe(new Date(year, 0, 1).getDay());
                     // }
                 });
             });
