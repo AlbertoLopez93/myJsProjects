@@ -210,7 +210,5 @@ Object.defineProperty(MyTime.prototype,"previousHour",{
   },
   enumerable:true
 });
-var c=new MyTime(22,56,0);
-c.previousHour();
-console.log(c.toString());
+
 module.exports=MyTime;
