@@ -5,6 +5,7 @@ function abbreviateNumber(number){
       numberstr=number+"";
     }
 
+
     if(number>999 && number<=9999){
       numberstr=number+"";
       numberarray=numberstr.split("");
