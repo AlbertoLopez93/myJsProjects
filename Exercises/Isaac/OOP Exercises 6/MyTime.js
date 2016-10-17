@@ -11,7 +11,8 @@
             getHour: {
                 value: function getHour() {
                     return hour;
-                }
+                },
+                enumerable: true
             },
             setHour: {
                 value: function setHour(newHour) {
@@ -20,12 +21,14 @@
                     } else {
                         console.log('Invalid hour!');
                     }
-                }
+                },
+                enumerable: true
             },
             getMinute: {
                 value: function getMinute() {
                     return minute;
-                }
+                },
+                enumerable: true
             },
             setMinute: {
                 value: function setMinute(newMinute) {
@@ -34,12 +37,14 @@
                     } else {
                         console.log('Invalid minute!');
                     }
-                }
+                },
+                enumerable: true
             },
             getSecond: {
                 value: function getSecond() {
                     return second;
-                }
+                },
+                enumerable: true
             },
             setSecond: {
                 value: function setSecond(newSecond) {
@@ -48,7 +53,8 @@
                     } else {
                         console.log('Invalid second!');
                     }
-                }
+                },
+                enumerable: true
             }
         });
     }
@@ -71,7 +77,8 @@
             value: function toString() {
                 return this.leadZeros(this.getHour()) + ':' + this.leadZeros(this.getMinute()) + ':' +
                     this.leadZeros(this.getSecond());
-            }
+            },
+            enumerable: true
         },
         isValidHour: {
             value: function isValidHour(hour) {
@@ -97,7 +104,8 @@
                 } else {
                     console.log('Invalid hour, minute, or second!');
                 }
-            }
+            },
+            enumerable: true
         },
         nextSecond: {
             value: function nextSecond() {
@@ -108,7 +116,8 @@
                 }
                 this.setSecond(newSecond);
                 return this;
-            }
+            },
+            enumerable: true
         },
         previousSecond: {
             value: function previousSecond() {
@@ -119,7 +128,8 @@
                 }
                 this.setSecond(newSecond);
                 return this;
-            }
+            },
+            enumerable: true
         },
         nextMinute: {
             value: function nextMinute() {
@@ -130,7 +140,8 @@
                 }
                 this.setMinute(newMinute);
                 return this;
-            }
+            },
+            enumerable: true
         },
         previousMinute: {
             value: function previousMinute() {
@@ -141,7 +152,8 @@
                 }
                 this.setMinute(newMinute);
                 return this;
-            }
+            },
+            enumerable: true
         },
         nextHour: {
             value: function nextHour() {
@@ -151,7 +163,8 @@
                 }
                 this.setHour(newHour);
                 return this;
-            }
+            },
+            enumerable: true
         },
         previousHour: {
             value: function previousHour() {
@@ -161,7 +174,8 @@
                 }
                 this.setHour(newHour);
                 return this;
-            }
+            },
+            enumerable: true
         }
     });
 
