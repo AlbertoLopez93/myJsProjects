@@ -1,6 +1,8 @@
 "use strict";
 
 let Character = require("./Character");
+let Armor = require("./Armor");
+let Weapon = require("./Weapon");
 
 function Human(inputId, inputName, inputMaxHP, inputCurrentHP, inputAgility, inputArmorEquipped, inputCurrentMP, inputFaction, inputGold, inputIntellect, inputIsMale, inputMaxMP, inputSpirit, inputStamina, inputStrength,inputWeaponEquipped){
   Character.call(this, inputId, inputName, inputMaxHP, inputCurrentHP);
@@ -30,7 +32,7 @@ function Human(inputId, inputName, inputMaxHP, inputCurrentHP, inputAgility, inp
     "setAgility": {
       value: function (newAgility) {
         if (typeof(newAgility) === "number") {
-          if (newAgility >= 0) {
+          if ((newAgility >= 0) && (Number.isInteger(newAgility))) {
             Agility = newAgility;
           }
         }
@@ -50,8 +52,18 @@ function Human(inputId, inputName, inputMaxHP, inputCurrentHP, inputAgility, inp
     },
     "addArmorEquipped": {
       value: function (newArmor) {
-        if (typeof(newArmor) === "object") {
-          ArmorEquipped.push(newArmor);
+        let position = 0;
+        if (newArmor instanceof Armor) {
+          position = ArmorEquipped.findIndex(function(element,index) {
+            if (element.getName() === newArmor.getName()) {
+              console.log(element.getName());
+              return index;
+            }
+          });
+          if (position === -1) {
+            ArmorEquipped.push(newArmor);
+          }
+
         }
         return ArmorEquipped.length;
       },
@@ -63,12 +75,13 @@ function Human(inputId, inputName, inputMaxHP, inputCurrentHP, inputAgility, inp
       value: function (name) {
         let aux;
         let position = ArmorEquipped.findIndex(function(element,index) {
-          if (element.name === name) {
-            return index;
+          if (element.getName() === name) {
+            return true;
           }
         });
 
         if (position > -1) {
+          console.log(position);
           aux = ArmorEquipped[position];
           ArmorEquipped.splice(position, 1);
           return aux;
@@ -82,14 +95,21 @@ function Human(inputId, inputName, inputMaxHP, inputCurrentHP, inputAgility, inp
     },
     "switchArmorEquipped": {
       value: function (newArmorEquipped) {
-        let aux = [];
+        let aux = [], cout = 0;
         if (Array.isArray(newArmorEquipped)) {
-          for (let i = 0; i < ArmorEquipped.length; i++) {
-            aux.push(ArmorEquipped[i]);
+          for (let i = 0; i < newArmorEquipped.length; i++) {
+            if (newArmorEquipped[i] instanceof Armor) {
+              cout += 1;
+            }
           }
-          ArmorEquipped = newArmorEquipped;
-          return aux;
-        }
+          if (cout === newArmorEquipped.length) {
+            for (let i = 0; i < ArmorEquipped.length; i++) {
+              aux.push(ArmorEquipped[i]);
+            }
+            ArmorEquipped = newArmorEquipped;
+            return aux;
+          }
+          }
         return ArmorEquipped;
       },
       writable: false,
@@ -276,8 +296,18 @@ function Human(inputId, inputName, inputMaxHP, inputCurrentHP, inputAgility, inp
     },
     "addWeaponEquipped": {
       value: function (item) {
-        if (typeof(item) === "object") {
-          WeaponEquipped.push(item);
+        let position;
+        if (item instanceof Weapon) {
+          position = WeaponEquipped.findIndex(function(element,index) {
+            if (element.getName() === item.getName()) {
+              return index;
+            }
+          });
+
+          if (position === -1) {
+            WeaponEquipped.push(item);
+          }
+
         }
         return WeaponEquipped.length;
       },
@@ -287,13 +317,12 @@ function Human(inputId, inputName, inputMaxHP, inputCurrentHP, inputAgility, inp
     },
     "removeWeaponEquipped": {
       value: function (name) {
-        let aux;
-        let position = WeaponEquipped.findIndex(function(element,index) {
-          if (element.name === name) {
-            return index;
+        let aux, position = 0;
+        position = WeaponEquipped.findIndex(function(element) {
+          if (element.getName() === name) {
+            return true;
           }
         });
-
         if (position > -1) {
           aux = WeaponEquipped[position];
           WeaponEquipped.splice(position, 1);
@@ -301,19 +330,28 @@ function Human(inputId, inputName, inputMaxHP, inputCurrentHP, inputAgility, inp
         } else {
           return false;
         }
-      }
     },
+    writable: false,
+    enumerable: true,
+    configurable: false
+  },
     "switchWeaponEquipped": {
       value: function (newWeaponEquipped) {
-        let aux = [];
+        let aux = [], cout = 0;
         if (Array.isArray(newWeaponEquipped)) {
-          for (let i = 0; i < WeaponEquipped.length; i++) {
-            aux.push(WeaponEquipped[i]);
+          for (let i = 0; i < newWeaponEquipped.length; i++) {
+            if (newWeaponEquipped[i] instanceof Weapon) {
+              cout += 1;
+            }
           }
-          WeaponEquipped = newWeaponEquipped;
-          return aux;
+          if (cout === newWeaponEquipped.length) {
+            for (let i = 0; i < WeaponEquipped.length; i++) {
+              aux.push(WeaponEquipped[i]);
+            }
+            WeaponEquipped = newWeaponEquipped;
+            return aux;
+          }
         }
-
         return WeaponEquipped;
       },
       writable: false,

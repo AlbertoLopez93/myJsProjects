@@ -41,7 +41,7 @@ function Character(inputId, inputName, inputMaxHP, inputCurrentHP) {
     },
     "setCurrentHP": {
       value: function (newCurrent) {
-        if ((typeof(newCurrent) === "number") && (newCurrent >= 0)) {
+        if ((typeof(newCurrent) === "number") && (newCurrent >= 0) && (Number.isInteger(newCurrent))) {
           if (newCurrent <= MaxHP) {
             CurrentHP = newCurrent;
           } else {
@@ -57,7 +57,7 @@ function Character(inputId, inputName, inputMaxHP, inputCurrentHP) {
     "setMaxHP": {
       value: function (newMaxHP) {
         if (typeof(newMaxHP) === "number") {
-          if (newMaxHP > 0) {
+          if ((newMaxHP > 0) && (Number.isInteger(newMaxHP))) {
             MaxHP = newMaxHP;
           }
         }
