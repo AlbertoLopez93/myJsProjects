@@ -281,14 +281,6 @@
 
                 describe('Getters', function() {
                     describe('Automated Tests', function() {
-                        //'',
-                        // '',
-                        // '',
-                        // '',
-                        // '',
-                        // '',
-                        // '',
-                        // ''
                         let getters = [{
                             name: 'getAgiBonus',
                             attr: 'agiBonus'
