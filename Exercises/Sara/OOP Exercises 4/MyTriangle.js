@@ -46,6 +46,4 @@ var v1=new MyPoint(4,4);
 var v2=new MyPoint(4,4);
 var v3=new MyPoint(4,4);
 var c=new MyTriangle(v1,v2,v3);
-console.log(c.toString());
-console.log(c.getPerimeter());
-console.log(c.getType());
+module.exports=MyTriangle;
