@@ -1,6 +1,8 @@
 "use strict"
 
 let Character = require("./Character");
+let Armor = require("./Armor");
+let Weapon = require("./Weapon");
 
 function Human( ID, name, maxHP, CurrentHP,
   agility, armorEquipped, currentMP, faction, gold, intellect,
@@ -40,8 +42,9 @@ function Human( ID, name, maxHP, CurrentHP,
   Object.defineProperty( this, "removeArmorEquipped", {
     value: function(nameArmor) {
       for(let k=0; k<armorEquipped.length; k++) {
-        if(armorEquipped[k].name === nameArmor) {
-          return armorEquipped.splice(k,1);
+        if(armorEquipped[k].getName() === nameArmor) {
+          let deleted = armorEquipped.splice(k,1);
+          return deleted[0];
         }
       }
       return false;
@@ -189,8 +192,10 @@ function Human( ID, name, maxHP, CurrentHP,
   Object.defineProperty( this, "removeWeaponEquipped", {
     value: function(nameWeapon) {
       for(let k=0; k<weaponEquipped.length; k++) {
-        if(weaponEquipped[k].name === nameWeapon) {
-          return weaponEquipped.splice(k,1);
+        if(weaponEquipped[k].getName() === nameWeapon) {
+          let deleted = weaponEquipped.splice(k,1);
+          deleted = deleted[0];
+          return deleted;
         }
       }
       return false;

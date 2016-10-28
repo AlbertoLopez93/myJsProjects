@@ -1,11 +1,24 @@
 "use strict";
 
 let Human = require("../Human");
+let Armor = require("../Armor");
+let Weapon = require("../Weapon");
+
+let pistol = new Armor( 240, 18, "revolver", 1, "pistol", 280, 50,
+  46, 870, false, 9, 8, 7, 6, 5 );
+let canon = new Armor( 240, 18, "large", 1, "canon", 280, 500,
+  46, 870, true, 9, 8, 7, 6, 5 );
+
+let beretta = new Armor( 240, 18, "arm", 1, "beretta", 280, 50,
+  46, 870, false, 9, 8, 7, 6, 5 );
+let texan = new Armor( 240, 18, "revolver", 1, "texan", 280, 500,
+  46, 870, true, 9, 8, 7, 6, 5 );
+
 let Peter = new Human( 3, "Peter", 8, 2,
-  6, [{name:"x", any:4}, {name:"w", other:true}],
+  6, [pistol],
   5, "faction", 2, 8,
   true, 57, 58, 59, 26,
-  [{name:"r"}, {name:"z"}]);
+  [texan]);
 
 describe("Testing Human's inherit properties. ", function() {
   it("getName", function() {
@@ -27,16 +40,18 @@ describe("Testing Human's own properties. ", function() {
     expect(Peter.getAgility()).toBe(12);
   });
   it("getArmorEquipped", function() {
-    //expect(Peter.getArmorEquipped()).toBe([{name:"x", any:4}, {name:"w", other:true}]);
+    expect(Peter.getArmorEquipped().length).toBe(1);
+    expect(Peter.getArmorEquipped()[0].getName()).toBe("pistol");
   });
   it("addArmorEquipped", function() {
-    Peter.addArmorEquipped({name:"p", any:4});
-    //expect(Peter.getArmorEquipped()).toBe([{name:"x", any:4}, {name:"w", other:true},{name:"p", any:4}]);
+    Peter.addArmorEquipped(canon);
+    expect(Peter.getArmorEquipped().length).toBe(2);
   });
   it("removeArmorEquipped", function() {
-    expect(Peter.removeArmorEquipped("u")).toBe(false);
-    // expect(Peter.removeArmorEquipped("x")).toBe({name:"x", any:4});
-    // expect(Peter.getArmorEquipped()).toBe([{name:"w", other:true},{name:"p", any:4}]);
+    expect(Peter.removeArmorEquipped("beretta")).toBe(false);
+    expect(Peter.removeArmorEquipped("canon").getName()).toBe("canon");
+    Peter.removeArmorEquipped("canon");
+    expect(Peter.getArmorEquipped().length).toBe(1);
   });
   it("switchArmorEquipped", function() {
     // expect(Peter.switchArmorEquipped([{name:"h"}, {name:"q"}])).toBe([{name:"x", any:4},{name:"w", other:true},{name:"p", any:4}]);
@@ -61,14 +76,17 @@ describe("Testing Human's own properties. ", function() {
     expect(Peter.setMaxMP(-8).getMaxMP()).toBe(8);
   });
   it("getWeaponEquipped", function() {
-    //expect(Peter.getWeaponEquipped()).toBe([ { name : 'r' }, { name : 'z' } ] );
+    expect(Peter.getWeaponEquipped().length).toBe(1);
+    expect(Peter.getWeaponEquipped()[0].getName()).toBe("texan");
   });
   it("addWeaponEquipped", function() {
-    Peter.addWeaponEquipped({name:"p", any:4});
+    Peter.addWeaponEquipped(beretta);
+    expect(Peter.getWeaponEquipped().length).toBe(2);
   });
   it("removeWeaponEquipped", function() {
-    expect(Peter.removeWeaponEquipped("u")).toBe(false);
-    //expect(Peter.removeWeaponEquipped("z")).toBe({ name : 'z' });
+    expect(Peter.removeWeaponEquipped("winchester")).toBe(false);
+    let deleted = Peter.removeWeaponEquipped("beretta");
+    expect(deleted.getName()).toBe("beretta");
   });
   it("switchWeaponEquipped", function() {
     // expect(Peter.switchWeaponEquipped([{name:"h"}, {name:"q"}])).toBe([ { name : 'r' }, { name : 'z' }, { name : 'p', any : 4 } ]);
