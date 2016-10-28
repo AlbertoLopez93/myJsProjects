@@ -31,7 +31,6 @@ function Animal(hostileToPlayer, lootDropped, maxDmg, minDmg){
     enumerable:true
   });
 }
-
 // let c=new Animal(true, 3, 500, 50);
 // console.log(c.isItHostileToPlayer(),c.getLootDropped(),c.getMaxDmg(),c.getMinDmg());
 module.exports=Animal;

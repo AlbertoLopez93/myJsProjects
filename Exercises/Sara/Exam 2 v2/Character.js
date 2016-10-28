@@ -56,12 +56,10 @@ function Character(ID, name, maxHP, currentHP){
     enumerable:true
   });
 }
-
 // let c=new Character(121212,"Will",600,200);
 // console.log(c.getID(),c.getName(),c.getMaxHP(),c.getCurrentHP());
 // console.log(c.setMaxHP(1));
 // console.log(c.getID(),c.getName(),c.getMaxHP(),c.getCurrentHP());
 // console.log(c.setCurrentHP(2.5));
 // console.log(c.getID(),c.getName(),c.getMaxHP(),c.getCurrentHP());
-
 module.exports=Character;
