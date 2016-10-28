@@ -18,7 +18,7 @@
             strength = arguments[14],
             weaponEquipped = arguments[15];
 
-        Character.call(this, arguments);
+        Character.apply(this, arguments);
 
         Object.defineProperty(this, 'getAgility', {
             value: function getAgility() {

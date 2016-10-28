@@ -7,7 +7,7 @@
         let hostileToPlayer = arguments[16],
             lootDropped = arguments[17];
 
-        Human.call(this, arguments);
+        Human.apply(this, arguments);
 
         Object.defineProperty(this, 'isItHostileToPlayer', {
             value: function isItHostileToPlayer() {

@@ -9,7 +9,7 @@
             maxDmg = arguments[6],
             minDmg = arguments[7];
 
-        Character.call(this, arguments);
+        Character.apply(this, arguments);
 
         Object.defineProperty(this, 'isItHostileToPlayer', {
             value: function isItHostileToPlayer() {

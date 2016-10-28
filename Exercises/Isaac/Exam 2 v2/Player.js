@@ -9,7 +9,7 @@
             level = 1,
             sp = 0;
 
-        Human.call(this, arguments);
+        Human.apply(this, arguments);
 
         Object.defineProperty(this, 'getExperience', {
             value: function getExperience() {

@@ -16,10 +16,10 @@
     let character2Data;
 
     properties = ['id', 'name', 'maxHP', 'currentHP'];
-    publicMethods = ['getID', 'getName', 'getCurrentHP', 'setCurrentHP', 'getMaxHP', 'setMaxHP'];
     inheritedMethods = [];
-    prototypeMethods = [];
+    publicMethods = ['getID', 'getName', 'getCurrentHP', 'setCurrentHP', 'getMaxHP', 'setMaxHP'];
     inheritedPrototypeMethods = [];
+    prototypeMethods = [];
 
     characterData = {
         id: 1,
