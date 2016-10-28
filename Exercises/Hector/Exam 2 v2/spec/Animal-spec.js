@@ -105,6 +105,15 @@ describe("Animal class", () => {
         it("should return if Its Hostile To Player", () => {
             expect(axel.isItHostileToPlayer()).toBe(true);
         });
+        it("should return the LootDropped", () => {
+            expect(axel.getLootDropped()).toBe(10);
+        });
+        it("should return the max damage", () => {
+            expect(axel.getMaxDmg()).toBe(20);
+        });
+        it("should return the min damage", () => {
+            expect(axel.getMinDmg()).toBe(10);
+        });
 
     });
 });

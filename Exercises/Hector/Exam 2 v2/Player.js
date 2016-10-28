@@ -34,6 +34,7 @@ function Player(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curre
             value: function (newLevel) {
                 if (newLevel > 0 && typeof newLevel === "number") {
                     Level = newLevel;
+                    return this;
                 }
             },
             enumerable: true
@@ -48,6 +49,7 @@ function Player(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curre
             value: function (newSP) {
                 if (typeof newSP === "number" && newSP > 0) {
                     SP = newSP;
+                    return this;
                 }
             },
             enumerable: true

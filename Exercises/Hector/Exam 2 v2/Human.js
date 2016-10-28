@@ -1,6 +1,8 @@
 "use strict";
 
 let Character = require("./Character");
+let Weapon = require("./Weapon");
+let Armor = require("./Armor");
 
 function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _CurrentMP, _Faction, _Gold, _Intellect, _IsMale, _MaxMP, _Spirit, _Stamina, _Strength, _WeaponEquipped){
     Character.call(this, _id, _name, _maxHP, _currentHP);
@@ -41,17 +43,20 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
         },
         "addArmorEquipped": {
             value: function (item) {
-                // if (item instanceof Armor) {  /*COME BACK HERE ********************************************/
-                if (arguments.length !== 0) {
-                    return ArmorEquipped.push(item);
+                let itemName = item.getName();
+                for (let i = 0; i < ArmorEquipped.length; i++) {
+                    if (ArmorEquipped[i].getName() === itemName) {
+                        return ArmorEquipped.length;
+                    }
                 }
+                return ArmorEquipped.push(item);
             },
             enumerable: true
         },
         "removeArmorEquipped": {
             value: function (name) {
                 for (let i = 0; i < ArmorEquipped.length; i++) {
-                    if (ArmorEquipped.getName() === name) {   /*COME BACK HERE ********************************************/
+                    if (ArmorEquipped[i].getName() === name) {   /*COME BACK HERE ********************************************/
                         return ArmorEquipped.splice(i,1).pop();
                     }
                 }
@@ -63,6 +68,8 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
                 let oldArmorEquiped = ArmorEquipped;
                 if (newArmorEquipped instanceof Array) {
                     ArmorEquipped = newArmorEquipped;
+                    return oldArmorEquiped;
+                } else {
                     return oldArmorEquiped;
                 }
             },
@@ -203,17 +210,20 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
         },
         "addWeaponEquipped": {
             value: function (item) {
-                // if (item instanceof Weapon) {  /*COME BACK HERE ********************************************/
-                if (arguments.length !== 0) {
-                    return WeaponEquipped.push(item);
+                let itemName = item.getName();
+                for (let i = 0; i < WeaponEquipped.length; i++) {
+                    if (WeaponEquipped[i].getName() === itemName) {
+                        return WeaponEquipped.length;
+                    }
                 }
+                return WeaponEquipped.push(item);
             },
             enumerable: true
         },
         "removeWeaponEquipped": {
             value: function (name) {
                 for (let i = 0; i < WeaponEquipped.length; i++) {
-                    if (WeaponEquipped.getName() === name) {   /*COME BACK HERE ********************************************/
+                    if (WeaponEquipped[i].getName() === name) {   /*COME BACK HERE ********************************************/
                         return WeaponEquipped.splice(i,1).pop();
                     }
                 }
@@ -227,6 +237,8 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
                 if (newWeaponEquipped instanceof Array) {
                     WeaponEquipped = newWeaponEquipped;
                     return oldWeaponEquiped;
+                } else {
+                    return oldWeaponEquiped;
                 }
             },
             enumerable: true
@@ -235,58 +247,79 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
 }
 
 let axel = new Human(1234, "axel", 100, 0, 20, [], 8, "Tepa", 0, 10, true, 200, 3, 50, 30, []);
-console.log(axel.getID());
-console.log(axel.getName());
-console.log(axel.getCurrentHP());
-console.log(axel.getMaxHP());
-console.log("\n");
-console.log(axel.setCurrentHP(50));
-console.log(axel.setMaxHP(51));
-console.log(axel.getCurrentHP());
-console.log(axel.getMaxHP());
-console.log("\n");
-console.log(axel.getAgility());
-console.log(axel.setAgility(100));
-console.log(axel.getAgility());
-console.log(axel.setAgility(0));
-console.log(axel.getAgility());
-console.log("\n");
-console.log(axel.getArmorEquipped());
-console.log(axel.addArmorEquipped());
-console.log("\n");
-console.log(axel.getCurrentMP());
-console.log(axel.setCurrentMP(9));
-console.log(axel.getCurrentMP());
-console.log("\n");
-console.log(axel.getFaction());
-console.log("\n");
-console.log(axel.getGold());
-console.log(axel.setGold(2));
-console.log(axel.getGold());
-console.log("\n");
-console.log(axel.getIntellect());
-console.log(axel.setIntellect(80));
-console.log(axel.getIntellect());
-console.log("\n");
-console.log(axel.isItMale());
-console.log("\n");
-console.log(axel.getMaxMP());
-console.log(axel.setMaxMP(300));
-console.log(axel.getMaxMP());
-console.log("\n");
-console.log(axel.getSpirit());
-console.log(axel.setMaxMP(5));
-console.log(axel.getMaxMP());
-console.log("\n");
-console.log(axel.getStamina());
-console.log(axel.setStamina(40));
-console.log(axel.getStamina());
-console.log("\n");
-console.log(axel.getStrength());
-console.log(axel.setStrength(9));
-console.log(axel.getStrength());
-console.log("\n");
-console.log(axel.getWeaponEquipped());
+// let armor1 = new Armor(100, 10, "Axel's Armor", 1234, "Axel", 200, 5, 100, 200, false, 50, 50, 80, 80, 80);
+// let armor2 = new Armor(100, 10, "Axel's Armor", 1234, "Juan", 200, 5, 100, 200, false, 50, 50, 80, 80, 80);
+// let armor3 = new Armor(100, 10, "Axel's Armor", 1234, "Axel", 200, 5, 100, 200, false, 50, 50, 80, 80, 80);
 
+let weapon1 = new Weapon(100, 10, "Axel's weapon", 1234, "Axel", 200, 5, true, 300, 100, 10);
+let weapon2 = new Weapon(100, 10, "Axel's weapon", 1234, "Juan", 200, 5, true, 300, 100, 10);
+let weapon3 = new Weapon(100, 10, "Axel's weapon", 1234, "Axela", 200, 5, true, 300, 100, 10);
+
+console.log(axel.getWeaponEquipped());
+console.log(axel.addWeaponEquipped(weapon1));
+console.log(axel.getWeaponEquipped());
+console.log(axel.addWeaponEquipped(weapon2));
+console.log(axel.getWeaponEquipped());
+console.log(axel.addWeaponEquipped(weapon3));
+console.log(axel.getWeaponEquipped());
+console.log(axel.removeWeaponEquipped("Juan"));
+
+console.log("\n");
+
+
+
+
+// console.log(axel.getID());
+// console.log(axel.getName());
+// console.log(axel.getCurrentHP());
+// console.log(axel.getMaxHP());
+// console.log("\n");
+// console.log(axel.setCurrentHP(50));
+// console.log(axel.setMaxHP(51));
+// console.log(axel.getCurrentHP());
+// console.log(axel.getMaxHP());
+// console.log("\n");
+// console.log(axel.getAgility());
+// console.log(axel.setAgility(100));
+// console.log(axel.getAgility());
+// console.log(axel.setAgility(0));
+// console.log(axel.getAgility());
+// console.log("\n");
+// console.log(axel.getArmorEquipped());
+// console.log(axel.addArmorEquipped());
+// console.log("\n");
+// console.log(axel.getCurrentMP());
+// console.log(axel.setCurrentMP(9));
+// console.log(axel.getCurrentMP());
+// console.log("\n");
+// console.log(axel.getFaction());
+// console.log("\n");
+// console.log(axel.getGold());
+// console.log(axel.setGold(2));
+// console.log(axel.getGold());
+// console.log("\n");
+// console.log(axel.getIntellect());
+// console.log(axel.setIntellect(80));
+// console.log(axel.getIntellect());
+// console.log("\n");
+// console.log(axel.isItMale());
+// console.log("\n");
+// console.log(axel.getMaxMP());
+// console.log(axel.setMaxMP(300));
+// console.log(axel.getMaxMP());
+// console.log("\n");
+// console.log(axel.getSpirit());
+// console.log(axel.setMaxMP(5));
+// console.log(axel.getMaxMP());
+// console.log("\n");
+// console.log(axel.getStamina());
+// console.log(axel.setStamina(40));
+// console.log(axel.getStamina());
+// console.log("\n");
+// console.log(axel.getStrength());
+// console.log(axel.setStrength(9));
+// console.log(axel.getStrength());
+// console.log("\n");
+// console.log(axel.getWeaponEquipped());
 
 module.exports = Human;
