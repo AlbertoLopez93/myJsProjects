@@ -135,13 +135,12 @@ function Human (humanID, humanName, humanMaxHP, humanCurrentHP,
 
     Object.defineProperty(this, "setGold", {
         value: function setGold (newGold){
-             if(typeof newGold === "number" || newGold instanceof Number){
-                 if(newGold >= 0 && newGold <= 999999999){
-                     Gold = newGold;
-                 }
-             }
-
-             return this;
+            if(typeof newGold === "number" || newGold instanceof Number){
+                if(newGold >= 0 && newGold <= 999999999){
+                    Gold = newGold;
+                }
+            }
+            return this;
         },
         enumerable: true
     });
@@ -282,7 +281,6 @@ function Human (humanID, humanName, humanMaxHP, humanCurrentHP,
 
                 flag = WeaponEquipped.splice(index, 1).pop();
             }
-
             return flag;
         },
         enumerable: true
