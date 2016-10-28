@@ -75,4 +75,4 @@ function Armor (armorBuyPrice, armorCount, armorDescription, armorID, armorName,
 
 }
 
-module.exports = Item;
+module.exports = Armor;
