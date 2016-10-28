@@ -16,10 +16,12 @@
     let player2Data;
 
     properties = [
+        // Character Class
         'id',
         'name',
         'maxHP',
         'currentHP',
+        // Human Class
         'agility',
         'armorEquipped',
         'currentMP',
@@ -32,6 +34,7 @@
         'stamina',
         'strength',
         'weaponEquipped',
+        // This Class
         'experience',
         'level',
         'sp'
