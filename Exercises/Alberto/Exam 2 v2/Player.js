@@ -31,7 +31,7 @@ function Player( ID, name, maxHP, CurrentHP,
   });
   Object.defineProperty( this, "setExperience", {
     value: function(newValue) {
-      if(typeof === "number" && newValue >= 0) {
+      if(typeof newValue === "number" && newValue >= 0) {
         experience = newValue;
       }
       return this;
@@ -40,7 +40,7 @@ function Player( ID, name, maxHP, CurrentHP,
   });
   Object.defineProperty( this, "setLevel", {
     value: function(newValue) {
-      if(typeof === "number" && newValue >= 0) {
+      if(typeof newValue === "number" && newValue >= 0) {
         level = newValue;
       }
     },
@@ -48,7 +48,7 @@ function Player( ID, name, maxHP, CurrentHP,
   });
   Object.defineProperty( this, "setSP", {
     value: function(newValue) {
-      if(typeof === "number" && newValue >= 0) {
+      if(typeof newValue === "number" && newValue >= 0) {
         SP = newValue;
       }
     },
