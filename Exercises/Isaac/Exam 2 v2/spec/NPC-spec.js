@@ -543,11 +543,17 @@
             describe('Behavior', function() {
                 // 'isItHostileToPlayer',
                 describe('isItHostileToPlayer', function() {
-                    // body...
+                    it('should return the hostileToPlayer of the instance', function() {
+                        expect(nPC.isItHostileToPlayer()).toBe(nPCData.hostileToPlayer);
+                        expect(nPC2.isItHostileToPlayer()).toBe(nPC2Data.hostileToPlayer);
+                    });
                 });
                 // 'getLootDropped',
                 describe('getLootDropped', function() {
-                    // body...
+                    it('should return the lootDropped of the instance', function() {
+                        expect(nPC.getLootDropped()).toBe(nPCData.lootDropped);
+                        expect(nPC2.getLootDropped()).toBe(nPC2Data.lootDropped);
+                    });
                 });
             });
         });
