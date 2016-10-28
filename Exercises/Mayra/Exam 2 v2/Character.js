@@ -24,13 +24,18 @@ function Character(ID , Name , MaxHP, CurrentPH) {
 
     Object.defineProperty(this, "setCurrentHP", {
         value: function(newPH) {
-            if (typeof newPH === "number" && newPH < this.getMaxHP() ) {
-                CurrentPH = newPH;
+            if (typeof newPH === "number") {
+                if (newPH > this.getMaxHP()) {
+                    CurrentPH = this.getMaxHP();
+                } else {
+                    CurrentPH = newPH;
+                }
             }
             return this;
         },
         enumerable: true
     });
+
     Object.defineProperty(this, "getMaxHP", {
         value: function() {
             return MaxHP;
@@ -48,5 +53,6 @@ function Character(ID , Name , MaxHP, CurrentPH) {
         enumerable: true
     });
 }
+
 
 module.exports = Character;
