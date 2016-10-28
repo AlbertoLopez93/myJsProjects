@@ -82,7 +82,6 @@ function Human (humanID, humanName, humanMaxHP, humanCurrentHP,
 
                 flag = ArmorEquipped.splice(index, 1).pop();
             }
-
             return flag;
         },
         enumerable: true
@@ -98,11 +97,10 @@ function Human (humanID, humanName, humanMaxHP, humanCurrentHP,
                     return elem instanceof Armor;
                 });
             }
-
+            
             if(flag){
                 ArmorEquipped = newArmorSet;
             }
-
             return oldArmorSet;
         },
         enumerable: true
