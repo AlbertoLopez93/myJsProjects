@@ -1,8 +1,9 @@
 "use strict";
 let Human=require("./Human");
-function Player(){
-  Human.call(this);
-  let experience=0, level=1,SP=0;
+function Player(ID, name, maxHP, currentHP, agility, armorEquipped, currentMP, faction, gold, intellect, isMale, maxMP, spirit, stamina, strength, weaponEquipped){
+
+  Human.call(this, ID, name, maxHP, currentHP, agility, armorEquipped, currentMP, faction, gold, intellect, isMale, maxMP, spirit, stamina, strength, weaponEquipped);
+  let experience=0, level=1, SP=0;
 
   Object.defineProperty(this, "getExperience", {
     value: function() {
@@ -60,7 +61,8 @@ function Player(){
     },
     enumerable:true
   });
-
 }
-
+// let c=new Player(121212,"Will", 600, 200,132, [{name:"pistola"}], 45, "nose", 5, 200, true, 1000, 40, 100, 10,[{name:"knife"},{name:"map"}]);
+// console.log(c.setSP(4));
+// console.log(c.getSP());
 module.exports=Player;
