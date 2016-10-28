@@ -15,6 +15,12 @@ describe("Testing Item's functions. ", function() {
   it("getDescription", function() {
     expect(obj.getDescription()).toBe("description");
   });
+  it("getID", function() {
+    expect(obj.getID()).toBe(1);
+  });
+  it("getSellPrice", function() {
+    expect(obj.getSellPrice()).toBe(28);
+  });
   it("getWeight", function() {
     expect(obj.getWeight()).toBe(500);
   });

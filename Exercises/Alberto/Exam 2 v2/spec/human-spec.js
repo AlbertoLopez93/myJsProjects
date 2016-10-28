@@ -9,10 +9,10 @@ let pistol = new Armor( 240, 18, "revolver", 1, "pistol", 280, 50,
 let canon = new Armor( 240, 18, "large", 1, "canon", 280, 500,
   46, 870, true, 9, 8, 7, 6, 5 );
 
-let beretta = new Armor( 240, 18, "arm", 1, "beretta", 280, 50,
-  46, 870, false, 9, 8, 7, 6, 5 );
-let texan = new Armor( 240, 18, "revolver", 1, "texan", 280, 500,
-  46, 870, true, 9, 8, 7, 6, 5 );
+let beretta = new Weapon( 240, 18, "arm", 1, "beretta", 280, 50,
+  false, false, true, 9, 5, 8 );
+let texan = new Weapon( 240, 18, "revolver", 1, "texan", 280, 500,
+  false, false, true, 9, 5, 8 );
 
 let Peter = new Human( 3, "Peter", 8, 2,
   6, [pistol],
@@ -91,5 +91,24 @@ describe("Testing Human's own properties. ", function() {
   it("switchWeaponEquipped", function() {
     // expect(Peter.switchWeaponEquipped([{name:"h"}, {name:"q"}])).toBe([ { name : 'r' }, { name : 'z' }, { name : 'p', any : 4 } ]);
     // expect(Peter.getWeaponEquipped()).toBe([{name:"h"}, {name:"q"}]);
+  });
+});
+
+describe("Extra test in Human class. ", function() {
+  it("Weapon", function() {
+    expect(Peter.getWeaponEquipped()[0].isEnchanted()).toBe(false);
+    expect(Peter.getWeaponEquipped()[0].isEnchanted(true)).toBe(true);
+    Peter.switchWeaponEquipped([]);
+    Peter.addWeaponEquipped(texan);
+    expect(Peter.getWeaponEquipped()[0].isUpgraded(false)).toBe(false);
+    expect(Peter.getWeaponEquipped()[0].setMinDmg(0)).toBe(undefined);
+    expect(Peter.getWeaponEquipped()[0].getMinDmg()).toBe(0);
+    expect(Peter.getWeaponEquipped()[0].setStrReq(97)).toBe(undefined);
+    expect(Peter.getWeaponEquipped()[0].getStrReq()).toBe(97);
+  });
+  it("Armor", function() {
+    Peter.switchArmorEquipped([pistol,canon]);
+    expect(Peter.getArmorEquipped()[1].isItHeavy()).toBe(true);
+    expect(Peter.getArmorEquipped()[1].getStrBonus()).toBe(5);
   });
 });

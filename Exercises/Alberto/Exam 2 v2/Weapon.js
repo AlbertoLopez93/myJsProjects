@@ -71,7 +71,7 @@ function Weapon( buyPrice, count, description, ID, name, sellPrice, weight,
   });
   Object.defineProperty( this, "setStrReq", {
     value: function(newValue) {
-      setStrReq = newValue;
+      strReq = newValue;
     },
     enumerable: true,
   });
