@@ -60,10 +60,10 @@
             animal2Data.name,
             animal2Data.maxHP,
             animal2Data.currentHP,
-            animalData.hostileToPlayer,
-            animalData.lootDropped,
-            animalData.maxDmg,
-            animalData.minDmg
+            animal2Data.hostileToPlayer,
+            animal2Data.lootDropped,
+            animal2Data.maxDmg,
+            animal2Data.minDmg
         );
     });
 
@@ -126,21 +126,21 @@
                 });
 
                 describe('getName', function() {
-                    it('should return the Name of the instance', function() {
+                    it('should return the name of the instance', function() {
                         expect(animal.getName()).toBe(animalData.name);
                         expect(animal2.getName()).toBe(animal2Data.name);
                     });
                 });
 
                 describe('getCurrentHP', function() {
-                    it('should return the CurrentHP of the instance', function() {
+                    it('should return the currentHP of the instance', function() {
                         expect(animal.getCurrentHP()).toBe(animalData.currentHP);
                         expect(animal2.getCurrentHP()).toBe(animal2Data.currentHP);
                     });
                 });
 
                 describe('setCurrentHP', function() {
-                    it('should update the CurrentHP of the instance', function() {
+                    it('should update the currentHP of the instance', function() {
                         expect(animal.setCurrentHP(10)).toBe(animal);
                         expect(animal.getCurrentHP()).toBe(10);
 
@@ -148,7 +148,7 @@
                         expect(animal2.getCurrentHP()).toBe(20);
                     });
 
-                    it('should update the CurrentHP to the MaxHP if is greater than MaxHP of the instance', function() {
+                    it('should update the currentHP to the maxHP if is greater than maxHP of the instance', function() {
                         expect(animal.setCurrentHP(animalData.maxHP + 50)).toBe(animal);
                         expect(animal.getCurrentHP()).toBe(animalData.maxHP);
 
@@ -158,14 +158,14 @@
                 });
 
                 describe('getMaxHP', function() {
-                    it('should return the MaxHP of the instance', function() {
+                    it('should return the maxHP of the instance', function() {
                         expect(animal.getMaxHP()).toBe(animalData.maxHP);
                         expect(animal2.getMaxHP()).toBe(animal2Data.maxHP);
                     });
                 });
 
                 describe('setMaxHP', function() {
-                    it('should update the MaxHP of the instance', function() {
+                    it('should update the maxHP of the instance', function() {
                         expect(animal.setMaxHP(3000)).toBe(animal);
                         expect(animal.getMaxHP()).toBe(3000);
 
@@ -173,7 +173,7 @@
                         expect(animal2.getMaxHP()).toBe(4000);
                     });
 
-                    it('should NOT update the MaxHP of the instance if less or equal to 0', function() {
+                    it('should NOT update the maxHP of the instance if less or equal to 0', function() {
                         expect(animal.setMaxHP(0)).toBe(animal);
                         expect(animal.getMaxHP()).toBe(animalData.maxHP);
 
@@ -215,9 +215,31 @@
             describe('Behavior', function() {
                 //publicMethods = ['isItHostileToPlayer', 'getLootDropped', 'getMaxDmg', 'getMinDmg'];
 
-                describe('getID', function() {
-                    it('should return the ID of the instance', function() {
+                describe('isItHostileToPlayer', function() {
+                    it('should return if the instance is hostileToPlayer', function() {
+                        expect(animal.isItHostileToPlayer()).toBe(animalData.hostileToPlayer);
+                        expect(animal2.isItHostileToPlayer()).toBe(animal2Data.hostileToPlayer);
+                    });
+                });
 
+                describe('getLootDropped', function() {
+                    it('should return the lootDropped of the instance', function() {
+                        expect(animal.getLootDropped()).toBe(animalData.lootDropped);
+                        expect(animal2.getLootDropped()).toBe(animal2Data.lootDropped);
+                    });
+                });
+
+                describe('getMaxDmg', function() {
+                    it('should return the maxDmg of the instance', function() {
+                        expect(animal.getMaxDmg()).toBe(animalData.maxDmg);
+                        expect(animal2.getMaxDmg()).toBe(animal2Data.maxDmg);
+                    });
+                });
+
+                describe('getMinDmg', function() {
+                    it('should return the minDmg of the instance', function() {
+                        expect(animal.getMinDmg()).toBe(animalData.minDmg);
+                        expect(animal2.getMinDmg()).toBe(animal2Data.minDmg);
                     });
                 });
             });

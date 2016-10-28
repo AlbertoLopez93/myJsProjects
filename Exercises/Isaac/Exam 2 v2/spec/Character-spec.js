@@ -110,21 +110,21 @@
                 });
 
                 describe('getName', function() {
-                    it('should return the Name of the instance', function() {
+                    it('should return the name of the instance', function() {
                         expect(character.getName()).toBe(characterData.name);
                         expect(character2.getName()).toBe(character2Data.name);
                     });
                 });
 
                 describe('getCurrentHP', function() {
-                    it('should return the CurrentHP of the instance', function() {
+                    it('should return the currentHP of the instance', function() {
                         expect(character.getCurrentHP()).toBe(characterData.currentHP);
                         expect(character2.getCurrentHP()).toBe(character2Data.currentHP);
                     });
                 });
 
                 describe('setCurrentHP', function() {
-                    it('should update the CurrentHP of the instance', function() {
+                    it('should update the currentHP of the instance', function() {
                         expect(character.setCurrentHP(10)).toBe(character);
                         expect(character.getCurrentHP()).toBe(10);
 
@@ -132,7 +132,7 @@
                         expect(character2.getCurrentHP()).toBe(20);
                     });
 
-                    it('should update the CurrentHP to the MaxHP if is greater than MaxHP of the instance', function() {
+                    it('should update the currentHP to the maxHP if is greater than maxHP of the instance', function() {
                         expect(character.setCurrentHP(characterData.maxHP + 50)).toBe(character);
                         expect(character.getCurrentHP()).toBe(characterData.maxHP);
 
@@ -142,14 +142,14 @@
                 });
 
                 describe('getMaxHP', function() {
-                    it('should return the MaxHP of the instance', function() {
+                    it('should return the maxHP of the instance', function() {
                         expect(character.getMaxHP()).toBe(characterData.maxHP);
                         expect(character2.getMaxHP()).toBe(character2Data.maxHP);
                     });
                 });
 
                 describe('setMaxHP', function() {
-                    it('should update the MaxHP of the instance', function() {
+                    it('should update the maxHP of the instance', function() {
                         expect(character.setMaxHP(3000)).toBe(character);
                         expect(character.getMaxHP()).toBe(3000);
 
@@ -157,7 +157,7 @@
                         expect(character2.getMaxHP()).toBe(4000);
                     });
 
-                    it('should NOT update the MaxHP of the instance if less or equal to 0', function() {
+                    it('should NOT update the maxHP of the instance if less or equal to 0', function() {
                         expect(character.setMaxHP(0)).toBe(character);
                         expect(character.getMaxHP()).toBe(characterData.maxHP);
 
