@@ -3,13 +3,7 @@
 let Character = require("./Character");
 
 function Animal( ID, name, maxHP, CurrentHP, hostileToPlayer, lootDropped, maxDmg, minDmg ) {
-  if(!hostileToPlayer) {
-    hostileToPlayer = false;
-  }
-  else {
-    hostileToPlayer = true;
-  }
-  
+  hostileToPlayer = hostileToPlayer || false;
   Character.call( this, ID, name, maxHP, CurrentHP );
 
   Object.defineProperty( this, "isItHostileToPlayer", {
