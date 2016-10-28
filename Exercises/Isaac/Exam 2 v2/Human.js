@@ -63,7 +63,7 @@
                     }
                 }
                 if (index >= 0) {
-                    item = armorEquipped.splice(index, 1);
+                    item = armorEquipped.splice(index, 1)[0];
                 }
                 return item;
             },
@@ -238,7 +238,7 @@
                     }
                 }
                 if (index >= 0) {
-                    item = weaponEquipped.splice(index, 1);
+                    item = weaponEquipped.splice(index, 1)[0];
                 }
                 return item;
             },

@@ -213,7 +213,6 @@
             });
 
             describe('Behavior', function() {
-                //publicMethods = ['isItHostileToPlayer', 'getLootDropped', 'getMaxDmg', 'getMinDmg'];
 
                 describe('isItHostileToPlayer', function() {
                     it('should return if the instance is hostileToPlayer', function() {
