@@ -24,7 +24,7 @@ function Character(ID , Name , MaxHP, CurrentPH) {
 
     Object.defineProperty(this, "setCurrentHP", {
         value: function(newPH) {
-            if (typeof newPH === "number") {
+            if (typeof newPH === "number" && newPH > 0) {
                 if (newPH > this.getMaxHP()) {
                     CurrentPH = this.getMaxHP();
                 } else {
