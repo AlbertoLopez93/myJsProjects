@@ -1,6 +1,9 @@
 (function() {
     'use strict';
 
+    const Item = require('../Item');
+    const Armor = require('../Armor');
+    const Weapon = require('../Weapon');
     const Human = require('../Human');
 
     let properties;
@@ -9,11 +12,16 @@
     let prototypeMethods;
     let inheritedPrototypeMethods;
     let descriptor;
-    //let proto;
     let human;
     let humanData;
     let human2;
     let human2Data;
+    let item;
+    let itemData;
+    let armor;
+    let armorData;
+    let weapon;
+    let weaponData;
 
     properties = [
         'id',
@@ -33,7 +41,14 @@
         'strength',
         'weaponEquipped'
     ];
-    inheritedMethods = ['getID', 'getName', 'getCurrentHP', 'setCurrentHP', 'getMaxHP', 'setMaxHP'];
+    inheritedMethods = [
+        'getID',
+        'getName',
+        'getCurrentHP',
+        'setCurrentHP',
+        'getMaxHP',
+        'setMaxHP'
+    ];
     publicMethods = [
         'getAgility',
         'setAgility',
@@ -71,11 +86,7 @@
         maxHP: 1000,
         currentHP: 100,
         agility: 1500,
-        armorEquipped: [{
-            name: 'boots'
-        }, {
-            name: 'shield'
-        }],
+        armorEquipped: [],
         currentMP: 5,
         faction: 'Blue',
         gold: 100,
@@ -85,11 +96,7 @@
         spirit: 50,
         stamina: 30,
         strength: 800,
-        weaponEquipped: [{
-            name: 'gun'
-        }, {
-            name: 'granate'
-        }]
+        weaponEquipped: []
     };
 
     human2Data = {
@@ -98,11 +105,7 @@
         maxHP: 2000,
         currentHP: 200,
         agility: 1700,
-        armorEquipped: [{
-            name: 'shoes'
-        }, {
-            name: 'purse'
-        }],
+        armorEquipped: [],
         currentMP: 6,
         faction: 'Red',
         gold: 150,
@@ -112,14 +115,152 @@
         spirit: 100,
         stamina: 60,
         strength: 600,
-        weaponEquipped: [{
-            name: 'lipstick'
-        }, {
-            name: 'highhills'
-        }]
+        weaponEquipped: []
     };
 
+    itemData = {
+        buyPrice: 500,
+        count: 0,
+        description: "Super Mega Computer",
+        id: 1,
+        name: 'Computer',
+        sellPrice: 600,
+        weight: 15.5
+    };
+
+    armorData = [{
+        // Item Class
+        buyPrice: 400,
+        count: 1,
+        description: "Super Boots",
+        id: 1,
+        name: 'Boots',
+        sellPrice: 500,
+        weight: 5.5,
+        // Armor Class
+        agiBonus: 10,
+        intBonus: 20,
+        isHeavy: false,
+        physDR: 30,
+        spellDR: 40,
+        spiBonus: 50,
+        staBonus: 60,
+        strBouns: 70
+    }, {
+        // Item Class
+        buyPrice: 500,
+        count: 1,
+        description: "Super Shield",
+        id: 1,
+        name: 'Shield',
+        sellPrice: 600,
+        weight: 5.5,
+        // Armor Class
+        agiBonus: 20,
+        intBonus: 30,
+        isHeavy: true,
+        physDR: 40,
+        spellDR: 50,
+        spiBonus: 60,
+        staBonus: 70,
+        strBouns: 80
+    }];
+
+    weaponData = [{
+        // Item Class
+        buyPrice: 1000,
+        count: 2,
+        description: "Like the Old West",
+        id: 1,
+        name: 'Magnum',
+        sellPrice: 1100,
+        weight: 5.5,
+        // This Class
+        isEnchanted: false, // For testing purposes
+        isUpgraded: false, // For testing purposes
+        isOneHanded: true,
+        maxDmg: 500,
+        minDmg: 300,
+        strReq: 50
+    }, {
+        // Item Class
+        buyPrice: 20000,
+        count: 1,
+        description: "Let's kill them all!",
+        id: 2,
+        name: 'Machinegun',
+        sellPrice: 25000,
+        weight: 15.9,
+        // This Class
+        isEnchanted: false, // For testing purposes
+        isUpgraded: false, // For testing purposes
+        isOneHanded: false,
+        maxDmg: 5000,
+        minDmg: 1000,
+        strReq: 600
+    }];
+
+    item = new Item(
+        itemData.buyPrice,
+        itemData.count,
+        itemData.description,
+        itemData.id,
+        itemData.name,
+        itemData.sellPrice,
+        itemData.weight
+    );
+
+    armor = armorData.map(function(a) {
+        return new Armor(
+            a.buyPrice,
+            a.count,
+            a.description,
+            a.id,
+            a.name,
+            a.sellPrice,
+            a.weight,
+            a.agiBonus,
+            a.intBonus,
+            a.isHeavy,
+            a.physDR,
+            a.spellDR,
+            a.spiBonus,
+            a.staBonus,
+            a.strBouns
+        );
+    });
+
+    weapon = weaponData.map(function(w) {
+        return new Weapon(
+            // Item Class
+            w.buyPrice,
+            w.count,
+            w.description,
+            w.id,
+            w.name,
+            w.sellPrice,
+            w.weight,
+            // This Class
+            w.isOneHanded,
+            w.maxDmg,
+            w.minDmg,
+            w.strReq
+        );
+    });
+
     beforeEach(function() {
+        humanData.armorEquipped = [];
+        humanData.weaponEquipped = [];
+
+        human2Data.armorEquipped = [];
+        human2Data.weaponEquipped = [];
+
+        humanData.armorEquipped.push(armor[0]);
+        humanData.weaponEquipped.push(weapon[0]);
+
+        human2Data.armorEquipped.push(armor[1]);
+        human2Data.weaponEquipped.push(weapon[1]);
+
         human = new Human(
             humanData.id,
             humanData.name,
@@ -336,41 +477,46 @@
                 });
                 // 'addArmorEquipped',
                 describe('addArmorEquipped', function() {
-                    it('should add an item to the armorEquipped of the instance and return the new length', function() {
-                        expect(human.addArmorEquipped({
-                            name: 'mega-shield'
-                        })).toBe(3);
-                        expect(human2.addArmorEquipped({
-                            name: 'mirror'
-                        })).toBe(3);
+                    describe('Not Equipped', function() {
+                        it('should add an item to the armorEquipped of the instance and return the new length', function() {
+                            expect(human.addArmorEquipped(armor[1])).toBe(2);
+                            expect(human2.addArmorEquipped(armor[0])).toBe(2);
+                        });
+                    });
+                    describe('Already Equipped', function() {
+                        it('should NOT add an item to the armorEquipped of the instance if is already Equipped', function() {
+                            expect(human.addArmorEquipped(armor[0])).toBe(1);
+                            expect(human2.addArmorEquipped(armor[1])).toBe(1);
+                        });
+                    });
+                    describe('NOT an Armor', function() {
+                        it('should NOT add an item if is not an instance of Armor', function() {
+                            expect(human.addArmorEquipped(item)).toBe(1);
+                            expect(human2.addArmorEquipped(item)).toBe(1);
+                        });
                     });
                 });
                 // 'removeArmorEquipped',
                 describe('removeArmorEquipped', function() {
                     it('should remove an item from the armorEquipped of the instance by name and return it', function() {
-                        expect(human.removeArmorEquipped('boots')).toEqual({
-                            name: 'boots'
-                        });
-                        expect(human2.removeArmorEquipped('shoes')).toEqual({
-                            name: 'shoes'
-                        });
+                        expect(human.removeArmorEquipped('Boots')).toEqual(armor[0]);
+                        expect(human2.removeArmorEquipped('Shield')).toEqual(armor[1]);
                     });
                     it('should return false when removing an item from the armorEquipped if it does not have it', function() {
-                        expect(human.removeArmorEquipped('any')).toBe(false);
-                        expect(human2.removeArmorEquipped('some')).toBe(false);
+                        expect(human.removeArmorEquipped(armor[1])).toBe(false);
+                        expect(human2.removeArmorEquipped(armor[0])).toBe(false);
                     });
                 });
                 // 'switchArmorEquipped',
                 describe('switchArmorEquipped', function() {
-                    let newArmor = [{
-                        name: 'fire-armor'
-                    }];
                     it('should change the armorEquipped and return the old one', function() {
-                        expect(human.switchArmorEquipped(newArmor)).toEqual(humanData.armorEquipped);
-                        expect(human.getArmorEquipped()).toEqual(newArmor);
+                        let armor1 = [armor[0]];
+                        let armor2 = [armor[1]];
+                        expect(human.switchArmorEquipped(armor2)).toEqual(humanData.armorEquipped);
+                        expect(human.getArmorEquipped()).toEqual(armor2);
 
-                        expect(human2.switchArmorEquipped(newArmor)).toEqual(human2Data.armorEquipped);
-                        expect(human2.getArmorEquipped()).toEqual(newArmor);
+                        expect(human2.switchArmorEquipped(armor1)).toEqual(human2Data.armorEquipped);
+                        expect(human2.getArmorEquipped()).toEqual(armor1);
                     });
                 });
                 // 'getCurrentMP',
@@ -542,24 +688,30 @@
                 });
                 // 'addWeaponEquipped',
                 describe('addWeaponEquipped', function() {
-                    it('should add a weapon to the weaponEquipped of the instance and return the new length', function() {
-                        expect(human.addWeaponEquipped({
-                            name: 'bazooka'
-                        })).toBe(3);
-                        expect(human2.addWeaponEquipped({
-                            name: 'knife'
-                        })).toBe(3);
+                    describe('Not Equipped', function() {
+                        it('should add an item to the weaponEquipped of the instance and return the new length', function() {
+                            expect(human.addWeaponEquipped(weapon[1])).toBe(2);
+                            expect(human2.addWeaponEquipped(weapon[0])).toBe(2);
+                        });
+                    });
+                    describe('Already Equipped', function() {
+                        it('should NOT add an item to the weaponEquipped of the instance if is already Equipped', function() {
+                            expect(human.addWeaponEquipped(weapon[0])).toBe(1);
+                            expect(human2.addWeaponEquipped(weapon[1])).toBe(1);
+                        });
+                    });
+                    describe('NOT a Weapon', function() {
+                        it('should NOT add an item if is not an instance of Weapon', function() {
+                            expect(human.addWeaponEquipped(item)).toBe(1);
+                            expect(human2.addWeaponEquipped(item)).toBe(1);
+                        });
                     });
                 });
                 // 'removeWeaponEquipped',
                 describe('removeWeaponEquipped', function() {
                     it('should remove a weapon from the weaponEquipped of the instance by name and return it', function() {
-                        expect(human.removeWeaponEquipped('gun')).toEqual({
-                            name: 'gun'
-                        });
-                        expect(human2.removeWeaponEquipped('lipstick')).toEqual({
-                            name: 'lipstick'
-                        });
+                        expect(human.removeWeaponEquipped('Magnum')).toEqual(weapon[0]);
+                        expect(human2.removeWeaponEquipped('Machinegun')).toEqual(weapon[1]);
                     });
                     it('should return false when removing a weapon from the weaponEquipped if it does not have it', function() {
                         expect(human.removeWeaponEquipped('any')).toBe(false);
@@ -568,15 +720,14 @@
                 });
                 // 'switchWeaponEquipped'
                 describe('switchWeaponEquipped', function() {
-                    let newWeapons = [{
-                        name: 'laser'
-                    }];
                     it('should change the weaponEquipped and return the old one', function() {
-                        expect(human.switchWeaponEquipped(newWeapons)).toEqual(humanData.weaponEquipped);
-                        expect(human.getWeaponEquipped()).toEqual(newWeapons);
+                        let weapon1 = [weapon[0]];
+                        let weapon2 = [weapon[1]];
+                        expect(human.switchWeaponEquipped(weapon2)).toEqual(humanData.weaponEquipped);
+                        expect(human.getWeaponEquipped()).toEqual(weapon2);
 
-                        expect(human2.switchWeaponEquipped(newWeapons)).toEqual(human2Data.weaponEquipped);
-                        expect(human2.getWeaponEquipped()).toEqual(newWeapons);
+                        expect(human2.switchWeaponEquipped(weapon1)).toEqual(human2Data.weaponEquipped);
+                        expect(human2.getWeaponEquipped()).toEqual(weapon1);
                     });
                 });
             });

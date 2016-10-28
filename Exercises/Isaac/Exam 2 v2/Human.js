@@ -2,11 +2,13 @@
     'use strict';
 
     const Assert = require('./Assert');
+    const Armor = require('./Armor');
+    const Weapon = require('./Weapon');
     const Character = require('./Character');
 
     function Human() {
         let agility = arguments[4],
-            armorEquipped = arguments[5],
+            armorEquipped = arguments[5].slice(),
             currentMP = arguments[6],
             faction = arguments[7],
             gold = arguments[8],
@@ -16,7 +18,7 @@
             spirit = arguments[12],
             stamina = arguments[13],
             strength = arguments[14],
-            weaponEquipped = arguments[15];
+            weaponEquipped = arguments[15].slice();
 
         Character.apply(this, arguments);
 
@@ -45,8 +47,19 @@
         });
 
         Object.defineProperty(this, 'addArmorEquipped', {
-            value: function addArmorEquipped(item) {
-                armorEquipped.push(item);
+            value: function addArmorEquipped(armor) {
+                if (armor instanceof Armor) {
+                    let isAlreadyEquipped = false;
+                    for (let i = 0; i < armorEquipped.length; i++) {
+                        if (armorEquipped[i].getName() === armor.getName()) {
+                            isAlreadyEquipped = true;
+                            break;
+                        }
+                    }
+                    if (!isAlreadyEquipped) {
+                        armorEquipped.push(armor);
+                    }
+                }
                 return armorEquipped.length;
             },
             enumerable: true
@@ -55,17 +68,17 @@
         Object.defineProperty(this, 'removeArmorEquipped', {
             value: function removeArmorEquipped(name) {
                 let index = -1,
-                    item = false;
+                    armor = false;
                 for (let i = 0; i < armorEquipped.length; i++) {
-                    if (armorEquipped[i].name === name) {
+                    if (armorEquipped[i].getName() === name) {
                         index = i;
                         break;
                     }
                 }
                 if (index >= 0) {
-                    item = armorEquipped.splice(index, 1)[0];
+                    armor = armorEquipped.splice(index, 1)[0];
                 }
-                return item;
+                return armor;
             },
             enumerable: true
         });
@@ -220,8 +233,19 @@
         });
 
         Object.defineProperty(this, 'addWeaponEquipped', {
-            value: function addWeaponEquipped(item) {
-                weaponEquipped.push(item);
+            value: function addWeaponEquipped(weapon) {
+                if (weapon instanceof Weapon) {
+                    let isAlreadyEquipped = false;
+                    for (let i = 0; i < weaponEquipped.length; i++) {
+                        if (weaponEquipped[i].getName() === weapon.getName()) {
+                            isAlreadyEquipped = true;
+                            break;
+                        }
+                    }
+                    if (!isAlreadyEquipped) {
+                        weaponEquipped.push(weapon);
+                    }
+                }
                 return weaponEquipped.length;
             },
             enumerable: true
@@ -232,7 +256,7 @@
                 let index = -1,
                     item = false;
                 for (let i = 0; i < weaponEquipped.length; i++) {
-                    if (weaponEquipped[i].name === name) {
+                    if (weaponEquipped[i].getName() === name) {
                         index = i;
                         break;
                     }

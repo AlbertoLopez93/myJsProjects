@@ -324,49 +324,19 @@
                 });
                 // 'getArmorEquipped',
                 describe('getArmorEquipped', function() {
-                    it('should return the armorEquipped of the instance', function() {
-                        expect(player.getArmorEquipped()).toEqual(playerData.armorEquipped);
-                        expect(player2.getArmorEquipped()).toEqual(player2Data.armorEquipped);
-                    });
+                    // Nope
                 });
                 // 'addArmorEquipped',
                 describe('addArmorEquipped', function() {
-                    it('should add an item to the armorEquipped of the instance and return the new length', function() {
-                        expect(player.addArmorEquipped({
-                            name: 'mega-shield'
-                        })).toBe(3);
-                        expect(player2.addArmorEquipped({
-                            name: 'mirror'
-                        })).toBe(3);
-                    });
+                    // Nope
                 });
                 // 'removeArmorEquipped',
                 describe('removeArmorEquipped', function() {
-                    it('should remove an item from the armorEquipped of the instance by name and return it', function() {
-                        expect(player.removeArmorEquipped('boots')).toEqual({
-                            name: 'boots'
-                        });
-                        expect(player2.removeArmorEquipped('shoes')).toEqual({
-                            name: 'shoes'
-                        });
-                    });
-                    it('should return false when removing an item from the armorEquipped if it does not have it', function() {
-                        expect(player.removeArmorEquipped('any')).toBe(false);
-                        expect(player2.removeArmorEquipped('some')).toBe(false);
-                    });
+                    // Nope
                 });
                 // 'switchArmorEquipped',
                 describe('switchArmorEquipped', function() {
-                    let newArmor = [{
-                        name: 'fire-armor'
-                    }];
-                    it('should change the armorEquipped and return the old one', function() {
-                        expect(player.switchArmorEquipped(newArmor)).toEqual(playerData.armorEquipped);
-                        expect(player.getArmorEquipped()).toEqual(newArmor);
-
-                        expect(player2.switchArmorEquipped(newArmor)).toEqual(player2Data.armorEquipped);
-                        expect(player2.getArmorEquipped()).toEqual(newArmor);
-                    });
+                    // Nope
                 });
                 // 'getCurrentMP',
                 describe('getCurrentMP', function() {
@@ -530,49 +500,19 @@
                 });
                 // 'getWeaponEquipped',
                 describe('getWeaponEquipped', function() {
-                    it('should return the weaponEquipped of the instance', function() {
-                        expect(player.getWeaponEquipped()).toEqual(playerData.weaponEquipped);
-                        expect(player2.getWeaponEquipped()).toEqual(player2Data.weaponEquipped);
-                    });
+                    // Nope
                 });
                 // 'addWeaponEquipped',
                 describe('addWeaponEquipped', function() {
-                    it('should add a weapon to the weaponEquipped of the instance and return the new length', function() {
-                        expect(player.addWeaponEquipped({
-                            name: 'bazooka'
-                        })).toBe(3);
-                        expect(player2.addWeaponEquipped({
-                            name: 'knife'
-                        })).toBe(3);
-                    });
+                    // Nope
                 });
                 // 'removeWeaponEquipped',
                 describe('removeWeaponEquipped', function() {
-                    it('should remove a weapon from the weaponEquipped of the instance by name and return it', function() {
-                        expect(player.removeWeaponEquipped('gun')).toEqual({
-                            name: 'gun'
-                        });
-                        expect(player2.removeWeaponEquipped('lipstick')).toEqual({
-                            name: 'lipstick'
-                        });
-                    });
-                    it('should return false when removing a weapon from the weaponEquipped if it does not have it', function() {
-                        expect(player.removeWeaponEquipped('any')).toBe(false);
-                        expect(player2.removeWeaponEquipped('some')).toBe(false);
-                    });
+                    // Nope
                 });
                 // 'switchWeaponEquipped'
                 describe('switchWeaponEquipped', function() {
-                    let newWeapons = [{
-                        name: 'laser'
-                    }];
-                    it('should change the weaponEquipped and return the old one', function() {
-                        expect(player.switchWeaponEquipped(newWeapons)).toEqual(playerData.weaponEquipped);
-                        expect(player.getWeaponEquipped()).toEqual(newWeapons);
-
-                        expect(player2.switchWeaponEquipped(newWeapons)).toEqual(player2Data.weaponEquipped);
-                        expect(player2.getWeaponEquipped()).toEqual(newWeapons);
-                    });
+                    // Nope
                 });
 
             });

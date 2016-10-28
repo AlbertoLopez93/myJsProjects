@@ -319,49 +319,19 @@
                 });
                 // 'getArmorEquipped',
                 describe('getArmorEquipped', function() {
-                    it('should return the armorEquipped of the instance', function() {
-                        expect(nPC.getArmorEquipped()).toEqual(nPCData.armorEquipped);
-                        expect(nPC2.getArmorEquipped()).toEqual(nPC2Data.armorEquipped);
-                    });
+                    // Nope
                 });
                 // 'addArmorEquipped',
                 describe('addArmorEquipped', function() {
-                    it('should add an item to the armorEquipped of the instance and return the new length', function() {
-                        expect(nPC.addArmorEquipped({
-                            name: 'mega-shield'
-                        })).toBe(3);
-                        expect(nPC2.addArmorEquipped({
-                            name: 'mirror'
-                        })).toBe(3);
-                    });
+                    // Nope
                 });
                 // 'removeArmorEquipped',
                 describe('removeArmorEquipped', function() {
-                    it('should remove an item from the armorEquipped of the instance by name and return it', function() {
-                        expect(nPC.removeArmorEquipped('boots')).toEqual({
-                            name: 'boots'
-                        });
-                        expect(nPC2.removeArmorEquipped('shoes')).toEqual({
-                            name: 'shoes'
-                        });
-                    });
-                    it('should return false when removing an item from the armorEquipped if it does not have it', function() {
-                        expect(nPC.removeArmorEquipped('any')).toBe(false);
-                        expect(nPC2.removeArmorEquipped('some')).toBe(false);
-                    });
+                    // Nope
                 });
                 // 'switchArmorEquipped',
                 describe('switchArmorEquipped', function() {
-                    let newArmor = [{
-                        name: 'fire-armor'
-                    }];
-                    it('should change the armorEquipped and return the old one', function() {
-                        expect(nPC.switchArmorEquipped(newArmor)).toEqual(nPCData.armorEquipped);
-                        expect(nPC.getArmorEquipped()).toEqual(newArmor);
-
-                        expect(nPC2.switchArmorEquipped(newArmor)).toEqual(nPC2Data.armorEquipped);
-                        expect(nPC2.getArmorEquipped()).toEqual(newArmor);
-                    });
+                    // Nope
                 });
                 // 'getCurrentMP',
                 describe('getCurrentMP', function() {
@@ -525,49 +495,19 @@
                 });
                 // 'getWeaponEquipped',
                 describe('getWeaponEquipped', function() {
-                    it('should return the weaponEquipped of the instance', function() {
-                        expect(nPC.getWeaponEquipped()).toEqual(nPCData.weaponEquipped);
-                        expect(nPC2.getWeaponEquipped()).toEqual(nPC2Data.weaponEquipped);
-                    });
+                    // Nope
                 });
                 // 'addWeaponEquipped',
                 describe('addWeaponEquipped', function() {
-                    it('should add a weapon to the weaponEquipped of the instance and return the new length', function() {
-                        expect(nPC.addWeaponEquipped({
-                            name: 'bazooka'
-                        })).toBe(3);
-                        expect(nPC2.addWeaponEquipped({
-                            name: 'knife'
-                        })).toBe(3);
-                    });
+                    // Nope
                 });
                 // 'removeWeaponEquipped',
                 describe('removeWeaponEquipped', function() {
-                    it('should remove a weapon from the weaponEquipped of the instance by name and return it', function() {
-                        expect(nPC.removeWeaponEquipped('gun')).toEqual({
-                            name: 'gun'
-                        });
-                        expect(nPC2.removeWeaponEquipped('lipstick')).toEqual({
-                            name: 'lipstick'
-                        });
-                    });
-                    it('should return false when removing a weapon from the weaponEquipped if it does not have it', function() {
-                        expect(nPC.removeWeaponEquipped('any')).toBe(false);
-                        expect(nPC2.removeWeaponEquipped('some')).toBe(false);
-                    });
+                    // Nope
                 });
                 // 'switchWeaponEquipped'
                 describe('switchWeaponEquipped', function() {
-                    let newWeapons = [{
-                        name: 'laser'
-                    }];
-                    it('should change the weaponEquipped and return the old one', function() {
-                        expect(nPC.switchWeaponEquipped(newWeapons)).toEqual(nPCData.weaponEquipped);
-                        expect(nPC.getWeaponEquipped()).toEqual(newWeapons);
-
-                        expect(nPC2.switchWeaponEquipped(newWeapons)).toEqual(nPC2Data.weaponEquipped);
-                        expect(nPC2.getWeaponEquipped()).toEqual(newWeapons);
-                    });
+                    // Nope
                 });
 
             });
