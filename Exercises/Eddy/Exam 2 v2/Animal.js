@@ -23,13 +23,13 @@ function Animal(ID,
 	let _HostileToPlayer, _LootDropped, _MaxDmg, _MinDmg;
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ private properties
-	_HostileToPlayer = typeof hostile ==="boolean"?hostile:undefined;
-	_LootDropped = typeof LootDropped ==="number"?LootDropped:undefined;
-	_MaxDmg = typeof maxDmg === "number"?maxDmg:undefined;
-	if(minDmg <= maxDmg && typeof minDmg === "number") {
+	_HostileToPlayer = typeof hostile === "boolean" ? hostile : undefined;
+	_LootDropped = Number.isInteger(LootDropped) ? LootDropped : undefined;
+	_MaxDmg = typeof maxDmg === "number" ? maxDmg : undefined;
+	if(minDmg <= maxDmg && Number.isInteger(minDmg)) {
 		_MinDmg = minDmg;
 	} else {
-
+		_MinDmg = _MaxDmg;
 	}
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ getters
@@ -50,7 +50,7 @@ function Animal(ID,
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Instance methods
 	Object.defineProperties(this, {
 
-		isHostileToPlayer: {
+		isItHostileToPlayer: {
 			value: isHostileToPlayer,
 			enumerable: true
 		},
@@ -68,29 +68,8 @@ function Animal(ID,
 		}
 	});
 
-Character.call(this, ID, name, maxHP, currentHP);
+	Character.call(this, ID, name, maxHP, currentHP);
 
 }
 
 module.exports = Animal;
-
-
-/*
-let person = new Animal("satan1987","lil",1000,100,true,555,2000,666);
-console.log(person.getID());
-console.log(person.getName());
-console.log(person.getCurrentHP());
-person.setCurrentHP(2000);
-console.log(person.getCurrentHP());
-person.setCurrentHP(900);
-console.log(person.getCurrentHP());
-console.log(person.getMaxHP());
-person.setMaxHP(2000);
-console.log(person.getMaxHP());
-person.setMaxHP(200);
-console.log(person.getMaxHP());
-console.log(person.getCurrentHP());
-console.log(person.isHostileToPlayer());
-console.log(person.getLootDropped());
-console.log(person.getMaxDmg());
-console.log(person.getMinDmg());*/

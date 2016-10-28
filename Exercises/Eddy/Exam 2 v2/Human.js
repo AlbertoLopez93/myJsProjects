@@ -11,6 +11,9 @@
 "use strict";
 
 let Character = require("./Character");
+let Armor = require("./Armor");
+let Weapon = require("./Weapon");
+let Potion = require("./Potion");
 
 function Human(ID,
                name,
@@ -30,24 +33,29 @@ function Human(ID,
                WeaponEquipped) {
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ private properties
-	let _Agility = Agility;
-	let _ArmorEquipped = ArmorEquipped;
-	let _CurrentMP = CurrentMP;
-	let _Faction = Faction;
-	let _Gold = Gold;
-	let _Intellect = Intellect;
-	let _IsMale = IsMale;
-	let _MaxMP = MaxMP;
-	let _Spirit = Spirit;
-	let _Stamina = Stamina;
-	let _Strength = Strength;
-	let _WeaponEquipped = WeaponEquipped;
+	let _ArmorEquipped = [];
+	let _WeaponEquipped = [];
+
+	let _Agility = Number.isInteger(Agility) ? Agility : undefined;
+	let _CurrentMP = Number.isInteger(CurrentMP) ? CurrentMP : undefined;
+	let _Faction = typeof Faction === "string" ? Faction : undefined;
+	let _Gold = Number.isInteger(Gold) ? Gold : 0;
+	let _Intellect = Number.isInteger(Intellect) ? Intellect : undefined;
+	let _IsMale = typeof IsMale === "boolean" ? IsMale : undefined;
+	let _MaxMP = Number.isInteger(MaxMP) ? MaxMP : undefined;
+	let _Spirit = Number.isInteger(Spirit) ? Spirit : undefined;
+	let _Stamina = Number.isInteger(Stamina) ? Stamina : undefined;
+	let _Strength = Number.isInteger(Strength) ? Strength : undefined;
+
+	_WeaponEquipped = WeaponEquipped;
+	_ArmorEquipped = ArmorEquipped;
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ getters
 	let getAgility = function getAgility() {
 		return _Agility;
 	};
-	let getArmorEquipped = function getArmorEquipped() {
+	let getArmorEquipped = function addArmorEquipped() {
+
 		return _ArmorEquipped;
 	};
 	let getMaxMP = function getMaxMP() {
@@ -89,20 +97,20 @@ function Human(ID,
 	let setMaxMP = function setMaxHP(newMaxMP) {
 		if(newMaxMP > 0) {
 			_MaxMP = newMaxMP;
-			if(this.getCurrentMP() > this.getMaxMP()) {
+			if(_CurrentMP > _MaxMP()) {
 				_CurrentMP = _MaxMP;
 			}
 			return this;
 		}
 	};
 	let setCurrentMP = function setCurrenMP(newMP) {
-		if(newMP < this.getMaxMP()) {
+		if(newMP < _MaxMP ) {
 			_CurrentMP = newMP;
 		}
 		return this;
 	};
 	let setGold = function setGold(newGold) {
-		if(newGold > 0 && newGold < 1000000000) {
+		if(newGold >= 0 && newGold < 1000000000) {
 			_Gold = newGold;
 		}
 	};
@@ -131,27 +139,81 @@ function Human(ID,
 	};
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ getters
-	let addArmorEquipped = function addArmorEquipped(Armor) {
-		_ArmorEquipped.push(Armor);
+	let addArmorEquipped = function addArmorEquipped(armor) {
+
+		if(armor instanceof Armor) {
+			_ArmorEquipped.push(armor);
+		}
 		return _ArmorEquipped.length;
 	};
-	let addWeaponEquipped = function addWeaponEquipped(Armor) {
-		_WeaponEquipped.push(Armor);
+	let addWeaponEquipped = function addWeaponEquipped(weapon) {
+		if(weapon instanceof Weapon) {
+			_WeaponEquipped.push(weapon);
+		}
+
 		return _WeaponEquipped.length;
 	};
+	let removeArmorEquipped = function removeArmorEquipped(armorName) {
+		let flag;
+		let index;
 
-	let removeArmorEquipped = function removeArmorEquipped(name) {
+		flag = _ArmorEquipped.some(function(elem) {
+			return elem.getName() === armorName;
+		});
 
+		if(flag) {
+			index = _ArmorEquipped.findIndex(function(elem) {
+				return elem.getName() === armorName;
+			});
+
+			flag = _ArmorEquipped.splice(index, 1).pop();
+		}
+
+		return flag;
 	};
-	let removeWeaponEquipped = function removeWeaponEquipped(name) {
+	let removeWeaponEquipped = function removeWeaponEquipped(weaponName) {
+		let flag;
+		let index;
 
+		flag = _WeaponEquipped.some(function(elem) {
+			return elem.getName() === weaponName;
+		});
+
+		if(flag) {
+			index = _WeaponEquipped.findIndex(function(elem) {
+				return elem.getName() === weaponName;
+			});
+
+			flag = _WeaponEquipped.splice(index, 1).pop();
+		}
+
+		return flag;
 	};
 
-	let switchArmorEquipped = function switchArmorEquipped() {
+	let switchArmorEquipped = function switchArmorEquipped(newArmorSet) {
 
+		for(let i = 0 ; i< newArmorSet.length;i++){
+			if (!(newArmorSet[i] instanceof Armor)){
+			 return _ArmorEquipped;
+			}
+		}
+
+		let oldArmorSet = _ArmorEquipped;
+		_ArmorEquipped = newArmorSet;
+
+		return oldArmorSet;
 	};
-	let switchWeaponEquipped = function switchWeaponEquipped() {
+	let switchWeaponEquipped = function switchWeaponEquipped(newWeaponSet) {
+		for(let i = 0 ; i< newWeaponSet.length;i++){
+			if (!(newWeaponSet[i] instanceof Weapon)){
+				return _WeaponEquipped;
+			}
+		}
 
+		let oldWeaponSet = _WeaponEquipped;
+		_WeaponEquipped = newWeaponSet;
+
+		return oldWeaponSet;
 	};
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Instance methods
 	Object.defineProperties(this, {
@@ -267,21 +329,3 @@ function Human(ID,
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ prototype
 
 module.exports = Human;
-
-/*
-let person = new Human("satan1987","lilwayne",1000,999,true,555,2000,666);
-console.log(person.getID());
-console.log(person.getName());
-console.log(person.getCurrentHP());
-console.log(person.getMaxHP());
-person.setCurrentHP(2000);
-console.log(person.getCurrentHP());
-person.setCurrentHP(900);
-console.log(person.getCurrentHP());
-console.log(person.getMaxHP());
-person.setMaxHP(2000);
-console.log(person.getMaxHP());
-person.setMaxHP(200);
-console.log(person.getMaxHP());
-console.log(person.getCurrentHP());
-*/

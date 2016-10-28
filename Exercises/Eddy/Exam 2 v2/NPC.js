@@ -34,8 +34,8 @@ function NPC(ID,
 	let _HostileToPlayer, _LootDropped;
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ private properties
-	_HostileToPlayer = HostileToPlayer;
-	_LootDropped = LootDropped;
+	_HostileToPlayer = typeof HostileToPlayer === "boolean"?HostileToPlayer:undefined;
+	_LootDropped = Number.isInteger(LootDropped)?LootDropped:undefined;
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ getters
 	let isHostileToPlayer = function isHostileToPlayer() {

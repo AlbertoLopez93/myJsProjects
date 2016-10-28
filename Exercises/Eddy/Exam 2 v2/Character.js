@@ -15,12 +15,12 @@ function Character(ID, name, maxHP, currentHP) {
 	let _ID, _Name, _MaxHP, _CurrentHP;
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ private properties
-	_ID = typeof ID === "number"?ID:undefined;
-	_Name = typeof name === "string"?name:undefined;
-	_MaxHP = typeof maxHP === "number"?maxHP:undefined;
-	if(currentHP <= _MaxHP && typeof currentHP === "number") {
+	_ID = Number.isInteger(ID) ? ID : undefined;
+	_Name = typeof name === "string" ? name : undefined;
+	_MaxHP = Number.isInteger(maxHP) ? maxHP : undefined;
+	if(currentHP <= _MaxHP && Number.isInteger(currentHP)) {
 		_CurrentHP = currentHP;
-	}else{
+	} else {
 		_CurrentHP = _MaxHP;
 	}
 
@@ -40,15 +40,15 @@ function Character(ID, name, maxHP, currentHP) {
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ setters
 	let setCurrentHP = function setCurrenHP(newHP) {
-		if(newHP < this.getMaxHP()) {
+		if(newHP < _CurrentHP && Number.isInteger(newHP) && newHP <= _MaxHP) {
 			_CurrentHP = newHP;
 		}
 		return this;
 	};
 	let setMaxHP = function setMaxHP(newMaxHP) {
-		if(newMaxHP > 0) {
+		if(newMaxHP > 0 && Number.isInteger(newMaxHP)) {
 			_MaxHP = newMaxHP;
-			if(this.getCurrentHP()>this.getMaxHP()){
+			if(_CurrentHP > _MaxHP) {
 				_CurrentHP = _MaxHP;
 			}
 			return this;
@@ -87,4 +87,3 @@ function Character(ID, name, maxHP, currentHP) {
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ prototype
 module.exports = Character;
-
