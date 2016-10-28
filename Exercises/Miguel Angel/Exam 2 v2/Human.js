@@ -1,6 +1,8 @@
     "use strict";
 
 let Character = require("./Character");
+let Armor = require("./Armor");
+let Weapon = require("./Weapon");
 
 function Human (humanID, humanName, humanMaxHP, humanCurrentHP,
                 humanAgility, humanArmorEquipped, humanCurrentMP, humanFaction,
@@ -48,7 +50,17 @@ function Human (humanID, humanName, humanMaxHP, humanCurrentHP,
 
     Object.defineProperty(this, "addArmorEquipped", {
         value: function addArmorEquipped (newArmor){
-            ArmorEquipped.push(newArmor);
+            let flag;
+
+            if(newArmor instanceof Armor){
+                flag = ArmorEquipped.some(function (elem){
+                    return elem.getName() === newArmor.getName();
+                });
+
+                if(!flag){
+                    ArmorEquipped.push(newArmor);
+                }
+            }
             return ArmorEquipped.length;
         },
         enumerable: true
@@ -60,12 +72,12 @@ function Human (humanID, humanName, humanMaxHP, humanCurrentHP,
             let index;
 
             flag = ArmorEquipped.some(function (elem){
-                return elem.name === armorName;
+                return elem.getName() === armorName;
             });
 
             if(flag){
                 index = ArmorEquipped.findIndex(function (elem){
-                    return elem.name === armorName;
+                    return elem.getName() === armorName;
                 });
 
                 flag = ArmorEquipped.splice(index, 1).pop();
@@ -102,7 +114,6 @@ function Human (humanID, humanName, humanMaxHP, humanCurrentHP,
                     CurrentMP = MaxMP;
                 }
             }
-
             return this;
         },
         enumerable: true
@@ -239,7 +250,18 @@ function Human (humanID, humanName, humanMaxHP, humanCurrentHP,
 
     Object.defineProperty(this, "addWeaponEquipped", {
         value: function addWeaponEquipped (newWeapon){
-            WeaponEquipped.push(newWeapon);
+            let flag;
+
+            if(newWeapon instanceof Weapon){
+                flag = WeaponEquipped.some(function (elem){
+                    return elem.getName() === newWeapon.getName();
+                });
+
+                if(!flag){
+                    WeaponEquipped.push(newWeapon);
+                }
+            }
+            return WeaponEquipped.length;
         },
         enumerable: true
     });
@@ -250,12 +272,12 @@ function Human (humanID, humanName, humanMaxHP, humanCurrentHP,
             let index;
 
             flag = WeaponEquipped.some(function (elem){
-                return elem.name === weaponName;
+                return elem.getName() === weaponName;
             });
 
             if(flag){
                 index = WeaponEquipped.findIndex(function (elem){
-                    return elem.name === weaponName;
+                    return elem.getName() === weaponName;
                 });
 
                 flag = WeaponEquipped.splice(index, 1).pop();
