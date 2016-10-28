@@ -71,6 +71,17 @@ describe("Testing Human's own properties. ", function() {
     expect(Peter.setIntellect(-2).getIntellect()).toBe(86);
     expect(Peter.setIntellect(2e12).getIntellect()).toBe(2e12);
   });
+  it("setIntellect and getIntellect", function() {
+    expect(Peter.setIntellect(86).getIntellect()).toBe(86);
+    expect(Peter.setIntellect(-2).getIntellect()).toBe(86);
+    expect(Peter.setIntellect(2e12).getIntellect()).toBe(2e12);
+  });
+  it("getFaction", function() {
+    expect(Peter.getFaction()).toBe("faction");
+  });
+  it("isItMale", function() {
+    expect(Peter.isItMale()).toBe(true);
+  });
   it("setMaxMP and getMaxMP", function() {
     expect(Peter.setMaxMP(8).getMaxMP()).toBe(8);
     expect(Peter.setMaxMP(-8).getMaxMP()).toBe(8);
