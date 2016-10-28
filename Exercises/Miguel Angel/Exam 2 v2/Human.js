@@ -91,7 +91,17 @@ function Human (humanID, humanName, humanMaxHP, humanCurrentHP,
     Object.defineProperty(this, "switchArmorEquipped", {
         value: function switchArmorEquipped (newArmorSet){
             let oldArmorSet = ArmorEquipped;
-            ArmorEquipped = newArmorSet;
+            let flag;
+
+            if(Array.isArray(newArmorSet)){
+                flag = newArmorSet.every(function(elem){
+                    return elem instanceof Armor;
+                });
+            }
+
+            if(flag){
+                ArmorEquipped = newArmorSet;
+            }
 
             return oldArmorSet;
         },
@@ -289,7 +299,17 @@ function Human (humanID, humanName, humanMaxHP, humanCurrentHP,
     Object.defineProperty(this, "switchWeaponEquipped", {
         value: function switchWeaponEquipped (newWeaponSet){
             let oldWeaponSet = WeaponEquipped;
-            WeaponEquipped = newWeaponSet;
+            let flag;
+
+            if(Array.isArray(newWeaponSet)){
+                flag = newWeaponSet.every(function(elem){
+                    return elem instanceof Weapon;
+                });
+            }
+
+            if(flag){
+                WeaponEquipped = newWeaponSet;
+            }
 
             return oldWeaponSet;
         },
