@@ -1,10 +1,7 @@
 "use strict";
 const Character = require("./Character.js");
-<<<<<<< HEAD
-=======
 const Armor = require("./Armor.js");
 const Weapon = require("./Weapon.js");
->>>>>>> 3634b9f8016a5cdd1d0fccbda3a72f1b85954b7e
 function Human(ID , Name , MaxHP, CurrentPH, Agility, ArmorEquipped, CurrentMP, Faction, Gold, Intellect, IsMale, MaxMP, Spirit, Stamina, Strength, WeaponEquipped) {
     Character.call(this, ID , Name , MaxHP, CurrentPH);
 
@@ -34,16 +31,12 @@ function Human(ID , Name , MaxHP, CurrentPH, Agility, ArmorEquipped, CurrentMP, 
 
     Object.defineProperty(this, "addArmorEquipped", {
         value: function(item) {
-<<<<<<< HEAD
-            if (typeof item === "object") {
-=======
             if ( item instanceof Armor === true) {
                 for (let i = 0; i < ArmorEquipped.length; i++) {
                     if(ArmorEquipped[i].getName() === item.getName()){
                         return false;
                     }
                 }
->>>>>>> 3634b9f8016a5cdd1d0fccbda3a72f1b85954b7e
                 ArmorEquipped.push(item);
                 let length = ArmorEquipped.length;
                 return length;
@@ -56,12 +49,7 @@ function Human(ID , Name , MaxHP, CurrentPH, Agility, ArmorEquipped, CurrentMP, 
         value: function(name) {
             let index = 0, aux;
             for (let i = 0; i < ArmorEquipped.length; i++) {
-<<<<<<< HEAD
-                if(ArmorEquipped[i].name === name){
-=======
-                console.log(ArmorEquipped[i].getName());
                 if(ArmorEquipped[i].getName() === name){
->>>>>>> 3634b9f8016a5cdd1d0fccbda3a72f1b85954b7e
                     index = i;
                     aux = ArmorEquipped.splice(index,1);
                     return aux;
@@ -227,16 +215,13 @@ function Human(ID , Name , MaxHP, CurrentPH, Agility, ArmorEquipped, CurrentMP, 
 
         Object.defineProperty(this, "addWeaponEquipped", {
             value: function(item) {
-<<<<<<< HEAD
-                if (typeof item === "object") {
-=======
+
                 if (item instanceof Weapon === true) {
                     for (let i = 0; i < WeaponEquipped.length; i++) {
                         if(WeaponEquipped[i].getName() === item.getName()){
                             return false;
                         }
                     }
->>>>>>> 3634b9f8016a5cdd1d0fccbda3a72f1b85954b7e
                     WeaponEquipped.push(item);
                     let length = WeaponEquipped.length;
                     return length;
@@ -246,19 +231,11 @@ function Human(ID , Name , MaxHP, CurrentPH, Agility, ArmorEquipped, CurrentMP, 
             enumerable: true
         });
 
-<<<<<<< HEAD
-        Object.defineProperty(this, "removeWeaponEquipped", {
-            value: function(name) {
-                let index, aux;
-                for (let i = 0; i < WeaponEquipped.length; i++) {
-                    if(WeaponEquipped[i].name === name){
-=======
          Object.defineProperty(this, "removeWeaponEquipped", {
             value: function(name) {
                 let index, aux;
                 for (let i = 0; i < WeaponEquipped.length; i++) {
                     if(WeaponEquipped[i].getName() === name){
->>>>>>> 3634b9f8016a5cdd1d0fccbda3a72f1b85954b7e
                         index = i;
                         aux = WeaponEquipped.splice(index,1);
                         return aux;
@@ -277,30 +254,7 @@ function Human(ID , Name , MaxHP, CurrentPH, Agility, ArmorEquipped, CurrentMP, 
             },
             enumerable: true
         });
-<<<<<<< HEAD
-
-
-
-}
-let char = new Human(22,"sara",1,2,3,[{name:"pistola"},{name:"pistola2"},{name:"pistola3"}],4,"fuerza",5,6,false,99,7,8,9,[{name:"pistolaW"},{name:"pistolaW2"},{name:"pistolaW3"}]);
-console.log(char.getAgility());
-char.setAgility(6)
-console.log(char.getAgility());
-console.log(char.getArmorEquipped());
-console.log(char.addArmorEquipped({name:"add"}));
-console.log(char.getArmorEquipped());
-console.log(" ");
-console.log(char.removeArmorEquipped("pistola3"));console.log(" ");
-console.log(char.getWeaponEquipped());
-console.log(char.getWeaponEquipped());
-console.log(char.addWeaponEquipped({name:"add"}));
-console.log(char.getWeaponEquipped());
-console.log(" ");
-console.log(char.removeWeaponEquipped("pistolaW3"));console.log(" ");
-console.log(char.getWeaponEquipped());
-=======
 }
 
->>>>>>> 3634b9f8016a5cdd1d0fccbda3a72f1b85954b7e
 
 module.exports = Human;
