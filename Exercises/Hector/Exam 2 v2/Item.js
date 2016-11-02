@@ -24,10 +24,15 @@ function Item(_BuyPrice, _Count, _Description, _ID, _Name, _SellPrice, _Weight){
         },
         "setCount": {
             value: function (newCount) {
+                if (newCount === 0) {
+                    Count = 0;
+                    return this;
+                }
                 if (newCount > 0 && typeof newCount === "number") {
                     Count = newCount;
                     return this;
                 }
+                return this;
             },
             enumerable: true
         },

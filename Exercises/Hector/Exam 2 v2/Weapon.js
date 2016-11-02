@@ -62,10 +62,15 @@ function Weapon(_BuyPrice, _Count, _Description, _ID, _Name, _SellPrice, _Weight
         },
         "setMaxDmg": {
             value: function (newMaxDmg) {
+                if (newMaxDmg === 0) {
+                    MaxDmg = 0;
+                    return this;
+                }
                 if (newMaxDmg > 0 && typeof newMaxDmg === "number") {
                     MaxDmg = newMaxDmg;
                     return this;
                 }
+                return this;
             }
         },
         "getMinDmg": {
@@ -75,6 +80,10 @@ function Weapon(_BuyPrice, _Count, _Description, _ID, _Name, _SellPrice, _Weight
         },
         "setMinDmg": {
             value: function (newMinDmg) {
+                if (newMinDmg === 0) {
+                    MinDmg = 0;
+                    return this;
+                }
                 if (newMinDmg > 0 && typeof newMinDmg === "number") {
                     if (newMinDmg >= MaxDmg) {
                         MinDmg = MaxDmg;
@@ -84,6 +93,7 @@ function Weapon(_BuyPrice, _Count, _Description, _ID, _Name, _SellPrice, _Weight
                         return this;
                     }
                 }
+                return this;
             }
         },
         "getStrReq": {
