@@ -52,19 +52,8 @@ function MyTime(horas, minutos, segundos) {
                 }
             },
             enumerable: true
-        },
-        "setTime": {
-            value: function (newHour, newMinute, newSecond) {
-                if (newHour <= 23 && newHour >= 0 && newMinute <= 59 && newMinute >= 0 && newSecond <= 59 && newSecond >= 0) {
-                    hour = newHour;
-                    minutes = newMinute;
-                    seconds = newSecond;
-                } else {
-                    console.log(error);
-                }
-            },
-            enumerable: true
         }
+
     });
 }
 Object.defineProperties(MyTime.prototype, {
@@ -214,5 +203,18 @@ Object.defineProperties(MyTime.prototype, {
         },
         enumerable: true
     },
+    "setTime": {
+        value: function (newHour, newMinute, newSecond) {
+            if (newHour <= 23 && newHour >= 0 && newMinute <= 59 && newMinute >= 0 && newSecond <= 59 && newSecond >= 0) {
+                this.setHour(newHour);
+                this.setMinute(newMinute);
+                this.setSecond(newSecond);
+                return this;
+            } else {
+                return undefined;
+            }
+        },
+        enumerable: true
+    }
 });
 module.exports = MyTime;
