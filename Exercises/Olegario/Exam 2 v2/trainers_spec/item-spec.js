@@ -1,6 +1,6 @@
 "use strict";
 
-let Item = require("../item");
+let Item = require("../Item");
 let item;
 let buyPrice = 100;
 let count = 5;
