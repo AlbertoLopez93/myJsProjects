@@ -11,9 +11,11 @@ $(".ratings").mouseenter(
                 $(ev.target).prevAll().addClass("glyphicon-star");
                 $(ev.target).nextAll().removeClass("glyphicon-star");
                 $(ev.target).nextAll().addClass("glyphicon-star-empty");
-                $(ev.target).click(function(ev){
-                    $(ev.target).unbind("mouseleave mouseenter hover");
-                })
+            },
+            function () {
+                $(this).click(function(ev){
+                    $(this).off();
+                });
             }
         );
     }
@@ -21,5 +23,27 @@ $(".ratings").mouseenter(
     function(){
         $(".ratings .glyphicon").removeClass("glyphicon-star");
         $(".ratings .glyphicon").addClass("glyphicon-star-empty");
+        $(this).click(function(ev){
+            $(this).off();
+        });
     }
 );
+
+var js;
+
+function insertScript (){
+    var newScript = $("<script/>");
+    newScript.text(js);
+    $("head").eq(0).append(newScript);
+}
+
+function requestScript () {
+    $.getScript("/data/hola.js", function(script, textStatus, jqXHR){
+        js = script;
+        insertScript();
+    });
+}
+
+$(".list-group-item").click(function(ev){
+    requestScript();
+});
