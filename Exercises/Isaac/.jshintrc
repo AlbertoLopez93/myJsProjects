@@ -11,6 +11,7 @@
         "expect": true,
         "module": true,
         "console": true,
-        "beforeEach": true
+        "beforeEach": true,
+        "$": true
     }
 }
