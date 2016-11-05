@@ -49,7 +49,6 @@ function Human(ID , Name , MaxHP, CurrentPH, Agility, ArmorEquipped, CurrentMP, 
         value: function(name) {
             let index = 0, aux;
             for (let i = 0; i < ArmorEquipped.length; i++) {
-                console.log(ArmorEquipped[i].getName());
                 if(ArmorEquipped[i].getName() === name){
                     index = i;
                     aux = ArmorEquipped.splice(index,1);
@@ -216,6 +215,7 @@ function Human(ID , Name , MaxHP, CurrentPH, Agility, ArmorEquipped, CurrentMP, 
 
         Object.defineProperty(this, "addWeaponEquipped", {
             value: function(item) {
+
                 if (item instanceof Weapon === true) {
                     for (let i = 0; i < WeaponEquipped.length; i++) {
                         if(WeaponEquipped[i].getName() === item.getName()){
