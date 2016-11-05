@@ -26,6 +26,10 @@ function Character(_id, _name, _maxHP, _currentHP){
         },
         "setCurrentHP": {
             value: function(newHP) {
+                if (newHP === 0) {
+                    CurrentHP = 0;
+                    return this;
+                }
                 let max = this.getMaxHP();
                 if (typeof newHP === "number") {
                     if (newHP <= max && newHP > 0) {
@@ -51,6 +55,7 @@ function Character(_id, _name, _maxHP, _currentHP){
                     MaxHP = newMaxHP;
                     return this;
                 }
+                return this;
             },
             enumerable: true
         }

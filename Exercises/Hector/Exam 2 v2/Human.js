@@ -28,10 +28,15 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
         },
         "setAgility": {
             value: function (newAgility) {
+                if (newAgility === 0) {
+                    Agility = 0;
+                    return this;
+                }
                 if (typeof newAgility === "number" && newAgility > 0) {
                     Agility = newAgility;
                     return this;
                 }
+                return this;
             },
             enumerable: true
         },
@@ -43,6 +48,9 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
         },
         "addArmorEquipped": {
             value: function (item) {
+                if (item instanceof Armor === false) {
+                    return ArmorEquipped.length;
+                }
                 let itemName = item.getName();
                 for (let i = 0; i < ArmorEquipped.length; i++) {
                     if (ArmorEquipped[i].getName() === itemName) {
@@ -83,6 +91,10 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
         },
         "setCurrentMP": {
             value: function (newMP) {
+                if (newMP === 0) {
+                    CurrentHP = 0;
+                    return this;
+                }
                 let max = this.getMaxMP();
                 if (typeof newMP === "number") {
                     if (newMP <= max) {
@@ -93,6 +105,7 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
                         return this;
                     }
                 }
+                return this;
             },
             enumerable: true
         },
@@ -110,10 +123,15 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
         },
         "setGold": {
             value: function (newGold) {
+                if (newGold === 0) {
+                    Gold = 0;
+                    return this;
+                }
                 if (typeof newGold === "number" && newGold > 0 && newGold < 999999999) {
                     Gold = newGold;
                     return this;
                 }
+                return this;
             },
             enumerable: true
         },
@@ -125,10 +143,15 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
         },
         "setIntellect": {
             value: function (newIntellect) {
+                if (newIntellect === 0) {
+                    Intellect = 0;
+                    return this;
+                }
                 if (typeof newIntellect === "number" && newIntellect > 0) {
                     Intellect = newIntellect;
                     return this;
                 }
+                return this;
             },
             enumerable: true
         },
@@ -154,6 +177,7 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
                     MaxMP = newMaxMP;
                     return this;
                 }
+                return this;
             },
             enumerable: true
         },
@@ -165,10 +189,15 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
         },
         "setSpirit": {
             value: function (newSpirit) {
+                if (newSpirit === 0) {
+                    Spirit = 0;
+                    return this;
+                }
                 if (newSpirit > 0 && typeof newSpirit === "number") {
                     Spirit = newSpirit;
                     return this;
                 }
+                return this;
             },
             enumerable: true
         },
@@ -180,10 +209,15 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
         },
         "setStamina": {
             value: function (newStamina) {
+                if (newStamina === 0) {
+                    Stamina = 0;
+                    return this;
+                }
                 if (newStamina > 0 && typeof newStamina === "number") {
                     Stamina = newStamina;
                     return this;
                 }
+                return this;
             },
             enumerable: true
         },
@@ -195,10 +229,15 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
         },
         "setStrength": {
             value: function (newStrength) {
+                if (newStrength === 0) {
+                    Strength = 0;
+                    return this;
+                }
                 if (newStrength > 0 && typeof newStrength === "number") {
                     Strength = newStrength;
                     return this;
                 }
+                return this;
             },
             enumerable: true
         },
@@ -210,6 +249,9 @@ function Human(_id, _name, _maxHP, _currentHP, _Agility, _ArmorEquipped, _Curren
         },
         "addWeaponEquipped": {
             value: function (item) {
+                if (item instanceof Weapon === false) {
+                    return ArmorEquipped.length;
+                }
                 let itemName = item.getName();
                 for (let i = 0; i < WeaponEquipped.length; i++) {
                     if (WeaponEquipped[i].getName() === itemName) {

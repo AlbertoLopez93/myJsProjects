@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/jquery.js" charset="utf-8"></script>
+    <style media="screen">
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .circle{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            display: inline-block;
+            margin-right: 100px;
+        }
+        .color {
+            background-color: red;
+        }
+
+        .no-color{
+            background-color: white;
+        }
+        .container {
+            width: auto;
+            height: auto;
+            display: inline-block;
+        }
+
+         #c5{
+            margin-right: 0;
+        }
+
+        .color-green {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container axel" id="1">
+        <div class="circle star" id="c1"></div>
+    </div>
+    <div class="container axel" id="2">
+        <div class="circle star" id="c2"></div>
+    </div>
+    <div class="container axel" id="3">
+        <div class="circle star" id="c3"></div>
+    </div>
+    <div class="container axel" id="4">
+        <div class="circle star" id="c4"></div>
+    </div>
+    <div class="container axel" id="5">
+        <div class="circle star" id="c5"></div>
+    </div>
+
+
+    <script type="text/javascript">
+        $(".axel").hover(inside, outside);
+        $(".container").click(function () {
+            let note = this.id;
+            for (var i = 1; i <=note; i++) {
+                $("#c" + i).addClass("color-green");
+            }
+            $('.axel').unbind('mouseenter mouseleave');
+            $('.axel').unbind('click');
+        });
+
+        function  outside() {
+            $(".circle").removeClass("color");
+        }
+        function inside() {
+            let note = this.id;
+            if (this.id === "1") {
+                for (var i = 1; i <=note; i++) {
+                    $("#c" + i).addClass("color");
+                }
+            }
+            if (this.id === "2") {
+                for (var i = 1; i <=note; i++) {
+                    $("#c" + i).addClass("color");
+                }
+            }
+            if (this.id === "3") {
+                for (var i = 1; i <=note; i++) {
+                    $("#c" + i).addClass("color");
+                }
+            }
+            if (this.id === "4") {
+                for (var i = 1; i <=note; i++) {
+                    $("#c" + i).addClass("color");
+                }
+            }
+            if (this.id === "5") {
+                for (var i = 1; i <=note; i++) {
+                    $("#c" + i).addClass("color");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
